@@ -4,20 +4,20 @@
 * Returns the latest version of the plugin from Extend API
 * 
 * @return array 
-* 	[0] = Status Message				(string)	current, update, beta, unknown
-*	[1] = Current GS Blog Version		(float)		version
-*	[2] = Version on Extend				(float)		version
-*	[3] = Update message if available.	(string)	message
+* [0] = Status Message                (string)  current, update, beta, unknown
+* [1] = Current GS Blog Version       (float)   version
+* [2] = Version on Extend             (float)   version
+* [3] = Update message if available.  (string)  message
 */
 function blog_version_check() {
-	$current_version = (float)BLOGVERSION;
+	$current_version = BLOGVERSION;
 	define('LANGFILE',BLOGFILE);
 	
 	// Let's pre-create the array, in case anything goes horribly wrong...
 	$return = array();
 	$return[0] = 'unknown';
 	$return[1] = $current_version;
-	$retuen[2] = 0.0;
+	$retuen[2] = '0.0.0';
 	$return[3] = i18n_r(BLOGFILE.'/VERSION_NOMESSAGE');
 	$return[4] = NULL;
 	
@@ -37,14 +37,13 @@ function blog_version_check() {
 	
 	// Let's check for any update messages. (To be implemented at a later date!)
 	function blog_update_message() {
-		// Get message from server
-		$var = NULL;
-		return $var;
+		$var = file_get_contents('http://update.johnstray.com/index.php?app=gs-blog&ver='.$current_version);
+    if(!empty($var)) {return $var;} else {return NULL}
 	}
 	
 	// If API call successful...
 	if($api_response->status = 'successful') {
-		$api_version = (float)$api_response->version;
+		$api_version = $api_response->version;
 		$return[2] = $api_version;
 	
 		// What is the status? Are we up to date?
@@ -78,7 +77,7 @@ function blog_version_check() {
 	// API call wasn't successful... :(
 	} elseif ($api_response->status != 'internal_error')  {
 		$return[0] = 'unknown';
-		$return[2] = (float) 0.0;
+		$return[2] = '0.0.0';
 		$return[3] = i18n_r(LANGFILE.'/VERSION_APIFAIL');
 		define('BLOGVERSIONCLASS', 'ERRmsg');
 	} else {
@@ -145,9 +144,9 @@ function show_update_admin() {
 		</tr>
 	</tbody>
 </table>
+<div id="blog_version_update_information">
+  <?php if ($update_data[4] != NULL) {echo $update_data[4];} ?>
+</div>
 <?php
-if ($update_data[4] != NULL) {
-	echo $update_data[4];
-}
 
 }
