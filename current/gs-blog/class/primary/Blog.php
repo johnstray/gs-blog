@@ -777,6 +777,8 @@ class Blog
 		global $SITEURL;
 
 		$post_array = glob(BLOGPOSTSFOLDER . "/*.xml");
+    if($post_array === false){$post_array = array();}
+    
 		if($save == true)
 		{
 			$locationOfFeed = $SITEURL."rss.rss";
@@ -794,6 +796,10 @@ class Blog
 				$posts = $this->listPosts(true, true);
 			}
 		}
+    
+    if($posts === false) {
+      $posts = array();
+    }
 
 		$RSSString      = "";
 		$RSSString     .= "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n";
@@ -809,26 +815,35 @@ class Blog
 		$limit = $this->getSettingsData("rssfeedposts");
 		array_multisort(array_map('filemtime', $post_array), SORT_DESC, $post_array); 
 		$post_array = array_slice($post_array, 0, $limit);
-
-		foreach ($posts as $post) 
-		{
-			$blog_post = simplexml_load_file($post['filename']);
-			$RSSDate    = $blog_post->date;
-			$RSSTitle   = $blog_post->title;
-			$RSSBody 	= html_entity_decode(str_replace("&nbsp;", " ", substr(htmlspecialchars(strip_tags($blog_post->content)),0,200)));
-			$ID 		= $blog_post->slug;
-			$RSSString .= "<item>\n";
-			$RSSString .= "\t  <title>".$RSSTitle."</title>\n";
-			$RSSString .= "\t  <link>".$this->get_blog_url('post').$ID."</link>\n";
-			$RSSString .= "\t  <guid>".$this->get_blog_url('post').$ID."</guid>\n";
-			$RSSString .= "\t  <description>".htmlspecialchars($RSSBody)."</description>\n";
-			if(isset($blog_post->category) and !empty($blog_post->category) and $blog_post->category!='') 
-			{
-				$RSSString .= "\t  <category>".$blog_post->category."</category>\n";
-			}
-			$RSSString .= "</item>\n";
-		}
-
+    
+    if(!count($posts) < 1) {
+      foreach ($posts as $post) 
+      {
+        $blog_post = simplexml_load_file($post['filename']);
+        $RSSDate    = $blog_post->date;
+        $RSSTitle   = $blog_post->title;
+        $RSSBody 	= html_entity_decode(str_replace("&nbsp;", " ", substr(htmlspecialchars(strip_tags($blog_post->content)),0,200)));
+        $ID 		= $blog_post->slug;
+        $RSSString .= "<item>\n";
+        $RSSString .= "\t  <title>".$RSSTitle."</title>\n";
+        $RSSString .= "\t  <link>".$this->get_blog_url('post').$ID."</link>\n";
+        $RSSString .= "\t  <guid>".$this->get_blog_url('post').$ID."</guid>\n";
+        $RSSString .= "\t  <description>".htmlspecialchars($RSSBody)."</description>\n";
+        if(isset($blog_post->category) and !empty($blog_post->category) and $blog_post->category!='') 
+        {
+          $RSSString .= "\t  <category>".$blog_post->category."</category>\n";
+        }
+        $RSSString .= "</item>\n";
+      }
+    } else {
+      $RSSString .= "<item>\n";
+      $RSSString .= "\t  <title>There are no posts!</title>\n";
+      $RSSString .= "\t  <link>".$this->get_blog_url('post')."</link>\n";
+      $RSSString .= "\t  <guid>".$this->get_blog_url('post')."</guid>\n";
+      $RSSString .= "\t  <description>There are no posts available for this RSS feed. Please contact the website administrator for more information.</description>\n";
+      $RSSString .= "</item>\n";
+    }
+     
 		$RSSString .= "</channel>\n";
 		$RSSString .= "</rss>\n";
 
