@@ -6,8 +6,9 @@
 
 **Bug Fixes:**
 - Fixed constant 'BLOGFILE' not defined when calling rss.php.
-- Fixed PHP errors when calling rss.php and there are no posts.
-- Fixed PHP errors when glob() returns false whilst trying to list posts. The PHP was showing when /data/blog was non-existent or non-readable (ie. bad permissions)
+- Added better handling of having no posts on systems where glob() returns 'false'.
+- Fixed cache generation : Cache will not generate if there are no posts.
+- Fixed 'Delete RSS Feed' link in admin panel.
 
 ### Version 3.1.2
 **Bug Fixes:**
