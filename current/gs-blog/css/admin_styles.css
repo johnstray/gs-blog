@@ -1,0 +1,11 @@
+img.rss_feed {
+	margin-left:14px;
+}
+.odd_meta {
+	float: left;
+	width: 48%;
+}
+.even_meta {
+	float: right;
+	width: 48%;
+}
