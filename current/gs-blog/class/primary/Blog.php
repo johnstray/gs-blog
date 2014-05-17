@@ -875,19 +875,22 @@ class Blog
 	public function createPostsCache()
 	{
 		$posts = $this->listPosts(true, true);
+    if($posts === false){$posts = array();}
 		$count = 0;
 		$xml = new SimpleXMLExtended('<?xml version="1.0"?><item></item>');
-		foreach($posts as $post)
-		{
-			$data = getXML($post['filename']);
-			$new_post = $xml->addChild("post");
-			foreach($data as $key => $value)
-			{
-				$post_parent = $new_post->addChild($key);
-				$post_parent->addCData($value);
-			}
-		}
-		$save_cache = XMLsave($xml, BLOGCACHEFILE);
+    if(!count($posts) < 1) {
+      foreach($posts as $post)
+      {
+        $data = getXML($post['filename']);
+        $new_post = $xml->addChild("post");
+        foreach($data as $key => $value)
+        {
+          $post_parent = $new_post->addChild($key);
+          $post_parent->addCData($value);
+        }
+      }
+      $save_cache = XMLsave($xml, BLOGCACHEFILE);
+    }
 	}
 
 	/** 
