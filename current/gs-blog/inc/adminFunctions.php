@@ -788,7 +788,7 @@ function edit_rss()
 	{
 		$rss_atts = $feed->attributes();
 	echo '
-	<tr><td>'.$feed->feed.'</td><td>'.$feed->category.'</td><td><a href="load.php?id=<?php echo BLOGFILE; ?>&auto_importer&delete_rss='.$feed['id'].'">X</a></td></tr>
+	<tr><td>'.$feed->feed.'</td><td>'.$feed->category.'</td><td><a href="load.php?id='.BLOGFILE.'&auto_importer&delete_rss='.$feed['id'].'">X</a></td></tr>
 	';
 	}
 	  ?>
