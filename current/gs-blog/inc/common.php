@@ -15,10 +15,9 @@ if(!function_exists('getXML'))
 /* Define Constants
  * 
  */
+if(!defined(BLOGFILE)){define('BLOGFILE', 'gs-blog');
 define('BLOGPLUGINFOLDER', GSPLUGINPATH.BLOGFILE.'/');
 define('BLOGPLUGINID', BLOGFILE);
-
-
 define('BLOGSETTINGS', GSDATAOTHERPATH  . 'blog_settings.xml');
 define('BLOGCATEGORYFILE', GSDATAOTHERPATH  . 'blog_categories.xml');
 define('BLOGRSSFILE', GSDATAOTHERPATH  . 'blog_rss.xml');
