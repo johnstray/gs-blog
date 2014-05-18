@@ -4,7 +4,7 @@ $thisfile = basename(__FILE__, ".php");
 define('BLOGFILE', $thisfile);
 define('BLOGPLUGINNAME', i18n_r(BLOGFILE.'/PLUGIN_TITLE'));
 define('BLOGEXTENDID','810');
-define('BLOGVERSION','3.1');
+define('BLOGVERSION','3.1.3');
 require_once($thisfile.'/inc/common.php');
 
 # add in this plugin's language file
