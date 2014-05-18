@@ -15,7 +15,7 @@ if(!function_exists('getXML'))
 /* Define Constants
  * 
  */
-if(!defined(BLOGFILE)){define('BLOGFILE', 'gs-blog');
+if(!defined(BLOGFILE)){define('BLOGFILE', 'gs-blog')};
 define('BLOGPLUGINFOLDER', GSPLUGINPATH.BLOGFILE.'/');
 define('BLOGPLUGINID', BLOGFILE);
 define('BLOGSETTINGS', GSDATAOTHERPATH  . 'blog_settings.xml');

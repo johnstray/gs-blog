@@ -10,6 +10,7 @@
 - Fixed cache generation : Cache will not generate if there are no posts.
 - Fixed 'Delete RSS Feed' link in admin panel.
 - Update MagpieRSS to use explode() instead of the depreciated split().
+- Fixed stupid syntax mistakes. I really shouldn't code whilst tired...
 
 ### Version 3.1.2
 **Bug Fixes:**

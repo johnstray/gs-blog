@@ -38,7 +38,7 @@ function blog_version_check() {
 	// Let's check for any update messages. (To be implemented at a later date!)
 	function blog_update_message() {
 		$var = file_get_contents('http://update.johnstray.com/index.php?app=gs-blog&ver='.$current_version);
-    if(!empty($var)) {return $var;} else {return NULL}
+    if(!empty($var)) {return $var;} else {return NULL;}
 	}
 	
 	// If API call successful...
