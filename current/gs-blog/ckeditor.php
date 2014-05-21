@@ -1,4 +1,4 @@
-<?php if (!defined('IN_GS')) {die('you cannot load this page directly.');}
+<?php if(!defined('IN_GS')){die('You cannot load this file directly!');} // Security Check
 /**
  * CKEditor template
  */

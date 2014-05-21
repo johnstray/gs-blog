@@ -1,4 +1,4 @@
-<?php if(!defined('IN_GS')){die('You cannot load this file directly!');} // Security Check
+<?php 
 /**
 * Version Checking Function
 * Returns the latest version of the plugin from Extend API

@@ -1,5 +1,18 @@
 ## Changelog
 
+### Version 3.2.1
+**Security Fixes**
+- Added check if defined 'IN_GS' to all php files. This prevents files being loaded directly, rather they need to be called from within GS.
+
+**Code Changes:**
+- Updated MagpieRSS from 0.7a to 0.72
+- MagpieRSS will now use the GS cache instead of trying to create its own. This would fail because of permissions in the plugin dir.
+- Fixed a typo and a missing string in en_US language file.
+- Added Italian (it_IT) language file, thanks to Nicola Laviola (nikyni)
+
+**Back End (Admin) UI Improvements:**
+- WARN, ERROR, INFO, OK messages will now display properly using the default GS message system.
+
 ### Version 3.2.0
 **Back End (Admin) UI Improvements:**
 - Split 'Blog Settings' page into 4 sections : Main, Customisation, Advertisement, Social.

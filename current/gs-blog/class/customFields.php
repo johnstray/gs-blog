@@ -1,4 +1,4 @@
-<?php
+<?php if(!defined('IN_GS')){die('You cannot load this file directly!');} // Security Check
 class customFields extends Blog 
 {
   public function __construct()

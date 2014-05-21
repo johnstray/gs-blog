@@ -1,4 +1,5 @@
-<?php
+<?php 
+if(!defined('IN_GS')){define('IN_GS',true;}
 require_once('inc/common.php');
 $Blog = new Blog;
 if(isset($_GET['filter']) && isset($_GET['value']))

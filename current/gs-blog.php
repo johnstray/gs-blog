@@ -1,4 +1,4 @@
-<?php
+<?php if(!defined('IN_GS')){die('You cannot load this file directly!');} // Security Check
 /**
  * Plugin Name: GetSimple Blog
  * Description: A simple and easy to use blog/newsfeed for GetSimple

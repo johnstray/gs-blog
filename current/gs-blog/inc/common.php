@@ -1,4 +1,4 @@
-<?php
+<?php if(!defined('IN_GS')){die('You cannot load this file directly!');} // Security Check
 
 /* Include admin/inc/common.php if it is not loaded
  * - Check if global $rootPath var is set. If not set root path from actual file location. Include admin/inc/common.php if not loaded. 

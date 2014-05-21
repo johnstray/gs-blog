@@ -1,4 +1,4 @@
-<?php
+<?php if(!defined('IN_GS')){die('You cannot load this file directly!');} // Security Check
 /** 
 * display blog posts
 * 
@@ -451,7 +451,8 @@ function auto_import()
 	if($_GET['import'] == urldecode($Blog->getSettingsData("autoimporterpass")) && $Blog->getSettingsData("autoimporter") =='Y')
 	{
 		ini_set("memory_limit","350M");
-
+    
+    define('MAGPIE_CACHE_DIR', GSCACHEPATH);
 		require_once(BLOGPLUGINFOLDER.'inc/magpierss/rss_fetch.inc');
 
 		$rss_feed_file = getXML(BLOGRSSFILE);

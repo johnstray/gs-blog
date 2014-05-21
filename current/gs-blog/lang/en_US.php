@@ -1,4 +1,4 @@
-<?php
+<?php if(!defined('IN_GS')){die('You cannot load this file directly!');} // Security Check
 $i18n = array(
 	'PLUGIN_TITLE' 			=> "Blog",
 	'PLUGIN_DESC' 			=> "A simple and easy to use blog/news feed for GetSimple.",
@@ -284,6 +284,7 @@ $i18n = array(
   'DEFAULT_AUTHOR' => 'Default Author',
   'DISPLAY_POST_CATEGORY' => 'Show Post Category',
   'VIEW_HTACCESS' => 'View what your site\'s .htaccess should be!',
+  'CUSTOMIZE_HEADER' => 'Blog Customization',
   'SETTINGS_CUSTOMIZE_DESC' => 'This is the description for the Customization settings page',
   'CUSTOM_PAGE_LAYOUT_HEADER' => 'Customize Page Layout',
   'CUSTOM_CSS_CLASS' => 'Customize CSS Classes',
@@ -294,7 +295,7 @@ $i18n = array(
   'ADVERTISEMENT_HEADER' => 'Advertisement Settings',
   'SETTINGS_ADVERTISEMENT_DESC' => 'This is the description for the Advertisement settings page',
   'SOCIAL_HEADER' => 'Social Settings',
-  'SETTING_SOCIAL_DESC' => 'This is the description for the Social settings page.',
+  'SETTINGS_SOCIAL_DESC' => 'This is the description for the Social settings page.',
   'RSS_SETTING_HEADER' => 'RSS Auto-Importer Settings',
   'MAIN_SETTINGS_BUTTON' => 'Main Settings',
   'SETTINGS_RSS_DESCRIPTION' => 'This is the description for the RSS Auto-Importer settings page.',
