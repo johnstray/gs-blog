@@ -82,8 +82,12 @@ class Blog
 									 'displaytags' => 'Y',
 									 'rsstitle' => '',
 									 'rssdescription' => '',
+                   'rssinclude' => 'N',
 									 'postthumbnail' => 'N',
 									 'displaydate' => 'Y',
+                   'displayauthor' => 'N',
+                   'defaultauthor' => 'hidden',
+                   'displaycategory' => 'N',
 									 'previouspage' => i18n_r(BLOGFILE.'/NEWER_POSTS'),
 									 'nextpage' => i18n_r(BLOGFILE.'/OLDER_POSTS'),
 									 'displaycss' => 'Y',
@@ -762,6 +766,9 @@ class Blog
 	{
 		$locale = setlocale(LC_TIME, NULL);
 		setlocale(LC_TIME, $this->getSettingsData("lang"));
+    if (strtoupper(substr(PHP_OS, 0, 3)) == 'WIN') {
+      $format = preg_replace('#(?<!%)((?:%%)*)%e#', '\1%#d', $format);
+    }
 		$date = strftime($format, $timestamp);
 		setlocale(LC_TIME, $locale);
 		return $date;

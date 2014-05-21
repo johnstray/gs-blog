@@ -9,3 +9,23 @@ img.rss_feed {
 	float: right;
 	width: 48%;
 }
+
+li#nav_gs-blog a:before {
+font-family: FontAwesome;
+content: "\f044";
+padding-right: 6px;
+}
+
+@media only screen and (max-width: 768px) and (min-width: 320px) {
+  li#nav_gs-blog a {
+    visibility: hidden;
+  }
+  li#nav_gs-blog a:before {
+    font-family: FontAwesome;
+    content: "\f044";
+    padding: 0;
+    visibility: visible;
+    font-size: 24px;
+    color:rgba(255,255,255,.75);
+  }
+}

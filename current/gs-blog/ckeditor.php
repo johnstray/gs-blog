@@ -22,7 +22,7 @@ if ($EDTOOL == 'advanced') {
 }
 
 global $HTMLEDITOR, $TEMPLATE, $SITEURL;
-if (isset($_GET['id']) and $_GET['id'] == "blog") {
+if (isset($_GET['id']) and $_GET['id'] == BLOGFILE) {
   if (isset ($HTMLEDITOR) && $HTMLEDITOR != '') {
     ?>
     <script type="text/javascript" src="template/js/ckeditor/ckeditor.js"></script>
@@ -49,7 +49,7 @@ if (isset($_GET['id']) and $_GET['id'] == "blog") {
         <?php echo $TOOLBAR; ?>
         ]
         <?php echo $EDOPTIONS; ?>,
-        tabSpaces:10,
+        tabSpaces:2,
         filebrowserBrowseUrl : 'filebrowser.php?type=all',
         filebrowserImageBrowseUrl : 'filebrowser.php?type=images',
         filebrowserWindowWidth : '730',

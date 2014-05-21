@@ -37,8 +37,9 @@ function blog_version_check() {
 	
 	// Let's check for any update messages. (To be implemented at a later date!)
 	function blog_update_message() {
+    GLOBAL $current_version;
 		$var = file_get_contents('http://update.johnstray.com/index.php?app=gs-blog&ver='.$current_version);
-    if(!empty($var)) {return $var;} else {return NULL;}
+    return (!empty($var)) ? $var : NULL;
 	}
 	
 	// If API call successful...
@@ -51,7 +52,7 @@ function blog_version_check() {
 			# An update is available! Please update me.
 			$return[0] = 'update';
 			define('BLOGVERSIONCLASS', 'WARNmsg');
-			$return[3] = i18n_r(LANGFILE.'/VERSION_UPDATEAVAILABLE').' <a href="http://get-simple.info/extend/plugin/gs-blog-v30/810/">'.i18n_r(LANGFILE.'/DOWNLOAD').' v'.(string)$api_version.'</a>.';
+			$return[3] = i18n_r(LANGFILE.'/VERSION_UPDATEAVAILABLE').' <a href="http://get-simple.info/extend/plugin/getsimple-blog/810/" target="_new">'.i18n_r(LANGFILE.'/DOWNLOAD').' v'.(string)$api_version.'</a>.';
 			$return[4] = blog_update_message();
 		}
 		elseif (version_compare($api_version, $current_version) == '0') {
@@ -123,6 +124,14 @@ function show_update_admin() {
 		$lvclass = 'ERRmsg';
 	}
 ?>
+<h3 class="floated" style="float:left;">Plugin Version Status</h3>
+<div class="edit-nav">
+  <p class="text 1">
+    &nbsp;
+  </p>
+  <div class="clear"></div>
+</div>
+<p class="text 2">Ensure you're running the latest version of the GS Blog plugin so that you can benefit from the latest features.</p>
 <table class="highlight" style="margin-bottom:20px;">
 	<tbody>
 		<tr>
@@ -136,15 +145,15 @@ function show_update_admin() {
 		</tr>
 		<tr>
 			<td><?php i18n(LANGFILE.'/VERSION_CURRENTVER'); ?></td>
-			<td style="text-align:center;"><span class="<?php echo $updclass; ?>"><strong><?php echo number_format($update_data[1],1,'.',''); ?></strong> - <?php echo $updstat; ?></span></td>
+			<td style="text-align:center;"><span class="<?php echo $updclass; ?>"><strong><?php echo $update_data[1]; ?></strong> - <?php echo $updstat; ?></span></td>
 		</tr>
 		<tr>
 			<td><?php i18n(LANGFILE.'/VERSION_LATESTVER'); ?></td>
-			<td style="text-align:center;"><span class="<?php echo $lvclass; ?>"><strong><?php echo number_format($update_data[2],1,'.',''); ?></strong> - <?php echo $lvstat; ?></span></td>
+			<td style="text-align:center;"><span class="<?php echo $lvclass; ?>"><strong><?php echo $update_data[2]; ?></strong> - <?php echo $lvstat; ?></span></td>
 		</tr>
 	</tbody>
 </table>
-<div id="blog_version_update_information">
+<div id="version_update_information" style="border:1px solid #eee;padding:20px;">
   <?php if ($update_data[4] != NULL) {echo $update_data[4];} ?>
 </div>
 <?php

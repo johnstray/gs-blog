@@ -1,5 +1,36 @@
 ## Changelog
 
+### Version 3.2.0
+**Back End (Admin) UI Improvements:**
+- Split 'Blog Settings' page into 4 sections : Main, Customisation, Advertisement, Social.
+- Moved 'Create Post' link from side-bar to 'Manage Posts' page.
+- Moved 'Custom Fields' link from side-bar to 'Manage Posts' page.
+- Renamed 'RSS Feeds' to 'RSS Auto-Importer'.
+- Added 'Settings' button to 'RSS Auto-Importer' page.
+- 'RSS Auto-Importer' related settings are now on their own page.
+- HTML Layouts changed to match the GS Admin default layout.
+- Plugin is now compatible with the awesome 'Modern Admin' backend theme. Seriously, try it!
+- Added setting to RSS Auto-Importer to choose between getting content if available or description with link back to original article.
+- Added setting to Settings page to show/hide Post Author.
+- Added setting to Settings page for Default Post Author if none is defined. Enter 'hidden' to hide if not defined.
+- Added setting to Settings page to show/hide Category.
+
+**Front End UI Improvements:**
+- Added ability to show Author's name. A default will be shown / or hidden if author not defined. These can be setup in settings.
+- Added ability to show the category the post has been saved in. Hidden if not defined.
+
+**Code Changes:**
+- VersionCheck now gets it's "What's New" messages encoded and will decode them for display.
+- Download link updated in VersionCheck.
+- adminController.php has been merged into adminFunctions.php
+- displayPosts.php merged into frontEndFunctions.php
+- pageTitle.php merged into frontEndFunctions.php
+- Original 'Settings' button idea ditched along with settingsButton.php
+- Fixed yet another URL problem in ckeditor.php
+- Added new strings for 'Settings' and Sidebar buttons to en_US language file. Really need some translators here, please help?
+- RSS Auto-Importer now has the ability to search for a <content:encoded> tag in rss files, and if it exists, will fill the post with that rather than the description.
+- Fixed date localization on Windows based systems.
+
 ### Version 3.1.3
 **Back End (Admin) UI Improvements:**
 - VersionCheck updated to include the ability to show What's New information on update page.

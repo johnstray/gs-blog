@@ -1,5 +1,62 @@
 <?php
 /** 
+* display blog posts
+* 
+* @return $content legacy support for non filter hook calls to this function
+*/ 
+function blog_display_posts() 
+{
+	GLOBAL $content, $blogSettings, $data_index;
+	
+	$Blog = new Blog;
+	$slug = base64_encode(return_page_slug());
+	$blogSettings = $Blog->getSettingsData();
+	$blog_slug = base64_encode($blogSettings["blogurl"]);
+	if($slug == $blog_slug)
+	{
+		$content = '';
+		ob_start();
+		if($blogSettings["displaycss"] == 'Y')
+		{
+			echo "<style>\n";
+			echo $blogSettings["csscode"];
+			echo "\n</style>";
+		}
+		switch(true)
+		{
+			case (isset($_GET['post']) == true) :
+				$post_file = BLOGPOSTSFOLDER.$_GET['post'].'.xml';
+				show_blog_post($post_file);
+				break;
+			case (isset($_POST['search_blog']) == true) :
+				search_posts($_POST['keyphrase']);
+				break;
+			case (isset($_GET['archive']) == true) :
+				$archive = $_GET['archive'];
+				show_blog_archive($archive);
+				break;
+			case (isset($_GET['tag']) == true) :
+				$tag = $_GET['tag'];
+				show_blog_tag($tag);
+				break;
+			case (isset($_GET['category']) == true) :
+				$category = $_GET['category'];      
+				show_blog_category($category);	
+				break;
+			case (isset($_GET['import'])) :
+				auto_import();
+				break;
+			default :
+				show_all_blog_posts();
+				break;
+		}
+		$content = ob_get_contents();
+	    ob_end_clean();		
+	}
+		return $content; // legacy support for non filter hook calls to this function
+}
+
+/** 
 * show individual blog post
 * 
 * @param $slug slug of post to display
@@ -13,6 +70,20 @@ function show_blog_post($slug, $excerpt=false)
 	$post = getXML($slug);
 	$url = $Blog->get_blog_url('post').$post->slug;
 	$date = $Blog->get_locale_date(strtotime($post->date), '%b %e, %Y');
+  $category = $post->category;
+  if(!empty($post->author)) { // Does the post have an author?
+    if($post->author == 'hidden') { // Is the author 'hidden'?
+      $author = NULL; // Hide the post
+    } else { // Author is not hidden.
+      $author = $post->author; // Show the author
+    }
+  } else { // The post doesn't have an author
+    if(!empty($blogSettings["defaultauthor"])) { // Is there a default author?
+      $author = $blogSettings["defaultauthor"]; // Yep, lets just set that.
+    } else {
+      $author = NULL; // Nope, lets just hide it then.
+    }
+  }
 	if($blogSettings["customfields"] != 'Y')
 	{
 		if(isset($_GET['post']) && $blogSettings["postadtop"] == 'Y')
@@ -30,9 +101,11 @@ function show_blog_post($slug, $excerpt=false)
 		<div class="blog_post_container">
     	<?php if(!isset($_GET['post'])) { ?>
       <h3><a href="<?php echo $url; ?>"><?php echo $post->title; ?></a></h3><?php } ?>
-			<?php if($blogSettings["displaydate"] == 'Y') {  ?>
-				<p class="blog_post_date">
-					<?php echo $date; ?>
+			<?php if(($blogSettings["displaydate"] == 'Y') || ($blogSettings["displayauthor"] =='Y') || ($blogSettings["displaycategory"] == 'Y')) {  ?>
+				<p class="blog_post_info">
+          <?php if(($blogSettings["displayauthor"] == 'Y') && (!empty($author))) {echo '<span class="blog_post_author">'.i18n_r(BLOGFILE.'/BY').' '.$author.'</span> |';} ?>
+					<?php if($blogSettings["displaydate"] == 'Y') {echo '<span class="blog_post_date">'.i18n_r(BLOGFILE.'/ON').' '.$date.'</span> |';} ?>
+          <?php if($blogSettings["displaycategory"] == 'Y') {echo '<span class="blog_post_category">'.i18n_r(BLOGFILE.'/IN').' '.$category.'</span>';} ?>
 				</p>
 			<?php } ?>
 			<p class="blog_post_content">
@@ -350,6 +423,22 @@ function search_posts($keyphrase)
 }
 
 /** 
+* Thumbnail download for RSS Auto-Importer
+* Finds the first image in $content then downloads
+* and saves the image for use as a thumbnail to be
+* attached to the imported post 
+* 
+* @input $item Array containing the RSS data
+* @return $thumbnail Filename of the image
+* @return false if error or non found
+*/ 
+function auto_import_thumbnail($item)
+{
+  // require_once('phpQuery.php');
+  return false;
+}
+
+/** 
 * RSS Feed Auto Importer
 * Auto imports RSS feeds. Can be launched by a cron job 
 * 
@@ -358,6 +447,7 @@ function search_posts($keyphrase)
 function auto_import()
 {
 	$Blog = new Blog;
+  
 	if($_GET['import'] == urldecode($Blog->getSettingsData("autoimporterpass")) && $Blog->getSettingsData("autoimporter") =='Y')
 	{
 		ini_set("memory_limit","350M");
@@ -380,9 +470,19 @@ function auto_import()
 		        $post_data['private']       = '';
 		        $post_data['tags']          = '';
 		        $post_data['category']      = $rss_category;
-		        $post_data['content']       = $item['summary'].'<p class="blog_auto_import_readmore"><a href="'.$item['link'].'" target="_blank">'.i18n_r(BLOGFILE.'/READ_FULL_ARTICLE').'</a></p>';
-		        $post_data['excerpt']       = '';
-		        $post_data['thumbnail']     = '';
+            if($Blog->getSettingsData('rssinclude') == 'Y') {
+              if(!empty($item['atom_content'])) {
+                $post_data['content']   = $item['atom_content'];
+              } elseif(!empty($item['content']['encoded'])) {
+                $post_data['content']   = $item['content']['encoded'];
+              } else {
+                $post_data['content']   = $item['summary'].'<p class="blog_auto_import_readmore"><a href="'.$item['link'].'" target="_blank">'.i18n_r(BLOGFILE.'/READ_FULL_ARTICLE').'</a></p>';
+              }
+            } else {
+              $post_data['content']     = $item['summary'].'<p class="blog_auto_import_readmore"><a href="'.$item['link'].'" target="_blank">'.i18n_r(BLOGFILE.'/READ_FULL_ARTICLE').'</a></p>';
+            }
+		        $post_data['excerpt']       = $Blog->create_excerpt($item['summary'],0,$Blog->getSettingsData("excerptlength"));
+		        $post_data['thumbnail']     = auto_import_thumbnail($item);
 		        $post_data['current_slug']  = '';
 
 		        $Blog->savePost($post_data, true);
@@ -669,4 +769,19 @@ function set_post_description()
 
 		$metad = $Blog->create_excerpt(html_entity_decode($post->content), 0, $excerpt_length);
 	}
+}
+
+function set_blog_title () { 
+	global $title, $blogSettings, $post;
+	$slug = base64_encode(return_page_slug());
+	if($slug == base64_encode($blogSettings["blogurl"])) {
+		if(isset($_GET['post']) && !empty($post)) {
+			$title = (string) $post->title;
+		} else if (isset($_GET['archive'])) {
+			$title = (string) i18n_r(BLOGFILE.'/ARCHIVE_PRETITLE').date('F Y',strtotime($_GET['archive']));
+		} else if (isset($_GET['category'])) {
+			$title = (string) i18n_r(BLOGFILE.'/CATEGORY_PRETITLE').$_GET['category'];
+		}
+	}
+	$title = strip_tags(strip_decode($title));
 }

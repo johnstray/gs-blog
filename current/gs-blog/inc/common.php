@@ -15,7 +15,7 @@ if(!function_exists('getXML'))
 /* Define Constants
  * 
  */
-if(!defined(BLOGFILE)){define('BLOGFILE', 'gs-blog')};
+if(!defined('BLOGFILE')){define('BLOGFILE', 'gs-blog');}
 define('BLOGPLUGINFOLDER', GSPLUGINPATH.BLOGFILE.'/');
 define('BLOGPLUGINID', BLOGFILE);
 define('BLOGSETTINGS', GSDATAOTHERPATH  . 'blog_settings.xml');
@@ -73,10 +73,8 @@ if(function_exists('register_script'))
 {
 	if(isset($_GET['id']) && $_GET['id'] == BLOGPLUGINID)
 	{
-	    register_script(BLOGPLUGINNAME.'_js', $SITEURL.'/plugins/'.BLOGPLUGINID.'/js/admin_js.js', '1.0', TRUE);
-	    register_style(BLOGPLUGINNAME.'_css', $SITEURL.'/plugins/'.BLOGPLUGINID.'/css/admin_styles.css', '1.0', 'screen');
-	    
-	    register_script('codemirror_js', $SITEURL.'plugins/blog/js/codemirror/lib/codemirror.js', '1.0', FALSE);
+	  register_script(BLOGPLUGINNAME.'_js', $SITEURL.'/plugins/'.BLOGPLUGINID.'/js/admin_js.js', '1.0', TRUE);
+	  register_script('codemirror_js', $SITEURL.'plugins/blog/js/codemirror/lib/codemirror.js', '1.0', FALSE);
 		register_script('codemirror_javascript', $SITEURL.'/plugins/'.BLOGPLUGINID.'/js/codemirror/mode/javascript/javascript.js', '1.0', FALSE);
 		register_script('codemirror_php', $SITEURL.'/plugins/'.BLOGPLUGINID.'/js/codemirror/mode/php/php.js', '1.0',  FALSE);
 		register_script('codemirror_css_hl', $SITEURL.'/plugins/'.BLOGPLUGINID.'/js/codemirror/mode/css/css.js', '1.0',  FALSE);
