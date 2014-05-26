@@ -71,7 +71,7 @@ function show_blog_post($slug, $excerpt=false)
 	$url = $Blog->get_blog_url('post').$post->slug;
 	$date = $Blog->get_locale_date(strtotime($post->date), '%b %e, %Y');
   $category = $post->category;
-  if(!empty($post->author)) { // Does the post have an author?
+  if(isset($post->author)) { // Does the post have an author?
     if($post->author == 'hidden') { // Is the author 'hidden'?
       $author = NULL; // Hide the post
     } else { // Author is not hidden.
@@ -103,7 +103,7 @@ function show_blog_post($slug, $excerpt=false)
       <h3><a href="<?php echo $url; ?>"><?php echo $post->title; ?></a></h3><?php } ?>
 			<?php if(($blogSettings["displaydate"] == 'Y') || ($blogSettings["displayauthor"] =='Y') || ($blogSettings["displaycategory"] == 'Y')) {  ?>
 				<p class="blog_post_info">
-          <?php if(($blogSettings["displayauthor"] == 'Y') && (!empty($author))) {echo '<span class="blog_post_author">'.i18n_r(BLOGFILE.'/BY').' '.$author.'</span> |';} ?>
+          <?php if(($blogSettings["displayauthor"] == 'Y') && ($author != NULL)) {echo '<span class="blog_post_author">'.i18n_r(BLOGFILE.'/BY').' '.$author.'</span> |';} ?>
 					<?php if($blogSettings["displaydate"] == 'Y') {echo '<span class="blog_post_date">'.i18n_r(BLOGFILE.'/ON').' '.$date.'</span> |';} ?>
           <?php if($blogSettings["displaycategory"] == 'Y') {echo '<span class="blog_post_category">'.i18n_r(BLOGFILE.'/IN').' '.$category.'</span>';} ?>
 				</p>
@@ -435,7 +435,7 @@ function search_posts($keyphrase)
 function auto_import_thumbnail($item)
 {
   // require_once('phpQuery.php');
-  return false;
+  return '';
 }
 
 /** 
@@ -452,7 +452,7 @@ function auto_import()
 	{
 		ini_set("memory_limit","350M");
     
-    define('MAGPIE_CACHE_DIR', GSCACHEPATH);
+    define('MAGPIE_CACHE_DIR', GSCACHEPATH.'magpierss/');
 		require_once(BLOGPLUGINFOLDER.'inc/magpierss/rss_fetch.inc');
 
 		$rss_feed_file = getXML(BLOGRSSFILE);
@@ -471,22 +471,24 @@ function auto_import()
 		        $post_data['private']       = '';
 		        $post_data['tags']          = '';
 		        $post_data['category']      = $rss_category;
+            
             if($Blog->getSettingsData('rssinclude') == 'Y') {
-              if(!empty($item['atom_content'])) {
-                $post_data['content']   = $item['atom_content'];
-              } elseif(!empty($item['content']['encoded'])) {
-                $post_data['content']   = $item['content']['encoded'];
+              if(!empty($item['content']['encoded'])) {
+                $post_data['content']   = htmlentities($item['content']['encoded'],ENT_QUOTES,'iso-8859-1');
               } else {
-                $post_data['content']   = $item['summary'].'<p class="blog_auto_import_readmore"><a href="'.$item['link'].'" target="_blank">'.i18n_r(BLOGFILE.'/READ_FULL_ARTICLE').'</a></p>';
+                $post_data['content']   = htmlentities($item['summary'],ENT_QUOTES,'iso-8859-1').'<p class="blog_auto_import_readmore"><a href="'.$item['link'].'" target="_blank">'.i18n_r(BLOGFILE.'/READ_FULL_ARTICLE').'</a></p>';
               }
             } else {
-              $post_data['content']     = $item['summary'].'<p class="blog_auto_import_readmore"><a href="'.$item['link'].'" target="_blank">'.i18n_r(BLOGFILE.'/READ_FULL_ARTICLE').'</a></p>';
+              $post_data['content']     = htmlentities($item['summary'],ENT_QUOTES,'iso-8859-1').'<p class="blog_auto_import_readmore"><a href="'.$item['link'].'" target="_blank">'.i18n_r(BLOGFILE.'/READ_FULL_ARTICLE').'</a></p>';
             }
 		        $post_data['excerpt']       = $Blog->create_excerpt($item['summary'],0,$Blog->getSettingsData("excerptlength"));
 		        $post_data['thumbnail']     = auto_import_thumbnail($item);
 		        $post_data['current_slug']  = '';
+            $post_data['author']        = htmlentities('<a href="'.$rss_uri.'">RSS Feed</a>',ENT_QUOTES,'iso-8859-1');
 
 		        $Blog->savePost($post_data, true);
+            
+            echo '<p class="blog_rss_post_added">Added: '.$post_data['title'].'</p>';
 		    }
 		}
 	}

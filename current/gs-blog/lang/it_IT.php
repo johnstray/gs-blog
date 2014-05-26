@@ -2,7 +2,7 @@
 /**
  * Italian Language File for GetSimple Blog
  * 
- * Last modified: 21 May 2014 - Version 3.2.1
+ * Last modified: 23 May 2014 - Version 3.2.1
  * Compiled by: Nicola Laviola <niklav@gmail.com>
  */
 
@@ -283,18 +283,15 @@ Si comporter&agrave; come se si codifica direttamente dal plugin stesso. I dati 
 'IN' => 'in',
 'CUSTOM_FIELDS_BUTTON' => 'Custom Fields',
 'NEW_POST_BUTTON' => 'Crea Articolo',
-'MANAGE_POSTS_DESC' => 'In questa sezione puoi gestire gli articoli',
 'SOCIAL_BUTTON' => 'Sociale',
 'ADVERTISEMENT_BUTTON' => 'Pubblici&agrave;',
 'CUSTOMIZE_BUTTON' => 'Personalizzazione',
 'SETTINGS_BUTTON' => 'Impostazioni',
-'SETTINGS_MAIN_DESC' => 'Pagina dei settaggi generali',
 'DISPLAY_POST_AUTHOR' => 'Visualizza Autore dell&acute;articolo',
 'DEFAULT_AUTHOR' => 'Autore principale',
 'DISPLAY_POST_CATEGORY' => 'Visualizza Categoria Articolo',
 'VIEW_HTACCESS' => 'Controlla che il flie .htaccess del sito &egrave;!',
 'CUSTOMIZE_HEADER' => 'Personalizzazione',
-'SETTINGS_CUSTOMIZE_DESC' => 'Sezione per la personalizzazione del layout del blog',
 'CUSTOM_PAGE_LAYOUT_HEADER' => 'Personalizza il Layout della pagina',
 'CUSTOM_CSS_CLASS' => 'Personalizza le classi CSS',
 'VIEW_AVAILABLE_CLASSES' => 'Clicca qui per visualizzare le classi e gli id disponibili',
@@ -302,23 +299,27 @@ Si comporter&agrave; come se si codifica direttamente dal plugin stesso. I dati 
 'CSS_SEARCH_FORM_HINT' => 'ID per il form di ricerca',
 'EXAMPLE_POST_HEADER' => 'Di seguito un esempio di un articolo singolo del blog',
 'ADVERTISEMENT_HEADER' => 'Impostazioni Pubblicit&agrave;',
-'SETTINGS_ADVERTISEMENT_DESC' => 'In questa sezione puoi inserire codice per banner pubblicitari',
 'SOCIAL_HEADER' => 'Impostazioni Social',
-'SETTINGS_SOCIAL_DESC' => 'Pagina per le impostazioni dei Social Network.',
-'RSS_SETTING_HEADER' => 'Impostazioni RSS Auto-Importer',
+'RSS_SETTINGS_HEADER' => 'Impostazioni RSS Auto-Importer',
 'MAIN_SETTINGS_BUTTON' => 'Impostazioni Generali',
-'SETTINGS_RSS_DESCRIPTION' => 'Pagina delle impostazioni dei RSS Auto-Importer.',
-'RSS_CONTETN_DESCRIPTION' => 'Includi Contenuto RSS o Sommario',
+'RSS_CONTENT_DESCRIPTION' => 'Includi Contenuto RSS o Sommario',
 'RSS_CONTENT' => 'Contenuto RSS (Se Disponibile)',
 'RSS_DESCRIPTION' => 'Sommario (con link-back)',
 'RSS_HEADER' => 'RSS Auto-Importer',
 'UPLOAD_THUMBNAIL' => 'Carica Miniatura',
 'UPLOAD_ENABLE_JAVASCRIPT' => 'Gentilmente abilita il JavaScript per usare questo file uploader!',
-'SETTINGS_CATEGORY_DESC' => 'Pagina di gestione Categorie.',
-'SETTINGS_FEED_DESC' => 'Pagina di gestione RSS Auto-Importer Feed.',
 'MANAGE_POSTS_BUTTON' => 'Gestisci Articoli',
 'CATEGORIES_BUTTON' => 'Categorie',
 'UPDATE_BUTTON' => 'Controlla Aggiornamento',
 'HELP_BUTTON' => 'Aiuto',
 'BLOG_TAB_BUTTON' => 'B<em>l</em>og'
+// Added Version 3.2.1
+'MANAGE_POSTS_DESC' => 'Edita o crea nuovo articolo. La tabella seguente visualizza gli articoli esistenti.',
+'SETTINGS_MAIN_DESC' => 'Modifica le opzioni del tuo blog. Queste sono le opzioni principali del tuo blog.',
+'SETTINGS_CUSTOMIZE_DESC' => 'Usa questi settaggi per personalizzare il look e il layout de blog. Puoi creare dei layouts personalizzati o modificare il CSS per modificare l&grave;aspetto.',
+'SETTINGS_ADVERTISEMENT_DESC' => 'Monetizza il blog aggiungendo qui il codice delle Pubbicit&agrave; scegliendo la posizione di comparsa dei tuoi Ads.',
+'SETTINGS_SOCIAL_DESC' => 'Aggiungi uno dei seguenti tool social al blog per abilitare i commenti.',
+'SETTINGS_RSS_DESC' => 'Scegli i settaggi per il RSS Auto-Importer. Auto-Importer pu&ograve; importare sia il contenuto completo dei feeds o un sommario con un link all&grave;articolo originario.',
+'SETTINGS_FEED_DESC' => 'RSS Auto-Importer importa e crea articoli da feeds RSS di altri websites. Questo &egrave; utile se vuoi gestire contenuti di altri blog.',
+'SETTINGS_CATEGORY_DESC' => 'Aggiungi o Edita le categorie da assegnare ai tuoi articoli.'
 );

@@ -237,7 +237,7 @@ function displayCustomFields($area='options')
 	// Editor settings (copied from edit.php)
 	if (defined('GSEDITORLANG')) { $EDLANG = GSEDITORLANG; } else {	$EDLANG = 'en'; }
 	if (defined('GSEDITORTOOL')) { $EDTOOL = GSEDITORTOOL; } else {	$EDTOOL = 'basic'; }
-	if (defined('GSEDITOROPTIONS') && trim(GSEDITOROPTIONS)!="") { $EDOPTIONS = ", ".GSEDITOROPTIONS; } else {	$EDOPTIONS = ''; }
+	if (defined('GSEDITOROPTIONS') && trim(GSEDITOROPTIONS)!="") { $EDOPTIONS = GSEDITOROPTIONS.", "; } else {	$EDOPTIONS = ''; }
 	if ($EDTOOL == 'advanced') 
 	{
 		$toolbar = "

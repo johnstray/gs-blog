@@ -3,15 +3,17 @@
 ### Version 3.2.1
 **Security Fixes**
 - Added check if defined 'IN_GS' to all php files. This prevents files being loaded directly, rather they need to be called from within GS.
+- Updated MagpieRSS from 0.7a to 0.72
 
 **Code Changes:**
-- Updated MagpieRSS from 0.7a to 0.72
 - MagpieRSS will now use the GS cache instead of trying to create its own. This would fail because of permissions in the plugin dir.
-- Fixed a typo and a missing string in en_US language file.
-- Added Italian (it_IT) language file, thanks to Nicola Laviola (nikyni)
-
-**Back End (Admin) UI Improvements:**
-- WARN, ERROR, INFO, OK messages will now display properly using the default GS message system.
+- Added Italian (it_IT) language file, thanks to Nicola Laviola (nikynik)
+- Fixed typos and a missing string in en_US and it_IT language files.
+- Fixed issue with RSS Auto-Importer creating blank posts when using content. 
+- Fixed author not showing in post.
+- Changed strings in en_US language file for descriptions on settings pages.
+- CKeditor Bug? Mentioned in the forums, but I couldn't reproduce it. Used given fix anyway.
+- Removed outdated language files. As translators come on board, languages will be added.
 
 ### Version 3.2.0
 **Back End (Admin) UI Improvements:**
