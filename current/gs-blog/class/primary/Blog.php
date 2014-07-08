@@ -155,12 +155,12 @@ class Blog
 				foreach($all_posts as $post)
 				{
 					$data = getXML($post);
-					$posts[$count]['filename'] = $post;
-					$posts[$count]['date'] = (string) $data->date;
-					$posts[$count]['category'] = (string) $data->category;
-					$posts[$count]['tags'] = (string) $data->tags;
-					if(isset($data->author)) { $posts[$count]['author'] = (string) $data->author; }
-					$count++;
+          $posts[$count]['filename'] = $post;
+          $posts[$count]['date'] = (string) $data->date;
+          $posts[$count]['category'] = (string) $data->category;
+          $posts[$count]['tags'] = (string) $data->tags;
+          if(isset($data->author)) { $posts[$count]['author'] = (string) $data->author; }
+          $count++;
 				}
 				if($sort_dates != false && $array != false)
 				{
@@ -709,17 +709,19 @@ class Blog
 			{
 				$data = getXML($file);
 				$date = strtotime($data->date);
-				$title = $this->get_locale_date($date, '%B %Y');
-				$archive = date('Ym', $date);
-				if (!array_key_exists($archive, $archives))
-				{
-					$archives[$archive]['title'] = $title;
-					$archives[$archive]['count'] = 1;
-				}
-				else
-				{
-					$archives[$archive]['count'] = $archives[$archive]['count'] + 1;
-				}
+        if(strtotime($data->date) <= strtotime(date("d-m-Y H:i:00"))) {
+          $title = $this->get_locale_date($date, '%B %Y');
+          $archive = date('Ym', $date);
+          if (!array_key_exists($archive, $archives))
+          {
+            $archives[$archive]['title'] = $title;
+            $archives[$archive]['count'] = 1;
+          }
+          else
+          {
+            $archives[$archive]['count'] = $archives[$archive]['count'] + 1;
+          }
+        }
 			}
 			krsort($archives);
 		}
@@ -815,7 +817,7 @@ class Blog
 		$RSSString     .= "<title>".$this->getSettingsData("rsstitle")."</title>\n";
 		$RSSString     .= "<link>".$locationOfFeed."</link>\n";
 		$RSSString     .= "<description>".$this->getSettingsData("rssdescription")."</description>\n";
-		$RSSString     .= "<lastBuildDate>".date("D, j M Y H:i:s T")."</lastBuildDate>\n";
+		$RSSString     .= "<lastBuildDate>".date(DATE_RSS)."</lastBuildDate>\n";
 		$RSSString     .= "<language>".str_replace("_", "-",$this->getSettingsData("lang"))."</language>\n";
 		$RSSString     .= '<atom:link href="'.$locationOfFeed."\" rel=\"self\" type=\"application/rss+xml\" />\n";
 

@@ -124,14 +124,14 @@ function show_update_admin() {
 		$lvclass = 'ERRmsg';
 	}
 ?>
-<h3 class="floated" style="float:left;">Plugin Version Status</h3>
+<h3 class="floated" style="float:left;"><?php i18n(LANGFILE."/VERSION_STATUS"); ?></h3>
 <div class="edit-nav">
   <p class="text 1">
     &nbsp;
   </p>
   <div class="clear"></div>
 </div>
-<p class="text 2">Ensure you're running the latest version of the GS Blog plugin so that you can benefit from the latest features.</p>
+<p class="text 2"><?php i18n(LANGFILE."/VERSION_STATUS_DESC"); ?></p>
 <table class="highlight" style="margin-bottom:20px;">
 	<tbody>
 		<tr>

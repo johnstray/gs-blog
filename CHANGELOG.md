@@ -1,5 +1,12 @@
 ## Changelog
 
+### Version 3.2.2
+- Updated version number in gs-blog.php. Forgot to do this in the previous version. Updater will now show the correct results.
+- Fix PrettyURL setting on Settings admin page. Converted to radio buttons to handle the page separation in settings. 
+- Fixed link to show .htaccess example for PrettyURLs. FancyBox script was in the wrong place. It has been moved accordingly.
+- Fixed thumbnail as link to post. Link A tag was missing but has now been added again.
+
+
 ### Version 3.2.1
 **Security Fixes**
 - Added check if defined 'IN_GS' to all php files. This prevents files being loaded directly, rather they need to be called from within GS.

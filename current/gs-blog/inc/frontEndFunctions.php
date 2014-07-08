@@ -68,122 +68,124 @@ function show_blog_post($slug, $excerpt=false)
 	$Blog = new Blog;
 	global $SITEURL, $blogSettings, $post;
 	$post = getXML($slug);
-	$url = $Blog->get_blog_url('post').$post->slug;
-	$date = $Blog->get_locale_date(strtotime($post->date), '%b %e, %Y');
-  $category = $post->category;
-  if(isset($post->author)) { // Does the post have an author?
-    if($post->author == 'hidden') { // Is the author 'hidden'?
-      $author = NULL; // Hide the post
-    } else { // Author is not hidden.
-      $author = $post->author; // Show the author
+  if(strtotime($data->date) <= strtotime(date("d-m-Y H:i:00"))) {
+    $url = $Blog->get_blog_url('post').$post->slug;
+    $date = $Blog->get_locale_date(strtotime($post->date), '%b %e, %Y');
+    $category = $post->category;
+    if(isset($post->author)) { // Does the post have an author?
+      if($post->author == 'hidden') { // Is the author 'hidden'?
+        $author = NULL; // Hide the post
+      } else { // Author is not hidden.
+        $author = $post->author; // Show the author
+      }
+    } else { // The post doesn't have an author
+      if(!empty($blogSettings["defaultauthor"])) { // Is there a default author?
+        $author = $blogSettings["defaultauthor"]; // Yep, lets just set that.
+      } else {
+        $author = NULL; // Nope, lets just hide it then.
+      }
     }
-  } else { // The post doesn't have an author
-    if(!empty($blogSettings["defaultauthor"])) { // Is there a default author?
-      $author = $blogSettings["defaultauthor"]; // Yep, lets just set that.
-    } else {
-      $author = NULL; // Nope, lets just hide it then.
+    if($blogSettings["customfields"] != 'Y')
+    {
+      if(isset($_GET['post']) && $blogSettings["postadtop"] == 'Y')
+      {
+        ?>
+        <div class="blog_all_posts_ad">
+          <?php echo $blogSettings["addata"]; ?>
+        </div>
+        <?php
+      }
+      if(isset($_GET['post']) && isset($blogSettings["disquscount"]) && $blogSettings["disquscount"] == 'Y') { 
+      ?>
+        <a href="<?php echo $url; ?>/#disqus_thread" data-disqus-identifier="<?php echo $_GET['post']; ?>" style="float:right"></a>
+      <?php } ?>
+      <div class="blog_post_container">
+        <?php if(!isset($_GET['post'])) { ?>
+        <h3><a href="<?php echo $url; ?>"><?php echo $post->title; ?></a></h3><?php } ?>
+        <?php if(($blogSettings["displaydate"] == 'Y') || ($blogSettings["displayauthor"] =='Y') || ($blogSettings["displaycategory"] == 'Y')) {  ?>
+          <p class="blog_post_info">
+            <?php if(($blogSettings["displayauthor"] == 'Y') && ($author != NULL)) {echo '<span class="blog_post_author">'.i18n_r(BLOGFILE.'/BY').' '.$author.'</span> |';} ?>
+            <?php if($blogSettings["displaydate"] == 'Y') {echo '<span class="blog_post_date">'.i18n_r(BLOGFILE.'/ON').' '.$date.'</span> |';} ?>
+            <?php if($blogSettings["displaycategory"] == 'Y') {echo '<span class="blog_post_category">'.i18n_r(BLOGFILE.'/IN').' '.$category.'</span>';} ?>
+          </p>
+        <?php } ?>
+        <p class="blog_post_content">
+          <?php
+          if(!isset($_GET['post']) && $blogSettings["postthumbnail"] == 'Y' && !empty($post->thumbnail)) 
+          { 
+            echo '<a href="'.$url.'" title="'.$post->title.'"><img src="'.$SITEURL.'data/uploads/'.$post->thumbnail.'" style="" class="blog_post_thumbnail" /></a>';
+          }
+          if($excerpt == false || $excerpt == true && $blogSettings["postformat"] == "Y")
+          {
+            echo html_entity_decode($post->content);
+          }
+          else
+          {
+            if($excerpt == true && $blogSettings["postformat"] == "N")
+            {
+              if($blogSettings["excerptlength"] == '')
+              {
+                $excerpt_length = 250;
+              }
+              else
+              {
+                $excerpt_length = $blogSettings["excerptlength"];
+              }
+              echo $Blog->create_excerpt(html_entity_decode($post->content), 0, $excerpt_length);
+            }
+          }
+          if(!isset($_GET['post']) && $blogSettings['displayreadmore'] == 'Y')
+          {
+            echo '&nbsp;&nbsp;&nbsp<a href="'.$url.'" class="read_more_link">'.$blogSettings['readmore'].'</a>';
+          }
+          ?>
+        </p>
+      <?php
+      if(isset($_GET['post']))
+      {
+        echo '<p class="blog_go_back"><a href="javascript:history.back()">&lt;&lt; '.i18n_r(BLOGFILE.'/GO_BACK').'</a></p>';
+      }
+      if(!empty($post->tags) && $blogSettings["displaytags"] != 'N')
+      {
+        $tag_url = $Blog->get_blog_url('tag');
+        $tags = explode(",", $post->tags);
+        ?>
+        <p class="blog_tags"><b><?php i18n(BLOGFILE.'/TAGS'); ?> :</b> 
+        <?php
+        foreach($tags as $tag)
+        {
+          echo '<a href="'.$tag_url.$tag.'">'.$tag.'</a> ';
+        }
+        echo  '</p>';
+      }
+      echo '</div>';
+      if(isset($_GET['post']) && $blogSettings["postadbottom"] == 'Y')
+      {
+        ?>
+        <div class="blog_all_posts_ad">
+          <?php echo $blogSettings["addata"]; ?>
+        </div>
+        <?php
+      }
+      if(isset($_GET['post']) && $blogSettings["addthis"] == 'Y')
+      {
+        addThisTool();
+      }
+      if(isset($_GET['post']) && $blogSettings["sharethis"] == 'Y')
+      {
+        shareThisTool();
+      }
+      if(isset($_GET['post']) && $blogSettings["comments"] == 'Y' && isset($_GET['post']))
+      {
+        disqusTool();
+      }
+    }
+    else
+    {	
+      $blog_code = (string) $blogSettings["blogpage"];
+      eval(' ?>'.$blog_code.'<?php ');
     }
   }
-	if($blogSettings["customfields"] != 'Y')
-	{
-		if(isset($_GET['post']) && $blogSettings["postadtop"] == 'Y')
-		{
-			?>
-			<div class="blog_all_posts_ad">
-				<?php echo $blogSettings["addata"]; ?>
-			</div>
-			<?php
-		}
-		if(isset($_GET['post']) && isset($blogSettings["disquscount"]) && $blogSettings["disquscount"] == 'Y') { 
-		?>
-			<a href="<?php echo $url; ?>/#disqus_thread" data-disqus-identifier="<?php echo $_GET['post']; ?>" style="float:right"></a>
-		<?php } ?>
-		<div class="blog_post_container">
-    	<?php if(!isset($_GET['post'])) { ?>
-      <h3><a href="<?php echo $url; ?>"><?php echo $post->title; ?></a></h3><?php } ?>
-			<?php if(($blogSettings["displaydate"] == 'Y') || ($blogSettings["displayauthor"] =='Y') || ($blogSettings["displaycategory"] == 'Y')) {  ?>
-				<p class="blog_post_info">
-          <?php if(($blogSettings["displayauthor"] == 'Y') && ($author != NULL)) {echo '<span class="blog_post_author">'.i18n_r(BLOGFILE.'/BY').' '.$author.'</span> |';} ?>
-					<?php if($blogSettings["displaydate"] == 'Y') {echo '<span class="blog_post_date">'.i18n_r(BLOGFILE.'/ON').' '.$date.'</span> |';} ?>
-          <?php if($blogSettings["displaycategory"] == 'Y') {echo '<span class="blog_post_category">'.i18n_r(BLOGFILE.'/IN').' '.$category.'</span>';} ?>
-				</p>
-			<?php } ?>
-			<p class="blog_post_content">
-				<?php
-				if(!isset($_GET['post']) && $blogSettings["postthumbnail"] == 'Y' && !empty($post->thumbnail)) 
-				{ 
-					echo '<img src="'.$SITEURL.'data/uploads/'.$post->thumbnail.'" style="" class="blog_post_thumbnail" />';
-				}
-				if($excerpt == false || $excerpt == true && $blogSettings["postformat"] == "Y")
-				{
-					echo html_entity_decode($post->content);
-				}
-				else
-				{
-					if($excerpt == true && $blogSettings["postformat"] == "N")
-					{
-						if($blogSettings["excerptlength"] == '')
-						{
-							$excerpt_length = 250;
-						}
-						else
-						{
-							$excerpt_length = $blogSettings["excerptlength"];
-						}
-						echo $Blog->create_excerpt(html_entity_decode($post->content), 0, $excerpt_length);
-					}
-				}
-				if(!isset($_GET['post']) && $blogSettings['displayreadmore'] == 'Y')
-				{
-					echo '&nbsp;&nbsp;&nbsp<a href="'.$url.'" class="read_more_link">'.$blogSettings['readmore'].'</a>';
-				}
-				?>
-			</p>
-		<?php
-		if(isset($_GET['post']))
-		{
-			echo '<p class="blog_go_back"><a href="javascript:history.back()">&lt;&lt; '.i18n_r(BLOGFILE.'/GO_BACK').'</a></p>';
-		}
-		if(!empty($post->tags) && $blogSettings["displaytags"] != 'N')
-		{
-			$tag_url = $Blog->get_blog_url('tag');
-			$tags = explode(",", $post->tags);
-			?>
-			<p class="blog_tags"><b><?php i18n(BLOGFILE.'/TAGS'); ?> :</b> 
-			<?php
-			foreach($tags as $tag)
-			{
-				echo '<a href="'.$tag_url.$tag.'">'.$tag.'</a> ';
-			}
-			echo  '</p>';
-		}
-		echo '</div>';
-		if(isset($_GET['post']) && $blogSettings["postadbottom"] == 'Y')
-		{
-			?>
-			<div class="blog_all_posts_ad">
-				<?php echo $blogSettings["addata"]; ?>
-			</div>
-			<?php
-		}
-		if(isset($_GET['post']) && $blogSettings["addthis"] == 'Y')
-		{
-			addThisTool();
-		}
-		if(isset($_GET['post']) && $blogSettings["sharethis"] == 'Y')
-		{
-			shareThisTool();
-		}
-		if(isset($_GET['post']) && $blogSettings["comments"] == 'Y' && isset($_GET['post']))
-		{
-			disqusTool();
-		}
-	}
-	else
-	{	
-		$blog_code = (string) $blogSettings["blogpage"];
-		eval(' ?>'.$blog_code.'<?php ');
-	}
 }
 
 /** 
@@ -265,11 +267,12 @@ function show_blog_archives()
 	$archives = $Blog->get_blog_archives();
 	if (!empty($archives)) 
 	{
-		foreach ($archives as $archive => $archive_data) 
+    foreach ($archives as $archive => $archive_data) 
 		{
 			$post_count = ($blogSettings['archivepostcount'] == 'Y') ? ' ('.$archive_data['count'].')' : '';
 			$url = $Blog->get_blog_url('archive') . $archive;
 			echo "<li><a href=\"{$url}\">{$archive_data['title']} {$post_count}</a></li>";
+      print_r($archive_data);
 		}
 	} else {
 		echo i18n(BLOGFILE.'/NO_ARCHIVES');

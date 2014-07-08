@@ -200,15 +200,14 @@ function show_settings_admin()
 	$Blog = new Blog;
 	if(isset($_POST['blog_settings']))
 	{
-		$prettyurls = isset($_POST['pretty_urls']) ? $_POST['pretty_urls'] : '';
-    $blog_settings_array = array(
+		$blog_settings_array = array(
       'blogurl' => (!empty($_POST['blog_url'])) ? $_POST['blog_url'] : $Blog->getSettingsData("blogurl"),
       'lang' => (!empty($_POST['language'])) ? $_POST['language'] : $Blog->getSettingsData("lang"),
       'excerptlength' => (!empty($_POST['excerpt_length'])) ? $_POST['excerpt_length'] : $Blog->getSettingsData("excerptlength"),
       'postformat' => (!empty($_POST['show_excerpt'])) ? $_POST['show_excerpt'] : $Blog->getSettingsData("postformat"),
       'postperpage' => (!empty($_POST['posts_per_page'])) ? $_POST['posts_per_page'] : $Blog->getSettingsData("postperpage"),
       'recentposts' => (!empty($_POST['recent_posts'])) ? $_POST['recent_posts'] : $Blog->getSettingsData("recentposts"),
-      'prettyurls' => (!empty($prettyurls)) ? $prettyurls : $Blog->getSettingsData("prettyurls"),
+      'prettyurls' => (!empty($_POST['pretty_urls'])) ? $_POST['pretty_urls'] : $Blog->getSettingsData("prettyurls"),
       'autoimporter' => (!empty($_POST['auto_importer'])) ? $_POST['auto_importer'] : $Blog->getSettingsData("autoimporter"),
       'autoimporterpass' => (!empty($_POST['auto_importer_pass'])) ? $_POST['auto_importer_pass'] : $Blog->getSettingsData("autoimporterpass"),
       'displaytags' => (!empty($_POST['show_tags'])) ? $_POST['show_tags'] : $Blog->getSettingsData("displaytags"),
@@ -287,25 +286,7 @@ function show_settings_admin()
           </p>
         </div>
         <div class="rightsec">
-          <p>
-            <label for="language"><?php i18n(BLOGFILE.'/LANGUAGE'); ?></label>
-            <select class="text" name="language">
-              <?php
-              $languages = $Blog->blog_get_languages();
-              foreach ($languages as $lang) 
-              {
-                if ($lang == $Blog->getSettingsData("lang"))
-                {
-                  echo '<option value="'.$lang.'" selected="selected">'.$lang.'</option>';
-                }
-                else
-                {
-                  echo '<option value="'.$lang.'">'.$lang.'</option>';
-                }
-              }
-              ?>
-            </select>
-          </p>
+          <p>&nbsp;</p>
         </div>
         <div class="clear"></div>
         <div class="leftsec">
@@ -410,12 +391,18 @@ function show_settings_admin()
         <div class="clear"></div>
         <h3 style="font-size:15px;"><?php i18n(BLOGFILE.'/HTACCESS_HEADLINE'); ?></h3>
         <?php global $PRETTYURLS; if ($PRETTYURLS == 1) { ?>
-			<p class="inline">
-				<input name="pretty_urls" type="checkbox" value="Y" <?php if ($Blog->getSettingsData("prettyurls") == 'Y') echo 'checked'; ?> />&nbsp;
-				<label for="pretty_urls"><?php i18n(BLOGFILE.'/PRETTY_URLS'); ?></label> - 
-				<span style="color:red;font-weight:bold;"><a id="see_htaccess" href="#htaccess"><?php i18n(BLOGFILE.'/VIEW_HTACCESS'); ?></a></span> - 
-				<span class="hint"><?php i18n(BLOGFILE.'/PRETTY_URLS_PARA'); ?></span>
-			</p>
+        <p>
+          <label for="pretty_urls"><?php i18n(BLOGFILE.'/PRETTY_URLS'); ?>:</label>
+          <input name="pretty_urls" type="radio" value="Y" <?php if ($Blog->getSettingsData("prettyurls") == 'Y') echo 'checked="checked"'; ?> style="vertical-align: middle;" />
+          &nbsp;<?php i18n(BLOGFILE.'/YES'); ?>
+          <span style="margin-left: 30px;">&nbsp;</span>
+          <input name="pretty_urls" type="radio" value="N" <?php if ($Blog->getSettingsData("prettyurls") != 'Y') echo 'checked="checked"'; ?> style="vertical-align: middle;" />
+          &nbsp;<?php i18n(BLOGFILE.'/NO'); ?>
+        </p>
+        <p>
+          <span style="color:red;font-weight:bold;"><a id="see_htaccess" href="#htaccess"><?php i18n(BLOGFILE.'/VIEW_HTACCESS'); ?></a></span> - 
+          <span class="hint"><?php i18n(BLOGFILE.'/PRETTY_URLS_PARA'); ?></span>
+        </p>
 				<div style="display:none;">
 				<div id="htaccess">
 					<pre>
@@ -465,6 +452,17 @@ RewriteRule /?([A-Za-z0-9_-]+)/?$ index.php?id=$1 [QSA,L]
           <a href="load.php?id=<?php echo BLOGFILE; ?>&cancel" class="cancel"><?php i18n(BLOGFILE.'/CANCEL'); ?></a>
         </div>
       </form>
+      <script type="text/javascript">
+        $("a#css_help").fancybox({
+          'hideOnContentClick': true
+        });
+        $("a#blog_page_help").fancybox({
+          'hideOnContentClick': true
+        });
+        $("a#see_htaccess").fancybox({
+          'hideOnContentClick': true
+        });
+      </script>
     <?php
   } elseif ($_GET['settings'] == 'customise') {
     ?>
@@ -634,17 +632,6 @@ RewriteRule /?([A-Za-z0-9_-]+)/?$ index.php?id=$1 [QSA,L]
         <a href="load.php?id=<?php echo BLOGFILE; ?>&cancel" class="cancel"><?php i18n(BLOGFILE.'/CANCEL'); ?></a>
       </div>
     </form>
-    <script type="text/javascript">
-      $("a#css_help").fancybox({
-        'hideOnContentClick': true
-      });
-      $("a#blog_page_help").fancybox({
-        'hideOnContentClick': true
-      });
-      $("a#see_htaccess").fancybox({
-        'hideOnContentClick': true
-      });
-    </script>
     <?php
   } elseif ($_GET['settings'] == 'advertisement') {
     // Advertisment Settings ?>

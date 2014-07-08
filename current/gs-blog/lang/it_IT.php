@@ -1,8 +1,8 @@
-<?php
+<?php if(!defined('IN_GS')){die('You cannot load this file directly!');} // Security Check
 /**
  * Italian Language File for GetSimple Blog
  * 
- * Last modified: 23 May 2014 - Version 3.2.1
+ * Last modified: 23 May 2014 - Version 3.2.2
  * Compiled by: Nicola Laviola <niklav@gmail.com>
  */
 
@@ -313,6 +313,8 @@ Si comporter&agrave; come se si codifica direttamente dal plugin stesso. I dati 
 'UPDATE_BUTTON' => 'Controlla Aggiornamento',
 'HELP_BUTTON' => 'Aiuto',
 'BLOG_TAB_BUTTON' => 'B<em>l</em>og'
+'VERSION_STATUS' => "Versione Plugin Stato",
+'VERSION_STATUS_DESC' => "Assicurarsi che si sta eseguendo l'ultima versione del GS Blog plug-in modo da poter beneficiare delle funzionalità più recenti.",
 // Added Version 3.2.1
 'MANAGE_POSTS_DESC' => 'Edita o crea nuovo articolo. La tabella seguente visualizza gli articoli esistenti.',
 'SETTINGS_MAIN_DESC' => 'Modifica le opzioni del tuo blog. Queste sono le opzioni principali del tuo blog.',
