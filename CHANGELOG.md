@@ -1,5 +1,28 @@
 ## Changelog
 
+### Version 3.2.4
+**Bug Fixes:**
+- Removed blank line at start of English en_US language file that caused headers to be sent early.
+- Fixed undefined variable $data in frontEndFunctions.php on  line 71. Should have been $post.
+- Fixed undefined variable $data_edit in manage_custom_fields.php on line 283. The defining location has been moved outside of an 'if' condition and should be set all the time now. This should also fix Trying to get property of non-object.
+- Fixed undefined variable $blog_data in adminFunctions.php on line 1049. This variable was not needed there and has been removed.
+- Fixed link for "Display CSS: Click here to view available classes and ids". FancyBox JavaScript had not been made availble on that page when Settings was split into multiple pages.
+
+**Front End UI Improvements:**
+- Separator pipe ( | ) has been removed from the info line. If you really want it back, create a custom layout.
+
+### Version 3.2.3
+**Bug Fixes:**
+- Posts with dates in the future are now hidden in all frontend areas (inc. Archives) but not in admin.
+- Date format in RSS feeds should now be standards compliant.
+- Language will now be selected based on GetSimple's language or will properly default to English (US) if the language is not available in GS Blog.
+
+**Updated Languages:**
+- Russian ru_RU language file, thanks to 'Oleg06'.
+- Fixed missing strings in Italian it_IT language file.
+- Fixed missing strings in Spanish es_ES language file.
+- Fixed missing strings in English en_US language file.
+
 ### Version 3.2.2
 - Updated version number in gs-blog.php. Forgot to do this in the previous version. Updater will now show the correct results.
 - Fix PrettyURL setting on Settings admin page. Converted to radio buttons to handle the page separation in settings. 
@@ -8,7 +31,7 @@
 
 
 ### Version 3.2.1
-**Security Fixes**
+**Security Fixes:**
 - Added check if defined 'IN_GS' to all php files. This prevents files being loaded directly, rather they need to be called from within GS.
 - Updated MagpieRSS from 0.7a to 0.72
 

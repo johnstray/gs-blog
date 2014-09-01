@@ -632,6 +632,17 @@ RewriteRule /?([A-Za-z0-9_-]+)/?$ index.php?id=$1 [QSA,L]
         <a href="load.php?id=<?php echo BLOGFILE; ?>&cancel" class="cancel"><?php i18n(BLOGFILE.'/CANCEL'); ?></a>
       </div>
     </form>
+    <script type="text/javascript">
+        $("a#css_help").fancybox({
+          'hideOnContentClick': true
+        });
+        $("a#blog_page_help").fancybox({
+          'hideOnContentClick': true
+        });
+        $("a#see_htaccess").fancybox({
+          'hideOnContentClick': true
+        });
+      </script>
     <?php
   } elseif ($_GET['settings'] == 'advertisement') {
     // Advertisment Settings ?>
@@ -1046,7 +1057,7 @@ function edit_rss()
 		    <p style="float:left;width:100px;margin-left:20px;">
 		    	<label for="page-url"><?php i18n(BLOGFILE.'/BLOG_CATEGORY'); ?></label>
 				<select class="text" name="post-category">	
-					<?php category_dropdown($blog_data->category); ?>
+					<?php category_dropdown(); ?>
 				</select>
 		    </p>
 		    <p style="float:left;width:200px;margin-left:20px;margin-top:8px;">

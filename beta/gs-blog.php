@@ -44,7 +44,7 @@
   #       customization of the plugin.
 
   # Register / Queue CSS Styles
-  $cssFiles = glob(GSBLOGPLUGINFOLDER.'assets/css/*.css'); // Look for any css files
+  $cssFiles = glob(GSBLOGASSETSFOLDER.'css/*.css'); // Look for any css files
   if ( empty( $cssFiles ) ) { // No files found?
     gsBlog_debug('Where are my StyleSheets?'); // Report to the Debug Log
   } else { // Files were found
@@ -55,7 +55,7 @@
   }
   
   # Register / Queue Scripts
-  $jsFiles = glob(GSBLOGPLUGINFOLDER.'assets/js/*.js'); // Look for any css files
+  $jsFiles = glob(GSBLOGASSETSFOLDER.'js/*.js'); // Look for any js files
   if ( empty( $jsFiles ) ) { // No files found?
     gsBlog_debug('Where are my JavaScripts?'); // Report to the Debug Log
   } else { // Files were found
@@ -69,8 +69,14 @@
 
   function gsBlog_admin() {
   
+    if(require_once(GSBLOGMAINCLASS)) {
+      gsBlog::__construct();
+    } else {
+      gsBlog_debug('Could not show user messages, admin.class.php failed to load.');
+    }
+  
     # Show messages to the user
-    if(require_once(GSBLOGPLUGINFOLDER.'admin.class.php')) {
+    if(require_once(GSBLOGADMINCLASS)) {
       gsBlogAdmin::showUmsg();
     } else {
       gsBlog_debug('Could not show user messages, admin.class.php failed to load.');
@@ -78,10 +84,19 @@
   
     # Show editor to create a new post
     if(isset($_GET['create_post']) && $blogUserPermissions['blogcreatepost'] == true) {
-      if(require_once(GSBLOGPLUGINFOLDER.'admin.class.php')) {
+      if(require_once(GSBLOGADMINCLASS)) {
         gsBlogAdmin::editPost(NULL);
       } else {
         gsBlog_debug('Could not open editor to create post, admin.class.php failed to load.');
+      }
+    }
+    
+    # Show editor to edit an existing post
+    if(isset($_GET['edit_post']) && $blogUserPermissions['blogeditpost'] == true) {
+      if(require_once(GSBLOGADMINCLASS)) {
+        gsBlogAdmin::editPost($_GET['edit_post']);
+      } else {
+        gsBlog_debug('Could not open editor to edit post, admin.class.php failed to load.');
       }
     }
     

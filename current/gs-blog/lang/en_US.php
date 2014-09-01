@@ -1,4 +1,3 @@
-
 <?php if(!defined('IN_GS')){die('You cannot load this file directly!');} // Security Check
 $i18n = array(
 	'PLUGIN_TITLE' 			=> "GetSimple Blog",

@@ -16,8 +16,10 @@
   define('GSBLOGPLUGINFOLDER',GSPLUGINPATH.GSBLOG.DS);              // Plugin Folder
   define('GSBLOGCLASSFOLDER',GSBLOGPLUGINFOLDER.'class'.DS);        // Class Files Folder
   define('GSBLOGLIBFOLDER',GSBLOGPLUGINFOLDER.'lib'.DS);            // Function Library folder
+  define('GSBLOGASSETSFOLDER',GSBLOGPLUGINFOLDER.'assets'.DS);      // Assets folder
   define('GSBLOGADMINCLASS',GSBLOGCLASSFOLDER.'admin.class.php');   // Backend Class File
   define('GSBLOGFRONTCLASS',GSBLOGCLASSFOLDER.'front.class.php');   // Frontend Class File
+  define('GSBLOGMAINCLASS',GSBLOGCLASSFOLDER.'blog.class.php');     // Main Class File
   
   define('GSBLOGDATAPATH',GSDATAPATH.'blog'.DS);                    // Data directory
   define('GSBLOGPOSTSFOLDER',GSBLOGDATAPATH.'posts'.DS);            // Blog Posts directory

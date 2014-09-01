@@ -222,8 +222,8 @@ function displayCustomFields($area='options')
 	{
 		$id = $_GET['edit_post'];
 		$file = BLOGPOSTSFOLDER . $id . '.xml';
-		$data_edit = getXML($file);
 	}
+  $data_edit = getXML($file);
 
 	// SimpleXML to read from
 	$CustomFields = new customFields; 

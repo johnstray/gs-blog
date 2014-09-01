@@ -68,7 +68,7 @@ function show_blog_post($slug, $excerpt=false)
 	$Blog = new Blog;
 	global $SITEURL, $blogSettings, $post;
 	$post = getXML($slug);
-  if(strtotime($data->date) <= strtotime(date("d-m-Y H:i:00"))) {
+  if(strtotime($post->date) <= strtotime(date("d-m-Y H:i:00"))) {
     $url = $Blog->get_blog_url('post').$post->slug;
     $date = $Blog->get_locale_date(strtotime($post->date), '%b %e, %Y');
     $category = $post->category;
@@ -104,8 +104,8 @@ function show_blog_post($slug, $excerpt=false)
         <h3><a href="<?php echo $url; ?>"><?php echo $post->title; ?></a></h3><?php } ?>
         <?php if(($blogSettings["displaydate"] == 'Y') || ($blogSettings["displayauthor"] =='Y') || ($blogSettings["displaycategory"] == 'Y')) {  ?>
           <p class="blog_post_info">
-            <?php if(($blogSettings["displayauthor"] == 'Y') && ($author != NULL)) {echo '<span class="blog_post_author">'.i18n_r(BLOGFILE.'/BY').' '.$author.'</span> |';} ?>
-            <?php if($blogSettings["displaydate"] == 'Y') {echo '<span class="blog_post_date">'.i18n_r(BLOGFILE.'/ON').' '.$date.'</span> |';} ?>
+            <?php if(($blogSettings["displayauthor"] == 'Y') && ($author != NULL)) {echo '<span class="blog_post_author">'.i18n_r(BLOGFILE.'/BY').' '.$author.'</span>';} ?>
+            <?php if($blogSettings["displaydate"] == 'Y') {echo '<span class="blog_post_date">'.i18n_r(BLOGFILE.'/ON').' '.$date.'</span>';} ?>
             <?php if($blogSettings["displaycategory"] == 'Y') {echo '<span class="blog_post_category">'.i18n_r(BLOGFILE.'/IN').' '.$category.'</span>';} ?>
           </p>
         <?php } ?>
