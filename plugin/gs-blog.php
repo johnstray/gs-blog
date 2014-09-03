@@ -47,6 +47,6 @@ add_action('index-pretemplate', 'set_blog_title', array() );
 
 # Register/Queue Styles
 register_style (BLOGFILE.'_css', $SITEURL.'/plugins/'.BLOGFILE.'/css/admin_styles.css', '1.0', 'screen');
-register_style ('font_awesome', '//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css', '1.0', 'screen');
+register_style ('font_awesome', '//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css', '4.2.0', 'all');
 queue_style (BLOGFILE.'_css',GSBACK);
 queue_style ('font_awesome', GSBACK );
