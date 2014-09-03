@@ -1,5 +1,9 @@
 ## Changelog
 
+### Version 3.2.5
+** Back End (Admin) UI Improvements: **
+- Added pluginManagementFA.js script : Adds icon to plugin's listing on the Plugin Management admin tab.
+
 ### Version 3.2.4
 **Bug Fixes:**
 - Removed blank line at start of English en_US language file that caused headers to be sent early.

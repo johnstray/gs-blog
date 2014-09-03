@@ -68,6 +68,10 @@ if($blogSettings["sharethis"] == 'Y')
 	add_action('theme-header', 'shareThisToolHeader');
 }
 
+# pluginManagementFA.js - v1.0
+register_script('pluginManagementFA', $SITEURL.'plugins/'.BLOGFILE.'/js/pluginManagementFA.js', '1.0', TRUE);
+queue_script('pluginManagementFA', GSBACK);
+
 global $SITEURL;
 if(function_exists('register_script'))
 {
