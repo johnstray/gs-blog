@@ -4,6 +4,7 @@
 ** Back End (Admin) UI Improvements: **
 - Added pluginManagementFA.js script : Adds icon to plugin's listing on the Plugin Management admin tab.
 - Updated FontAwesome version to 4.2.0 and changed $media from 'screen' to 'print'.
+- Updated website address in plugin registration
 
 ### Version 3.2.4
 **Bug Fixes:**

@@ -28,8 +28,8 @@ register_plugin(
 	BLOGFILE, // ID of plugin, should be filename minus php
 	i18n_r(BLOGFILE.'/PLUGIN_TITLE'), 	
 	BLOGVERSION,
-	'JohnStray.com',
-	'https://www.johnstray.com/get-simple/plugins/blog/', 
+	'John Stray',
+	'https://www.johnstray.id.au/get-simple/plug-ins/gs-blog-3/', 
 	i18n_r(BLOGFILE.'/PLUGIN_DESC'),
 	'blog',
 	'blog_admin_controller'  
