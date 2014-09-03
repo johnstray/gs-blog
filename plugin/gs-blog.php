@@ -2,7 +2,7 @@
 /**
  * Plugin Name: GetSimple Blog
  * Description: A simple and easy to use blog/newsfeed for GetSimple
- * Version: 3.2.3
+ * Version: 3.2.5
  * Author: John Stray
  * Author URI: https://www.johnstray.com/
  */
@@ -11,7 +11,7 @@
 define('BLOGFILE', basename(__FILE__, ".php"));
 define('BLOGPLUGINNAME', i18n_r(BLOGFILE.'/PLUGIN_TITLE'));
 define('BLOGEXTENDID','810');
-define('BLOGVERSION','3.2.3');
+define('BLOGVERSION','3.2.5');
 require_once(BLOGFILE.'/inc/common.php');
 
 # add in this plugin's language file
