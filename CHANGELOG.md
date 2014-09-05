@@ -6,18 +6,30 @@
   - Re-wrote show_settings_admin() function from scratch.
   - Removed settings that are no longer needed. Most tasks can now be completed by creating/modifying template file.
   - Created function blog_theme_layouts() which gets the list of available theme files.
-- [#019] Moved some HTML sections of the code to separate files in 'html' folder to make for much easier reading and modification of code.
-  - Settings main page.
-  - RSS Auto-Importer settings page.
-- [#xxx] Added pluginManagementFA.js script : Adds icon to plugin's listing on the Plugin Management admin tab.
-- [#xxx] Updated FontAwesome version to 4.2.0 and changed $media from 'screen' to 'print'.
-- [#xxx] Updated website address in plugin registration
+- [#022] Added pluginManagementFA.js script : Adds icon to plugin's listing on the Plugin Management admin tab.
+- [#021] Updated FontAwesome version to 4.2.0 and changed $media from 'screen' to 'print'.
+- [#023] Updated website address in plugin registration
 
 **Font End UI Improvements:**
 - [#003] Implemented selectable layout templates system
   - Re-wrote show_blog_post() function from scratch. Old: 131 lines, New: 31 lines.
   - Created 4 layouts: Original, Innovation, Bootstrap Wide, Bootstrap Media
-- [#xxx] Modified original layout to add scoped CSS functionality (New in HTML 5.1) : Backwards compatible with most current browsers.
+- [#003] Modified original layout to add scoped CSS functionality (New in HTML 5.1) : Backwards compatible with most current browsers.
+- [#008] Fixed "Go Back" links in posts (sort of). The link is now in the template file. You can change it as needed, or remove it if you like.
+
+**Bug Fixes:**
+- [#014] Fixed undefined variable in manage_custom_fields.php
+
+**Code Changes:**
+- [#018] Removed social media functions. If you need this, add your own code to a template file.
+- [#017] Cleaned up functions and comments in adminFunctions.php
+- [#020] Cleaned up functions and comments in frontEndFunctions.php
+- [#019] Moved some HTML sections of the code to separate files in 'html' folder to make for much easier reading and modification of code.
+  - Settings main page.
+  - RSS Auto-Importer settings page.
+- [#028] Removed redundant function - showAdminNav()
+- [#028] Consolidated class files into single folder and removed duplicate inclusion function.
+- [#028] Cleaned up functions and comments in common.php
 
 ### Version 3.2.4
 **Bug Fixes:**
@@ -43,6 +55,7 @@
 - Fixed missing strings in English en_US language file.
 
 ### Version 3.2.2
+**Bug Fixes:**
 - Updated version number in gs-blog.php. Forgot to do this in the previous version. Updater will now show the correct results.
 - Fix PrettyURL setting on Settings admin page. Converted to radio buttons to handle the page separation in settings. 
 - Fixed link to show .htaccess example for PrettyURLs. FancyBox script was in the wrong place. It has been moved accordingly.
@@ -149,11 +162,11 @@
 - When show_blog_archives() is called and the archive contains no posts, a message is displayed saying "Nothing in the Archives!"
 
 **Back End (Admin) UI Improvements:**
-- The blog now has its on tab in the Admin area, which also includes its own sidebar links for each area of configuration.
+- The blog now has its own tab in the Admin area, which also includes its own sidebar links for each area of configuration.
 - Each admin page now has it's own title and description at the top of the page and will also show the version of the plugin you are running.
 
 **Bug Fixes (Front and Back End):**
-- Clicking on Cancel in the post editor will now take you back to the Posts Management page. Previously it would take you to a different plugin, or throw an error if that plugin wasn''t installed.
+- Clicking on Cancel in the post editor will now take you back to the Posts Management page. Previously it would take you to a different plugin, or throw an error if that plugin wasn't installed.
 - Fixed Read More links on post excerpts. Previously the link was empty.
 - Fixed default values not showing in custom fields when creating or editing a post.
 - Removed <ul> tags from Archive functions to bring it in line with the rest of the plugin and the standard list format used in GetSimple. You now need to provide your own <ul> tags and apply attributes as needed. 
