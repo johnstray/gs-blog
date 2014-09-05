@@ -30,6 +30,7 @@
 - [#028] Removed redundant function - showAdminNav()
 - [#028] Consolidated class files into single folder and removed duplicate inclusion function.
 - [#028] Cleaned up functions and comments in common.php
+- [#027] Removed redundant CodeMirror files.
 
 ### Version 3.2.4
 **Bug Fixes:**
