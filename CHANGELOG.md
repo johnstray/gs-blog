@@ -1,10 +1,23 @@
 ## Changelog
 
-### Version 3.2.5
-** Back End (Admin) UI Improvements: **
-- Added pluginManagementFA.js script : Adds icon to plugin's listing on the Plugin Management admin tab.
-- Updated FontAwesome version to 4.2.0 and changed $media from 'screen' to 'print'.
-- Updated website address in plugin registration
+### Version 3.3.0
+**Back End (Admin) UI Improvements:**
+- [#003] Implemented selectable layout templates system
+  - Re-wrote show_settings_admin() function from scratch.
+  - Removed settings that are no longer needed. Most tasks can now be completed by creating/modifying template file.
+  - Created function blog_theme_layouts() which gets the list of available theme files.
+- [#019] Moved some HTML sections of the code to separate files in 'html' folder to make for much easier reading and modification of code.
+  - Settings main page.
+  - RSS Auto-Importer settings page.
+- [#xxx] Added pluginManagementFA.js script : Adds icon to plugin's listing on the Plugin Management admin tab.
+- [#xxx] Updated FontAwesome version to 4.2.0 and changed $media from 'screen' to 'print'.
+- [#xxx] Updated website address in plugin registration
+
+**Font End UI Improvements:**
+- [#003] Implemented selectable layout templates system
+  - Re-wrote show_blog_post() function from scratch. Old: 131 lines, New: 31 lines.
+  - Created 4 layouts: Original, Innovation, Bootstrap Wide, Bootstrap Media
+- [#xxx] Modified original layout to add scoped CSS functionality (New in HTML 5.1) : Backwards compatible with most current browsers.
 
 ### Version 3.2.4
 **Bug Fixes:**
