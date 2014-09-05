@@ -1,29 +1,31 @@
 <?php if(!defined('IN_GS')){die('You cannot load this file directly!');} // Security Check
-/** 
-* display blog posts
-* 
-* @return $content legacy support for non filter hook calls to this function
-*/ 
-function blog_display_posts() 
-{
-	GLOBAL $content, $blogSettings, $data_index;
+/**
+ * @file: frontEndFunctions.php
+ * @package: GetSimple Blog [plugin]
+ * @action: This file contains all the functions required for displaying the blog.
+ * @author: John Stray [https://www.johnstray.id.au/]
+ */
+
+
+/**-------------------------------------------------------------------------------------------------
+ * blog_display_posts($slug, $excerpt) 
+ * Displays the posts required for the relevant page.
+ * 
+ * @return:  $content (buffer) - Legacy support for non filter hook calls to this function
+ */
+function blog_display_posts() {
+	
+  GLOBAL $content, $blogSettings, $data_index;
 	
 	$Blog = new Blog;
 	$slug = base64_encode(return_page_slug());
 	$blogSettings = $Blog->getSettingsData();
 	$blog_slug = base64_encode($blogSettings["blogurl"]);
-	if($slug == $blog_slug)
-	{
+	
+  if($slug == $blog_slug) {
 		$content = '';
 		ob_start();
-		if($blogSettings["displaycss"] == 'Y')
-		{
-			echo "<style>\n";
-			echo $blogSettings["csscode"];
-			echo "\n</style>";
-		}
-		switch(true)
-		{
+		switch(true) {
 			case (isset($_GET['post']) == true) :
 				$post_file = BLOGPOSTSFOLDER.$_GET['post'].'.xml';
 				show_blog_post($post_file);
@@ -51,141 +53,51 @@ function blog_display_posts()
 				break;
 		}
 		$content = ob_get_contents();
-	    ob_end_clean();		
+	  ob_end_clean();		
 	}
-		return $content; // legacy support for non filter hook calls to this function
+  return $content; // legacy support for non filter hook calls to this function
 }
 
-/** 
-* show individual blog post
-* 
-* @param $slug slug of post to display
-* @param $excerpt bool Whether an excerpt should be displayed. It would be false or null if a user was on the blog details page rather then a results or list all page
-* @return void
-*/  
-function show_blog_post($slug, $excerpt=false)
-{
-	$Blog = new Blog;
-	global $SITEURL, $blogSettings, $post;
-	$post = getXML($slug);
-  if(strtotime($post->date) <= strtotime(date("d-m-Y H:i:00"))) {
-    $url = $Blog->get_blog_url('post').$post->slug;
-    $date = $Blog->get_locale_date(strtotime($post->date), '%b %e, %Y');
-    $category = $post->category;
-    if(isset($post->author)) { // Does the post have an author?
-      if($post->author == 'hidden') { // Is the author 'hidden'?
-        $author = NULL; // Hide the post
-      } else { // Author is not hidden.
-        $author = $post->author; // Show the author
-      }
-    } else { // The post doesn't have an author
-      if(!empty($blogSettings["defaultauthor"])) { // Is there a default author?
-        $author = $blogSettings["defaultauthor"]; // Yep, lets just set that.
-      } else {
-        $author = NULL; // Nope, lets just hide it then.
-      }
-    }
-    if($blogSettings["customfields"] != 'Y')
-    {
-      if(isset($_GET['post']) && $blogSettings["postadtop"] == 'Y')
-      {
-        ?>
-        <div class="blog_all_posts_ad">
-          <?php echo $blogSettings["addata"]; ?>
-        </div>
-        <?php
-      }
-      if(isset($_GET['post']) && isset($blogSettings["disquscount"]) && $blogSettings["disquscount"] == 'Y') { 
-      ?>
-        <a href="<?php echo $url; ?>/#disqus_thread" data-disqus-identifier="<?php echo $_GET['post']; ?>" style="float:right"></a>
-      <?php } ?>
-      <div class="blog_post_container">
-        <?php if(!isset($_GET['post'])) { ?>
-        <h3><a href="<?php echo $url; ?>"><?php echo $post->title; ?></a></h3><?php } ?>
-        <?php if(($blogSettings["displaydate"] == 'Y') || ($blogSettings["displayauthor"] =='Y') || ($blogSettings["displaycategory"] == 'Y')) {  ?>
-          <p class="blog_post_info">
-            <?php if(($blogSettings["displayauthor"] == 'Y') && ($author != NULL)) {echo '<span class="blog_post_author">'.i18n_r(BLOGFILE.'/BY').' '.$author.'</span>';} ?>
-            <?php if($blogSettings["displaydate"] == 'Y') {echo '<span class="blog_post_date">'.i18n_r(BLOGFILE.'/ON').' '.$date.'</span>';} ?>
-            <?php if($blogSettings["displaycategory"] == 'Y') {echo '<span class="blog_post_category">'.i18n_r(BLOGFILE.'/IN').' '.$category.'</span>';} ?>
-          </p>
-        <?php } ?>
-        <p class="blog_post_content">
-          <?php
-          if(!isset($_GET['post']) && $blogSettings["postthumbnail"] == 'Y' && !empty($post->thumbnail)) 
-          { 
-            echo '<a href="'.$url.'" title="'.$post->title.'"><img src="'.$SITEURL.'data/uploads/'.$post->thumbnail.'" style="" class="blog_post_thumbnail" /></a>';
-          }
-          if($excerpt == false || $excerpt == true && $blogSettings["postformat"] == "Y")
-          {
-            echo html_entity_decode($post->content);
-          }
-          else
-          {
-            if($excerpt == true && $blogSettings["postformat"] == "N")
-            {
-              if($blogSettings["excerptlength"] == '')
-              {
-                $excerpt_length = 250;
-              }
-              else
-              {
-                $excerpt_length = $blogSettings["excerptlength"];
-              }
-              echo $Blog->create_excerpt(html_entity_decode($post->content), 0, $excerpt_length);
-            }
-          }
-          if(!isset($_GET['post']) && $blogSettings['displayreadmore'] == 'Y')
-          {
-            echo '&nbsp;&nbsp;&nbsp<a href="'.$url.'" class="read_more_link">'.$blogSettings['readmore'].'</a>';
-          }
-          ?>
-        </p>
-      <?php
-      if(isset($_GET['post']))
-      {
-        echo '<p class="blog_go_back"><a href="javascript:history.back()">&lt;&lt; '.i18n_r(BLOGFILE.'/GO_BACK').'</a></p>';
-      }
-      if(!empty($post->tags) && $blogSettings["displaytags"] != 'N')
-      {
-        $tag_url = $Blog->get_blog_url('tag');
-        $tags = explode(",", $post->tags);
-        ?>
-        <p class="blog_tags"><b><?php i18n(BLOGFILE.'/TAGS'); ?> :</b> 
-        <?php
-        foreach($tags as $tag)
-        {
-          echo '<a href="'.$tag_url.$tag.'">'.$tag.'</a> ';
-        }
-        echo  '</p>';
-      }
-      echo '</div>';
-      if(isset($_GET['post']) && $blogSettings["postadbottom"] == 'Y')
-      {
-        ?>
-        <div class="blog_all_posts_ad">
-          <?php echo $blogSettings["addata"]; ?>
-        </div>
-        <?php
-      }
-      if(isset($_GET['post']) && $blogSettings["addthis"] == 'Y')
-      {
-        addThisTool();
-      }
-      if(isset($_GET['post']) && $blogSettings["sharethis"] == 'Y')
-      {
-        shareThisTool();
-      }
-      if(isset($_GET['post']) && $blogSettings["comments"] == 'Y' && isset($_GET['post']))
-      {
-        disqusTool();
-      }
-    }
-    else
-    {	
-      $blog_code = (string) $blogSettings["blogpage"];
-      eval(' ?>'.$blog_code.'<?php ');
-    }
-  }
+/**-------------------------------------------------------------------------------------------------
+ * show_blog_post($slug, $excerpt) 
+ * Shows an individual blog post chosen by $slug
+ * 
+ * @param:   $slug (string)    - Slug of post to display
+ * @param:   $excerpt (bool)   - True:  Display excerpt of post
+ *                               False: Display full content of post
+ * @return:  $displayed (bool) - True:  Post was in the past (displayed)
+ *                               False: Post was in the future (not displayed)
+ */
+function show_blog_post($slug, $excerpt=false) {
+  
+  GLOBAL $SITEURL, $blogSettings, $post; // Get GLOBAL variables
+  $Blog = new Blog; // Prepare the Blog class
+  $post = getXML($slug); // Get XML data of post
+  
+  if(strtotime($post->date) <= time()) {return false;} // Is this a future post?
+  
+  $p = array(); // Init the array for the template
+  $p['title'] = $post->title; // Title of the post
+  $p['posturl'] = $Blog->get_blog_url('post').$post->slug; // URL of the post
+  $p['date'] = strtotime($post->date); // UNIX timestamp of post
+  $p['author'] = $post->author; //Author of the post
+  $p['categoryurl'] = $Blog->get_blog_url('category'); // Category base URL
+  $p['categories'] = explode(',',$post->category); // Categories the post is in
+  $p['thumburl'] = $SITEURL.'data/uploads/'.$post->thumbnail; // Thumbnail URL
+  $p['tagsurl'] = $Blog->get_blog_url('tag'); // Tags base URL
+  $p['tags'] = explode(',',$post->tags); // Tags applied to the post
+  
+  # Determine if we should be showing an excerpt or full post.
+  if(($excerpt == false) || (($excerpt == true) && ($blogSettings['postformat'] == 'Y'))) {
+    $p['content'] = html_entity_decode($post->content); // Get the full contents of the post
+  } elseif(($excerpt == true) && ($blogSettings['postformat'] == 'N')) { // It's an excerpt...
+    $el = (empty($blogSettings['excerptlength']) ? 250 : $blogSettings['excerptlength']); // Length?
+    $p['content'] = $Blog->create_excerpt(html_entity_decode($post->content),0,$el); // Create excerpt
+  } else {return false;}
+  
+  # Lets load the template now and let it put all this together.
+  $template = (empty($blogSettings['template']) ? 'innovation' : $blogSettings['template']);
+  require_once(BLOGPLUGINFOLDER.'templates/'.$template.'.php');
 }
 
 /** 
