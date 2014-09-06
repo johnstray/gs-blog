@@ -15,45 +15,44 @@
  */
 function blog_display_posts() {
 	
-  GLOBAL $content, $blogSettings, $data_index;
+  GLOBAL $content, $blogSettings, $data_index; // Declare GLOBAL variables
+	$Blog = new Blog; // Create a new instance of the Blog class
+	$slug = base64_encode(return_page_slug()); // Determine the page we are on.
+	$blogSettings = $Blog->getSettingsData(); // Get the blog's settings
+	$blog_slug = base64_encode($blogSettings["blogurl"]); // What page should the blog show on?
 	
-	$Blog = new Blog;
-	$slug = base64_encode(return_page_slug());
-	$blogSettings = $Blog->getSettingsData();
-	$blog_slug = base64_encode($blogSettings["blogurl"]);
-	
-  if($slug == $blog_slug) {
-		$content = '';
-		ob_start();
-		switch(true) {
-			case (isset($_GET['post']) == true) :
-				$post_file = BLOGPOSTSFOLDER.$_GET['post'].'.xml';
-				show_blog_post($post_file);
+  if($slug == $blog_slug) { // If we are on the page that should be showing the blog...
+		$content = ''; // Legacy support
+		ob_start(); // Create a buffer to load everything into
+		switch(true) { // Ok, so what are we going to do?
+			case (isset($_GET['post']) == true) : // Display a post
+				$post_file = BLOGPOSTSFOLDER.$_GET['post'].'.xml'; // Get the post's XML file
+				show_blog_post($post_file); // Show the post
 				break;
-			case (isset($_POST['search_blog']) == true) :
-				search_posts($_POST['keyphrase']);
+			case (isset($_POST['search_blog']) == true) : // Search the blog
+				search_posts($_POST['keyphrase']); // Search the blog with the given keyphrase
 				break;
-			case (isset($_GET['archive']) == true) :
-				$archive = $_GET['archive'];
-				show_blog_archive($archive);
+			case (isset($_GET['archive']) == true) : // View the archives
+				$archive = $_GET['archive']; // @TODO: Redundant? Revision required...
+				show_blog_archive($archive); // Show the requested archive
 				break;
-			case (isset($_GET['tag']) == true) :
-				$tag = $_GET['tag'];
-				show_blog_tag($tag);
+			case (isset($_GET['tag']) == true) : // Show specific post by tag
+				$tag = $_GET['tag']; // @TODO: Redundant? Revision required...
+				show_blog_tag($tag); // Show all posts that have the given tag
 				break;
-			case (isset($_GET['category']) == true) :
-				$category = $_GET['category'];      
-				show_blog_category($category);	
+			case (isset($_GET['category']) == true) : // Show a category of posts
+				$category = $_GET['category']; // @TODO: Redundant? Revision required...
+				show_blog_category($category); // Show posts from the requested category
 				break;
-			case (isset($_GET['import'])) :
-				auto_import();
+			case (isset($_GET['import'])) : // RSS Auto-Importer
+				auto_import(); // Let the RSS Auto-Importer do its thing
 				break;
-			default :
-				show_all_blog_posts();
+			default : // None of the above? 
+				show_all_blog_posts(); // Lets just show all the posts then
 				break;
 		}
-		$content = ob_get_contents();
-	  ob_end_clean();		
+		$content = ob_get_contents(); // Legacy support
+	  ob_end_clean();	// Output the buffer to the user.
 	}
   return $content; // legacy support for non filter hook calls to this function
 }
@@ -76,6 +75,7 @@ function show_blog_post($slug, $excerpt=false) {
   
   if(strtotime($post->date) <= time()) {return false;} // Is this a future post?
   
+  # Prepare the array of information available to the template.
   $p = array(); // Init the array for the template
   $p['title'] = $post->title; // Title of the post
   $p['posturl'] = $Blog->get_blog_url('post').$post->slug; // URL of the post
@@ -100,171 +100,165 @@ function show_blog_post($slug, $excerpt=false) {
   require_once(BLOGPLUGINFOLDER.'templates/'.$template.'.php');
 }
 
-/** 
-* Shows blog categories list
-* 
-* @return void
-*/  
-function show_blog_categories()
-{
-	$Blog = new Blog;
-	$categories = getXML(BLOGCATEGORYFILE);
-	$url = $Blog->get_blog_url('category');
-	$main_url = $Blog->get_blog_url();
-	if(!empty($categories)) {
-		foreach($categories as $category)
-		{
-			echo '<li><a href="'.$url.$category.'">'.$category.'</a></li>';
+/**-------------------------------------------------------------------------------------------------
+ * show_blog_categories()
+ * Shows a list of blog categories
+ * 
+ * @return void (void)
+ */  
+function show_blog_categories() {
+	
+  $Blog = new Blog; // Create a new instance of the Blog class
+	$categories = getXML(BLOGCATEGORYFILE); // Get the list of categories
+	$url = $Blog->get_blog_url('category'); // What's the URL for the categories page?
+	$main_url = $Blog->get_blog_url(); // The base URL for the blog.
+  
+	if(!empty($categories)) { // If we have categories to display...
+		foreach($categories as $category) { // For each of the categories...
+			// Output a list item with a link to the category
+      echo '<li><a href="'.$url.$category.'">'.$category.'</a></li>';
 		}
-		echo '<li><a href="'.$main_url.'">';
-		i18n(BLOGFILE.'/ALL_CATEOGIRES');
-		echo '</a></li>';
-	} else {
-		echo "<li>".i18n(BLOGFILE.'/NO_CATEGORIES')."</li>";
+	} else { // We have no categories
+		echo "<li>".i18n(BLOGFILE.'/NO_CATEGORIES')."</li>"; // Let the user know
 	}
 }
 
-/** 
-* Shows posts from a requested category
-* 
-* @param $category the category to show posts from
-* @return void
-*/  
-function show_blog_category($category)
-{
-	$Blog = new Blog;
-	$all_posts = $Blog->listPosts(true, true);
-	$count = 0;
-	foreach($all_posts as $file)
-	{
-		$data = getXML($file['filename']);
-		if($data->category == $category || empty($category))
-		{
-			$count++;
-			show_blog_post($file['filename'], true);
+/**-------------------------------------------------------------------------------------------------
+ * show_blog_category($category)
+ * Shows posts from a requested category
+ * 
+ * @param $category (string) the category to show posts from
+ * @return void (void)
+ */  
+function show_blog_category($category) {
+
+	$Blog = new Blog; // Create a new instance of the Blog class
+	$all_posts = $Blog->listPosts(true, true); // Get a list of all the posts in the blog
+	$count = 0; // Set a counter for the following loop
+  
+	foreach($all_posts as $file) { // For each post in the list...
+		$data = getXML($file['filename']); // Get the XML data of the post
+		if($data->category == $category || empty($category)) { // Is the post in the requested category?
+			$count++; // Increase the counter.
+			show_blog_post($file['filename'], true); // Show the blog post
 		}
 	}
-	if($count < 1)
-	{
+	if($count < 1) { // Counter is still 0? We have no posts in this category.
 		echo '<p class="blog_category_noposts">'.i18n_r(BLOGFILE.'/NO_POSTS').'</p>';
 	}
 }
 
-/** 
-* Show blog search bar
-* 
-* @return void
-*/  
-function show_blog_search()
-{
-	$Blog = new Blog;
-	$url = $Blog->get_blog_url();
-	?>
-	<form id="blog_search" action="<?php echo $url; ?>" method="post">
+/**-------------------------------------------------------------------------------------------------
+ * show_blog_search()
+ * Shows a form for searching the blog.
+ * 
+ * @return void (void)
+ * @TODO: Maybe this could be moved to the template now?
+ */  
+function show_blog_search() {
+	
+  $Blog = new Blog; // Create a new instance of the Blog class
+	$url = $Blog->get_blog_url(); // Get the base URL of the blog
+  
+  # Output the search form
+	?><form id="blog_search" action="<?php echo $url; ?>" method="post">
 		<input type="text" class="blog_search_input" name="keyphrase" />
 		<input type="submit" class="blog_search_button" name="search_blog" value="<?php i18n(BLOGFILE.'/SEARCH'); ?>" />
-	</form>
-	<?php
+	</form><?php
 }
 
-/** 
-* Show Blog archives list
-* 
-* @return void
-*/  
-function show_blog_archives()
-{
-	global $blogSettings;
-	$Blog = new Blog;
-	$archives = $Blog->get_blog_archives();
-	if (!empty($archives)) 
-	{
-    foreach ($archives as $archive => $archive_data) 
-		{
+/**-------------------------------------------------------------------------------------------------
+ * show_blog_archives()
+ * Shows a list of Archives
+ * 
+ * @return void (void)
+ */  
+function show_blog_archives() {
+
+	GLOBAL $blogSettings; // Define GLOBAL variables
+	$Blog = new Blog; // Create a new instance of the Blog class
+	$archives = $Blog->get_blog_archives(); // Get a list of archives.
+  
+	if (!empty($archives)) { // If we there are any archives in the list...
+    foreach ($archives as $archive => $archive_data) { // For each archive in the list...
+      // How many posts are there in this archive?
 			$post_count = ($blogSettings['archivepostcount'] == 'Y') ? ' ('.$archive_data['count'].')' : '';
-			$url = $Blog->get_blog_url('archive') . $archive;
-			echo "<li><a href=\"{$url}\">{$archive_data['title']} {$post_count}</a></li>";
-      print_r($archive_data);
+			$url = $Blog->get_blog_url('archive') . $archive; // What's the URL for this archive?
+			echo "<li><a href=\"{$url}\">{$archive_data['title']} {$post_count}</a></li>"; // Ouput the HTML list item
 		}
-	} else {
-		echo i18n(BLOGFILE.'/NO_ARCHIVES');
+	} else { // We have no archives in the list
+		echo i18n(BLOGFILE.'/NO_ARCHIVES'); // Let the user know
 	}
 }
 
-/** 
-* Show Posts from requested archive
-* 
-* @return void
-*/  
-function show_blog_archive($archive)
-{
-	$Blog = new Blog;
-	$posts = $Blog->listPosts(true, true);
-	if (!empty($posts)) {
-		foreach ($posts as $file) 
-		{
-			$data = getXML($file['filename']);
-			$date = strtotime($data->date);
-			if (date('Ym', $date) == $archive)
-			{
-				show_blog_post($file['filename'], true);
+/**-------------------------------------------------------------------------------------------------
+ * show_blog_archive($archive)
+ * Show Posts from requested archive
+ * 
+ * @return void (void)
+ */  
+function show_blog_archive($archive) {
+
+	$Blog = new Blog; // Create a new instance of the Blog class
+	$posts = $Blog->listPosts(true, true); // Get a list of all the posts in the blog
+  
+	if (!empty($posts)) { // If there are posts in the blog...
+		foreach ($posts as $file) { // For each post in the list...
+			$data = getXML($file['filename']); // Get the XML data of the post
+			$date = strtotime($data->date); // Covert the date to a UNIX timestamp
+			if (date('Ym', $date) == $archive) { // If the date on the post is in the requested archive...
+				show_blog_post($file['filename'], true); // Show the blog post
 			}
 		}
-	} else {
-		echo i18n(BLOGFILE.'/NO_ARCHIVES');
+	} else { // We have no posts in this archive
+		echo i18n(BLOGFILE.'/NO_ARCHIVES'); // Let the user know
 	}
 }
 
-/** 
-* Show recent posts list
-*
-* @param $excerpt bool Choose true to display excerpts of post below post title. Defaults to false (no excerpt)
-* @param $excerpt_length int Choose length of excerpt. If no value is provided, it will default to the length defined on the blog settings page
-* @param $thumbnail int If true a thumbnail will be displayed for each post
-* @param $read_more string if not null, a "Read More" link will be placed at the end of the excerpt. Pass the text you would like to be displayed inside the link
-* @return string or void
-*/
-function show_blog_recent_posts($excerpt=false, $excerpt_length=null, $thumbnail=null, $read_more=null)
-{
-	$Blog = new Blog;
-	$posts = $Blog->listPosts(true, true);
-	global $SITEURL,$blogSettings;
-	if (!empty($posts)) 
-	{
-		echo '<ul>';
-		$posts = array_slice($posts, 0, $blogSettings["recentposts"], TRUE);
-		foreach ($posts as $file) 
-		{
-			$data = getXML($file['filename']);
-			$url = $Blog->get_blog_url('post') . $data->slug;
-			$title = strip_tags(strip_decode($data->title));
-
-			if($excerpt != false)
-			{
-				if($excerpt_length == null)
-				{
-					$excerpt_length = $blogSettings["excerptlength"];
+/**-------------------------------------------------------------------------------------------------
+ * show_blog_recent_posts($excerpt, $excerpt_length, $thumbnail, $readmore)
+ * Shows a list of recent posts formatted based on arguments given.
+ *
+ * @param $excerpt        (bool)   True: Show excerpt - False: Title only
+ * @param $excerpt_length (int)    Length of excerpt. Default if not given
+ * @param $thumbnail      (bool)   If true a thumbnail will be displayed for each post
+ * @param $read_more      (string) A text string to show for "Read More" link. Not shown if null
+ * @return string or void
+ */
+function show_blog_recent_posts($excerpt=false, $excerpt_length=null, $thumbnail=null, $read_more=null) {
+	
+  GLOBAL $SITEURL, $blogSettings; // Declare GLOBAL variables
+  $Blog = new Blog; // Create new instance of Blog class
+	$posts = $Blog->listPosts(true, true); // Get a list of posts
+	
+  if (!empty($posts)) { // If we have any posts to display
+		$posts = array_slice($posts, 0, $blogSettings["recentposts"], TRUE); // Shorten list to setting
+		foreach ($posts as $file) {
+			$data = getXML($file['filename']); // Get the XML data of the post
+			$url = $Blog->get_blog_url('post') . $data->slug; // Create the URL for the post
+			$title = strip_tags(strip_decode($data->title)); // Sanitize the posts title.
+      if($excerpt != false) { // If we are showing the excerpt...
+				if($excerpt_length == null) { // If the excerpt length was not provided...
+					$excerpt_length = $blogSettings["excerptlength"]; // Get excerpt length from settings.
 				}
-				$excerpt = $Blog->create_excerpt(html_entity_decode($data->content), 0, $excerpt_length);
-				if($thumbnail != null)
-				{
-					if(!empty($data->thumbnail))
-					{
+				$excerpt = $Blog->create_excerpt(html_entity_decode($data->content), 0, $excerpt_length); // Create the excerpt
+				if($thumbnail != null) { // If we are showing a thumbnail with it...
+					if(!empty($data->thumbnail)) { // Does a thumbnail exist with the post?
+            // Output the HTML for the image
 						$excerpt = '<img src="'.$SITEURL.'data/uploads/'.$data->thumbnail.'" class="blog_recent_posts_thumbnail" />'.$excerpt;
 					}
 				}
-				if($read_more != null)
-				{
+				if($read_more != null) { // Do we want the "Read More" link to show?
+          // Show the "Read More" link with the string given in argument
 					$excerpt = $excerpt.'<br/><a href="'.$url.'" class="recent_posts_read_more">'.$read_more.'</a>';
 				}
+        // Output the HTML for the list item with excerpt
 				echo '<li><a href="'.$url.'">'.$title.'</a><p class="blog_recent_posts_excerpt">'.$excerpt.'</p></li>';
-			}
-			else
-			{
-				echo "<li><a href=\"$url\">$title</a></li>";
+			} else {
+        // Output the HTML for the list item without the excerpt
+				echo '<li><a href="'.$url.'">'.$title.'</a></li>';
 			}
 		}
-		echo '</ul>';
 	}
 }
 
@@ -273,18 +267,14 @@ function show_blog_recent_posts($excerpt=false, $excerpt_length=null, $thumbnail
 * 
 * @return void
 */  
-function show_blog_tag($tag)
-{
+function show_blog_tag($tag) {
 	$Blog = new Blog;
 	$all_posts = $Blog->listPosts(true, true);
-	foreach ($all_posts as $file) 
-	{
+	foreach ($all_posts as $file) {
 		$data = getXML($file['filename']);
-		if(!empty($data->tags))
-		{
+		if(!empty($data->tags)) {
 			$tags = explode(',', $data->tags);
-			if (in_array($tag, $tags))
-			{
+			if (in_array($tag, $tags)) {
 				show_blog_post($file['filename'], true);	
 			}
 		}
