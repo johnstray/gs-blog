@@ -1,5 +1,5 @@
 ##GetSimple Blog
-A simple an easy to use blog for GetSimple. With this plugin, you can create blog posts, sort posts by category, view posts in monthly archives, plus much more.
+A simple an easy to use blog for GetSimple. With this plugin, you can create blog posts, sort posts by category, view posts in monthly archives, plus much more. This version is a fork of the original by @mikehenken and is now being actively maintained here.
 
 ###Features Include:
 - GetSimple Blog Plugin
@@ -13,9 +13,6 @@ A simple an easy to use blog for GetSimple. With this plugin, you can create blo
 - External Comments Support
 - Post Thumbnails
 - Custom Fields
-
-I have taken is upon myself to maintain this plugin, as there are a number of known issues (many of which have been fixed in this version) and it appears to no longer have support from it original author. I welcome any and all suggestions for future improvements, and if you find any further bugs, then please let me know. I have scoured the GetSimple Forum for as many bug reports as I could find, and I have done my best to fix as many as I can in this version.
-
 
 ###Installation
 You can install this plugin to your GetSimple installation by following these simple instructions.
