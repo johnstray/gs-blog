@@ -43,9 +43,9 @@
        The relevant settings have now been removed from the blog admin.
   -->
   <p class="blog_post_info">
-    <span class="blog_post_author"><?php i18n(BLOGFILE.'/BY'); ?> <?php echo $p['author']; ?></span>
-    <span class="blog_post_date"><?php i18n(BLOGFILE.'/ON'); ?> <?php echo date('F jS, Y', $p['date']); ?></span>
-    <span class="blog_post_category"><?php i18n(BLOGFILE.'/IN'); ?> <?php echo $p['categories'][0]; ?></span>
+    <span class="blog_post_author">by <?php echo $p['author']; ?></span>
+    <span class="blog_post_date">on <?php echo date('F jS, Y', $p['date']); ?></span>
+    <span class="blog_post_category">in <?php echo $p['categories'][0]; ?></span>
   </p>
   
   <!-- Post thumbnail
@@ -80,7 +80,7 @@
        This is that stupid Go-Back link that a few people have complained about. I think that it
        should probably be removed, but I've left it in this template for historical reasons.
   -->
-  <p class="blog_go_back"><a href="javascript:history.back()">&laquo; <?php i18n(BLOGFILE.'/GO_BACK'); ?></a></p>
+  <p class="blog_go_back"><a href="javascript:history.back()"><< Go back to the previous page</a></p>
   
   <!-- Advertising Code - Bottom
        Insert your advertising code here, such as Google AdSense, etc. This was

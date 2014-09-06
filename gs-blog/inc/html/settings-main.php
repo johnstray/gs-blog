@@ -9,7 +9,7 @@
 <h3 class="floated" style="float:left;"><?php i18n(BLOGFILE.'/BLOG_SETTINGS'); ?></h3>
 <div class="edit-nav">
   <p class="text 1">
-    <a href="load.php?id=<?php echo BLOGFILE; ?>&settings=rss"><?php i18n(BLOGFILE.'/AUTO_IMPORTER'); ?></a>
+    <a href="load.php?id=<?php echo BLOGFILE; ?>&settings=rss">Auto-Importer</a>
   </p>
   <div class="clear"></div>
 </div>
@@ -35,7 +35,7 @@
   </div>
   <div class="rightsec">
     <p>
-      <label for="template"><?php i18n(BLOGFILE.'/LAYOUT_TEMPLATE'); ?>:</label>
+      <label for="template">Layout Template:</label>
       <select name="template" class="text">
         <?php foreach(blog_theme_layouts() as $layout) { 
           $layout_f = ucwords(str_replace('_',' ',str_replace('-',' ',$layout)));
@@ -107,7 +107,7 @@
 AddDefaultCharset UTF-8
 Options -Indexes
 
-# <?php i18n(BLOGFILE.'/HTACCESS_1'); ?>
+# blocks direct access to the XML files - they hold all the data!
 &lt;Files ~ "\.xml$"&gt;
 Order allow,deny
 Deny from all
@@ -121,8 +121,8 @@ Satisfy All
 
 RewriteEngine on
 
-# <?php i18n(BLOGFILE.'/HTACCESS_2'); ?>
-# <?php i18n(BLOGFILE.'/HTACCESS_3'); ?>
+# Usually RewriteBase is just '/', but
+# replace it with your subdirectory path -- IMPORTANT -> if your site is located in subfolder you need to change this to reflect (eg: /subfolder/)
 RewriteBase /
 
 RewriteRule ^<?php if($Blog->getSettingsData("blogurl") != 'index') { echo $Blog->getSettingsData("blogurl").'/'; } ?>post/([^/.]+)/?$ index.php?id=<?php echo $Blog->getSettingsData("blogurl"); ?>&post=$1 [L]

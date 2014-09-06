@@ -1,10 +1,4 @@
 <?php if(!defined('IN_GS')){die('You cannot load this file directly!');} // Security Check
-/**
- * English Language File for GetSimple Blog
- * 
- * Last modified: 6 September 2014 - Version 3.3.0
- * Compiled by: John Stray
- */
 $i18n = array(
 	'PLUGIN_TITLE' 			=> "GetSimple Blog",
 	'PLUGIN_DESC' 			=> "A simple and easy to use blog/news feed for GetSimple.",
@@ -320,14 +314,5 @@ $i18n = array(
   'SETTINGS_SOCIAL_DESC' => 'Add one of these social tools to your blog to enable commenting.',
   'SETTINGS_RSS_DESC' => 'Choose your settings for the RSS Auto-Importer. The Auto-Importer can import either the full content of feeds or a summary with a link back to the original article.',
   'SETTINGS_FEED_DESC' => 'The RSS Auto-Importer will import and create posts from RSS feeds on other websites. This is useful if you want to manage this blog with content from another blog that you run.',
-  'SETTINGS_CATEGORY_DESC' => 'Add or Edit categories to assign your posts to.',
-  // Added in Version 3.3.0
-  'SETTINGS_SAVE_OK' => 'Successfully saved settings!',
-  'SETTINGS_SAVE_ERROR' => 'Could not save your settings!',
-  'AUTO_IMPORTER' => 'Auto-Importer',
-  'LAYOUT_TEMPLATE' => 'Layout Template',
-  'HTACCESS_1' => 'blocks direct access to the XML files - they hold all the data!',
-  'HTACCESS_2' => 'Usually RewriteBase is just \'/\', but replace it with your subdirectory path',
-  'HTACCESS_3' => 'IMPORTANT -> if your site is located in subfolder you need to change this to reflect (eg: /subfolder/)',
-  'ADDED' => 'Added',
+  'SETTINGS_CATEGORY_DESC' => 'Add or Edit categories to assign your posts to.'
 );
