@@ -179,9 +179,9 @@ function show_posts_admin()
 			$post = $Blog->getPostData($post_name['filename']);
 			?>
 				<tr>
-					<td class="blog_post_title"><a title="Edit Page: Agents" href="load.php?id=<?php echo BLOGFILE; ?>&edit_post=<?php echo $post->slug; ?>" ><?php echo $post->title; ?></a></td>
+					<td class="blog_post_title"><a title="<?php echo $post->title; ?>" href="load.php?id=<?php echo BLOGFILE; ?>&edit_post=<?php echo $post->slug; ?>" ><?php echo $post->title; ?></a></td>
 					<td style="text-align:right;"><span><?php echo $post->date; ?></span></td>
-					<td class="delete" ><a class="delconfirm" href="load.php?id=<?php echo BLOGFILE; ?>&delete_post=<?php echo $post->slug; ?>" title="Delete Post: <?php echo $post->title; ?>" >X</a></td>
+					<td class="delete" ><a class="delconfirm" href="load.php?id=<?php echo BLOGFILE; ?>&delete_post=<?php echo $post->slug; ?>" title="<?php i18n(BLOGFILE.'/DELETE'); ?>: <?php echo $post->title; ?>" >X</a></td>
 				</tr>
 			<?php
 		}
@@ -222,9 +222,9 @@ function show_settings_admin() {
     
     # Attempt to save the settings array to file.
 		if($Blog->saveSettings($blog_settings_array)) { // Success: Notify the user.
-      echo '<script>clearNotify();notifyOk(\'Successfully saved settings!\').popit().removeit();</script>';
+      echo '<script>clearNotify();notifyOk(\''.i18n_r(BLOGFILE.'/SETTINGS_SAVE_OK').'\').popit().removeit();</script>';
     } else { // Failed: Notify the user.
-      echo '<script>clearNotify();notifyError(\'Could not save settings!\').popit().removeit();</script>';
+      echo '<script>clearNotify();notifyError(\''.i18n_r(BLOGFILE.'/SETTINGS_SAVE_ERROR').'\').popit().removeit();</script>';
     }
 	}
   
@@ -664,10 +664,8 @@ function blog_page_help_html()
 
 function blog_theme_layouts() {
   $files = array_filter(glob(BLOGPLUGINFOLDER.'templates/*.php'), 'is_file');
-
   $list = array();
-  foreach ($files as $file) 
-  {
+  foreach ($files as $file) {
     array_push($list, pathinfo($file, PATHINFO_FILENAME));
   }
   return $list;
