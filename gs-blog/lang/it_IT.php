@@ -2,7 +2,7 @@
 /**
  * Italian Language File for GetSimple Blog
  * 
- * Last modified: 23 May 2014 - Version 3.2.2
+ * Last modified: 06 Sett. 2014 - Version 3.3.0
  * Compiled by: Nicola Laviola <niklav@gmail.com>
  */
 
