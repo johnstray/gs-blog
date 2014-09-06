@@ -195,7 +195,8 @@ function show_blog_archives() {
  * show_blog_archive($archive)
  * Show Posts from requested archive
  * 
- * @return void (void)
+ * @param  $archive (string) - Show posts from this given archive
+ * @return void     (void)
  */  
 function show_blog_archive($archive) {
 
@@ -262,320 +263,214 @@ function show_blog_recent_posts($excerpt=false, $excerpt_length=null, $thumbnail
 	}
 }
 
-/** 
-* Show posts for requested tag
-* 
-* @return void
-*/  
+/**-------------------------------------------------------------------------------------------------
+ * show_blog_tag($tag)
+ * Show posts for requested tag
+ * 
+ * @param  $tag (string) - Display posts containing this tag
+ * @return void (void)
+ */  
 function show_blog_tag($tag) {
-	$Blog = new Blog;
-	$all_posts = $Blog->listPosts(true, true);
-	foreach ($all_posts as $file) {
-		$data = getXML($file['filename']);
-		if(!empty($data->tags)) {
-			$tags = explode(',', $data->tags);
-			if (in_array($tag, $tags)) {
-				show_blog_post($file['filename'], true);	
-			}
-		}
-	}
-}
 
-/** 
-* Show all postts
-* 
-* @return void
-*/  
-function show_all_blog_posts()
-{
-	$Blog = new Blog;
-	if(isset($_GET['page']))
-	{
-		$page = $_GET['page'];
-	}
-	else
-	{
-		$page = 0;
-	}
-	show_posts_page($page);
-}
-
-/** 
-* Display blog posts results from a search
-* 
-* @return void
-*/  
-function search_posts($keyphrase)
-{
-	$Blog = new Blog;
-	$posts = $Blog->searchPosts($keyphrase);
-	if (!empty($posts)) 
-	{
-		echo '<p class="blog_search_header">';
-			i18n(BLOGFILE.'/FOUND');
-		echo '</p>';
-		foreach ($posts as $file)
-		{
-			show_blog_post($file, TRUE);
-		}
-	} 
-	else 
-	{
-		echo '<p class="blog_search_header">';
-			i18n(BLOGFILE.'/NOT_FOUND');
-		echo '</p>';
-	}
-}
-
-/** 
-* Thumbnail download for RSS Auto-Importer
-* Finds the first image in $content then downloads
-* and saves the image for use as a thumbnail to be
-* attached to the imported post 
-* 
-* @input $item Array containing the RSS data
-* @return $thumbnail Filename of the image
-* @return false if error or non found
-*/ 
-function auto_import_thumbnail($item)
-{
-  // require_once('phpQuery.php');
-  return '';
-}
-
-/** 
-* RSS Feed Auto Importer
-* Auto imports RSS feeds. Can be launched by a cron job 
-* 
-* @return void
-*/  
-function auto_import()
-{
-	$Blog = new Blog;
+	$Blog = new Blog; // Create a new instance of the Blog class
+	$all_posts = $Blog->listPosts(true, true); // Get a list of all posts in the blog
   
-	if($_GET['import'] == urldecode($Blog->getSettingsData("autoimporterpass")) && $Blog->getSettingsData("autoimporter") =='Y')
-	{
-		ini_set("memory_limit","350M");
-    
-    define('MAGPIE_CACHE_DIR', GSCACHEPATH.'magpierss/');
-		require_once(BLOGPLUGINFOLDER.'inc/magpierss/rss_fetch.inc');
-
-		$rss_feed_file = getXML(BLOGRSSFILE);
-		foreach($rss_feed_file->rssfeed as $the_fed)
-		{
-		    $rss_uri = $the_fed->feed;
-		    $rss_category = $the_fed->category;
-		        
-		    $rss = fetch_rss($rss_uri);
-		    $items = array_slice($rss->items, 0);
-		    foreach ($items as $item )
-		    {
-		        $post_data['title']         = $item['title'];
-		        $post_data['slug']          = '';
-		        $post_data['date']          = $item['pubdate'];
-		        $post_data['private']       = '';
-		        $post_data['tags']          = '';
-		        $post_data['category']      = $rss_category;
-            
-            if($Blog->getSettingsData('rssinclude') == 'Y') {
-              if(!empty($item['content']['encoded'])) {
-                $post_data['content']   = htmlentities($item['content']['encoded'],ENT_QUOTES,'iso-8859-1');
-              } else {
-                $post_data['content']   = htmlentities($item['summary'],ENT_QUOTES,'iso-8859-1').'<p class="blog_auto_import_readmore"><a href="'.$item['link'].'" target="_blank">'.i18n_r(BLOGFILE.'/READ_FULL_ARTICLE').'</a></p>';
-              }
-            } else {
-              $post_data['content']     = htmlentities($item['summary'],ENT_QUOTES,'iso-8859-1').'<p class="blog_auto_import_readmore"><a href="'.$item['link'].'" target="_blank">'.i18n_r(BLOGFILE.'/READ_FULL_ARTICLE').'</a></p>';
-            }
-		        $post_data['excerpt']       = $Blog->create_excerpt($item['summary'],0,$Blog->getSettingsData("excerptlength"));
-		        $post_data['thumbnail']     = auto_import_thumbnail($item);
-		        $post_data['current_slug']  = '';
-            $post_data['author']        = htmlentities('<a href="'.$rss_uri.'">RSS Feed</a>',ENT_QUOTES,'iso-8859-1');
-
-		        $Blog->savePost($post_data, true);
-            
-            echo '<p class="blog_rss_post_added">Added: '.$post_data['title'].'</p>';
-		    }
+	foreach ($all_posts as $file) { // For each blog post in the list...
+		$data = getXML($file['filename']); // Get the XML data for the post
+		if(!empty($data->tags)) { // If the post has been tagged...
+			$tags = explode(',', $data->tags); // Convert the string of tags to array list
+			if (in_array($tag, $tags)) { //If the requested tag is in the list of tags on the post
+				show_blog_post($file['filename'], true); // Show the blog post
+			}
 		}
 	}
 }
 
-/** 
-* RSS Feed Auto Importer
-* Auto imports RSS feeds. Can be launched by a cron job 
-* 
-* @return void
-*/  
-/*******************************************************
- * @function show_posts_page
- * param $index - page index (pagination)
- * @action show posts on news page
- */
-function show_posts_page($index=0) 
-{
-	global $blogSettings;
-	$Blog = new Blog;
-	$posts = $Blog->listPosts(true, true);
-	if($blogSettings["allpostsadtop"] == 'Y')
-	{
-		?>
-		<div class="blog_all_posts_ad">
-			<?php echo $blogSettings["addata"]; ?>
-		</div>
-		<?php
+/**-------------------------------------------------------------------------------------------------
+ * show_all_blog_posts()
+ * Show all posts in the blog. Include pagination.
+ * 
+ * @return void (void)
+ */  
+function show_all_blog_posts() {
+
+	$Blog = new Blog; // Create a new instance of the Blog class
+  
+	if(isset($_GET['page'])) { // If a specific page is required...
+		$page = $_GET['page']; // What page do we want?
+	} else { // No page given?
+		$page = 0; // Default to the first page
 	}
-	if(!empty($posts))
-	{
-		$pages = array_chunk($posts, intval($blogSettings["postperpage"]), TRUE);
-		if (is_numeric($index) && $index >= 0 && $index < sizeof($pages))
-		{
-			$posts = $pages[$index];
-		}
-		else
-		{
-			$posts = array();	
-		}
-		$count = 0;
-		$lastPostOfPage = false;
-		foreach ($posts as $file)
-		{
-			$count++;
-			show_blog_post($file['filename'], true);
+	show_posts_page($page); // Show the page of posts
+}
 
-			if($count == sizeof($posts) && sizeof($posts) > 0) 
-			{
-				$lastPostOfPage = true;	
+/**-------------------------------------------------------------------------------------------------
+ * search_posts($keyphrase)
+ * Display blog posts results from a search
+ * 
+ * @param  $keyphrase (string) - The phrase to search for in the posts
+ * @return void       (void)
+ */  
+function search_posts($keyphrase) {
+
+	$Blog = new Blog; // Create new instance of the Blog class
+	$posts = $Blog->searchPosts($keyphrase); // Get the list of search results
+  
+	if (!empty($posts)) { // If there were search results returned...
+		echo '<p class="blog_search_header">'.i18n(BLOGFILE.'/FOUND').'</p>'; // Output the page title
+		foreach ($posts as $file) { // For each result in the list...
+			show_blog_post($file, TRUE); // Show the blog post
+		}
+	} else { // There were no results to display. Let the user know.
+		echo '<p class="blog_search_header">'.i18n(BLOGFILE.'/NOT_FOUND').'</p>';
+	}
+}
+ 
+/**-------------------------------------------------------------------------------------------------
+ * show_posts_page($index)
+ * Show all posts for the given page.
+ * 
+ * @param  $index (int)  - page index (pagination)
+ * @return void   (void)
+ */
+function show_posts_page($index=0) {
+
+	GLOBAL $blogSettings; // Declare GLOBAL variables
+	$Blog = new Blog; // Create a new instance of the Blog class
+	$posts = $Blog->listPosts(true, true); // Get the list of posts.
+  
+	if(!empty($posts)) { // If we have posts to display...
+		$pages = array_chunk($posts, intval($blogSettings["postperpage"]), TRUE); // Split posts onto multiple pages
+		if (is_numeric($index) && $index >= 0 && $index < sizeof($pages)) { // What page should we show?
+			$posts = $pages[$index]; // Show specified page number
+		} else { // Page index not given or 0
+			$posts = array();	// Show first page
+		}
+		$count = 0; // Create a counter for X
+		$lastPostOfPage = false; // We're not on the last post of the page yet
+		foreach ($posts as $file) { // For each post on the page...
+			$count++; // Increment the counter
+			show_blog_post($file['filename'], true); // Show the blog post
+      if($count == sizeof($posts) && sizeof($posts) > 0) { // Is this the last post on the page?
+				$lastPostOfPage = true;	// Yes, it is.
 			}
-
-			if (sizeof($pages) > 1)
-			{
-				// We know here that we have more than one page.
-				$maxPageIndex = sizeof($pages) - 1;
-				show_blog_navigation($index, $maxPageIndex, $count, $lastPostOfPage);
-				if($count == $blogSettings["postperpage"])
-				{
-					$count = 0;
+      if (sizeof($pages) > 1) { // If there is more than one page...
+				$maxPageIndex = sizeof($pages) - 1; // Total number of pages
+				show_blog_navigation($index, $maxPageIndex, $count, $lastPostOfPage); // Show the pagination
+				if($count == $blogSettings["postperpage"]) { // If we are on the last post,
+					$count = 0; // Reset the counter for the next page
 				}
 			}
 		}
-	} 
-	else 
-	{
+	} else { // We have no posts to display. Let the user know.
 		echo '<p>' . i18n(BLOGFILE.'/NO_POSTS') . '</p>';
-	}
-	if($blogSettings["allpostsadbottom"] == 'Y')
-	{
-		?>
-		<div class="blog_all_posts_ad">
-			<?php echo $blogSettings["addata"]; ?>
-		</div>
-		<?php
 	}
 }
 
-/** 
-* Blog posts navigation (pagination)
-* 
-* @param $index the current page index
-* @param $total total number of pages
-* @param $count current post
-* @return void
-*/  
-function show_blog_navigation($index, $total, $count, $lastPostOfPage) 
-{
-	global $blogSettings;
-	$Blog = new Blog;
-	$url = $Blog->get_blog_url('page');
+/**-------------------------------------------------------------------------------------------------
+ * Blog posts navigation (pagination)
+ * 
+ * @param $index          (int)  the current page index
+ * @param $total          (int)  total number of pages
+ * @param $count          (int)  current post
+ * @param $lastPostOfPage (bool) 
+ * @return void           (void) 
+ */  
+function show_blog_navigation($index, $total, $count, $lastPostOfPage) {
+	
+  GLOBAL $blogSettings; // Declare GLOBAL variables
+	$Blog = new Blog; // Create a new instance of the Blog class
+	$url = $Blog->get_blog_url('page'); // Get the "page" URL
 
-	if ($lastPostOfPage) 
-	{
+	if ($lastPostOfPage) { // Only show navigation if we've past the last post on the page
 		echo '<div class="blog_page_navigation">';
 	}
-	
-	if($index < $total && $lastPostOfPage)
-	{
-	?>
-		<div class="left blog-next-prev-link">
-		<a href="<?php echo $url . ($index+1); ?>">
-			&larr; <?php echo $blogSettings["nextpage"]; ?>
-		</a>
-		</div>
-	<?php	
+	if($index < $total && $lastPostOfPage) { // Generate "Next Page" link
+	  ?>
+      <div class="left blog-next-prev-link">
+        <a href="<?php echo $url . ($index+1); ?>">
+          &larr; <?php echo $blogSettings["nextpage"]; ?>
+        </a>
+      </div>
+	  <?php	
 	}
-	?>
-		
-	<?php
-	if ($index > 0 && $lastPostOfPage)
-	{
-	?>
-		<div class="right blog-next-prev-link">
-		<a href="<?php echo ($index > 1) ? $url . ($index-1) : substr($url, 0, -6); ?>">
-			<?php echo $blogSettings["previouspage"]; ?> &rarr;
-		</a>
-		</div>
-	<?php
+	if ($index > 0 && $lastPostOfPage) { // Generate "Previous Page" link
+    ?>
+      <div class="right blog-next-prev-link">
+        <a href="<?php echo ($index > 1) ? $url . ($index-1) : substr($url, 0, -6); ?>">
+          <?php echo $blogSettings["previouspage"]; ?> &rarr;
+        </a>
+      </div>
+    <?php
 	}
-	?>
-	
-	<?php
-	if ($lastPostOfPage) 
-	{
+	if ($lastPostOfPage) { // Close off the navigation
 		echo '<div id="clear"></div>';
 		echo '</div>';
 	}
-
 }
 
-/** 
-* Get Page/POST Title
-* This function is a modified version of the core get_page_clean_title() function. It will function normally on all pages except individual blog posts, where the post title will be placed in instead of the page title.
-* 
-* @return void
-*/  
-function get_blog_title($echo=true) 
-{
-	global $title, $blogSettings, $post;
-	$slug = base64_encode(return_page_slug());
-	if($slug == base64_encode($blogSettings["blogurl"]))
-	{
-		if(isset($_GET['post']) && !empty($post))
-		{
-			$title = (string) $post->title;
+/**-------------------------------------------------------------------------------------------------
+ * get_blog_title($echo)
+ * Get Page/POST Title - This function is a modified version of the core get_page_clean_title()
+ * function. It will function normally on all pages except individual blog posts, where the post
+ * title will be placed in instead of the page title.
+ * 
+ * @param  $echo  (bool)   True: Echos output - False: Returns output
+ * @return $myVar (string) The post title
+ * @TODO: Redundancy check required. Is this a duplicate of set_blog_title()?
+ */  
+function get_blog_title($echo=true) {
+	
+  GLOBAL $title, $blogSettings, $post; // Declare GLOBAL variables
+	$slug = base64_encode(return_page_slug()); // Get the current pages slug
+  
+	if($slug == base64_encode($blogSettings["blogurl"])) { // If we are on the blog's page...
+		if(isset($_GET['post']) && !empty($post)) { // If we are showing a post...
+			$title = (string) $post->title; // Set the page title to title of post
 		}
 	}
-	$myVar = strip_tags(strip_decode($title));
-	if ($echo) 
-	{
-		echo $myVar;
-	} 
-	else 
-	{
-		return $myVar;
-	}
+	$myVar = strip_tags(strip_decode($title)); // Clean the title variable
+  ($echo ? echo $myVar : return $myVar); // Echo or return as per argument
 }
 
-function set_post_description()
-{
-	global $metad, $post, $blogSettings;
-	$Blog = new Blog;
-	if($blogSettings["postdescription"] == 'Y' && isset($post))
-	{
-		$excerpt_length = ($blogSettings["excerptlength"] == '') ? 150 : $blogSettings["excerptlength"];
+/**-------------------------------------------------------------------------------------------------
+ * set_post_description()
+ * Sets the pages meta description to an excerpt of the post
+ * 
+ * @return void (void)
+ */
+function set_post_description() {
 
+	GLOBAL $metad, $post, $blogSettings; // Declare GLOBAL variables
+	$Blog = new Blog; // Create a new instance of the Blog class
+  
+	if($blogSettings["postdescription"] == 'Y' && isset($post)) { // Should we change the meta desc?
+		$excerpt_length = ($blogSettings["excerptlength"] == '') ? 150 : $blogSettings["excerptlength"];
 		$metad = $Blog->create_excerpt(html_entity_decode($post->content), 0, $excerpt_length);
 	}
 }
 
-function set_blog_title () { 
-	global $title, $blogSettings, $post;
-	$slug = base64_encode(return_page_slug());
-	if($slug == base64_encode($blogSettings["blogurl"])) {
-		if(isset($_GET['post']) && !empty($post)) {
-			$title = (string) $post->title;
-		} else if (isset($_GET['archive'])) {
+/**-------------------------------------------------------------------------------------------------
+ * set_blog_title()
+ * Sets the page title to the title of the current post, the archive name or category name being viewed
+ * 
+ * @return void (void)
+ * @TODO: Redundancy check required. Is this a duplicate of get_blog_title()?
+ */
+function set_blog_title () {
+
+	GLOBAL $title, $blogSettings, $post; // Declare GLOBAL variables
+	$slug = base64_encode(return_page_slug()); // What page are we on?
+  
+	if($slug == base64_encode($blogSettings["blogurl"])) { // If we're on the blog page...
+		if(isset($_GET['post']) && !empty($post)) { // If viewing a post...
+			$title = (string) $post->title; // Set title of post
+		} else if (isset($_GET['archive'])) { // If viewing an archive...
+      // Set the archive title
 			$title = (string) i18n_r(BLOGFILE.'/ARCHIVE_PRETITLE').date('F Y',strtotime($_GET['archive']));
-		} else if (isset($_GET['category'])) {
-			$title = (string) i18n_r(BLOGFILE.'/CATEGORY_PRETITLE').$_GET['category'];
+		} else if (isset($_GET['category'])) { // If viewing a category...
+			$title = (string) i18n_r(BLOGFILE.'/CATEGORY_PRETITLE').$_GET['category']; // Set category title
 		}
 	}
-	$title = strip_tags(strip_decode($title));
+	$title = strip_tags(strip_decode($title)); // Clean the title variable
 }

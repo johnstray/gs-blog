@@ -31,6 +31,7 @@
 - [#028] Consolidated class files into single folder and removed duplicate inclusion function.
 - [#028] Cleaned up functions and comments in common.php
 - [#027] Removed redundant CodeMirror files.
+- [#020] Moved RSS Auto-Importer functions into it's own file.
 
 ### Version 3.2.4
 **Bug Fixes:**
