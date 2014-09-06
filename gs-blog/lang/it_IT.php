@@ -323,5 +323,14 @@ Si comporter&agrave; come se si codifica direttamente dal plugin stesso. I dati 
 'SETTINGS_SOCIAL_DESC' => 'Aggiungi uno dei seguenti tool social al blog per abilitare i commenti.',
 'SETTINGS_RSS_DESC' => 'Scegli i settaggi per il RSS Auto-Importer. Auto-Importer pu&ograve; importare sia il contenuto completo dei feeds o un sommario con un link all&grave;articolo originario.',
 'SETTINGS_FEED_DESC' => 'RSS Auto-Importer importa e crea articoli da feeds RSS di altri websites. Questo &egrave; utile se vuoi gestire contenuti di altri blog.',
-'SETTINGS_CATEGORY_DESC' => 'Aggiungi o Edita le categorie da assegnare ai tuoi articoli.'
+'SETTINGS_CATEGORY_DESC' => 'Aggiungi o Edita le categorie da assegnare ai tuoi articoli.',
+// Added in Version 3.3.0
+  'SETTINGS_SAVE_OK' => 'Impostazioni salvate!',
+  'SETTINGS_SAVE_ERROR' => 'Non posso salvare le impostazioni!',
+  'AUTO_IMPORTER' => 'Importazone automatica',
+  'LAYOUT_TEMPLATE' => 'Layout Template',
+  'HTACCESS_1' => "blocca l'accesso diretto ai files XML!",
+  'HTACCESS_2' => 'Generalmente RewriteBase è \'/\', ma puoi sostituirla con il percorso della tua sottodirectory',
+  'HTACCESS_3' => 'IMPORTANTE -> se il tuo sito è posizionato in una sottocartella devi cambiarla in modo che punti ad essa (es: /sottocartella/)',
+  'ADDED' => 'Aggiunto'.
 );
