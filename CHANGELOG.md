@@ -33,6 +33,9 @@
 - [#027] Removed redundant CodeMirror files.
 - [#020] Moved RSS Auto-Importer functions into it's own file.
 
+**Updated Languages:**
+- [#016] Added new strings to English en_US language file.
+
 ### Version 3.2.4
 **Bug Fixes:**
 - Removed blank line at start of English en_US language file that caused headers to be sent early.

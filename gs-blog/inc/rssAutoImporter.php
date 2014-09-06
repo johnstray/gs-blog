@@ -1,8 +1,8 @@
 <?php if(!defined('IN_GS')){die('You cannot load this file directly!');} // Security Check
 /**
- * @file: frontEndFunctions.php
+ * @file: rssAutoImporter.php
  * @package: GetSimple Blog [plugin]
- * @action: This file contains all the functions required for displaying the blog.
+ * @action: This file contains all the functions required for the RSS Auto-Importer.
  * @author: John Stray [https://www.johnstray.id.au/]
  */
  
@@ -56,7 +56,7 @@ function auto_import()
 
 		        $Blog->savePost($post_data, true);
             
-            echo '<p class="blog_rss_post_added">Added: '.$post_data['title'].'</p>';
+            echo '<p class="blog_rss_post_added">'.i18n_r(BLOGFILE.'/ADDED').': '.$post_data['title'].'</p>';
 		    }
 		}
 	}
