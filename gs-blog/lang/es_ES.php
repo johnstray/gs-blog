@@ -320,5 +320,14 @@ $i18n = array(
   'SETTINGS_SOCIAL_DESC' => 'Añada una de estas herramientas sociales a su blog para habilitar los comentarios.',
   'SETTINGS_RSS_DESC' => 'Escoja su configuración para el Auto-importador RSS. El Auto-importador puede importar el contenido completo de las Entradas o sumarios con vínculos de vuelta al artículo original.',
   'SETTINGS_FEED_DESC' => 'El Auto-importador RSS importará y creará posts a partir de Entradas RSS en otros sitios. Esto es útil si quiere administrar este blog con el contenido de otro blog suyo.',
-  'SETTINGS_CATEGORY_DESC' => 'Añadir o Editar Categorías a las que asignar sus posts.'
+  'SETTINGS_CATEGORY_DESC' => 'Añadir o Editar Categorías a las que asignar sus posts.',
+  // Added in Version 3.3.0
+  'SETTINGS_SAVE_OK' => '¡La configuración ha sido exitosamente guardada!',
+  'SETTINGS_SAVE_ERROR' => '¡No se pudo guardar su configuración!',
+  'AUTO_IMPORTER' => 'Auto-Importador',
+  'LAYOUT_TEMPLATE' => 'Plantilla de Distribución',
+  'HTACCESS_1' => 'bloque el acceso directo a los archivos XML - ellos contienen todos los datos!',
+  'HTACCESS_2' => 'Usualmente RewriteBase es sólo \'/\', pero reemplázalo con la ruta de tu subdirectorio',
+  'HTACCESS_3' => 'IMPORTANTE -> si tu sitio está ubicado en un subdirectorio, necesitas cambiarlo para reflejarlo (eg: /subfolder/)',
+  'ADDED' => 'Añadido'
 );
