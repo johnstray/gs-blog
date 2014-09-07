@@ -25,13 +25,12 @@
 - [#017] Cleaned up functions and comments in adminFunctions.php
 - [#020] Cleaned up functions and comments in frontEndFunctions.php
 - [#019] Moved some HTML sections of the code to separate files in 'html' folder to make for much easier reading and modification of code.
-  - Settings main page.
-  - RSS Auto-Importer settings page.
 - [#028] Removed redundant function - showAdminNav()
 - [#028] Consolidated class files into single folder and removed duplicate inclusion function.
 - [#028] Cleaned up functions and comments in common.php
 - [#027] Removed redundant CodeMirror files.
 - [#020] Moved RSS Auto-Importer functions into it's own file.
+- [#019] Removed redundant function - blog_page_help_html()
 
 **Updated Languages:**
 - [#016] Added new strings to English en_US language file.
