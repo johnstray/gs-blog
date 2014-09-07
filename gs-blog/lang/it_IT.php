@@ -332,5 +332,5 @@ Si comporter&agrave; come se si codifica direttamente dal plugin stesso. I dati 
   'HTACCESS_1' => "blocca l'accesso diretto ai files XML!",
   'HTACCESS_2' => 'Generalmente RewriteBase è \'/\', ma puoi sostituirla con il percorso della tua sottodirectory',
   'HTACCESS_3' => 'IMPORTANTE -> se il tuo sito è posizionato in una sottocartella devi cambiarla in modo che punti ad essa (es: /sottocartella/)',
-  'ADDED' => 'Aggiunto'
+  'ADDED' => 'Aggiunto',
 );
