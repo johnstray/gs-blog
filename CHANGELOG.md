@@ -25,15 +25,15 @@
 - [#017] Cleaned up functions and comments in adminFunctions.php
 - [#020] Cleaned up functions and comments in frontEndFunctions.php
 - [#019] Moved some HTML sections of the code to separate files in 'html' folder to make for much easier reading and modification of code.
-- [#028] Removed redundant function - showAdminNav()
-- [#028] Consolidated class files into single folder and removed duplicate inclusion function.
 - [#028] Cleaned up functions and comments in common.php
 - [#027] Removed redundant CodeMirror files.
 - [#020] Moved RSS Auto-Importer functions into it's own file.
-- [#019] Removed redundant function - blog_page_help_html()
 
 **Updated Languages:**
 - [#016] Added new strings to English en_US language file.
+- [#026] Added new strings to Russian ru_RU language file.
+- [#025] Added new strings to Italian it_IT language file.
+- [#024] Added new strings to Spanish es_ES language file.
 
 ### Version 3.2.4
 **Bug Fixes:**
