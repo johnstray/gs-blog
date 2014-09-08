@@ -329,5 +329,5 @@ $i18n = array(
   'HTACCESS_1' => 'bloque el acceso directo a los archivos XML - ellos contienen todos los datos!',
   'HTACCESS_2' => 'Usualmente RewriteBase es sólo \'/\', pero reemplázalo con la ruta de tu subdirectorio',
   'HTACCESS_3' => 'IMPORTANTE -> si tu sitio está ubicado en un subdirectorio, necesitas cambiarlo para reflejarlo (eg: /subfolder/)',
-  'ADDED' => 'Añadido'
+  'ADDED' => 'Añadido',
 );

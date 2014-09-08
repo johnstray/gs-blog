@@ -47,7 +47,7 @@ function blog_display_posts() {
 			case (isset($_GET['import'])) : // RSS Auto-Importer
 				auto_import(); // Let the RSS Auto-Importer do its thing
 				break;
-			default : // None of the above? 
+			default : // None of the above?
 				show_all_blog_posts(); // Lets just show all the posts then
 				break;
 		}
@@ -73,30 +73,30 @@ function show_blog_post($slug, $excerpt=false) {
   $Blog = new Blog; // Prepare the Blog class
   $post = getXML($slug); // Get XML data of post
   
-  if(strtotime($post->date) <= time()) {return false;} // Is this a future post?
+  if(strtotime($post->date) >= time()) {return false;} // Is this a future post?
   
   # Prepare the array of information available to the template.
   $p = array(); // Init the array for the template
-  $p['title'] = $post->title; // Title of the post
+  $p['title'] = (string) $post->title; // Title of the post
   $p['posturl'] = $Blog->get_blog_url('post').$post->slug; // URL of the post
   $p['date'] = strtotime($post->date); // UNIX timestamp of post
-  $p['author'] = $post->author; //Author of the post
+  $p['author'] = (string) $post->author; //Author of the post
   $p['categoryurl'] = $Blog->get_blog_url('category'); // Category base URL
   $p['categories'] = explode(',',$post->category); // Categories the post is in
   $p['thumburl'] = $SITEURL.'data/uploads/'.$post->thumbnail; // Thumbnail URL
   $p['tagsurl'] = $Blog->get_blog_url('tag'); // Tags base URL
   $p['tags'] = explode(',',$post->tags); // Tags applied to the post
-  
+
   # Determine if we should be showing an excerpt or full post.
   if(($excerpt == false) || (($excerpt == true) && ($blogSettings['postformat'] == 'Y'))) {
     $p['content'] = html_entity_decode($post->content); // Get the full contents of the post
   } elseif(($excerpt == true) && ($blogSettings['postformat'] == 'N')) { // It's an excerpt...
     $el = (empty($blogSettings['excerptlength']) ? 250 : $blogSettings['excerptlength']); // Length?
     $p['content'] = $Blog->create_excerpt(html_entity_decode($post->content),0,$el); // Create excerpt
-  } else {return false;}
+  } else {echo 'Uh oh! Something went wrong!';}
   
   # Lets load the template now and let it put all this together.
-  $template = (empty($blogSettings['template']) ? 'innovation' : $blogSettings['template']);
+  $template = (empty($blogSettings['template']) ? 'original' : $blogSettings['template']);
   require_once(BLOGPLUGINFOLDER.'templates/'.$template.'.php');
 }
 
@@ -295,7 +295,6 @@ function show_blog_tag($tag) {
 function show_all_blog_posts() {
 
 	$Blog = new Blog; // Create a new instance of the Blog class
-  
 	if(isset($_GET['page'])) { // If a specific page is required...
 		$page = $_GET['page']; // What page do we want?
 	} else { // No page given?
@@ -338,7 +337,6 @@ function show_posts_page($index=0) {
 	GLOBAL $blogSettings; // Declare GLOBAL variables
 	$Blog = new Blog; // Create a new instance of the Blog class
 	$posts = $Blog->listPosts(true, true); // Get the list of posts.
-  
 	if(!empty($posts)) { // If we have posts to display...
 		$pages = array_chunk($posts, intval($blogSettings["postperpage"]), TRUE); // Split posts onto multiple pages
 		if (is_numeric($index) && $index >= 0 && $index < sizeof($pages)) { // What page should we show?
@@ -430,7 +428,7 @@ function get_blog_title($echo=true) {
 		}
 	}
 	$myVar = strip_tags(strip_decode($title)); // Clean the title variable
-  ($echo ? echo $myVar : return $myVar); // Echo or return as per argument
+  if($echo){echo $myVar;}else{return $myVar;} // Echo or return as per argument
 }
 
 /**-------------------------------------------------------------------------------------------------
@@ -444,7 +442,7 @@ function set_post_description() {
 	GLOBAL $metad, $post, $blogSettings; // Declare GLOBAL variables
 	$Blog = new Blog; // Create a new instance of the Blog class
   
-	if($blogSettings["postdescription"] == 'Y' && isset($post)) { // Should we change the meta desc?
+	if((isset($_GET['id'])) && ($_GET['id'] == $blogSettings['blogurl']) && (isset($_GET['post']))) {
 		$excerpt_length = ($blogSettings["excerptlength"] == '') ? 150 : $blogSettings["excerptlength"];
 		$metad = $Blog->create_excerpt(html_entity_decode($post->content), 0, $excerpt_length);
 	}
