@@ -2,7 +2,7 @@
 /**
  * Spanish Language File for GetSimple Blog
  * 
- * Last modified: 1 June 2014 - Version 3.2.2
+ * Last modified: 7 September 2014 - Version 3.3.0
  * Compiled by: ferchosj
  */
 $i18n = array(
