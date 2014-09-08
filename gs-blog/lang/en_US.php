@@ -1,4 +1,10 @@
 <?php if(!defined('IN_GS')){die('You cannot load this file directly!');} // Security Check
+/**
+ * English (US) Language File for GetSimple Blog
+ * 
+ * Last modified: 8 September 2014 - Version 3.3.0
+ * Compiled by: johnstray2001
+ */
 $i18n = array(
 	'PLUGIN_TITLE' 			=> "GetSimple Blog",
 	'PLUGIN_DESC' 			=> "A simple and easy to use blog/news feed for GetSimple.",
