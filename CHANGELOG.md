@@ -34,6 +34,7 @@
 - [#026] Added new strings to Russian ru_RU language file.
 - [#025] Added new strings to Italian it_IT language file.
 - [#024] Added new strings to Spanish es_ES language file.
+- [#041] New Polish pl_PL language file added.
 
 ### Version 3.2.4
 **Bug Fixes:**
