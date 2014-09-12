@@ -196,7 +196,7 @@ function get_blog_custom_fields_list($class='', $count=0, $customField=null, $ar
             <option value="checkbox" <?php echo $customField['type']=='checkbox' ? 'selected="selected"' : ''; ?>><?php i18n(BLOGFILE.'/CHECKBOX'); ?></option>
             <option value="textarea" <?php echo $customField['type']=='textarea' ? 'selected="selected"' : ''; ?>><?php i18n(BLOGFILE.'/WYSIWYG_EDITOR'); ?></option>
             <option value="title" <?php echo $customField['type']=='title' ? 'selected="selected"' : ''; ?>><?php i18n(BLOGFILE.'/TITLE'); ?></option>
-            <option value="hidden">Hidden Field</option>
+            <option value="hidden" <?php echo $customField['type']=='hidden' ? 'selected="selected"' : ''; ?>><?php i18n(BLOGFILE.'/HIDDEN_FIELD'); ?></option>
           </select>
           <textarea class="text" style="width:170px;height:50px;padding:2px;<?php echo $customField['type'] != 'dropdown' ? 'display:none' : ''; ?>" name="cf_<?php echo $area.$count; ?>_options"><?php echo $options; ?></textarea>
         </td>

@@ -4,7 +4,7 @@
 
 	<h2 style="font-size:16px;"><?php i18n(BLOGFILE.'/FRONT_END_FUNCTIONS'); ?></h2>
 	<p>
-		<label><?php i18n(BLOGFILE.'/HELP_CATEGORIES'); ?><?php i18n(BLOGFILE.'/RSS_LOCATION'); ?>:</label>
+		<label><?php i18n(BLOGFILE.'/HELP_CATEGORIES'); ?>:</label>
 		<?php highlight_string('<?php show_blog_categories(); ?>'); ?>
 	</p>
 	<p>

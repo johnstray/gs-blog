@@ -330,4 +330,6 @@ $i18n = array(
   'HTACCESS_2' => 'Usually RewriteBase is just \'/\', but replace it with your subdirectory path',
   'HTACCESS_3' => 'IMPORTANT -> if your site is located in subfolder you need to change this to reflect (eg: /subfolder/)',
   'ADDED' => 'Added',
+  // Added in Version 3.3.1
+  'HIDDEN_FIELD' => 'Hidden Field',
 );
