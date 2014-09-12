@@ -180,5 +180,5 @@
 - Fixed Read More links on post excerpts. Previously the link was empty.
 - Fixed default values not showing in custom fields when creating or editing a post.
 - Removed <ul> tags from Archive functions to bring it in line with the rest of the plugin and the standard list format used in GetSimple. You now need to provide your own <ul> tags and apply attributes as needed. 
-- Fixed improperly closed <strong> tags on Help admin page.
+- Fixed improperly closed strong tags on Help admin page.
 - Fixed error "Trying to get property of non-object in frontEndFunctions.php on line 671".
