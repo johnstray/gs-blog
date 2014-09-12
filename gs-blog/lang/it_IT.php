@@ -312,7 +312,7 @@ Si comporter&agrave; come se si codifica direttamente dal plugin stesso. I dati 
 'CATEGORIES_BUTTON' => 'Categorie',
 'UPDATE_BUTTON' => 'Controlla Aggiornamento',
 'HELP_BUTTON' => 'Aiuto',
-'BLOG_TAB_BUTTON' => 'B<em>l</em>og'
+'BLOG_TAB_BUTTON' => 'B<em>l</em>og',
 'VERSION_STATUS' => "Versione Plugin Stato",
 'VERSION_STATUS_DESC' => "Assicurarsi che si sta eseguendo l'ultima versione del GS Blog plug-in modo da poter beneficiare delle funzionalità più recenti.",
 // Added Version 3.2.1
