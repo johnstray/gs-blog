@@ -1,5 +1,10 @@
 ## Changelog
 
+### Version 3.3.1
+**Bug Fixes:**
+- [#039] Fixed runaway string on Help page
+- [#038] Fixed hard coded English string in Custom Fields management.
+
 ### Version 3.3.0
 **Back End (Admin) UI Improvements:**
 - [#003] Implemented selectable layout templates system
