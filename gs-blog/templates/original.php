@@ -6,16 +6,15 @@
        Scoped stylesheets are virtually backwards compatible with most browsers.
   -->
   <style scoped>
-    .blog_post_thumbnail {&#xD;
-      width:200px;&#xD;
-      height:auto;&#xD;
-      float:left;&#xD;
-      padding-right:10px;&#xD;
-      padding-bottom:10px;&#xD;
-    }&#xD;
-    &#xD;
-    .blog_post_container {&#xD;
-      clear:both;&#xD;
+    .blog_post_thumbnail {
+      width:200px;
+      height:auto;
+      float:left;
+      padding-right:10px;
+      padding-bottom:10px;
+    }
+    .blog_post_container {
+      clear:both;
     }	
   </style>
   

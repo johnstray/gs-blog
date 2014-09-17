@@ -97,7 +97,7 @@ function show_blog_post($slug, $excerpt=false) {
   
   # Lets load the template now and let it put all this together.
   $template = (empty($blogSettings['template']) ? 'original' : $blogSettings['template']);
-  require_once(BLOGPLUGINFOLDER.'templates/'.$template.'.php');
+  include(BLOGPLUGINFOLDER.'templates/'.$template.'.php');
 }
 
 /**-------------------------------------------------------------------------------------------------
