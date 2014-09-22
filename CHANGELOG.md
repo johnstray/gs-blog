@@ -2,6 +2,9 @@
 **Bug Fixes:**
 - [#039] Fixed runaway string on Help page
 - [#038] Fixed hard coded English string in Custom Fields management.
+- [#043] Fixed syntax error in rss.php
+- [#044] Fixed only 1 blog post showing on main frontend page
+- [#045] Fixed RSSBody generation method. Now uses create_excerpt function instead. HTML characters shouldn't show up in there now.
 
 ### Version 3.3.0
 **Back End (Admin) UI Improvements:**
