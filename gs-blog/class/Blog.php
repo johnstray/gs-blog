@@ -831,13 +831,14 @@ class Blog
         $blog_post = simplexml_load_file($post['filename']);
         $RSSDate    = $blog_post->date;
         $RSSTitle   = $blog_post->title;
-        $RSSBody 	= html_entity_decode(str_replace("&nbsp;", " ", substr(htmlspecialchars(strip_tags($blog_post->content)),0,200)));
+        // $RSSBody 	= html_entity_decode(str_replace("&nbsp;", " ", substr(htmlspecialchars(strip_tags($blog_post->content)),0,200)));
+        $RSSBody = $this->create_excerpt($blog_post->content,0,200);
         $ID 		= $blog_post->slug;
         $RSSString .= "<item>\n";
         $RSSString .= "\t  <title>".$RSSTitle."</title>\n";
         $RSSString .= "\t  <link>".$this->get_blog_url('post').$ID."</link>\n";
         $RSSString .= "\t  <guid>".$this->get_blog_url('post').$ID."</guid>\n";
-        $RSSString .= "\t  <description>".htmlspecialchars($RSSBody)."</description>\n";
+        $RSSString .= "\t  <description>".$RSSBody."</description>\n";
         if(isset($blog_post->category) and !empty($blog_post->category) and $blog_post->category!='') 
         {
           $RSSString .= "\t  <category>".$blog_post->category."</category>\n";
