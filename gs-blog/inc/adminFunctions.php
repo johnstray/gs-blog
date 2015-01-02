@@ -1,8 +1,8 @@
 <?php if(!defined('IN_GS')){die('You cannot load this file directly!');} // Security Check
 /**
- * @file: frontEndFunctions.php
+ * @file: adminFunctions.php
  * @package: GetSimple Blog [plugin]
- * @action: This file contains all the functions required for displaying the blog.
+ * @action: Administration
  * @author: John Stray [https://www.johnstray.id.au/]
  */
  
@@ -18,14 +18,6 @@ function blog_admin_controller() {
 	$Blog = new Blog;
 	getBlogUserPermissions();
 	GLOBAL $blogUserPermissions, $SITEURL;
-  
-	if(!isset($_GET['update'])) {
-		$update = blog_version_check();
-		if($update[0] == 'current') {$ucolor = '#308000';}
-		elseif($update[0] == 'update') {$ucolor = '#FFA500';}
-		elseif($update[0] == 'beta') {$ucolor = '#2B5CB3';}
-		else{$ucolor = '#D94136';}
-	} else {$ucolor = '#777777';}
 
 	if(isset($_GET['edit_post']) && $blogUserPermissions['blogeditpost'] == true) {
 		editPost($_GET['edit_post']);
