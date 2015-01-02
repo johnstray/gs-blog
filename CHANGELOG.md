@@ -1,3 +1,8 @@
+### Version 3.3.2
+**Bug Fixes:**
+- [#050] Removed obsolete IF statement related to versionCheck. This may have been the cause of the slowness!
+- [#050] Updated version number definition. I forgot it again...
+
 ### Version 3.3.1
 **Bug Fixes:**
 - [#039] Fixed runaway string on Help page
