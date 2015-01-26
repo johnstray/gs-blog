@@ -616,7 +616,11 @@ class Blog
 		global $SITEURL, $PRETTYURLS;
 		$blogurl = $this->getSettingsData("blogurl");
 		$data = getXML(GSDATAPAGESPATH . $blogurl . '.xml');
-		$url = find_url($blogurl, $data->parent);
+		if(function_exists('find_i18n_url')) {
+      			$url = find_i18n_url($blogurl, $data->parent);
+    		} else {
+      			$url = find_url($blogurl, $data->parent);
+    		}
 
 		if($query) 
 		{
