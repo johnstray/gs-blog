@@ -23,7 +23,7 @@
        kept purely for those that actually used it. Personally, I HATE ADVERTS!
   -->
   <div class="blog_all_posts_ad ad_top">
-    <?php echo $blogSettings["addata"]; ?>
+    <?php if(!empty($blogSettings["addata"])){echo $blogSettings["addata"];} ?>
   </div>
   
   <!-- Blog post title
@@ -86,7 +86,7 @@
        kept purely for those that actually used it. Personally, I HATE ADVERTS!
   -->
   <div class="blog_all_posts_ad ad_bottom">
-    <?php echo $blogSettings["addata"]; ?>
+    <?php if(!empty($blogSettings["addata"])){echo $blogSettings["addata"];} ?>
   </div>
   
 </div>
