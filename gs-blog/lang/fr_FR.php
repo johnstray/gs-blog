@@ -122,7 +122,7 @@ $i18n = array(
 	'DATA_BLOG_DIR_ERR' 		=> "The data/blog_posts folder could not be created!", 
 	'DATA_BLOG_DIR_ERR_HINT' 	=> "You are going to have to create this directory yourself for the plugin to work properly", 
 	'DATA_BLOG_CATEGORIES' 		=> "data/other/blog_categories.xml File Successfully Created", 
-	'DATA_BLOG_CATEGORIES_ERR	=> "data/other/blog_categories.xml file could not be created!", 
+	'DATA_BLOG_CATEGORIES_ERR'	=> "data/other/blog_categories.xml file could not be created!", 
 	'DATA_BLOG_RSS' 		=> "data/other/blog_rss.xml File Successfully Created", 
 	'DATA_BLOG_RSS_ERR' 		=> "The data/other/blog_rss.xml file could not be created!",
 	//ADDED VERSION 1.1 
