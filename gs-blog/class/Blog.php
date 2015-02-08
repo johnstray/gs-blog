@@ -307,7 +307,7 @@ class Blog
 		} 
 		else
 		{
-			$date = date('m/d/Y h:i:s a', time());
+			$date = date(i18n_r(BLOGFILE.'/DATE_FORMAT'), time());
 		}
 		if($post_data['tags'] != '')
 		{

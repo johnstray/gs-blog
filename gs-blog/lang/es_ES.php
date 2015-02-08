@@ -6,6 +6,9 @@
  * Compiled by: ferchosj
  */
 $i18n = array(
+  'DATE_FORMAT'       => 'm/d/Y h:i:s a',       // Primary date format
+  'DATE_DISPLAY'      => 'F jS, Y',             // Date format for front-end display
+  'DATE_ARCHPRE'      => 'F Y',                 // Date format for Archive Pre-Title
   'PLUGIN_TITLE' => "GetSimple Blog",
   'PLUGIN_DESC' => "Un blog/noticiero simple de usar para GetSimple.",
   'PLUGIN_SIDE' => "Administrador de Blog",
