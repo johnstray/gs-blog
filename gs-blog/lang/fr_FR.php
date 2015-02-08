@@ -3,7 +3,7 @@
  * French Language File for GetSimple Blog
  * 
  * Last modified: 15 September 2014 - Version 3.3.1
- * Compiled by: madvik
+ * Compiled by: madvik / jeckyl
  */
 $i18n = array(
 	'PLUGIN_TITLE' 			=> "GetSimple Blog",
