@@ -1,7 +1,27 @@
 ### Version 3.3.2
 **Bug Fixes:**
-- [#050] Removed obsolete IF statement related to versionCheck. This may have been the cause of the slowness!
-- [#050] Updated version number definition. I forgot it again...
+- [#057] Fixed language setting not being available to language based functions. The language string is now stored in the language files and loaded from there instead of settings.
+- [#054] Fixed Advertising code in 'Original' theme causing php warning because the setting wasn't available in fresh installs.
+- [#051] Fixed Hierarchical URLs not supported by i18n plugin. A function was updated to use i18n's `find_i18n_url` instead of the core `find_url`
+- [#050] Removed obsolete `IF` statement related to versionCheck. This may have been the cause of the slowness!
+- [#000] Updated version number definition. I forgot it again...
+
+**Front End UI Improvements:**
+- [#056] Image thumbnail paths separated into parts to allow for easier customization in the layout. `IF` statement added to check if an image is included with the post or not.
+- [#055] Removed theme layouts and converted to using 2 include files for layout generation. You can customize these as needed.
+- [#029] Better handling of date/time formats for different languages. Format string now stored in language file.
+
+**Code Changes (Plugin Compatibility):**
+- [#011] Added 2 actions to allow for compatibility with other plugins, such as 'Auto-open Page Options'.
+
+**Updated Languages:**
+- [#000] Added English (British) Language file to enable date formats for this region.
+- [#000] Updated English (US) language file with new strings and removed old strings.
+- [#000] Updated French (FR) language file with new strings and removed old strings.
+- [#000] Updated Spanish (ES) language file with new strings and removed old strings.
+- [#000] Updated Italian (IT) language file with new strings and removed old strings.
+- [#000] Updated Polish (PL) language file with new strings and removed old strings.
+- [#000] Updated Russian (RU) language file with new strings and removed old strings.
 
 ### Version 3.3.1
 **Bug Fixes:**
@@ -21,7 +41,7 @@
 - [#021] Updated FontAwesome version to 4.2.0 and changed `$media` from 'screen' to 'print'.
 - [#023] Updated website address in plugin registration
 
-**Font End UI Improvements:**
+**Front End UI Improvements:**
 - [#003] Implemented selectable layout templates system
   - Re-wrote `show_blog_post()` function from scratch. Old: 131 lines, New: 31 lines.
   - Created 1 layout: Original. More will be available in future bugfix releases.
