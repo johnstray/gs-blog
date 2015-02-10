@@ -71,7 +71,7 @@ class Blog
 	clear:both;&#xD;
 }					';
 			 $settings_array = array('blogurl' => "index",
-									 'lang' => "en_US",
+									 'lang' => i18n_r(BLOGFILE.'/LANGUAGE_CODE'), // Changed here just in case something else relies on this.
 									 'excerptlength' => '350',
 									 'postformat' => 'N',
 									 'postperpage' => '8',
@@ -242,6 +242,9 @@ class Blog
 			foreach($settingsData as $settingsNode => $settingsNodeValue)
 			{
 				$settingsArray[$settingsNode] = (string) $settingsNodeValue;
+        // Get the Language Code from the loaded language file instead of using storred settings.
+        // This allows for the language setting to be constantly up to date without the need to save settings to update.
+        $settingsArray['lang'] = (string) i18n_r(BLOGFILE.'/LANGUAGE_CODE');
 			}
 			return $settingsArray;
 		}

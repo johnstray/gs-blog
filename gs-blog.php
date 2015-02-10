@@ -14,14 +14,9 @@ define('BLOGEXTENDID','810');
 define('BLOGVERSION','3.3.2');
 require_once(BLOGFILE.'/inc/common.php');
 
-# add in this plugin's language file
-if(file_exists(BLOGSETTINGS)) {
-	$settings_lang = getXML(BLOGSETTINGS);
-	$GSBLOGLANG = $settings_lang->lang;
-} else {
-	$GSBLOGLANG = "en_US";
-}
+# Setup languages and language settings.
 i18n_merge(BLOGFILE) || i18n_merge(BLOGFILE, "en_US");
+define('BLOGLANGUAGE',i18n_r(BLOGFILE.'/LANGUAGE_CODE'));
 
 # register plugin
 register_plugin(
