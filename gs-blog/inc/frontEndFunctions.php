@@ -97,8 +97,13 @@ function show_blog_post($slug, $excerpt=false) {
   } else {echo 'Uh oh! Something went wrong!';}
   
   # Lets load the template now and let it put all this together.
-  $template = (empty($blogSettings['template']) ? 'original' : $blogSettings['template']);
-  include(BLOGPLUGINFOLDER.'templates/'.$template.'.php');
+  if(isset($_GET['post'])) {
+    include(BLOGPLUGINFOLDER.'inc/layout-post.php');
+    return true;
+  } else {
+    include(BLOGPLUGINFOLDER.'inc/layout-list.php');
+    return true;
+  }
 }
 
 /**-------------------------------------------------------------------------------------------------

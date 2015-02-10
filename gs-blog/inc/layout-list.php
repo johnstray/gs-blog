@@ -1,4 +1,4 @@
-<div class="blog_post_container">
+<div class="blog_list_container">
 
   <!-- HTML5 Scoped StyleSheet
        Add any css styles that you require to this style declaration. A scoped
@@ -13,18 +13,10 @@
       padding-right:10px;
       padding-bottom:10px;
     }
-    .blog_post_container {
+    .blog_list_container {
       clear:both;
     }	
   </style>
-  
-  <!-- Advertising Code - Top
-       Insert your advertising code here, such as Google AdSense, etc. This was
-       kept purely for those that actually used it. Personally, I HATE ADVERTS!
-  -->
-  <div class="blog_all_posts_ad ad_top">
-    <?php if(!empty($blogSettings["addata"])){echo $blogSettings["addata"];} ?>
-  </div>
   
   <!-- Blog post title
        Only show the title of the post when not on the post itself as there is a
@@ -51,9 +43,11 @@
        This is the thumbnail for the post. It should be wrapped in an <a> linking to the full post.
        Images are currently (v3.3.0) stored in the '/data/uploads' folder.
   -->
-  <a href="<?php echo $p['posturl']; ?>">
-    <img src="<?php echo $p['thumburl']; ?>" class="blog_post_thumbnail" />
-  </a>
+  <?php if(!empty($p['thumbnail'])) { ?>
+    <a href="<?php echo $p['posturl']; ?>">
+      <img src="<?php echo $p['thumburl'].$p['thumbnail']; ?>" class="blog_post_thumbnail" />
+    </a>
+  <?php } ?>
   
   <!-- Post content
        This is where the content of the post will go. This will output the excerpt on the main page
@@ -72,21 +66,9 @@
   -->
   <p class="blog_tags">
     <b><?php i18n(BLOGFILE.'/TAGS'); ?> :</b>
-    <?php echo $p['tags'][0]; ?>
+    <?php foreach ($p['tags'] as $tag) { ?>
+      <a href="<?php echo $p['tagsurl'].$tag; ?>"><?php echo $tag; ?></a>,&nbsp;
+    <?php } ?>
   </p>
-  
-  <!-- The stupid Go-Back link
-       This is that stupid Go-Back link that a few people have complained about. I think that it
-       should probably be removed, but I've left it in this template for historical reasons.
-  -->
-  <p class="blog_go_back"><a href="javascript:history.back()">&laquo; <?php i18n(BLOGFILE.'/GO_BACK'); ?></a></p>
-  
-  <!-- Advertising Code - Bottom
-       Insert your advertising code here, such as Google AdSense, etc. This was
-       kept purely for those that actually used it. Personally, I HATE ADVERTS!
-  -->
-  <div class="blog_all_posts_ad ad_bottom">
-    <?php if(!empty($blogSettings["addata"])){echo $blogSettings["addata"];} ?>
-  </div>
   
 </div>
