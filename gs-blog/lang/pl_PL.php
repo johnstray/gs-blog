@@ -329,7 +329,6 @@ $i18n = array(
 	'SETTINGS_SAVE_OK' => 'Ustawienia zapisane .',
 	'SETTINGS_SAVE_ERROR' => 'Nie udało się zapisać ustawień!',
 	'AUTO_IMPORTER' => 'Autoimporter',
-	'LAYOUT_TEMPLATE' => 'Szablon układu',
 	'HTACCESS_1' => 'blokuje bezpośredni dostęp do plików XML - w nich znajdują się wszystkie dane!'."\n\n",
 	'HTACCESS_2' => 'Zwykle dyrektywa <i>RewriteBase</i> zawiera tylko \'/\', ale należy ją zmienić, jeśli zajdzie taka potrzeba.'."\n",
 	'HTACCESS_3' => 'WAŻNE -> jeśli twoja strona znajduje się w podfolderze, należy odpowiednio zmienić to ustawienie (przykładowo: /podfolder/)'."\n\n",

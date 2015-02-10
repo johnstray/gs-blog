@@ -329,7 +329,6 @@ $i18n = array(
   'SETTINGS_SAVE_OK' => 'Successfully saved settings!',
   'SETTINGS_SAVE_ERROR' => 'Could not save your settings!',
   'AUTO_IMPORTER' => 'Auto-Importer',
-  'LAYOUT_TEMPLATE' => 'Layout Template',
   'HTACCESS_1' => 'blocks direct access to the XML files - they hold all the data!',
   'HTACCESS_2' => 'Usually RewriteBase is just \'/\', but replace it with your subdirectory path',
   'HTACCESS_3' => 'IMPORTANT -> if your site is located in subfolder you need to change this to reflect (eg: /subfolder/)',

@@ -332,7 +332,6 @@ Si comporter&agrave; come se si codifica direttamente dal plugin stesso. I dati 
   'SETTINGS_SAVE_OK' => 'Impostazioni salvate!',
   'SETTINGS_SAVE_ERROR' => 'Non posso salvare le impostazioni!',
   'AUTO_IMPORTER' => 'Importazone automatica',
-  'LAYOUT_TEMPLATE' => 'Layout Template',
   'HTACCESS_1' => "blocca l'accesso diretto ai files XML!",
   'HTACCESS_2' => 'Generalmente RewriteBase è \'/\', ma puoi sostituirla con il percorso della tua sottodirectory',
   'HTACCESS_3' => 'IMPORTANTE -> se il tuo sito è posizionato in una sottocartella devi cambiarla in modo che punti ad essa (es: /sottocartella/)',

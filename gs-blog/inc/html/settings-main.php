@@ -35,14 +35,7 @@
   </div>
   <div class="rightsec">
     <p>
-      <label for="template"><?php i18n(BLOGFILE.'/LAYOUT_TEMPLATE'); ?>:</label>
-      <select name="template" class="text">
-        <?php foreach(blog_theme_layouts() as $layout) { 
-          $layout_f = ucwords(str_replace('_',' ',str_replace('-',' ',$layout)));
-          $sel = ($Blog->getSettingsData("template")==$layout ? TRUE : FALSE); ?>
-          <option value="<?php echo $layout; ?>"<?php if($sel){echo ' selected';} ?>><?php echo $layout_f; ?></option>
-        <?php } ?>
-      </select>
+
     </p>
   </div>
   <div class="clear"></div>

@@ -329,7 +329,6 @@ $i18n = array(
   'SETTINGS_SAVE_OK' => '¡La configuración ha sido exitosamente guardada!',
   'SETTINGS_SAVE_ERROR' => '¡No se pudo guardar su configuración!',
   'AUTO_IMPORTER' => 'Auto-Importador',
-  'LAYOUT_TEMPLATE' => 'Plantilla de Distribución',
   'HTACCESS_1' => 'bloque el acceso directo a los archivos XML - ellos contienen todos los datos!',
   'HTACCESS_2' => 'Usualmente RewriteBase es sólo \'/\', pero reemplázalo con la ruta de tu subdirectorio',
   'HTACCESS_3' => 'IMPORTANTE -> si tu sitio está ubicado en un subdirectorio, necesitas cambiarlo para reflejarlo (eg: /subfolder/)',
