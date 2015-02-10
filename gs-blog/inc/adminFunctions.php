@@ -207,6 +207,7 @@ function savePost() {
 		}
 		$savePost = $Blog->savePost($post_data);
 		$generateRSS = $Blog->generateRSSFeed();
+    exec_action('chagedata-save'); // Added to allow for compatibility with other plugins
 		if($savePost != false) {
 			echo '<div class="updated">'.i18n_r(BLOGFILE.'/POST_ADDED').'</div>';
 		} else {

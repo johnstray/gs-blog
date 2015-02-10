@@ -57,7 +57,8 @@
 			<input type="text" id="post-thumbnail" name="post-thumbnail" value="<?php echo $blog_data->thumbnail; ?>" style="width:130px;float:right;margin-top:12px !important;" />
 		</div>
 		<div class="clear"></div>
-		</div>
+    <?php exec_action('edit-extras'); // Added to allow for compatibility with other plugins ?>
+	</div>
 
 		<?php displayCustomFields('main'); ?>
 			<input name="post" type="submit" class="submit" value="<?php i18n(BLOGFILE.'/SAVE_POST'); ?>" />
