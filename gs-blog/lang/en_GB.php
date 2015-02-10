@@ -1,13 +1,13 @@
 <?php if(!defined('IN_GS')){die('You cannot load this file directly!');} // Security Check
 /**
- * English (US) Language File for GetSimple Blog
+ * English (British) Language File for GetSimple Blog
  * 
  * Last modified: 8 September 2014 - Version 3.3.0
  * Compiled by: johnstray2001
  */
 $i18n = array(
-  'LANGUAGE_CODE'     => 'en_US',               // ISO Language Code string
-  'DATE_FORMAT'       => 'm/d/Y h:i:s a',       // Primary date format
+  'LANGUAGE_CODE'     => 'en_GB',               // ISO Language Code string
+  'DATE_FORMAT'       => 'd/m/Y h:i:s a',       // Primary date format
   'DATE_DISPLAY'      => 'F jS, Y',             // Date format for front-end display
   'DATE_ARCHPRE'      => 'F Y',                 // Date format for Archive Pre-Title
 	'PLUGIN_TITLE' 			=> "GetSimple Blog",
@@ -23,7 +23,7 @@ $i18n = array(
 	'ALL_FAQ' 				=> ">All Posts",
 	'POST_SLUG'				=> "Slug/URL",
 	'POST_TAGS'				=> "Tags (separate tags with commas)",
-	'POST_DATE'				=> "Publish date (mm/dd/yyyy) and time (hh:mm:ss pm)",
+	'POST_DATE'				=> "Publish date (dd/mm/yyyy) and time (hh:mm:ss pm)",
 	'POST_PRIVATE'			=> "Post is private",
 	'POST_OPTIONS'			=> "Post Option",
 	'POST_CATEGORY'			=> "Assign This Post To A Category",
