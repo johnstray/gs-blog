@@ -336,4 +336,7 @@ Si comporter&agrave; come se si codifica direttamente dal plugin stesso. I dati 
   'HTACCESS_2' => 'Generalmente RewriteBase è \'/\', ma puoi sostituirla con il percorso della tua sottodirectory',
   'HTACCESS_3' => 'IMPORTANTE -> se il tuo sito è posizionato in una sottocartella devi cambiarla in modo che punti ad essa (es: /sottocartella/)',
   'ADDED' => 'Aggiunto',
+  ,
+  // Added in Version 3.3.1
+  'HIDDEN_FIELD' => 'Campo nascosto',
 );
