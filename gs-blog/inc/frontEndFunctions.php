@@ -98,10 +98,10 @@ function show_blog_post($slug, $excerpt=false) {
   
   # Lets load the template now and let it put all this together.
   if(isset($_GET['post'])) {
-    include(BLOGPLUGINFOLDER.'inc/layout-post.php');
+    include(BLOGPLUGINFOLDER.'layout-post.php');
     return true;
   } else {
-    include(BLOGPLUGINFOLDER.'inc/layout-list.php');
+    include(BLOGPLUGINFOLDER.'layout-list.php');
     return true;
   }
 }
