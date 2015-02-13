@@ -11,7 +11,7 @@ $i18n = array(
   'DATE_FORMAT'       => 'd/m/Y h:i:s a',       // Primary date format
   'DATE_DISPLAY'      => 'F jS, Y',             // Date format for front-end display
   'DATE_ARCHPRE'      => 'F Y',                 // Date format for Archive Pre-Title
-'PLUGIN_TITLE' => "Blog",
+  'PLUGIN_TITLE' => "Blog",
 'PLUGIN_DESC' => "Gestisci un blog",
 'PLUGIN_SIDE' => "Blog Manager",
 'WRITE_OK' => "File scritto correttamente",
@@ -175,7 +175,6 @@ $i18n = array(
 'CUSTOMFIELDS_TITLE' => "Campi personalizzati", 
 'CUSTOMFIELDS_VIEW' => "Configura campi personalizzati", 
 'DEFAULT_VALUE' => "Valore predefinito", 
-'DELETE' => "Cancella campo", 
 'DROPDOWN_BOX' => "Box Drop-down", 
 'GET_CUSTOM_FIELD_DESCR' => "visualizza il campo corrispondente della pagina corrente", 
 'LABEL' => "Etichetta", 
@@ -225,8 +224,7 @@ $i18n = array(
 'BLOG_PAGE_FORMAT_DATE_LABEL' => 'Formato Data',
 'BLOG_PAGE_AVAILABLE_FUNCTIONS' => 'Funzioni disponibili &amp; Aiuti:',
 'BLOG_PAGE_DESC_LINE_3' => 'Per accedere a un campo personalizzato puoi inserire qualcosa di simile a qui sotto',
-'BLOG_PAGE_DESC_LINE_2' => '
-Si comporter&agrave; come se si codifica direttamente dal plugin stesso. I dati dell&acute;articolo sono passati tramite oggetto.',
+'BLOG_PAGE_DESC_LINE_2' => 'Si comporter&agrave; come se si codifica direttamente dal plugin stesso. I dati dell&acute;articolo sono passati tramite oggetto.',
 'BLOG_PAGE_DESC_LINE_1' => 'Puoi usare html, php, xml e js in questo campo testo.',
 'BLOG_PAGE_DESC_TITLE' => 'Aiuto personalizzazione Pagina Blog',
 'CUSTOM_FIELDS_OPTIONS_AREA' => 'Area Opzioni',
@@ -336,7 +334,6 @@ Si comporter&agrave; come se si codifica direttamente dal plugin stesso. I dati 
   'HTACCESS_2' => 'Generalmente RewriteBase è \'/\', ma puoi sostituirla con il percorso della tua sottodirectory',
   'HTACCESS_3' => 'IMPORTANTE -> se il tuo sito è posizionato in una sottocartella devi cambiarla in modo che punti ad essa (es: /sottocartella/)',
   'ADDED' => 'Aggiunto',
-  ,
   // Added in Version 3.3.1
   'HIDDEN_FIELD' => 'Campo nascosto',
 );
