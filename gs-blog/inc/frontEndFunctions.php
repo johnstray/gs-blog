@@ -84,7 +84,7 @@ function show_blog_post($slug, $excerpt=false) {
   $p['categoryurl'] = $Blog->get_blog_url('category'); // Category base URL
   $p['categories'] = explode(',',$post->category); // Categories the post is in
   $p['thumburl'] = $SITEURL.'data/uploads/'; // Thumbnail URL
-  $p['thumbnail'] = $post->thumbnail; // Thumbnail Filename
+  $p['thumbnail'] = (string) $post->thumbnail; // Thumbnail Filename
   $p['tagsurl'] = $Blog->get_blog_url('tag'); // Tags base URL
   $p['tags'] = explode(',',$post->tags); // Tags applied to the post
 
