@@ -152,7 +152,6 @@ $i18n = array(
 'DISPLAY_DATE' => "Visualizza Data Articolo",
 'PREVIOUS_PAGE_TEXT' => "\"Pagina articoli precedenti\" Testo",
 'NEXT_PAGE_TEXT' => "\"Pagina seguente\" Testo",
-'POST_THUMBNAIL_LABEL' => "Carica miniatura",
 //ADDED VERSION 1.1.4
 'CSS_SETTINGS' => 'settaggi CSS',
 'DISPLAY_CSS' => 'Visualizza CSS',
@@ -162,9 +161,7 @@ $i18n = array(
 'CSS_POST_CONTENT_HINT' => 'include il contenuto dell&acute;articolo e la miniatura',
 //ADDED VERSION 1.1.5
 'RSS_FEED_NUM_POSTS' => '&num; di articoli nel Feed RSS',
-'CSS_SETTINGS' => 'Settaggi CSS',
 //ADDED VERSION 1.1.6
-'RSS_FEED' => 'Feed RSS',
 'DYNAMIC_RSS_LOCATION' => 'Dynamic RSS Feed Location (Genera Feed RSS al volo)',
 //ADDED VERSION 1.2
 'CUSTOM_FIELDS' => 'Campi personalizzati',
