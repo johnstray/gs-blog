@@ -218,7 +218,7 @@ function show_blog_archive($archive) {
 			}
 		}
 	} else { // We have no posts in this archive
-		echo i18n(BLOGFILE.'/NO_ARCHIVES'); // Let the user know
+		echo i18n(BLOGFILE.'/NO_POSTS'); // Let the user know
 	}
 }
 
@@ -393,7 +393,7 @@ function show_blog_navigation($index, $total, $count, $lastPostOfPage) {
 	  ?>
       <div class="left blog-next-prev-link">
         <a href="<?php echo $url . ($index+1); ?>">
-          &larr; <?php echo $blogSettings["nextpage"]; ?>
+          <?php i18n(BLOGFILE.'/NEXT_PAGE'); ?>
         </a>
       </div>
 	  <?php	
@@ -402,7 +402,7 @@ function show_blog_navigation($index, $total, $count, $lastPostOfPage) {
     ?>
       <div class="right blog-next-prev-link">
         <a href="<?php echo ($index > 1) ? $url . ($index-1) : substr($url, 0, -6); ?>">
-          <?php echo $blogSettings["previouspage"]; ?> &rarr;
+          <?php i18n(BLOGFILE.'/PREV_PAGE'); ?>
         </a>
       </div>
     <?php
