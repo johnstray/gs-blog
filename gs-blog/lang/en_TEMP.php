@@ -27,19 +27,37 @@ $i18n = array(
   'UPDATE_BUTTON'             =>  'Update Check',
   'HELP_BUTTON'               =>  'Help'
   
-  # Success / Error Notifications (Generic)
-  
+  # Generic Strings
+  'WRITE_OK'                  =>  'File successfully written!',
+  'EDIT_OK'                   =>  'File successfully modified!',
+  #'CANCEL'                    =>  'Cancel',
+  #'DELETE'                    =>  'Delete',
+  #'OR'                        =>  'Or',
+  #'LANGUAGE'                  =>  'Language',
   
   # 'Post Management' Strings
-  
+  'POST_ADDED'                =>  '',
+  'POST_ERROR'                =>  '',
+  'POST_DELETED'              =>  'Post successfully deleted!',
+  'POST_DELETE_ERROR'         =>  'Post could not be deleted!',
+  'BLOG_CREATE_EDIT_NO_TITLE' =>  '',
+  'BLOG_RETURN_TO_PREV_PAGE'  =>  '',
   
   # 'Category Management' Strings
+  'CATEGORY_ADDED'            =>  'Successfully added Category!',
+  'CATEGORY_ERROR'            =>  'Category could not be saved!',
   
   
   # 'RSS Auto-Importer' Strings
+  'FEED_ADDED'                =>  '',
+  'FEED_ERROR'                =>  '',
+  'FEED_DELETED'              =>  '',
+  'FEED_DELETE_ERROR'         =>  '',
   
   
   # 'Settings' Strings
+  'SETTINGS_SAVE_OK'          =>  '',
+  'SETTINGS_SAVE_ERROR'       =>  '',
   
   
   # 'Help' Strings

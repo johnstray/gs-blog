@@ -84,7 +84,7 @@ function blog_admin_controller() {
 			if($delete_post == true) {
 				echo '<div class="updated">'.i18n_r(BLOGFILE.'/POST_DELETED').'</div>';
 			} else {
-				echo '<div class="error">'.i18n(BLOGFILE.'/FEED_DELETE_ERROR').'</div>';
+				echo '<div class="error">'.i18n(BLOGFILE.'/POST_DELETE_ERROR').'</div>';
 			}
 		}
     #show_posts_admin
@@ -215,7 +215,7 @@ function savePost() {
 		}
 	} else {
 		echo '<div class="error">'.i18n_r(BLOGFILE.'/BLOG_CREATE_EDIT_NO_TITLE');
-		echo ' <a href="javascript:history.go(-1)">'.i18n_r(BLOGFILE.'/BLOG_RETURN_TO_PREVIOUS_PAGE').'</a>';
+		echo ' <a href="javascript:history.go(-1)">'.i18n_r(BLOGFILE.'/BLOG_RETURN_TO_PREV_PAGE').'</a>';
 		echo '</div>';
 	}
 }
