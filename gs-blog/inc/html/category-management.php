@@ -25,7 +25,7 @@
 	  <table class="highlight">
 	  <tr>
 	  <th><?php i18n(BLOGFILE.'/CATEGORY_NAME'); ?></th>
-	  <th><?php i18n(BLOGFILE.'/RSS_FEED'); ?></th>
+	  <th><?php i18n(BLOGFILE.'/CATEGORY_RSS_FEED'); ?></th>
 	  <th><?php i18n(BLOGFILE.'/DELETE'); ?></th>
 	  </tr>
 	  <?php

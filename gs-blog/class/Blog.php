@@ -88,8 +88,6 @@ class Blog
                    'displayauthor' => 'N',
                    'defaultauthor' => 'hidden',
                    'displaycategory' => 'N',
-									 'previouspage' => i18n_r(BLOGFILE.'/NEWER_POSTS'),
-									 'nextpage' => i18n_r(BLOGFILE.'/OLDER_POSTS'),
 									 'displaycss' => 'Y',
 									 'csscode' => $css_code,
 									 'rssfeedposts' => '10',
@@ -124,7 +122,7 @@ class Blog
 			$custom_fields_file = BLOGPLUGINFOLDER.'inc/reserved_blog_custom_fields.xml';
       		if(!copy($custom_fields_file, BLOGCUSTOMFIELDS))
       		{
-      			echo '<div class="error"><strong>Catastrophic ERROR!!!</strong> - You are going to need to copy the contents of the below file, save it as a new document namned "blog_custom_fields.xml" and then move it to the "'.GSDATAOTHERPATH.'" folder!<br/><strong>XML File To Copy:</strong> '.BLOGCUSTOMFIELDS.'</div>';
+      			echo '<div class="error"><strong>Catastrophic ERROR!!!</strong> - You are going to need to copy the contents of the below file, save it as a new document named "blog_custom_fields.xml" and then move it to the "'.GSDATAOTHERPATH.'" folder!<br/><strong>XML File To Copy:</strong> '.BLOGCUSTOMFIELDS.'</div>';
       		}
 		}
 	}
@@ -242,7 +240,7 @@ class Blog
 			foreach($settingsData as $settingsNode => $settingsNodeValue)
 			{
 				$settingsArray[$settingsNode] = (string) $settingsNodeValue;
-        // Get the Language Code from the loaded language file instead of using storred settings.
+        // Get the Language Code from the loaded language file instead of using stored settings.
         // This allows for the language setting to be constantly up to date without the need to save settings to update.
         $settingsArray['lang'] = (string) i18n_r(BLOGFILE.'/LANGUAGE_CODE');
 			}
@@ -408,7 +406,7 @@ class Blog
 	* 
 	* @param $category the category name
 	* @param $existing whether the category exists already
-	* @todo  use $existing param to edit a category instead of deleteing it. This would also need to go through and change the category for any posts using the edited category
+	* @todo  use $existing param to edit a category instead of deleting it. This would also need to go through and change the category for any posts using the edited category
 	* @return bool
 	*/  
 	public function saveCategory($category, $existing=false)
@@ -620,10 +618,10 @@ class Blog
 		$blogurl = $this->getSettingsData("blogurl");
 		$data = getXML(GSDATAPAGESPATH . $blogurl . '.xml');
 		if(function_exists('find_i18n_url')) {
-      			$url = find_i18n_url($blogurl, $data->parent);
-    		} else {
-      			$url = find_url($blogurl, $data->parent);
-    		}
+        $url = find_i18n_url($blogurl, $data->parent);
+    } else {
+        $url = find_url($blogurl, $data->parent);
+    }
 
 		if($query) 
 		{
@@ -663,9 +661,9 @@ class Blog
 	}
 
 	/** 
-	* Gets available blog plugin langauges
+	* Gets available blog plugin languages
 	* 
-	* @return array available langauges
+	* @return array available languages
 	*/  
 	public function blog_get_languages() 
 	{
@@ -857,7 +855,7 @@ class Blog
       $RSSString .= "\t  <title>There are no posts!</title>\n";
       $RSSString .= "\t  <link>".$this->get_blog_url('post')."</link>\n";
       $RSSString .= "\t  <guid>".$this->get_blog_url('post')."</guid>\n";
-      $RSSString .= "\t  <description>There are no posts available for this RSS feed. Please contact the website administrator for more information.</description>\n";
+      $RSSString .= "\t  <description>".i18n_r(BLOGFILE.'/RSS_FEED_NO_POSTS_DESC')."</description>\n";
       $RSSString .= "</item>\n";
     }
      
@@ -868,12 +866,12 @@ class Blog
 		{
 			if(!$fp = fopen(GSROOTPATH."rss.rss",'w'))
 			{
-				echo "Could not open the rss.rss file";
+				i18n(BLOGFILE.'/RSS_FILE_OPEN_FAIL');
 				exit();
 			}
 			if(!fwrite($fp,$RSSString))
 			{
-				echo "Could not write to rss.rss file";
+				i18n(BLOGFILE.'/RSS_FILE_WRITE_FAIL');
 				exit();
 			}
 			fclose($fp);

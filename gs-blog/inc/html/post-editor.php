@@ -5,11 +5,11 @@
 	  <?php
 	  if ($post_id == null)
 	  {
-	  	i18n(BLOGFILE.'/ADD_P');
+	  	i18n(BLOGFILE.'/ADD_NEW_POST');
 	  }
 	  else
 	  {
-	  	i18n(BLOGFILE.'/EDIT');
+	  	i18n(BLOGFILE.'/EDIT_EXISTING_POST');
 	  }
 	  ?>
 	</h3>
@@ -20,7 +20,7 @@
 			$url = $Blog->get_blog_url('post');
 			?>
 			<a href="<?php echo $url.$blog_data->slug; ?>" target="_blank">
-				<?php i18n(BLOGFILE.'/VIEW'); echo ' '; i18n(BLOGFILE.'/POST'); ?>
+        <?php echo i18n_r(BLOGFILE.'/VIEW_POST'); ?>
 			</a>
 			<?php
 		}
@@ -51,7 +51,7 @@
 				        	$('#post-thumbnail').attr('value', responseJSON.newFilename);
 				    	}
 
-			    }, '<?php i18n(BLOGFILE.'/POST_THUMBNAIL_LABEL'); ?>');
+			    }, '<?php i18n(BLOGFILE.'/UPLOAD_THUMBNAIL'); ?>');
 			    </script>
 			</div>
 			<input type="text" id="post-thumbnail" name="post-thumbnail" value="<?php echo $blog_data->thumbnail; ?>" style="width:130px;float:right;margin-top:12px !important;" />

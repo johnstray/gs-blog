@@ -9,7 +9,7 @@
 <h3 class="floated" style="float:left;"><?php i18n(BLOGFILE.'/BLOG_SETTINGS'); ?></h3>
 <div class="edit-nav">
   <p class="text 1">
-    <a href="load.php?id=<?php echo BLOGFILE; ?>&settings=rss"><?php i18n(BLOGFILE.'/AUTO_IMPORTER'); ?></a>
+    <a href="load.php?id=<?php echo BLOGFILE; ?>&settings=rss"><?php i18n(BLOGFILE.'/AUTOIMPORTER_BUTTON'); ?></a>
   </p>
   <div class="clear"></div>
 </div>
@@ -71,7 +71,7 @@
   <div class="clear"></div>
   <div class="rightsec">
     <p>
-      <label for="display_archives_post_count"><?php i18n(BLOGFILE.'/DISPLAY_POST_COUNT_ARCHIVES'); ?>:</label>
+      <label for="display_archives_post_count"><?php i18n(BLOGFILE.'/DISPLAY_POST_COUNT_ARCH'); ?>:</label>
       <input name="display_archives_post_count" type="radio" value="Y" <?php if ($Blog->getSettingsData("archivepostcount") == 'Y') echo 'checked="checked"'; ?> style="vertical-align: middle;" />
       &nbsp;<?php i18n(BLOGFILE.'/YES'); ?>
       <span style="margin-left: 30px;">&nbsp;</span>
