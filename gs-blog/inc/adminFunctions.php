@@ -219,21 +219,3 @@ function savePost() {
 		echo '</div>';
 	}
 }
-
-/**-------------------------------------------------------------------------------------------------
- * blog_theme_layouts()
- * Returns a list of layout templates for the blog
- * 
- * @return $list (array) List of available templates
- */
-function blog_theme_layouts() {
-
-  $files = array_filter(glob(BLOGPLUGINFOLDER.'templates/*.php'), 'is_file'); // Get the list of template files
-  $list = array(); // Prepare the $list array
-  
-  foreach ($files as $file) { // For each file in the list
-    array_push($list, pathinfo($file, PATHINFO_FILENAME)); // Get its name without path or extention
-  }
-  
-  return $list; // Return the list
-}
