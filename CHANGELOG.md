@@ -1,5 +1,6 @@
 ### Version 3.3.2
 **Bug Fixes:**
+- [#058] Variable `$p['thumbnail']` needed to be casted correctly because it was returning a `SimpleXMLObject` even when empty. This caused an `IF` statement in the layout operate incorrectly.
 - [#057] Fixed language setting not being available to language based functions. The language string is now stored in the language files and loaded from there instead of settings.
 - [#054] Fixed Advertising code in 'Original' theme causing php warning because the setting wasn't available in fresh installs.
 - [#051] Fixed Hierarchical URLs not supported by i18n plugin. A function was updated to use i18n's `find_i18n_url` instead of the core `find_url`
@@ -15,13 +16,14 @@
 - [#011] Added 2 actions to allow for compatibility with other plugins, such as 'Auto-open Page Options'.
 
 **Updated Languages:**
-- [#000] Added English (British) Language file to enable date formats for this region.
-- [#000] Updated English (US) language file with new strings and removed old strings.
-- [#000] Updated French (FR) language file with new strings and removed old strings.
-- [#000] Updated Spanish (ES) language file with new strings and removed old strings.
-- [#000] Updated Italian (IT) language file with new strings and removed old strings.
-- [#000] Updated Polish (PL) language file with new strings and removed old strings.
-- [#000] Updated Russian (RU) language file with new strings and removed old strings.
+- [#029] Added English (British) Language file to enable date formats for this region.
+- [#059] Add German (DE) Language file.
+- [#061] Updated English (US) language file with new strings and removed old strings.
+- [#061] Updated French (FR) language file with new strings and removed old strings.
+- [#035] Updated Spanish (ES) language file with new strings and removed old strings.
+- [#034] Updated Italian (IT) language file with new strings and removed old strings.
+- [#061] Updated Polish (PL) language file with new strings and removed old strings.
+- [#061] Updated Russian (RU) language file with new strings and removed old strings.
 
 ### Version 3.3.1
 **Bug Fixes:**
