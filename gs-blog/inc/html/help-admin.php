@@ -52,11 +52,11 @@
 		<?php highlight_string('<?php echo $post->content; ?></p>'); ?><br/><br/>
 	</p>
 
-	<h3><?php i18n(BLOGFILE.'/BLOG_PAGE_AVAILABLE_FUNCTIONS'); ?></h3>
+	<h3><?php i18n(BLOGFILE.'/BLOG_PAGE_AVAILABLE_FUNC'); ?></h3>
 	<ul>
 		<li>
-			<strong><?php i18n(BLOGFILE.'/BLOG_PAGE_FORMAT_DATE_LABEL'); ?>: </strong><?php highlight_string('<?php echo formatPostDate($post->date); ?>'); ?><br/>
-			<?php i18n(BLOGFILE.'/BLOG_PAGE_FORMAT_DATA_DESC'); ?><br/><br/>
+			<strong><?php i18n(BLOGFILE.'/BLOG_PAGE_FRMT_DATE_LABEL'); ?>: </strong><?php highlight_string('<?php echo formatPostDate($post->date); ?>'); ?><br/>
+			<?php i18n(BLOGFILE.'/BLOG_PAGE_FRMT_DATA_DESC'); ?><br/><br/>
 		</li>
 		<li>
 			<strong><?php i18n(BLOGFILE.'/BLOG_PAGE_GET_URL_TO_AREAS'); ?>: </strong><?php highlight_string('<?php $Blog->get_blog_url(\'post\'); ?>'); ?><br/>
@@ -71,34 +71,14 @@
 			</ul><br/>
 		</li>
 		<li>
-			<strong><?php i18n(BLOGFILE.'/BLOG_PAGE_ADD_THIS'); ?></strong>
-			<?php highlight_string('<?php addThisTool(); ?>'); ?>
-			<br/><br/>
-		</li>
-		<li>
-			<strong><?php i18n(BLOGFILE.'/BLOG_PAGE_SHARE_THIS'); ?>: </strong>
-			<?php highlight_string('<?php shareThisTool(); ?>'); ?>
-			<br/><br/>
-		</li>
-		<li>
-			<strong><?php i18n(BLOGFILE.'/BLOG_PAGE_DISQUS_COMMENTS'); ?>: </strong>
-			<?php highlight_string('<?php disqusTool(); ?>'); ?>
-			<br/><br/>
-		</li>
-		<li>
 			<strong><?php i18n(BLOGFILE.'/BLOG_PAGE_CREATE_EXCERPT'); ?>: </strong><br/>
 			<span style="font-size:10px;"><?php highlight_string('<?php echo $Blog->create_excerpt(html_entity_decode($post->content), 0, $excerpt_length); ?>'); ?></span><br/>
-			<?php i18n(BLOGFILE.'/BLOG_PAGE_CREATE_EXCERPT_DESC'); ?>
+			<?php i18n(BLOGFILE.'/BLOG_PAGE_EXCERPT_DESC'); ?>
 			<br/><br/>
 		</li>
 		<li>
 			<strong><?php i18n(BLOGFILE.'/BLOG_PAGE_DECODE_CONTENT'); ?>: </strong>
 			<?php highlight_string('<?php echo htmlspecialchars_decode($post->content); ?>'); ?>
-			<br/><br/>
-		</li>
-		<li>
-			<strong><?php i18n(BLOGFILE.'/BLOG_PAGE_ADD_DATA_LABEL'); ?>: </strong>
-			<?php highlight_string('<?php echo $Blog->getSettingsData("addata"); ?>'); ?>
 			<br/><br/>
 		</li>
 	</ul>
