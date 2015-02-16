@@ -195,7 +195,7 @@ $i18n = array(
   
   # Custom Fields Manager
   'CUSTOM_FIELDS'             =>  'Custom Fields',
-  'CUSOMFIELDS_DESCR'         =>  'This plugin allows you to specify custom fields which are '.
+  'CUSTOMFIELDS_DESCR'        =>  'This plugin allows you to specify custom fields which are '.
                                   'displayed when you edit a page.',
   'CUSTOM_FIELDS_OPTIONS_AREA'=>  'Options Area',
   'OPTIONS_AREA_DESCRP'       =>  '(Options: Custom fields will be displayed in the "Post '.
