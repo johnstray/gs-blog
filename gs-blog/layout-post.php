@@ -24,9 +24,9 @@
        The relevant settings have now been removed from the blog admin.
   -->
   <p class="blog_post_info">
-    <span class="blog_post_author"><?php i18n(BLOGFILE.'/BY'); ?> <?php echo $p['author']; ?></span>
-    <span class="blog_post_date"><?php i18n(BLOGFILE.'/ON'); ?> <?php echo date(i18n_r(BLOGFILE.'/DATE_DISPLAY'), $p['date']); ?></span>
-    <span class="blog_post_category"><?php i18n(BLOGFILE.'/IN'); ?> <?php echo $p['categories'][0]; ?></span>
+    <?php if(!empty($p['author'])){?><span class="blog_post_author"><?php i18n(BLOGFILE.'/BY'); ?> <?php echo $p['author']; ?></span><?php } ?>
+    <?php if(!empty($p['date'])){?><span class="blog_post_date"><?php i18n(BLOGFILE.'/ON'); ?> <?php echo date(i18n_r(BLOGFILE.'/DATE_DISPLAY'), $p['date']); ?></span><?php } ?>
+    <?php if(!empty($p['categories'][0])){?><span class="blog_post_category"><?php i18n(BLOGFILE.'/IN'); ?> <?php echo $p['categories'][0]; ?></span><?php } ?>
   </p>
   
   <!-- Post thumbnail
