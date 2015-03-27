@@ -24,6 +24,7 @@
 - [#034] Updated Italian (IT) language file with new strings and removed old strings.
 - [#061] Updated Polish (PL) language file with new strings and removed old strings.
 - [#061] Updated Russian (RU) language file with new strings and removed old strings.
+- [#062 - #066] Layout of language files changed so that they are much neater and easier to read.
 
 ### Version 3.3.1
 **Bug Fixes:**
