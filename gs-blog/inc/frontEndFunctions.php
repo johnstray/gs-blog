@@ -112,21 +112,32 @@ function show_blog_post($slug, $excerpt=false) {
  * 
  * @return void (void)
  */  
-function show_blog_categories() {
+function show_blog_categories($echo=true) {
 	
   $Blog = new Blog; // Create a new instance of the Blog class
 	$categories = getXML(BLOGCATEGORYFILE); // Get the list of categories
 	$url = $Blog->get_blog_url('category'); // What's the URL for the categories page?
 	$main_url = $Blog->get_blog_url(); // The base URL for the blog.
   
-	if(!empty($categories)) { // If we have categories to display...
-		foreach($categories as $category) { // For each of the categories...
-			// Output a list item with a link to the category
-      echo '<li><a href="'.$url.$category.'">'.$category.'</a></li>';
-		}
-	} else { // We have no categories
-		echo "<li>".i18n(BLOGFILE.'/NO_CATEGORIES')."</li>"; // Let the user know
-	}
+  if ($echo) {
+    if(!empty($categories)) { // If we have categories to display...
+      foreach($categories as $category) { // For each of the categories...
+        // Output a list item with a link to the category
+        echo '<li><a href="'.$url.$category.'">'.$category.'</a></li>';
+      }
+    } else { // We have no categories
+      echo "<li>".i18n(BLOGFILE.'/NO_CATEGORIES')."</li>"; // Let the user know
+    }
+  } elseif(!$echo) {
+    $catout = array();
+    if(!empty($categories)) {
+      foreach($categories as $k => $category) {
+        $catout[$k]['name'] = $category;
+        $catout[$k]['link'] = $url.$category;
+      }
+    }
+    return $catout;
+  }
 }
 
 /**-------------------------------------------------------------------------------------------------
