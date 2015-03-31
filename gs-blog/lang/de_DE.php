@@ -192,6 +192,7 @@ $i18n = array(
   'PREV_PAGE'                 =>  'Previous Page &rarr;',
   'ARCHIVE_PRETITLE'          =>  'Blog Archive: ',
   'CATEGORY_PRETITLE'         =>  'Blog Category: ',
+  'RSS_FEED_NO_POSTS_DESC'    =>  'There are no posts to display in this feed!',
   
   # Custom Fields Manager
   'CUSTOM_FIELDS'             =>  'Custom Fields',

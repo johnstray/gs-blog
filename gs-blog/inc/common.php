@@ -1,4 +1,5 @@
-<?php if(!defined('IN_GS')){die('You cannot load this file directly!');} // Security Check
+<?php if(basename($_SERVER["SCRIPT_FILENAME"]) != "rss.php"){
+  if(!defined('IN_GS')){die('You cannot load this file directly!');}} // Security Check
 /**
  * @file: common.php
  * @package: GetSimple Blog [plugin]
@@ -57,7 +58,7 @@ foreach($incFiles as $incFile) {
 }
 
 /**-------------------------------------------------------------------------------------------------
- * Add Hooks & Filters. Register Scripts & Styles
+ * Add Hooks & Filters.
  */
 
 # Hooks & Filters
@@ -65,10 +66,6 @@ add_action('index-pretemplate', 'blog_display_posts');   // Displays posts on fr
 add_action('theme-header', 'includeRssFeed');            // Add RSS link to site header
 add_action('index-pretemplate', 'set_post_description'); // Place excerpt into meta description
 add_action('common', 'checkPermissions');                // Check what permission the user has
-
-# Scripts & Styles
-register_script('pluginManagementFA', $SITEURL.'plugins/'.BLOGFILE.'/js/pluginManagementFA.js', '1.0', TRUE);
-queue_script('pluginManagementFA', GSBACK);
 
 /**-------------------------------------------------------------------------------------------------
  * formatPostDate($date)

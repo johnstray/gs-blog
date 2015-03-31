@@ -192,6 +192,7 @@ $i18n = array(
   'PREV_PAGE'                 =>  'Pagina precedente &rarr;',
   'ARCHIVE_PRETITLE'          =>  'Archivio: ',
   'CATEGORY_PRETITLE'         =>  'Categoria: ',
+  'RSS_FEED_NO_POSTS_DESC'    =>  'There are no posts to display in this feed!',
   
   # Custom Fields Manager
   'CUSTOM_FIELDS'             =>  'Campi personalizzati',

@@ -45,3 +45,7 @@ register_style (BLOGFILE.'_css', $SITEURL.'/plugins/'.BLOGFILE.'/css/admin_style
 register_style ('font_awesome', '//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css', '4.2.0', 'all');
 queue_style (BLOGFILE.'_css',GSBACK);
 queue_style ('font_awesome', GSBACK );
+
+# Register/Queue Scripts
+register_script('pluginManagementFA', $SITEURL.'plugins/'.BLOGFILE.'/js/pluginManagementFA.js', '1.0', TRUE);
+queue_script('pluginManagementFA', GSBACK);
