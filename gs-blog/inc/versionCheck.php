@@ -19,7 +19,6 @@ function blog_version_check() {
 	$return[1] = $current_version;
 	$retuen[2] = '0.0.0';
 	$return[3] = i18n_r(BLOGFILE.'/VERSION_NOMESSAGE');
-	$return[4] = NULL;
 	
 	// Call to Extend API for information
 	if (function_exists('file_get_contents')) {
@@ -35,13 +34,6 @@ function blog_version_check() {
 		$return[3] = i18n_r(LANGFILE.'/VERSION_NOFUNCTION');
 	}
 	
-	// Let's check for any update messages. (To be implemented at a later date!)
-	function blog_update_message() {
-    GLOBAL $current_version;
-		$var = file_get_contents('http://update.johnstray.com/index.php?app=gs-blog&ver='.$current_version);
-    return (!empty($var)) ? $var : NULL;
-	}
-	
 	// If API call successful...
 	if($api_response->status = 'successful') {
 		$api_version = $api_response->version;
@@ -53,7 +45,6 @@ function blog_version_check() {
 			$return[0] = 'update';
 			define('BLOGVERSIONCLASS', 'WARNmsg');
 			$return[3] = i18n_r(LANGFILE.'/VERSION_UPDATEAVAILABLE').' <a href="http://get-simple.info/extend/plugin/getsimple-blog/810/" target="_new">'.i18n_r(LANGFILE.'/DOWNLOAD').' v'.(string)$api_version.'</a>.';
-			$return[4] = blog_update_message();
 		}
 		elseif (version_compare($api_version, $current_version) == '0') {
 			# Currently up to date. There are no new version available.
@@ -153,9 +144,6 @@ function show_update_admin() {
 		</tr>
 	</tbody>
 </table>
-<div id="version_update_information" style="border:1px solid #eee;padding:20px;">
-  <?php if ($update_data[4] != NULL) {echo $update_data[4];} ?>
-</div>
 <?php
 
 }
