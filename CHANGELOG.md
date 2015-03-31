@@ -16,8 +16,10 @@
 - [#055] Removed theme layouts and converted to using 2 include files for layout generation. You can customize these as needed.
 - [#029] Better handling of date/time formats for different languages. Format string now stored in language file.
 
-**Code Changes (Plugin Compatibility):**
+**Back End (Admin) Changes:**
 - [#011] Added 2 actions to allow for compatibility with other plugins, such as 'Auto-open Page Options'.
+- [#069] Removed reliance on private server for "What's New" information.
+
 
 **Updated Languages:**
 - [#029] Added English (British) Language file to enable date formats for this region.
