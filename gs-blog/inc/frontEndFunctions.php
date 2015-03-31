@@ -353,20 +353,35 @@ function show_blog_recent_posts($excerpt=false, $excerpt_length=null, $thumbnail
  * @param  $tag (string) - Display posts containing this tag
  * @return void (void)
  */  
-function show_blog_tag($tag) {
+function show_blog_tag($tag, $echo=true) {
 
 	$Blog = new Blog; // Create a new instance of the Blog class
 	$all_posts = $Blog->listPosts(true, true); // Get a list of all posts in the blog
   
-	foreach ($all_posts as $file) { // For each blog post in the list...
-		$data = getXML($file['filename']); // Get the XML data for the post
-		if(!empty($data->tags)) { // If the post has been tagged...
-			$tags = explode(',', $data->tags); // Convert the string of tags to array list
-			if (in_array($tag, $tags)) { //If the requested tag is in the list of tags on the post
-				show_blog_post($file['filename'], true); // Show the blog post
-			}
-		}
-	}
+  if ($echo) {
+    foreach ($all_posts as $file) { // For each blog post in the list...
+      $data = getXML($file['filename']); // Get the XML data for the post
+      if(!empty($data->tags)) { // If the post has been tagged...
+        $tags = explode(',', $data->tags); // Convert the string of tags to array list
+        if (in_array($tag, $tags)) { //If the requested tag is in the list of tags on the post
+          show_blog_post($file['filename'], true); // Show the blog post
+        }
+      }
+    }
+  } elseif(!$echo) {
+    $tag_posts = array();$k=0;
+    foreach ($all_posts as $file) {
+      $data = getXML($file['filename']);
+      if(!empty($data->tags)) {
+        $tags = explode(',', $data->tags);
+        if (in_array($tag, $tags)) {
+          $tag_posts[$k] = $file;
+          $k++;
+        }
+      }
+    }
+    return $tag_posts;
+  }
 }
 
 /**-------------------------------------------------------------------------------------------------
@@ -393,19 +408,30 @@ function show_all_blog_posts() {
  * @param  $keyphrase (string) - The phrase to search for in the posts
  * @return void       (void)
  */  
-function search_posts($keyphrase) {
+function search_posts($keyphrase, $echo=true) {
 
 	$Blog = new Blog; // Create new instance of the Blog class
 	$posts = $Blog->searchPosts($keyphrase); // Get the list of search results
   
-	if (!empty($posts)) { // If there were search results returned...
-		echo '<p class="blog_search_header">'.i18n(BLOGFILE.'/FOUND').'</p>'; // Output the page title
-		foreach ($posts as $file) { // For each result in the list...
-			show_blog_post($file, TRUE); // Show the blog post
-		}
-	} else { // There were no results to display. Let the user know.
-		echo '<p class="blog_search_header">'.i18n(BLOGFILE.'/NOT_FOUND').'</p>';
-	}
+  if($echo) {
+    if (!empty($posts)) { // If there were search results returned...
+      echo '<p class="blog_search_header">'.i18n(BLOGFILE.'/FOUND').'</p>'; // Output the page title
+      foreach ($posts as $file) { // For each result in the list...
+        show_blog_post($file, TRUE); // Show the blog post
+      }
+    } else { // There were no results to display. Let the user know.
+      echo '<p class="blog_search_header">'.i18n(BLOGFILE.'/NOT_FOUND').'</p>';
+    }
+  } elseif(!$echo) {
+    $search_results = array();$k=0;
+    if(!empty($posts)) {
+      foreach ($posts as $file) {
+        $search_results[$k] = $file;
+        $k++;
+      }
+    }
+    return $search_results;
+  }
 }
  
 /**-------------------------------------------------------------------------------------------------
@@ -552,6 +578,16 @@ function return_blog_archives() {
 function return_blog_archive($archive) {
   return show_blog_archive($archive, false);
 }
+function return_blog_tag($tag) {
+  return show_blog_tag($tag, false);
+}
 function return_blog_recent_posts($excerpt=false,$excerpt_length=null, $thumbnail=false, $read_more=null) {
   return show_blog_recent_posts($excerpt, $excerpt_length, $thumbnail, $read_more, false);
+}
+function return_all_blog_posts() {
+  $Blog = new Blog; // Create a new instance of the Blog class
+	return $Blog->listPosts(true, true); // Get a list of all posts in the blog
+}
+function return_search_results($keyphrase) {
+  return search_posts($keyphrase,false);
 }
