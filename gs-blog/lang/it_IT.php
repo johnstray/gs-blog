@@ -84,8 +84,6 @@ $i18n = array(
   'SETTINGS_CATEGORY_DESC'    =>  'Aggiungi o Edita le categorie da assegnare ai tuoi articoli. Questo ',
   'CATEGORY_NAME'             =>  'Nome Categoria',
   'CATEGORY_RSS_FEED'         =>  'Feed RSS della Categora',
-  
-
 
   # 'RSS Auto-Importer' Strings
   'FEED_ADDED'                =>  'Feed RSS aggiunto con successo!',
@@ -121,7 +119,6 @@ $i18n = array(
   'SETTINGS_SAVE_ERROR'       =>  'Non posso salvare le impostazioni!',
   'BLOG_SETTINGS'             =>  'Impostazioni Blog',
   'SETTINGS_MAIN_DESC'        =>  'Modifica le opzioni del tuo blog. Queste sono le opzioni principali del tuo blog.',
-  
   'PAGE_URL'                  =>  'Pagina da utilizzare per gli articoli del blog',
   'EXCERPT_OPTION'            =>  'Formato visualizzazione articoli nella pagina',
   'FULL_TEXT'                 =>  'Testo completo',
@@ -136,9 +133,7 @@ $i18n = array(
   'PRETTY_URLS_PARA'          =>  'Se impostato a si, devi editare il file .htaccess dopo aver salvato le opzioni',
   'HTACCESS_1'                =>  'Blocca l\'accesso diretto ai files XML!',
   'HTACCESS_2'                =>  'Generalmente RewriteBase è \'/\', ma puoi sostituirla con il percorso della tua sottodirectory',
-  
   'HTACCESS_3'                =>  'IMPORTANTE -> se il tuo sito è posizionato in una sottocartella devi cambiarla in modo che punti ad essa (es: /sottocartella/)',
-  
   'BLOG_PRETTY_NOTICE'        =>  'Devi abilitare pretty urls in GetSimple prima.'.
                                   'Le istruzioni saranno visualizzate qui',
   'SAVE_SETTINGS'             =>  'Salva Impostazioni',
@@ -158,12 +153,10 @@ $i18n = array(
   'DYNAMIC_RSS_LOCATION'      =>  'Dynamic RSS Feed Location (Genera Feed RSS al volo)',
   'AUTO_IMPORTER_TITLE'       =>  'Setup importatore Feed RSS',
   'AUTO_IMPORTER_DESC'        =>  'Dovresti effettuare il setup dei cronjobs attraverso il tuo pannello di amministrazione interfaccia del tuo web hosting.'.
-                                  'Si presume che tu conosca questo plugin. I frammenti di codici seguenti ti danno un esempio..',
-  
+                                  'Si presume che tu conosca questo plugin. I frammenti di codici seguenti ti danno un esempio..', 
   'BLOG_PAGE_DESC_TITLE'      =>  'Aiuto personalizzazione Pagina Blog',
   'BLOG_PAGE_RECOM'           =>  'Si raccomanda di visualizzare la funzione show_blog_post() presente in plugins/blog/inc/frontEndFunctions.php'.
-                                  'per vedere come meglio impostare una pagina personalizzata del blog.',
-  
+                                  'per vedere come meglio impostare una pagina personalizzata del blog.',  
   'BLOG_PAGE_DESC_LINE_1'     =>  'Puoi usare html, php, xml e js in questo campo testo.',
   'BLOG_PAGE_DESC_LINE_2'     =>  'Si comporter&agrave; come se si codifica direttamente dal plugin stesso.'.
                                   'I dati dell&acute;articolo sono passati tramite oggetto.',
@@ -171,7 +164,6 @@ $i18n = array(
   'BLOG_PAGE_AVAILABLE_FUNC'  =>  'Funzioni disponibili &amp; Aiuti:',
   'BLOG_PAGE_FRMT_DATE_LABEL' =>  'Formato Data',
   'BLOG_PAGE_FRMT_DATA_DESC'  =>  'Passando i dati direttamente dall&acute;oggetto saranno formattati automaticamente.',
-
   'BLOG_PAGE_GET_URL_TO_AREAS'=>  'Ottieni URL del Blog',
   'BLOG_PAGE_URL_EX_LABEL'    =>  'es. (ottieni url dell\'articolo)',
   'BLOG_PAGE_AVAILABLE_AREAS' =>  'Aree disponibili',
@@ -208,16 +200,14 @@ $i18n = array(
   'CUSTOMFIELDS_DESCR'        =>  'Questo plugin ti permette di specificare dei'.
                                   'campi personalizzati che saranno visualizzati quando editi una pagina.',
   'CUSTOM_FIELDS_OPTIONS_AREA'=>  'Area Opzioni',
-  'OPTIONS_AREA_DESCRP'       =>  'Le Opzioni dei campi personalizzati saranno visualizzati nella sezione "Opzioni Articolo',
-  
+  'OPTIONS_AREA_DESCRP'       =>  'Le Opzioni dei campi personalizzati saranno visualizzati nella sezione "Opzioni Articolo',  
   'NAME'                      =>  'Nome',
   'LABEL'                     =>  'Etichetta',
   'TYPE'                      =>  'Tipo',
   'DEFAULT_VALUE'             =>  'Valore predefinito',
   'ADD'                       =>  'Aggiungi campo',
   'CUSTOM_FIELDS_MAIN_AREA'   =>  'Area principale',
-  'MAIN_AREA_DESCRP'          =>  '(Campi personalizzati principali saranno visualizzati nella sezione Opzioni articolo).',
-  
+  'MAIN_AREA_DESCRP'          =>  '(Campi personalizzati principali saranno visualizzati nella sezione Opzioni articolo).', 
   'TEXT_FIELD'                =>  'Campo Testo',
   'LONG_TEXT_FIELD'           =>  'Campo Testo',
   'DROPDOWN_BOX'              =>  'Box Drop-down',
@@ -236,7 +226,6 @@ $i18n = array(
   'VERSION_FAILEDCOMPARE'     =>  'Comparazione versione Fallita durante il controllo.',
   'VERSION_APIFAIL'           =>  'Il controllo con le API Estese &egrave; fallito',
   'VERSION_INTERNALERROR'     =>  'Si &egrave; verificato un errore interno durante il controllo!',
-  
   'VERSION_STATUS'            =>  'Plugin aggiornato',
   'VERSION_STATUS_DESC'       =>  'Assicurarsi che si sta eseguendo l\'ultima versione'. 
                                   'di '.$plugin.' in modo da poter beneficiare delle funzionalità più recenti.',
