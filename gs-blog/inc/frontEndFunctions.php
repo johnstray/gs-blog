@@ -131,11 +131,12 @@ function show_blog_categories($echo=true) {
       echo "<li>".i18n(BLOGFILE.'/NO_CATEGORIES')."</li>"; // Let the user know
     }
   } elseif(!$echo) {
-    $catout = array();
+    $catout = array();$k=0;
     if(!empty($categories)) {
-      foreach($categories as $k => $category) {
-        $catout[$k]['name'] = $category;
-        $catout[$k]['link'] = $url.$category;
+      foreach($categories as $category) {
+        $catout[$k]['name'] = $category; // The category's name
+        $catout[$k]['link'] = $url.$category; // Link URL to category's page.
+        $k++; // Increment counter
       }
     }
     return $catout;
@@ -243,22 +244,36 @@ function show_blog_archives($echo=true) {
  * @param  $archive (string) - Show posts from this given archive
  * @return void     (void)
  */  
-function show_blog_archive($archive) {
+function show_blog_archive($archive, $echo=true) {
 
 	$Blog = new Blog; // Create a new instance of the Blog class
 	$posts = $Blog->listPosts(true, true); // Get a list of all the posts in the blog
   
-	if (!empty($posts)) { // If there are posts in the blog...
-		foreach ($posts as $file) { // For each post in the list...
-			$data = getXML($file['filename']); // Get the XML data of the post
-			$date = strtotime($data->date); // Covert the date to a UNIX timestamp
-			if (date('Ym', $date) == $archive) { // If the date on the post is in the requested archive...
-				show_blog_post($file['filename'], true); // Show the blog post
-			}
-		}
-	} else { // We have no posts in this archive
-		echo i18n(BLOGFILE.'/NO_POSTS'); // Let the user know
-	}
+  if ($echo) {
+    if (!empty($posts)) { // If there are posts in the blog...
+      foreach ($posts as $file) { // For each post in the list...
+        $data = getXML($file['filename']); // Get the XML data of the post
+        $date = strtotime($data->date); // Covert the date to a UNIX timestamp
+        if (date('Ym', $date) == $archive) { // If the date on the post is in the requested archive...
+          show_blog_post($file['filename'], true); // Show the blog post
+        }
+      }
+    } else { // We have no posts in this archive
+      echo i18n(BLOGFILE.'/NO_POSTS'); // Let the user know
+    }
+  } elseif(!$echo) {
+    $archive_posts = array();$k=0;
+    if (!empty($posts)) { // If there are posts in the blog...
+      foreach ($posts as $file) { // For each post in the list...
+        $data = getXML($file['filename']); // Get the XML data of the post
+        if (date('Ym', strtotime($data->date)) == $archive) { // If the date on the post is in the requested archive...
+          $archive_posts[$k] = $file; // Add it to the output array
+          $k++; // Increment counter
+        }
+      }
+    }
+    return $archive_posts;
+  }
 }
 
 /**-------------------------------------------------------------------------------------------------
