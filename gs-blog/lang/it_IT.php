@@ -45,8 +45,7 @@ $i18n = array(
   # Class Constructor
   'DATA_BLOG_DIR'             =>  'La directory <em>data/blog</em> creata correttamente.',
   'DATA_BLOG_DIR_ERR'         =>  'La directory <em>data/blog</em> non pu&ograve; essere creata!',
-  'DATA_BLOG_DIR_ERR_HINT'    =>  'Devi creare manualmente primala directory affinch&egrave; '.
-                                  'il plugin funzioni correttamente',
+  'DATA_BLOG_DIR_ERR_HINT'    =>  'Devi creare manualmente primala directory affinch&egrave; il plugin funzioni correttamente',
   'DATA_BLOG_CATEGORIES'      =>  'Il file <em>blog_categories.xml</em> &egrave; stato creato correttamente!',
   'DATA_BLOG_CATEGORIES_ERR'  =>  'Il file <em>blog_categories.xml</em> non pu&ograve; essere creato!',
   'DATA_BLOG_RSS'             =>  'Il file <em>blog_rss.xml</em> &egrave;  stato creato correttamente!',
@@ -58,8 +57,8 @@ $i18n = array(
   'POST_ERROR'                =>  'Errore nel salvataggio articolo!',
   'POST_DELETED'              =>  'Articolo cancellato correttamente!',
   'POST_DELETE_ERROR'         =>  'Errore nella cancellazione articolo!',
-  'BLOG_CREATE_EDIT_NO_TITLE' =>  'Un titolo &egrave;  richiesto per il salvatoaggio dell\'articolo!',
-  'BLOG_RETURN_TO_PREV_PAGE'  =>  'Ritorna all\'articolo',
+  'BLOG_CREATE_EDIT_NO_TITLE' =>  'Un titolo &egrave;  richiesto per il salvatoaggio dell&apos;articolo!',
+  'BLOG_RETURN_TO_PREV_PAGE'  =>  'Ritorna all&apos;articolo',
   'ADD_NEW_POST'              =>  'Aggiungi articolo',
   'EDIT_EXISTING_POST'        =>  'Edita articolo',
   'VIEW_POST'                 =>  'Visualizza articolo',
@@ -70,8 +69,7 @@ $i18n = array(
   'MANAGE_POSTS'              =>  'Articoli',
   'CUSTOM_FIELDS_BUTTON'      =>  'Campi personalizzati',
   'NEW_POST_BUTTON'           =>  'Nuovo articolo',
-  'MANAGE_POSTS_DESC'         =>  'Edita o crea nuovo articolo.'.
-                                  'La tabella seguente visualizza gli articoli esistenti.',
+  'MANAGE_POSTS_DESC'         =>  'Edita o crea nuovo articolo. La tabella seguente visualizza gli articoli esistenti.',
   'NO_POSTS'                  =>  'Nessun articolo trovato!',
   'CLICK_TO_CREATE'           =>  'Clicca qui per crearne uno',
   'PAGE_TITLE'                =>  'Titolo pagina',
@@ -90,16 +88,13 @@ $i18n = array(
   'FEED_ERROR'                =>  'Il Feed RSS non pu&oacute; essere salvato!',
   'FEED_DELETED'              =>  'Successfully deleted RSS Feed!',
   'FEED_DELETE_ERROR'         =>  'Feed RSS cancellato con successo!',
-  'READ_FULL_ARTICLE'         =>  'Leggi l\'articolo intero!',
-  'RSS_FEED_NO_POSTS_DESC'    =>  'Non ci sono articoli per questo Feed RSS. Gentilmente contatta '.
-                                  'l\'amministratore per maggiori info.',
+  'READ_FULL_ARTICLE'         =>  'Leggi l&apos;articolo intero!',
+  'RSS_FEED_NO_POSTS_DESC'    =>  'Non ci sono articoli per questo Feed RSS. Gentilmente contatta l&apos;amministratore per maggiori info.',
   'RSS_FILE_OPEN_FAIL'        =>  'Non posso aprire il file &apos;rss.rss&apos;.',
   'RSS_FILE_WRITE_FAIL'       =>  'Non posso scrivere il file &apos;rss.rss&apos;.',
   'RSS_HEADER'                =>  'RSS Auto-Importer',
   'ADD_FEED'                  =>  'Aggiungi RSS Feed',
-  'SETTINGS_FEED_DESC'        =>  'RSS Auto-Importer importa e crea articoli da feeds RSS di altri websites.'.
-                                  'Questo &egrave; utile se vuoi gestire contenuti di altri blog.',
-
+  'SETTINGS_FEED_DESC'        =>  'RSS Auto-Importer importa e crea articoli da feeds RSS di altri websites.Questo &egrave; utile se vuoi gestire contenuti di altri blog.',
   'ADD_NEW_FEED'              =>  'Aggiungi nuovo Feed',
   'BLOG_CATEGORY'             =>  'Categoria Blog',
   'RSS_FEED'                  =>  'Feed',
@@ -131,11 +126,10 @@ $i18n = array(
   'PRETTY_URLS'               =>  'Utilizza pretty URLs',
   'VIEW_HTACCESS'             =>  'Controlla che il flie .htaccess del sito esista!',
   'PRETTY_URLS_PARA'          =>  'Se impostato a si, devi editare il file .htaccess dopo aver salvato le opzioni',
-  'HTACCESS_1'                =>  'Blocca l\'accesso diretto ai files XML!',
-  'HTACCESS_2'                =>  'Generalmente RewriteBase è \'/\', ma puoi sostituirla con il percorso della tua sottodirectory',
+  'HTACCESS_1'                =>  'Blocca l&apos;accesso diretto ai files XML!',
+  'HTACCESS_2'                =>  'Generalmente RewriteBase è &apos;/&apos;, ma puoi sostituirla con il percorso della tua sottodirectory',
   'HTACCESS_3'                =>  'IMPORTANTE -> se il tuo sito è posizionato in una sottocartella devi cambiarla in modo che punti ad essa (es: /sottocartella/)',
-  'BLOG_PRETTY_NOTICE'        =>  'Devi abilitare pretty urls in GetSimple prima.'.
-                                  'Le istruzioni saranno visualizzate qui',
+  'BLOG_PRETTY_NOTICE'        =>  'Devi abilitare pretty urls in GetSimple prima. Le istruzioni saranno visualizzate qui',
   'SAVE_SETTINGS'             =>  'Salva Impostazioni',
   'MAIN_SETTINGS_BUTTON'      =>  'Impostazioni generali',
   
@@ -147,25 +141,21 @@ $i18n = array(
   'HELP_ARCHIVES'             =>  'Visualizza archivio blog',
   'HELP_RECENT'               =>  'Visualizza gli articoli pi&ugrave; recenti',
   'HELP_RECENT_2'             =>  'Questa funzione ha 4 parametri <strong>opzionali</strong>',
-  'HELP_RECENT_3'             =>  'Esempio di utilizzo (visualizza excerpt, lunghezza di default degli excerpt,'.
-                                  'visualizza miniatura e visualizza link continua)',
+  'HELP_RECENT_3'             =>  'Esempio di utilizzo (visualizza excerpt, lunghezza di default degli excerpt, visualizza miniatura e visualizza link continua)',
   'RSS_LOCATION'              =>  'Questo &egrave; il Feed Rss del blog',
   'DYNAMIC_RSS_LOCATION'      =>  'Dynamic RSS Feed Location (Genera Feed RSS al volo)',
   'AUTO_IMPORTER_TITLE'       =>  'Setup importatore Feed RSS',
-  'AUTO_IMPORTER_DESC'        =>  'Dovresti effettuare il setup dei cronjobs attraverso il tuo pannello di amministrazione interfaccia del tuo web hosting.'.
-                                  'Si presume che tu conosca questo plugin. I frammenti di codici seguenti ti danno un esempio..', 
+  'AUTO_IMPORTER_DESC'        =>  'Dovresti effettuare il setup dei cronjobs attraverso il tuo pannello di amministrazione interfaccia del tuo web hosting. Si presume che tu conosca questo plugin. I frammenti di codici seguenti ti danno un esempio..', 
   'BLOG_PAGE_DESC_TITLE'      =>  'Aiuto personalizzazione Pagina Blog',
-  'BLOG_PAGE_RECOM'           =>  'Si raccomanda di visualizzare la funzione show_blog_post() presente in plugins/blog/inc/frontEndFunctions.php'.
-                                  'per vedere come meglio impostare una pagina personalizzata del blog.',  
+  'BLOG_PAGE_RECOM'           =>  'Si raccomanda di visualizzare la funzione show_blog_post() presente in plugins/blog/inc/frontEndFunctions.php per vedere come meglio impostare una pagina personalizzata del blog.',  
   'BLOG_PAGE_DESC_LINE_1'     =>  'Puoi usare html, php, xml e js in questo campo testo.',
-  'BLOG_PAGE_DESC_LINE_2'     =>  'Si comporter&agrave; come se si codifica direttamente dal plugin stesso.'.
-                                  'I dati dell&acute;articolo sono passati tramite oggetto.',
+  'BLOG_PAGE_DESC_LINE_2'     =>  'Si comporter&agrave; come se si codifica direttamente dal plugin stesso.I dati dell&acute;articolo sono passati tramite oggetto.',
   'BLOG_PAGE_DESC_LINE_3'     =>  'Per accedere a un campo personalizzato puoi inserire qualcosa di simile a qui sotto',
   'BLOG_PAGE_AVAILABLE_FUNC'  =>  'Funzioni disponibili &amp; Aiuti:',
   'BLOG_PAGE_FRMT_DATE_LABEL' =>  'Formato Data',
   'BLOG_PAGE_FRMT_DATA_DESC'  =>  'Passando i dati direttamente dall&acute;oggetto saranno formattati automaticamente.',
   'BLOG_PAGE_GET_URL_TO_AREAS'=>  'Ottieni URL del Blog',
-  'BLOG_PAGE_URL_EX_LABEL'    =>  'es. (ottieni url dell\'articolo)',
+  'BLOG_PAGE_URL_EX_LABEL'    =>  'es. (ottieni url dell&apos;articolo)',
   'BLOG_PAGE_AVAILABLE_AREAS' =>  'Aree disponibili',
   'BLOG_PAGE_POST'            =>  'articolo',
   'BLOG_PAGE_TAG'             =>  'tag',
@@ -173,9 +163,7 @@ $i18n = array(
   'BLOG_PAGE_ARCHIVE'         =>  'archivio',
   'BLOG_PAGE_CATEGORY'        =>  'categoria',
   'BLOG_PAGE_CREATE_EXCERPT'  =>  'Crea Excerpt',
-  'BLOG_PAGE_EXCERPT_DESC'    =>  'Questo crea un excerpt con una lunghezza specifica. La variabile '.
-                                  '$excerpt_length deve essere intero e rappresenta la lunghezza'.
-                                  'del campo excerpt.',
+  'BLOG_PAGE_EXCERPT_DESC'    =>  'Questo crea un excerpt con una lunghezza specifica. La variabile $excerpt_length deve essere intero e rappresenta la lunghezza del campo excerpt.',
   'BLOG_PAGE_DECODE_CONTENT'  =>  'Decodifica Contenuto',
   
   # 'Front-End' Strings
@@ -193,12 +181,10 @@ $i18n = array(
   'PREV_PAGE'                 =>  'Pagina precedente &rarr;',
   'ARCHIVE_PRETITLE'          =>  'Archivio: ',
   'CATEGORY_PRETITLE'         =>  'Categoria: ',
-  'RSS_FEED_NO_POSTS_DESC'    =>  'There are no posts to display in this feed!',
   
   # Custom Fields Manager
   'CUSTOM_FIELDS'             =>  'Campi personalizzati',
-  'CUSTOMFIELDS_DESCR'        =>  'Questo plugin ti permette di specificare dei'.
-                                  'campi personalizzati che saranno visualizzati quando editi una pagina.',
+  'CUSTOMFIELDS_DESCR'        =>  'Questo plugin ti permette di specificare dei campi personalizzati che saranno visualizzati quando editi una pagina.',
   'CUSTOM_FIELDS_OPTIONS_AREA'=>  'Area Opzioni',
   'OPTIONS_AREA_DESCRP'       =>  'Le Opzioni dei campi personalizzati saranno visualizzati nella sezione "Opzioni Articolo',  
   'NAME'                      =>  'Nome',
@@ -227,8 +213,7 @@ $i18n = array(
   'VERSION_APIFAIL'           =>  'Il controllo con le API Estese &egrave; fallito',
   'VERSION_INTERNALERROR'     =>  'Si &egrave; verificato un errore interno durante il controllo!',
   'VERSION_STATUS'            =>  'Plugin aggiornato',
-  'VERSION_STATUS_DESC'       =>  'Assicurarsi che si sta eseguendo l\'ultima versione'. 
-                                  'di '.$plugin.' in modo da poter beneficiare delle funzionalità più recenti.',
+  'VERSION_STATUS_DESC'       =>  'Assicurarsi che si sta eseguendo l&apos;ultima versione di '.$plugin.' in modo da poter beneficiare delle funzionalità più recenti.',
   'VERSION_UPDATESTATUS'      =>  'Stato aggiornamento',
   'VERSION_CURRENTVER'        =>  'Versione Corrente',
   'VERSION_LATESTVER'         =>  'Ultima Versione',
