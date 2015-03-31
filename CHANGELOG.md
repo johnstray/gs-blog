@@ -1,5 +1,6 @@
 ### Version 3.3.2
 **Bug Fixes:**
+- [#068] Fixed string not translated in `generateRSSFeed()`
 - [#067] Fixed rss.php issues ... Finally...
 - [#043] Fixed syntax error, unexpected ';' - Related to the rss.php issues.
 - [#058] Variable `$p['thumbnail']` needed to be casted correctly because it was returning a `SimpleXMLObject` even when empty. This caused an `IF` statement in the layout operate incorrectly.
