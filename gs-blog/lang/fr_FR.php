@@ -45,8 +45,7 @@ $i18n = array(
   # Class Constructor
   'DATA_BLOG_DIR'             =>  '<em>data/blog</em> directory successfully created.',
   'DATA_BLOG_DIR_ERR'         =>  'The <em>data/blog</em> folder could not be created!',
-  'DATA_BLOG_DIR_ERR_HINT'    =>  'You are going to have to create this directory yourself for '.
-                                  'the plugin to work properly',
+  'DATA_BLOG_DIR_ERR_HINT'    =>  'You are going to have to create this directory yourself for the plugin to work properly',
   'DATA_BLOG_CATEGORIES'      =>  '<em>blog_categories.xml</em> file successfully created!',
   'DATA_BLOG_CATEGORIES_ERR'  =>  '<em>blog_categories.xml</em> file could not be created!',
   'DATA_BLOG_RSS'             =>  '<em>blog_rss.xml</em> file successfully created!',
@@ -70,8 +69,7 @@ $i18n = array(
   'MANAGE_POSTS'              =>  'Posts',
   'CUSTOM_FIELDS_BUTTON'      =>  'Custom Fields',
   'NEW_POST_BUTTON'           =>  'New Post',
-  'MANAGE_POSTS_DESC'         =>  'Edit existing posts or create new posts. The table below shows '.
-                                  'posts that currently exist.',
+  'MANAGE_POSTS_DESC'         =>  'Edit existing posts or create new posts. The table below shows posts that currently exist.',
   'NO_POSTS'                  =>  'There are no posts to show!',
   'CLICK_TO_CREATE'           =>  'Click here to create one',
   'PAGE_TITLE'                =>  'Page Title',
@@ -81,9 +79,7 @@ $i18n = array(
   'CATEGORY_ERROR'            =>  'Category could not be saved!',
   'MANAGE_CATEGORIES'         =>  'Manage Categories',
   'ADD_CATEGORY'              =>  'Add Category',
-  'SETTINGS_CATEGORY_DESC'    =>  'Add or Edit categories to assign your posts to. This will '.
-                                  'enable you to sort your posts by displaying only those in a '.
-                                  'given category.',
+  'SETTINGS_CATEGORY_DESC'    =>  'Add or Edit categories to assign your posts to. This will enable you to sort your posts by displaying only those in a given category.',
   'CATEGORY_NAME'             =>  'Category Name',
   'CATEGORY_RSS_FEED'         =>  'Category RSS Feed',
   
@@ -93,15 +89,12 @@ $i18n = array(
   'FEED_DELETED'              =>  'Successfully deleted RSS Feed!',
   'FEED_DELETE_ERROR'         =>  'RSS Feed could not be deleted!',
   'READ_FULL_ARTICLE'         =>  'Read The Full Article',
-  'RSS_FEED_NO_POSTS_DESC'    =>  'There are no posts available for this RSS feed. Please contact '.
-                                  'the website administrator for more information.',
+  'RSS_FEED_NO_POSTS_DESC'    =>  'There are no posts available for this RSS feed. Please contact the website administrator for more information.',
   'RSS_FILE_OPEN_FAIL'        =>  'Could not open the &apos;rss.rss&apos; file.',
   'RSS_FILE_WRITE_FAIL'       =>  'Could not write to the &apos;rss.rss&apos; file.',
   'RSS_HEADER'                =>  'RSS Auto-Importer',
   'ADD_FEED'                  =>  'Add RSS Feed',
-  'SETTINGS_FEED_DESC'        =>  'The RSS Auto-Importer will import and create posts from RSS '.
-                                  'feeds on other websites. This is useful if you want to manage '.
-                                  'this blog with content from another blog.',
+  'SETTINGS_FEED_DESC'        =>  'The RSS Auto-Importer will import and create posts from RSS feeds on other websites. This is useful if you want to manage this blog with content from another blog.',
   'ADD_NEW_FEED'              =>  'Add new RSS Feed',
   'BLOG_CATEGORY'             =>  'Blog Category',
   'RSS_FEED'                  =>  'RSS Feed',
@@ -120,8 +113,7 @@ $i18n = array(
   'SETTINGS_SAVE_OK'          =>  'Successfully saved settings!',
   'SETTINGS_SAVE_ERROR'       =>  'Could not save your settings!',
   'BLOG_SETTINGS'             =>  'Blog Settings',
-  'SETTINGS_MAIN_DESC'        =>  'Manage the settings for your blog. These are the main settings '.
-                                  'for the blog.',
+  'SETTINGS_MAIN_DESC'        =>  'Manage the settings for your blog. These are the main settings for the blog.',
   'PAGE_URL'                  =>  'Page to display blog posts',
   'EXCERPT_OPTION'            =>  'Posts format on posts page',
   'FULL_TEXT'                 =>  'Full Text',
@@ -135,12 +127,9 @@ $i18n = array(
   'VIEW_HTACCESS'             =>  'View what your site&apos;s .htaccess should be!',
   'PRETTY_URLS_PARA'          =>  'If Yes, you will have to edit .htaccess file after saving settings',
   'HTACCESS_1'                =>  'Blocks direct access to the XML files - they hold all the data!',
-  'HTACCESS_2'                =>  'Usually RewriteBase is just &apos;/&apos;, but replace it with '.
-                                  'your subdirectory path',
-  'HTACCESS_3'                =>  'IMPORTANT -> if your site is located in subfolder you need to '.
-                                  'change this to reflect (eg: /subfolder/)',
-  'BLOG_PRETTY_NOTICE'        =>  'You need to turn on pretty urls in GetSimple before ',
-                                  'instructions will show here',
+  'HTACCESS_2'                =>  'Usually RewriteBase is just &apos;/&apos;, but replace it with your subdirectory path',
+  'HTACCESS_3'                =>  'IMPORTANT -> if your site is located in subfolder you need to change this to reflect (eg: /subfolder/)',
+  'BLOG_PRETTY_NOTICE'        =>  'You need to turn on pretty urls in GetSimple before instructions will show here',
   'SAVE_SETTINGS'             =>  'Save Settings',
   'MAIN_SETTINGS_BUTTON'      =>  'Main Settings',
   
@@ -152,26 +141,19 @@ $i18n = array(
   'HELP_ARCHIVES'             =>  'Display blog archives',
   'HELP_RECENT'               =>  'Show your blogs most recent posts',
   'HELP_RECENT_2'             =>  'This function has 4 <strong>optional</strong> available parameters',
-  'HELP_RECENT_3'             =>  'Usage Example (display excerpt, default excerpt length, '.
-                                  'display thumbnail and display read more link)',
+  'HELP_RECENT_3'             =>  'Usage Example (display excerpt, default excerpt length, display thumbnail and display read more link)',
   'RSS_LOCATION'              =>  'Below is your blogs RSS Feed',
   'DYNAMIC_RSS_LOCATION'      =>  'Dynamic RSS Feed Location (Generates RSS feed on the fly)',
   'AUTO_IMPORTER_TITLE'       =>  'RSS Feed Auto Importer Cronjob Setup',
-  'AUTO_IMPORTER_DESC'        =>  'You should be able to setup cronjobs through your web hosting '.
-                                  'admin interface. This plugin assume you know how. The below '.
-                                  'snippet is what your cron job should look like this.',
+  'AUTO_IMPORTER_DESC'        =>  'You should be able to setup cronjobs through your web hosting admin interface. This plugin assume you know how. The below snippet is what your cron job should look like this.',
   'BLOG_PAGE_DESC_TITLE'      =>  'Custom Blog Page Help',
-  'BLOG_PAGE_RECOM'           =>  'It is recommended you view the <code>show_blog_post()</code> '.
-                                  'function in plugins/blog/inc/frontEndFunctions.php to see how '.
-                                  'best to implement a custom blog page.',
+  'BLOG_PAGE_RECOM'           =>  'It is recommended you view the <code>show_blog_post()</code> function in plugins/blog/inc/frontEndFunctions.php to see how best to implement a custom blog page.',
   'BLOG_PAGE_DESC_LINE_1'     =>  'You are able to use html, php, xml and js in this textarea.',
-  'BLOG_PAGE_DESC_LINE_2'     =>  'It will behave as if coding it directly into the plugin '.
-                                  'itself. The post data is passed via an object.',
+  'BLOG_PAGE_DESC_LINE_2'     =>  'It will behave as if coding it directly into the plugin itself. The post data is passed via an object.',
   'BLOG_PAGE_DESC_LINE_3'     =>  'So to access a custom field you can do something like below',
   'BLOG_PAGE_AVAILABLE_FUNC'  =>  'Available Functions &amp; Helpers:',
   'BLOG_PAGE_FRMT_DATE_LABEL' =>  'Format Date',
-  'BLOG_PAGE_FRMT_DATA_DESC'  =>  'You pass it the the data straight from the data object and '.
-                                  'it will format it.',
+  'BLOG_PAGE_FRMT_DATA_DESC'  =>  'You pass it the the data straight from the data object and it will format it.',
   'BLOG_PAGE_GET_URL_TO_AREAS'=>  'Get URL To Blog Areas',
   'BLOG_PAGE_URL_EX_LABEL'    =>  'ex (get url of post)',
   'BLOG_PAGE_AVAILABLE_AREAS' =>  'Available Areas',
@@ -181,9 +163,7 @@ $i18n = array(
   'BLOG_PAGE_ARCHIVE'         =>  'archive',
   'BLOG_PAGE_CATEGORY'        =>  'category',
   'BLOG_PAGE_CREATE_EXCERPT'  =>  'Create Excerpt',
-  'BLOG_PAGE_EXCERPT_DESC'    =>  'This will create an excerpt of specified length. The '.
-                                  '$excerpt_length variable would need to be an integer and is '.
-                                  'the length of the excerpt.',
+  'BLOG_PAGE_EXCERPT_DESC'    =>  'This will create an excerpt of specified length. The $excerpt_length variable would need to be an integer and is the length of the excerpt.',
   'BLOG_PAGE_DECODE_CONTENT'  =>  'Decode Content',
   
   # 'Front-End' Strings
@@ -201,23 +181,19 @@ $i18n = array(
   'PREV_PAGE'                 =>  'Previous Page &rarr;',
   'ARCHIVE_PRETITLE'          =>  'Blog Archive: ',
   'CATEGORY_PRETITLE'         =>  'Blog Category: ',
-  'RSS_FEED_NO_POSTS_DESC'    =>  'There are no posts to display in this feed!',
   
   # Custom Fields Manager
   'CUSTOM_FIELDS'             =>  'Custom Fields',
-  'CUSTOMFIELDS_DESCR'        =>  'This plugin allows you to specify custom fields which are '.
-                                  'displayed when you edit a page.',
+  'CUSTOMFIELDS_DESCR'        =>  'This plugin allows you to specify custom fields which are displayed when you edit a page.',
   'CUSTOM_FIELDS_OPTIONS_AREA'=>  'Options Area',
-  'OPTIONS_AREA_DESCRP'       =>  '(Options: Custom fields will be displayed in the "Post '.
-                                  'Options" section).',
+  'OPTIONS_AREA_DESCRP'       =>  '(Options: Custom fields will be displayed in the "Post Options" section).',
   'NAME'                      =>  'Name',
   'LABEL'                     =>  'Label',
   'TYPE'                      =>  'Type',
   'DEFAULT_VALUE'             =>  'Default Value',
   'ADD'                       =>  'Add new field',
   'CUSTOM_FIELDS_MAIN_AREA'   =>  'Main Area',
-  'MAIN_AREA_DESCRP'          =>  '(Main: Custom fields will be <em>under</em> the "Post '.
-                                  'Options" section).',
+  'MAIN_AREA_DESCRP'          =>  '(Main: Custom fields will be <em>under</em> the "Post Options" section).',
   'TEXT_FIELD'                =>  'Text Field',
   'LONG_TEXT_FIELD'           =>  'Long Text Field',
   'DROPDOWN_BOX'              =>  'Drop-down Box',
@@ -236,10 +212,8 @@ $i18n = array(
   'VERSION_FAILEDCOMPARE'     =>  'Failed to compare versions during update check.',
   'VERSION_APIFAIL'           =>  'The check with the Extend API was not successful.',
   'VERSION_INTERNALERROR'     =>  'An internal error has occurred with VersionCheck.',
-  
   'VERSION_STATUS'            =>  'Plugin Updates',
-  'VERSION_STATUS_DESC'       =>  'Ensure you&apos;re running the latest version of the '.$plugin.' '.
-                                  'plugin so that you can benefit from the latest fixes and features',
+  'VERSION_STATUS_DESC'       =>  'Ensure you&apos;re running the latest version of the '.$plugin.' plugin so that you can benefit from the latest fixes and features',
   'VERSION_UPDATESTATUS'      =>  'Update Status',
   'VERSION_CURRENTVER'        =>  'Current Version',
   'VERSION_LATESTVER'         =>  'Latest Version',
