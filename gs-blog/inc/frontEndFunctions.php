@@ -286,41 +286,64 @@ function show_blog_archive($archive, $echo=true) {
  * @param $read_more      (string) A text string to show for "Read More" link. Not shown if null
  * @return string or void
  */
-function show_blog_recent_posts($excerpt=false, $excerpt_length=null, $thumbnail=null, $read_more=null) {
+function show_blog_recent_posts($excerpt=false, $excerpt_length=null, $thumbnail=false, $read_more=null, $echo=true) {
 	
   GLOBAL $SITEURL, $blogSettings; // Declare GLOBAL variables
   $Blog = new Blog; // Create new instance of Blog class
 	$posts = $Blog->listPosts(true, true); // Get a list of posts
-	
-  if (!empty($posts)) { // If we have any posts to display
-		$posts = array_slice($posts, 0, $blogSettings["recentposts"], TRUE); // Shorten list to setting
-		foreach ($posts as $file) {
-			$data = getXML($file['filename']); // Get the XML data of the post
-			$url = $Blog->get_blog_url('post') . $data->slug; // Create the URL for the post
-			$title = strip_tags(strip_decode($data->title)); // Sanitize the posts title.
-      if($excerpt != false) { // If we are showing the excerpt...
-				if($excerpt_length == null) { // If the excerpt length was not provided...
-					$excerpt_length = $blogSettings["excerptlength"]; // Get excerpt length from settings.
-				}
-				$excerpt = $Blog->create_excerpt(html_entity_decode($data->content), 0, $excerpt_length); // Create the excerpt
-				if($thumbnail != null) { // If we are showing a thumbnail with it...
-					if(!empty($data->thumbnail)) { // Does a thumbnail exist with the post?
-            // Output the HTML for the image
-						$excerpt = '<img src="'.$SITEURL.'data/uploads/'.$data->thumbnail.'" class="blog_recent_posts_thumbnail" />'.$excerpt;
-					}
-				}
-				if($read_more != null) { // Do we want the "Read More" link to show?
-          // Show the "Read More" link with the string given in argument
-					$excerpt = $excerpt.'<br/><a href="'.$url.'" class="recent_posts_read_more">'.$read_more.'</a>';
-				}
-        // Output the HTML for the list item with excerpt
-				echo '<li><a href="'.$url.'">'.$title.'</a><p class="blog_recent_posts_excerpt">'.$excerpt.'</p></li>';
-			} else {
-        // Output the HTML for the list item without the excerpt
-				echo '<li><a href="'.$url.'">'.$title.'</a></li>';
-			}
-		}
-	}
+  if($excerpt_length == null) { // If the excerpt length was not provided...
+    $excerpt_length = $blogSettings["excerptlength"]; // Get excerpt length from settings.
+  }
+  
+  if($echo) {
+    if (!empty($posts)) { // If we have any posts to display
+      $posts = array_slice($posts, 0, $blogSettings["recentposts"], TRUE); // Shorten list to setting
+      foreach ($posts as $file) {
+        $data = getXML($file['filename']); // Get the XML data of the post
+        $url = $Blog->get_blog_url('post') . $data->slug; // Create the URL for the post
+        $title = strip_tags(strip_decode($data->title)); // Sanitize the posts title.
+        if($excerpt) { // If we are showing the excerpt...
+          $excerpt_string = $Blog->create_excerpt(html_entity_decode($data->content), 0, $excerpt_length); // Create the excerpt
+          if($thumbnail) { // If we are showing a thumbnail with it...
+            if(!empty((string)$data->thumbnail)) { // Does a thumbnail exist with the post?
+              // Output the HTML for the image
+              $thumbfile = (string) $data->thumbnail;
+              $excerpt_string = '<img src="'.$SITEURL.'data/uploads/'.$thumbfile.'" class="blog_recent_posts_thumbnail" />'.$excerpt_string;
+            }
+          }
+          if($read_more != null) { // Do we want the "Read More" link to show?
+            // Show the "Read More" link with the string given in argument
+            $excerpt_string = $excerpt_string.'<br/><a href="'.$url.'" class="recent_posts_read_more">'.$read_more.'</a>';
+          }
+          // Output the HTML for the list item with excerpt
+          echo '<li><a href="'.$url.'">'.$title.'</a><p class="blog_recent_posts_excerpt">'.$excerpt_string.'</p></li>';
+        } else {
+          // Output the HTML for the list item without the excerpt
+          echo '<li><a href="'.$url.'">'.$title.'</a></li>';
+        }
+      }
+    }
+  } elseif (!$echo) {
+    $recent_posts = array();
+    if (!empty($posts)) {
+      $posts = array_slice($posts, 0, $blogSettings["recentposts"], TRUE); // Shorten list to setting
+      foreach ($posts as $file) {
+        $data = getXML($file['filename']);
+        $slug = $data->slug;
+        $thumbfile = (string)$data->thumbnail
+        $recent_posts[$slug] = array();
+        $recent_posts[$slug]['title'] = strip_tags(strip_decode($data->title));
+        $recent_posts[$slug]['url'] = $Blog->get_blog_url('post').$data->slug;
+        if($excerpt) {
+          $recent_posts[$slug]['excerpt'] = $Blog->create_excerpt(html_entity_decode($data->content),0,$excerpt_length);
+        }
+        if($thumbnail && !empty()) {
+          $recent_posts[$slug]['thumbnail'] = $SITEURL.'data/uploads/'.$thumbfile;
+        }
+      }
+    }
+    return $recent_posts;
+  }
 }
 
 /**-------------------------------------------------------------------------------------------------
@@ -527,5 +550,8 @@ function return_blog_archives() {
   return show_blog_archives(false);
 }
 function return_blog_archive($archive) {
-  return show_blog_archive($archive, false)
+  return show_blog_archive($archive, false);
+}
+function return_blog_recent_posts($excerpt=false,$excerpt_length=null, $thumbnail=false, $read_more=null) {
+  return show_blog_recent_posts($excerpt, $excerpt_length, $thumbnail, $read_more, false);
 }
