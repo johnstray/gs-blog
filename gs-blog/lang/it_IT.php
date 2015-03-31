@@ -85,6 +85,8 @@ $i18n = array(
   'CATEGORY_NAME'             =>  'Nome Categoria',
   'CATEGORY_RSS_FEED'         =>  'Feed RSS della Categora',
   
+
+
   # 'RSS Auto-Importer' Strings
   'FEED_ADDED'                =>  'Feed RSS aggiunto con successo!',
   'FEED_ERROR'                =>  'Il Feed RSS non pu&oacute; essere salvato!',
@@ -99,6 +101,7 @@ $i18n = array(
   'ADD_FEED'                  =>  'Aggiungi RSS Feed',
   'SETTINGS_FEED_DESC'        =>  'RSS Auto-Importer importa e crea articoli da feeds RSS di altri websites.'.
                                   'Questo &egrave; utile se vuoi gestire contenuti di altri blog.',
+
   'ADD_NEW_FEED'              =>  'Aggiungi nuovo Feed',
   'BLOG_CATEGORY'             =>  'Categoria Blog',
   'RSS_FEED'                  =>  'Feed',
@@ -118,6 +121,7 @@ $i18n = array(
   'SETTINGS_SAVE_ERROR'       =>  'Non posso salvare le impostazioni!',
   'BLOG_SETTINGS'             =>  'Impostazioni Blog',
   'SETTINGS_MAIN_DESC'        =>  'Modifica le opzioni del tuo blog. Queste sono le opzioni principali del tuo blog.',
+  
   'PAGE_URL'                  =>  'Pagina da utilizzare per gli articoli del blog',
   'EXCERPT_OPTION'            =>  'Formato visualizzazione articoli nella pagina',
   'FULL_TEXT'                 =>  'Testo completo',
@@ -132,7 +136,9 @@ $i18n = array(
   'PRETTY_URLS_PARA'          =>  'Se impostato a si, devi editare il file .htaccess dopo aver salvato le opzioni',
   'HTACCESS_1'                =>  'Blocca l\'accesso diretto ai files XML!',
   'HTACCESS_2'                =>  'Generalmente RewriteBase è \'/\', ma puoi sostituirla con il percorso della tua sottodirectory',
+  
   'HTACCESS_3'                =>  'IMPORTANTE -> se il tuo sito è posizionato in una sottocartella devi cambiarla in modo che punti ad essa (es: /sottocartella/)',
+  
   'BLOG_PRETTY_NOTICE'        =>  'Devi abilitare pretty urls in GetSimple prima.'.
                                   'Le istruzioni saranno visualizzate qui',
   'SAVE_SETTINGS'             =>  'Salva Impostazioni',
@@ -153,9 +159,11 @@ $i18n = array(
   'AUTO_IMPORTER_TITLE'       =>  'Setup importatore Feed RSS',
   'AUTO_IMPORTER_DESC'        =>  'Dovresti effettuare il setup dei cronjobs attraverso il tuo pannello di amministrazione interfaccia del tuo web hosting.'.
                                   'Si presume che tu conosca questo plugin. I frammenti di codici seguenti ti danno un esempio..',
+  
   'BLOG_PAGE_DESC_TITLE'      =>  'Aiuto personalizzazione Pagina Blog',
   'BLOG_PAGE_RECOM'           =>  'Si raccomanda di visualizzare la funzione show_blog_post() presente in plugins/blog/inc/frontEndFunctions.php'.
                                   'per vedere come meglio impostare una pagina personalizzata del blog.',
+  
   'BLOG_PAGE_DESC_LINE_1'     =>  'Puoi usare html, php, xml e js in questo campo testo.',
   'BLOG_PAGE_DESC_LINE_2'     =>  'Si comporter&agrave; come se si codifica direttamente dal plugin stesso.'.
                                   'I dati dell&acute;articolo sono passati tramite oggetto.',
@@ -163,6 +171,7 @@ $i18n = array(
   'BLOG_PAGE_AVAILABLE_FUNC'  =>  'Funzioni disponibili &amp; Aiuti:',
   'BLOG_PAGE_FRMT_DATE_LABEL' =>  'Formato Data',
   'BLOG_PAGE_FRMT_DATA_DESC'  =>  'Passando i dati direttamente dall&acute;oggetto saranno formattati automaticamente.',
+
   'BLOG_PAGE_GET_URL_TO_AREAS'=>  'Ottieni URL del Blog',
   'BLOG_PAGE_URL_EX_LABEL'    =>  'es. (ottieni url dell\'articolo)',
   'BLOG_PAGE_AVAILABLE_AREAS' =>  'Aree disponibili',
@@ -200,6 +209,7 @@ $i18n = array(
                                   'campi personalizzati che saranno visualizzati quando editi una pagina.',
   'CUSTOM_FIELDS_OPTIONS_AREA'=>  'Area Opzioni',
   'OPTIONS_AREA_DESCRP'       =>  'Le Opzioni dei campi personalizzati saranno visualizzati nella sezione "Opzioni Articolo',
+  
   'NAME'                      =>  'Nome',
   'LABEL'                     =>  'Etichetta',
   'TYPE'                      =>  'Tipo',
@@ -207,6 +217,7 @@ $i18n = array(
   'ADD'                       =>  'Aggiungi campo',
   'CUSTOM_FIELDS_MAIN_AREA'   =>  'Area principale',
   'MAIN_AREA_DESCRP'          =>  '(Campi personalizzati principali saranno visualizzati nella sezione Opzioni articolo).',
+  
   'TEXT_FIELD'                =>  'Campo Testo',
   'LONG_TEXT_FIELD'           =>  'Campo Testo',
   'DROPDOWN_BOX'              =>  'Box Drop-down',
