@@ -855,7 +855,7 @@ class Blog
       $RSSString .= "\t  <title>There are no posts!</title>\n";
       $RSSString .= "\t  <link>".$this->get_blog_url('post')."</link>\n";
       $RSSString .= "\t  <guid>".$this->get_blog_url('post')."</guid>\n";
-      $RSSString .= "\t  <description>".i18n_r(BLOGFILE.'/RSS_FEED_NO_POSTS_DESC')."</description>\n";
+      $RSSString .= "\t  <description>There are no posts available for this RSS feed. Please contact the website administrator for more information.</description>\n";
       $RSSString .= "</item>\n";
     }
      
