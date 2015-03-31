@@ -1,5 +1,7 @@
 ### Version 3.3.2
 **Bug Fixes:**
+- [#067] Fixed rss.php issues ... Finally...
+- [#043] Fixed syntax error, unexpected ';' - Related to the rss.php issues.
 - [#058] Variable `$p['thumbnail']` needed to be casted correctly because it was returning a `SimpleXMLObject` even when empty. This caused an `IF` statement in the layout operate incorrectly.
 - [#057] Fixed language setting not being available to language based functions. The language string is now stored in the language files and loaded from there instead of settings.
 - [#054] Fixed Advertising code in 'Original' theme causing php warning because the setting wasn't available in fresh installs.
@@ -8,6 +10,7 @@
 - [#000] Updated version number definition. I forgot it again...
 
 **Front End UI Improvements:**
+- [#036] Front-end functions modified to allow lists to be echoed or returned.
 - [#056] Image thumbnail paths separated into parts to allow for easier customization in the layout. `IF` statement added to check if an image is included with the post or not.
 - [#055] Removed theme layouts and converted to using 2 include files for layout generation. You can customize these as needed.
 - [#029] Better handling of date/time formats for different languages. Format string now stored in language file.
