@@ -67,7 +67,7 @@ function blog_display_posts() {
  * @return:  $displayed (bool) - True:  Post was in the past (displayed)
  *                               False: Post was in the future (not displayed)
  */
-function show_blog_post($slug, $excerpt=false) {
+function show_blog_post($slug, $excerpt=false, $echo=true) {
   
   GLOBAL $SITEURL, $blogSettings, $post; // Get GLOBAL variables
   $Blog = new Blog; // Prepare the Blog class
@@ -96,13 +96,15 @@ function show_blog_post($slug, $excerpt=false) {
     $p['content'] = $Blog->create_excerpt(html_entity_decode($post->content),0,$el); // Create excerpt
   } else {echo 'Uh oh! Something went wrong!';}
   
-  # Lets load the template now and let it put all this together.
-  if(isset($_GET['post'])) {
-    include(BLOGPLUGINFOLDER.'layout-post.php');
-    return true;
-  } else {
-    include(BLOGPLUGINFOLDER.'layout-list.php');
-    return true;
+  if($echo) {
+    # Lets load the template now and let it put all this together.
+    if(isset($_GET['post'])) {
+      include(BLOGPLUGINFOLDER.'layout-post.php');
+    } else {
+      include(BLOGPLUGINFOLDER.'layout-list.php');
+    }
+  } elseif(!$echo) {
+    return $p;
   }
 }
 
@@ -147,22 +149,34 @@ function show_blog_categories($echo=true) {
  * @param $category (string) the category to show posts from
  * @return void (void)
  */  
-function show_blog_category($category) {
+function show_blog_category($category, $echo=true) {
 
 	$Blog = new Blog; // Create a new instance of the Blog class
 	$all_posts = $Blog->listPosts(true, true); // Get a list of all the posts in the blog
 	$count = 0; // Set a counter for the following loop
   
-	foreach($all_posts as $file) { // For each post in the list...
-		$data = getXML($file['filename']); // Get the XML data of the post
-		if($data->category == $category || empty($category)) { // Is the post in the requested category?
-			$count++; // Increase the counter.
-			show_blog_post($file['filename'], true); // Show the blog post
-		}
-	}
-	if($count < 1) { // Counter is still 0? We have no posts in this category.
-		echo '<p class="blog_category_noposts">'.i18n_r(BLOGFILE.'/NO_POSTS').'</p>';
-	}
+  if($echo) {
+    foreach($all_posts as $file) { // For each post in the list...
+      $data = getXML($file['filename']); // Get the XML data of the post
+      if($data->category == $category || empty($category)) { // Is the post in the requested category?
+        $count++; // Increase the counter.
+        show_blog_post($file['filename'], true); // Show the blog post
+      }
+    }
+    if($count < 1) { // Counter is still 0? We have no posts in this category.
+      echo '<p class="blog_category_noposts">'.i18n_r(BLOGFILE.'/NO_POSTS').'</p>';
+    }
+  } elseif(!$echo) {
+    $post_array = array();
+    foreach($all_posts as $file) { // For each post in the list...
+      $data = getXML($file['filename']); // Get the XML data of the post
+      if($data->category == $category || empty($category)) { // Is the post in the requested category?
+        $count++; // Increase the counter.
+        $post_array[$data->slug] = $file;
+      }
+    }
+    return $post_array;
+  }
 }
 
 /**-------------------------------------------------------------------------------------------------
@@ -488,4 +502,18 @@ function set_blog_title () {
 		}
 	}
 	$title = strip_tags(strip_decode($title)); // Clean the title variable
+}
+
+/**-------------------------------------------------------------------------------------------------
+ * Return functions
+ * Various helper functions to return data instead of echoing. Same as function($echo=false).
+ */
+function get_blog_post($slug,$excerpt=false) {
+  show_blog_post($slug, $excerpt, false);
+}
+function return_blog_categories() {
+  return show_blog_categories(false);
+}
+function return_blog_category($category) {
+  return show_blog_category($category, false);
 }
