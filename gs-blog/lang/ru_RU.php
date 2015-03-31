@@ -2,78 +2,78 @@
 /**************************************************************************************************\
 * Russian (ру́сский язы́к) Language File for GetSimple Blog                                          *
 * ------------------------------------------------------------------------------------------------ *
-* Last Modified: 15 February 2015                                                                  *
-* Compiled By: Oleg06 (? ?)                                                                        *
+* Last Modified: 31 March 2015                                                                  *
+* Compiled By: Google Translate (John Stray)                                                                        *
 \**************************************************************************************************/
  
 $i18n = array(
   
   # Language Configuration
-  'LANGUAGE_CODE'             =>  'en_US',
+  'LANGUAGE_CODE'             =>  'ru_RU',
   'DATE_FORMAT'               =>  'm/d/Y h:i:s a',
   'DATE_DISPLAY'              =>  'F jS, Y',
   'DATE_ARCHIVE'              =>  'F Y',
   
   # Plugin Information
   'PLUGIN_TITLE'              =>  ($plugin = 'GetSimple Blog'),
-  'PLUGIN_DESC'               =>  'A simple yet powerful Blog system for GetSimple CMS',
+  'PLUGIN_DESC'               =>  'Простой, но мощный Блог система для GetSimple CMS',
   
   # Tab/Sidebar Actions (Administration)
-  'BLOG_TAB_BUTTON'           =>  'B<em>l</em>og',
-  'MANAGE_POSTS_BUTTON'       =>  'Manage Posts',
-  'CATEGORIES_BUTTON'         =>  'Categories',
-  'AUTOIMPORTER_BUTTON'       =>  'RSS Auto-Importer',
-  'SETTINGS_BUTTON'           =>  'Settings',
-  'UPDATE_BUTTON'             =>  'Update Check',
-  'HELP_BUTTON'               =>  'Help'
+  'BLOG_TAB_BUTTON'           =>  'Блог',
+  'MANAGE_POSTS_BUTTON'       =>  'Управлять сообщения',
+  'CATEGORIES_BUTTON'         =>  'категории',
+  'AUTOIMPORTER_BUTTON'       =>  'RSS Авто-импортер',
+  'SETTINGS_BUTTON'           =>  'настройки',
+  'UPDATE_BUTTON'             =>  'Проверка обновления',
+  'HELP_BUTTON'               =>  'Помощь'
   
   # Generic Strings
-  'WRITE_OK'                  =>  'File successfully written!',
-  'EDIT_OK'                   =>  'File successfully modified!',
-  'DATA_FILE_ERROR'           =>  'File could not be written!',
-  'CANCEL'                    =>  'Cancel',
-  'DELETE'                    =>  'Delete',
-  'SAVE'                      =>  'Save',
-  'OR'                        =>  'Or',
-  'YES'                       =>  'Yes',
-  'NO'                        =>  'No',
-  'ADDED'                     =>  'Added',
-  'MANAGE'                    =>  'Manage',
-  'LANGUAGE'                  =>  'Language',
-  'DATE'                      =>  'Date',
+  'WRITE_OK'                  =>  'Файл успешно записан!',
+  'EDIT_OK'                   =>  'Файл успешно изменен!',
+  'DATA_FILE_ERROR'           =>  'Файл не может быть написано!',
+  'CANCEL'                    =>  'отменить',
+  'DELETE'                    =>  'удалять',
+  'SAVE'                      =>  'Сохранить',
+  'OR'                        =>  'или',
+  'YES'                       =>  'Да',
+  'NO'                        =>  'Нет',
+  'ADDED'                     =>  'Добавил',
+  'MANAGE'                    =>  'Управлять',
+  'LANGUAGE'                  =>  'язык',
+  'DATE'                      =>  'дата',
   
   # Class Constructor
-  'DATA_BLOG_DIR'             =>  '<em>data/blog</em> directory successfully created.',
-  'DATA_BLOG_DIR_ERR'         =>  'The <em>data/blog</em> folder could not be created!',
-  'DATA_BLOG_DIR_ERR_HINT'    =>  'You are going to have to create this directory yourself for '.
-                                  'the plugin to work properly',
-  'DATA_BLOG_CATEGORIES'      =>  '<em>blog_categories.xml</em> file successfully created!',
-  'DATA_BLOG_CATEGORIES_ERR'  =>  '<em>blog_categories.xml</em> file could not be created!',
-  'DATA_BLOG_RSS'             =>  '<em>blog_rss.xml</em> file successfully created!',
-  'DATA_BLOG_RSS_ERR'         =>  '<em>blog_rss.xml</em> file could not be created!',
-  'BLOG_SETTINGS'             =>  'Blog Settings',
+  'DATA_BLOG_DIR'             =>  '<em>data/blog</em> Каталог успешно создан.',
+  'DATA_BLOG_DIR_ERR'         =>  '<em>data/blog</em> папка не может быть создана!',
+  'DATA_BLOG_DIR_ERR_HINT'    =>  'Вы будете иметь, чтобы создать этот каталог самостоятельно для плагин для '.
+                                  'правильной работы.',
+  'DATA_BLOG_CATEGORIES'      =>  '<em>blog_categories.xml</em> Файл успешно создан!',
+  'DATA_BLOG_CATEGORIES_ERR'  =>  '<em>blog_categories.xml</em> Файл не может быть создан!',
+  'DATA_BLOG_RSS'             =>  '<em>blog_rss.xml</em> Файл успешно создан!',
+  'DATA_BLOG_RSS_ERR'         =>  '<em>blog_rss.xml</em> Файл не может быть создан!',
+  'BLOG_SETTINGS'             =>  'Настройки Блог',
   
   # 'Post Management' Strings
-  'POST_ADDED'                =>  'Successfully saved post!',
-  'POST_ERROR'                =>  'Post could not be saved!',
-  'POST_DELETED'              =>  'Post successfully deleted!',
-  'POST_DELETE_ERROR'         =>  'Post could not be deleted!',
-  'BLOG_CREATE_EDIT_NO_TITLE' =>  'A title is required for the post before it can be saved!',
-  'BLOG_RETURN_TO_PREV_PAGE'  =>  'Return to post',
-  'ADD_NEW_POST'              =>  'Add New Post',
-  'EDIT_EXISTING_POST'        =>  'Edit Post',
-  'VIEW_POST'                 =>  'View Post',
-  'POST_OPTIONS'              =>  'Post Options',
-  'UPLOAD_THUMBNAIL'          =>  'Upload Thumbnail',
-  'UPLOAD_ENABLE_JAVASCRIPT'  =>  'Please enable JavaScript to use the file uploader!',
-  'SAVE_POST'                 =>  'Save Post',
-  'MANAGE_POSTS'              =>  'Posts',
-  'CUSTOM_FIELDS_BUTTON'      =>  'Custom Fields',
-  'NEW_POST_BUTTON'           =>  'New Post',
-  'MANAGE_POSTS_DESC'         =>  'Edit existing posts or create new posts. The table below shows '.
-                                  'posts that currently exist.',
-  'NO_POSTS'                  =>  'There are no posts to show!',
-  'CLICK_TO_CREATE'           =>  'Click here to create one',
+  'POST_ADDED'                =>  'Успешно сохранена должность!',
+  'POST_ERROR'                =>  'Сообщение не может быть сохранен!',
+  'POST_DELETED'              =>  'Сообщение успешно удалено!',
+  'POST_DELETE_ERROR'         =>  'Сообщение не может быть удален!',
+  'BLOG_CREATE_EDIT_NO_TITLE' =>  'Название требуется на пост, прежде чем он может быть сохранен!',
+  'BLOG_RETURN_TO_PREV_PAGE'  =>  'Вернуться в темах',
+  'ADD_NEW_POST'              =>  'Добавить новое сообщение',
+  'EDIT_EXISTING_POST'        =>  'Редактировать сообщение',
+  'VIEW_POST'                 =>  'Посмотреть сообщение',
+  'POST_OPTIONS'              =>  'Опции сообщения',
+  'UPLOAD_THUMBNAIL'          =>  'Загрузить эскизов',
+  'UPLOAD_ENABLE_JAVASCRIPT'  =>  'Пожалуйста, включите JavaScript, чтобы использовать File Uploader!',
+  'SAVE_POST'                 =>  'Сохранить',
+  'MANAGE_POSTS'              =>  'сообщения',
+  'CUSTOM_FIELDS_BUTTON'      =>  'Настраиваемые поля',
+  'NEW_POST_BUTTON'           =>  'Новое сообщение',
+  'MANAGE_POSTS_DESC'         =>  'Изменить существующие сообщения и создавать новые сообщения. Приведенная ниже '.
+                                  'таблица показывает сообщения, что в настоящее время существуют.',
+  'NO_POSTS'                  =>  'Там нет сообщений для отображения!',
+  'CLICK_TO_CREATE'           =>  'Нажмите здесь, чтобы создать один',
   'PAGE_TITLE'                =>  'Page Title',
   
   # 'Category Management' Strings
