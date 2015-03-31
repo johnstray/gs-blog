@@ -204,22 +204,36 @@ function show_blog_search() {
  * 
  * @return void (void)
  */  
-function show_blog_archives() {
+function show_blog_archives($echo=true) {
 
 	GLOBAL $blogSettings; // Define GLOBAL variables
 	$Blog = new Blog; // Create a new instance of the Blog class
 	$archives = $Blog->get_blog_archives(); // Get a list of archives.
   
-	if (!empty($archives)) { // If we there are any archives in the list...
-    foreach ($archives as $archive => $archive_data) { // For each archive in the list...
-      // How many posts are there in this archive?
-			$post_count = ($blogSettings['archivepostcount'] == 'Y') ? ' ('.$archive_data['count'].')' : '';
-			$url = $Blog->get_blog_url('archive') . $archive; // What's the URL for this archive?
-			echo "<li><a href=\"{$url}\">{$archive_data['title']} {$post_count}</a></li>"; // Ouput the HTML list item
-		}
-	} else { // We have no archives in the list
-		echo i18n(BLOGFILE.'/NO_ARCHIVES'); // Let the user know
-	}
+  if ($echo) {
+    if (!empty($archives)) { // If we there are any archives in the list...
+      foreach ($archives as $archive => $archive_data) { // For each archive in the list...
+        // How many posts are there in this archive?
+        $post_count = ($blogSettings['archivepostcount'] == 'Y') ? ' ('.$archive_data['count'].')' : '';
+        $url = $Blog->get_blog_url('archive') . $archive; // What's the URL for this archive?
+        echo "<li><a href=\"{$url}\">{$archive_data['title']} {$post_count}</a></li>"; // Ouput the HTML list item
+      }
+    } else { // We have no archives in the list
+      echo i18n(BLOGFILE.'/NO_ARCHIVES'); // Let the user know
+    }
+  } elseif(!$echo) {
+    $archive_list = array();
+    if (!empty($archives)) { // If we there are any archives in the list...
+      $k=0; // Key counter
+      foreach ($archives as $archive => $archive_data) { // For each archive in the list...
+        $archive_list[$k]['title'] = $archive_data['title']; // What's the name of this archive?
+        $archive_list[$k]['count'] = $archive_data['count']; // How many posts are there in this archive?
+        $archive_list[$k]['link'] = $Blog->get_blog_url('archive') . $archive; // What's the URL for this archive?
+        $k++; // Increment counter...
+      }
+    }
+    return $archive_list;
+  }
 }
 
 /**-------------------------------------------------------------------------------------------------
@@ -516,4 +530,7 @@ function return_blog_categories() {
 }
 function return_blog_category($category) {
   return show_blog_category($category, false);
+}
+function return_blog_archives() {
+  return show_blog_archives(false);
 }
