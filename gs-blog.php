@@ -38,7 +38,7 @@ add_action('blog-sidebar','createSideMenu',array(BLOGFILE, i18n_r(BLOGFILE.'/RSS
 add_action('blog-sidebar','createSideMenu',array(BLOGFILE, i18n_r(BLOGFILE.'/SETTINGS_BUTTON'),'settings'));
 add_action('blog-sidebar','createSideMenu',array(BLOGFILE, i18n_r(BLOGFILE.'/UPDATE_BUTTON'),'update'));
 add_action('blog-sidebar','createSideMenu',array(BLOGFILE, i18n_r(BLOGFILE.'/HELP_BUTTON'),'help'));
-add_action('index-pretemplate', 'set_blog_title', array() );
+add_action('index-pretemplate', 'get_blog_title', array() );
 
 # Register/Queue Styles
 register_style (BLOGFILE.'_css', $SITEURL.'/plugins/'.BLOGFILE.'/css/admin_styles.css', '1.0', 'screen');

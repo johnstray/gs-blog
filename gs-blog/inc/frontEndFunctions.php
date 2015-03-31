@@ -468,30 +468,6 @@ function show_blog_navigation($index, $total, $count, $lastPostOfPage) {
 }
 
 /**-------------------------------------------------------------------------------------------------
- * get_blog_title($echo)
- * Get Page/POST Title - This function is a modified version of the core get_page_clean_title()
- * function. It will function normally on all pages except individual blog posts, where the post
- * title will be placed in instead of the page title.
- * 
- * @param  $echo  (bool)   True: Echos output - False: Returns output
- * @return $myVar (string) The post title
- * @TODO: Redundancy check required. Is this a duplicate of set_blog_title()?
- */  
-function get_blog_title($echo=true) {
-	
-  GLOBAL $title, $blogSettings, $post; // Declare GLOBAL variables
-	$slug = base64_encode(return_page_slug()); // Get the current pages slug
-  
-	if($slug == base64_encode($blogSettings["blogurl"])) { // If we are on the blog's page...
-		if(isset($_GET['post']) && !empty($post)) { // If we are showing a post...
-			$title = (string) $post->title; // Set the page title to title of post
-		}
-	}
-	$myVar = strip_tags(strip_decode($title)); // Clean the title variable
-  if($echo){echo $myVar;}else{return $myVar;} // Echo or return as per argument
-}
-
-/**-------------------------------------------------------------------------------------------------
  * set_post_description()
  * Sets the pages meta description to an excerpt of the post
  * 
@@ -509,13 +485,14 @@ function set_post_description() {
 }
 
 /**-------------------------------------------------------------------------------------------------
- * set_blog_title()
- * Sets the page title to the title of the current post, the archive name or category name being viewed
+ * get_blog_title()
+ * Get Page/POST Title - This function is a modified version of the core get_page_clean_title()
+ * function. It will function normally on all pages except blog based pages, where the post/archive/
+ * category title will be placed in instead of the page title.
  * 
  * @return void (void)
- * @TODO: Redundancy check required. Is this a duplicate of get_blog_title()?
  */
-function set_blog_title () {
+function get_blog_title () {
 
 	GLOBAL $title, $blogSettings, $post; // Declare GLOBAL variables
 	$slug = base64_encode(return_page_slug()); // What page are we on?
@@ -548,4 +525,7 @@ function return_blog_category($category) {
 }
 function return_blog_archives() {
   return show_blog_archives(false);
+}
+function return_blog_archive($archive) {
+  return show_blog_archive($archive, false)
 }
