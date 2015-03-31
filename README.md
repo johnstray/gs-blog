@@ -26,3 +26,7 @@ You can install this plugin to your GetSimple installation by following these si
 
 ###Useage
 Once installed, click on the new "Blog" tab in the Admin panel then click on "Help" in the side menu. Instructions for usage of this plugin can be found there.
+
+###Rules of this Repository
+- All commits must reference its related issue in the comment. EG: "Part of #XX" or "Fixes #XX". If an issue doesn't exist, create one and assign it to yourself with the relevant Milestone and Labels added.
+- All files uploaded must contain a blank line at the end of the file. This is good coding practice anyway.
