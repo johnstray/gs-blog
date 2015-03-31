@@ -330,14 +330,14 @@ function show_blog_recent_posts($excerpt=false, $excerpt_length=null, $thumbnail
       foreach ($posts as $file) {
         $data = getXML($file['filename']);
         $slug = $data->slug;
-        $thumbfile = (string)$data->thumbnail
+        $thumbfile = (string)$data->thumbnail;
         $recent_posts[$slug] = array();
         $recent_posts[$slug]['title'] = strip_tags(strip_decode($data->title));
         $recent_posts[$slug]['url'] = $Blog->get_blog_url('post').$data->slug;
         if($excerpt) {
-          $recent_posts[$slug]['excerpt'] = $Blog->create_excerpt(html_entity_decode($data->content),0,$excerpt_length);
+          $recent_posts[$slug]['excerpt'] = $Blog->create_excerpt( html_entity_decode($data->content), 0, $excerpt_length );
         }
-        if($thumbnail && !empty()) {
+        if($thumbnail && !empty($thumbfile)) {
           $recent_posts[$slug]['thumbnail'] = $SITEURL.'data/uploads/'.$thumbfile;
         }
       }
