@@ -2,7 +2,7 @@
 /**************************************************************************************************\
 * Polish (Język Polski) Language File for GetSimple Blog                                           *
 * ------------------------------------------------------------------------------------------------ *
-* Last Modified: 15 February 2015                                                                  *
+* Last Modified: 01 April 2015                                                                  *
 * Compiled By: Every0ne (? ?)                                                                      *
 \**************************************************************************************************/
 
@@ -43,13 +43,13 @@ $i18n = array(
 	'DATE'                      =>  'Data',
 
 	# Class Constructor
-	'DATA_BLOG_DIR'             =>  'Folder \"<i>data/blog</i>\" utworzony',
-	'DATA_BLOG_DIR_ERR'         =>  'Nie udało się utworzyć folderu \"<i>data/blog_posts</i>\" !',
+	'DATA_BLOG_DIR'             =>  'Folder "<i>data/blog</i>" utworzony',
+	'DATA_BLOG_DIR_ERR'         =>  'Nie udało się utworzyć folderu "<i>data/blog_posts</i>" !',
 	'DATA_BLOG_DIR_ERR_HINT'    =>  'Musisz utworzyć ten folder samodzielnie, by wtyczka działała poprawnie',
-	'DATA_BLOG_CATEGORIES'      =>  'Plik \"<i>data/other/blog_categories.xml</i>\" utworzony',
-	'DATA_BLOG_CATEGORIES_ERR'  =>  'Nie udało się utworzyć pliku \"<i>data/other/blog_categories.xml</i>\" !',
-	'DATA_BLOG_RSS'             =>  'Plik \"<i>data/other/blog_rss.xml</i>\" utworzony',
-	'DATA_BLOG_RSS_ERR'         =>  'Nie udało się utworzyć pliku \"<i>data/other/blog_rss.xml</i>\" !',
+	'DATA_BLOG_CATEGORIES'      =>  'Plik "<i>data/other/blog_categories.xml</i>" utworzony',
+	'DATA_BLOG_CATEGORIES_ERR'  =>  'Nie udało się utworzyć pliku "<i>data/other/blog_categories.xml</i>" !',
+	'DATA_BLOG_RSS'             =>  'Plik "<i>data/other/blog_rss.xml</i>" utworzony',
+	'DATA_BLOG_RSS_ERR'         =>  'Nie udało się utworzyć pliku "<i>data/other/blog_rss.xml</i>" !',
 	'BLOG_SETTINGS'             =>  'Ustawienia bloga',
 
 	# 'Post Management' Strings
@@ -126,16 +126,16 @@ $i18n = array(
 	'PRETTY_URLS'               =>  'Używaj ładnych adresów URL',
 	'VIEW_HTACCESS'             =>  'Zobacz jak powinien wyglądać plik <i>.htaccess</i> twojej strony!',
 	'PRETTY_URLS_PARA'          =>  'jeśli chcesz używać ładnych adresów URL, to po zapisaniu ustawień należy wprowadzić odpowiednie zmiany w konfiguracji serwera lub w pliku <i>.htaccess</i>',
-	'HTACCESS_1'                =>  'Blokada bezpośredniego dostępu do plików XML - w nich znajdują się wszystkie dane!'."\n\n",
-	'HTACCESS_2'                =>  'Zwykle dyrektywa <i>RewriteBase</i> zawiera tylko \'/\', ale należy ją zmienić, jeśli zajdzie taka potrzeba.'."\n",
-	'HTACCESS_3'                =>  'WAŻNE -> jeśli twoja strona znajduje się w podfolderze, należy odpowiednio zmienić to ustawienie (przykładowo: /podfolder/)'."\n\n",
+	'HTACCESS_1'                =>  'Blokada bezpośredniego dostępu do plików XML - w nich znajdują się wszystkie dane!',
+	'HTACCESS_2'                =>  'Zwykle dyrektywa <i>RewriteBase</i> zawiera tylko &apos;/&apos;, ale należy ją zmienić, jeśli zajdzie taka potrzeba.',
+	'HTACCESS_3'                =>  'WAŻNE -> jeśli twoja strona znajduje się w podfolderze, należy odpowiednio zmienić to ustawienie (przykładowo: /podfolder/)',
 	'BLOG_PRETTY_NOTICE'        =>  'Musisz włączyć ładne URLe w ustawieniach GetSimple by pojawiły się tu dalsze instrukcje',
 	'SAVE_SETTINGS'             =>  'Zapisz ustawienia',
 	'MAIN_SETTINGS_BUTTON'      =>  'Główne ustawienia',
 
 	# 'Help' Strings
 	'HELP'                      =>  'Pomoc',
-	'FRONT_END_FUNCTIONS'       =>  'Funkcje Front End\'u',
+	'FRONT_END_FUNCTIONS'       =>  'Funkcje Front End&apos;u',
 	'HELP_CATEGORIES'           =>  'Pokaż kategorie bloga',
 	'HELP_SEARCH'               =>  'Pokaż pole wyszukiwania w blogu',
 	'HELP_ARCHIVES'             =>  'Pokaż archiwum bloga',
