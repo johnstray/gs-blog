@@ -50,7 +50,7 @@ function auto_import()
               $post_data['content']     = htmlentities($item['summary'],ENT_QUOTES,'iso-8859-1').'<p class="blog_auto_import_readmore"><a href="'.$item['link'].'" target="_blank">'.i18n_r(BLOGFILE.'/READ_FULL_ARTICLE').'</a></p>';
             }
 		        $post_data['excerpt']       = $Blog->create_excerpt($item['summary'],0,$Blog->getSettingsData("excerptlength"));
-		        $post_data['thumbnail']     = auto_import_thumbnail($item);
+		        $post_data['thumbnail']     = '';
 		        $post_data['current_slug']  = '';
             $post_data['author']        = htmlentities('<a href="'.$rss_uri.'">RSS Feed</a>',ENT_QUOTES,'iso-8859-1');
 
