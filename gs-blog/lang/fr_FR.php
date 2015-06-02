@@ -10,46 +10,46 @@ $i18n = array(
   
   # Language Configuration
   'LANGUAGE_CODE'             =>  'fr_FR',
-  'DATE_FORMAT'               =>  'm/d/Y h:i:s a',
+  'DATE_FORMAT'               =>  'd/m/Y h:i:s a',
   'DATE_DISPLAY'              =>  'F jS, Y',
   'DATE_ARCHIVE'              =>  'F Y',
   
   # Plugin Information
   'PLUGIN_TITLE'              =>  ($plugin = 'GetSimple Blog'),
-  'PLUGIN_DESC'               =>  'A simple yet powerful Blog system for GetSimple CMS',
+  'PLUGIN_DESC'               =>  'Une gestion de Blog simple et efficace pour le CMS GetSimple',
   
   # Tab/Sidebar Actions (Administration)
   'BLOG_TAB_BUTTON'           =>  'B<em>l</em>og',
-  'MANAGE_POSTS_BUTTON'       =>  'Manage Posts',
-  'CATEGORIES_BUTTON'         =>  'Categories',
+  'MANAGE_POSTS_BUTTON'       =>  'Gestion des Articles',
+  'CATEGORIES_BUTTON'         =>  'Catégories',
   'AUTOIMPORTER_BUTTON'       =>  'RSS Auto-Importer',
-  'SETTINGS_BUTTON'           =>  'Settings',
+  'SETTINGS_BUTTON'           =>  'Paramètres',
   'UPDATE_BUTTON'             =>  'Update Check',
-  'HELP_BUTTON'               =>  'Help'
+  'HELP_BUTTON'               =>  'Aide'
   
   # Generic Strings
-  'WRITE_OK'                  =>  'File successfully written!',
-  'EDIT_OK'                   =>  'File successfully modified!',
-  'DATA_FILE_ERROR'           =>  'File could not be written!',
-  'CANCEL'                    =>  'Cancel',
-  'DELETE'                    =>  'Delete',
-  'SAVE'                      =>  'Save',
-  'OR'                        =>  'Or',
-  'YES'                       =>  'Yes',
-  'NO'                        =>  'No',
+  'WRITE_OK'                  =>  'Fichier enregistré avec succès !',
+  'EDIT_OK'                   =>  'Fichier modifié avec succès !',
+  'DATA_FILE_ERROR'           =>  'Le fichier ne peut être enregistré !',
+  'CANCEL'                    =>  'Annuler',
+  'DELETE'                    =>  'Effacer',
+  'SAVE'                      =>  'Enregistrer',
+  'OR'                        =>  'Ou',
+  'YES'                       =>  'Oui',
+  'NO'                        =>  'Non',
   'ADDED'                     =>  'Added',
-  'MANAGE'                    =>  'Manage',
-  'LANGUAGE'                  =>  'Language',
+  'MANAGE'                    =>  'Gestion',
+  'LANGUAGE'                  =>  'Langue',
   'DATE'                      =>  'Date',
   
   # Class Constructor
-  'DATA_BLOG_DIR'             =>  '<em>data/blog</em> directory successfully created.',
-  'DATA_BLOG_DIR_ERR'         =>  'The <em>data/blog</em> folder could not be created!',
-  'DATA_BLOG_DIR_ERR_HINT'    =>  'You are going to have to create this directory yourself for the plugin to work properly',
-  'DATA_BLOG_CATEGORIES'      =>  '<em>blog_categories.xml</em> file successfully created!',
-  'DATA_BLOG_CATEGORIES_ERR'  =>  '<em>blog_categories.xml</em> file could not be created!',
-  'DATA_BLOG_RSS'             =>  '<em>blog_rss.xml</em> file successfully created!',
-  'DATA_BLOG_RSS_ERR'         =>  '<em>blog_rss.xml</em> file could not be created!',
+  'DATA_BLOG_DIR'             =>  '<em>data/blog</em> répertoire créé avec succès.',
+  'DATA_BLOG_DIR_ERR'         =>  'Le répertoire <em>data/blog</em> ne peut être créé!',
+  'DATA_BLOG_DIR_ERR_HINT'    =>  'Vous devez créer ce répertoire vous même pour que le plugin fonctionne convenablement',
+  'DATA_BLOG_CATEGORIES'      =>  '<em>blog_categories.xml</em> fichier créé avec succès !',
+  'DATA_BLOG_CATEGORIES_ERR'  =>  'le fichier <em>blog_categories.xml</em> ne peut être créé !',
+  'DATA_BLOG_RSS'             =>  '<em>blog_rss.xml</em> fichier créé avec succès !',
+  'DATA_BLOG_RSS_ERR'         =>  'le fichier <em>blog_rss.xml</em> ne peut être créé !',
   'BLOG_SETTINGS'             =>  'Blog Settings',
   
   # 'Post Management' Strings
