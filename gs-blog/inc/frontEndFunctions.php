@@ -448,7 +448,7 @@ function show_posts_page($index=0) {
 	$posts = $Blog->listPosts(true, true); // Get the list of posts.
 	if(!empty($posts)) { // If we have posts to display...
 		ob_start(); // Create a buffer to build this page in
-		require('layout-listBefore.php'); // Get the listBefore layout (stuff before list of posts)
+		require(BLOGPLUGINFOLDER.'layout-listBefore.php'); // Get the listBefore layout (stuff before list of posts)
 		$pages = array_chunk($posts, intval($blogSettings["postperpage"]), TRUE); // Split posts onto multiple pages
 		if (is_numeric($index) && $index >= 0 && $index < sizeof($pages)) { // What page should we show?
 			$posts = $pages[$index]; // Show specified page number
@@ -471,7 +471,7 @@ function show_posts_page($index=0) {
 				}
 			}
 		}
-		require('layout-listAfter.php'); // Get the listAfter layout (stuff after list of posts)
+		require(BLOGPLUGINFOLDER.'layout-listAfter.php'); // Get the listAfter layout (stuff after list of posts)
 		ob_end_flush(); // Get the formatted contents of the output buffer.
 		
 	} else { // We have no posts to display. Let the user know.
