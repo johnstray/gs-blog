@@ -1,22 +1,4 @@
 <div class="blog_list_container">
-
-  <!-- HTML5 Scoped StyleSheet
-       Add any css styles that you require to this style declaration. A scoped
-       stylesheet prevents your styles from contaminating the website's theme.
-       Scoped stylesheets are virtually backwards compatible with most browsers.
-  -->
-  <style scoped>
-    .blog_post_thumbnail {
-      width:200px;
-      height:auto;
-      float:left;
-      padding-right:10px;
-      padding-bottom:10px;
-    }
-    .blog_list_container {
-      clear:both;
-    }	
-  </style>
   
   <!-- Blog post title
        Only show the title of the post when not on the post itself as there is a
@@ -64,11 +46,13 @@
        $p['tagurl'] is available to give you the base url for the tags, just add the tag to the end
        of the final url.
   -->
-  <p class="blog_tags">
+  <?php if (!empty($p['tags']) && count($p['tags']) >= 1) { ?>
+  <p class="blog_post_tags">
     <b><?php i18n(BLOGFILE.'/TAGS'); ?> :</b>
     <?php foreach ($p['tags'] as $tag) { ?>
       <a href="<?php echo $p['tagsurl'].$tag; ?>"><?php echo $tag; ?></a>,&nbsp;
     <?php } ?>
   </p>
+  <?php } ?>
   
 </div>
