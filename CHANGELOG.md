@@ -1,4 +1,4 @@
-### Version 3.3.2
+### Version 3.4.0
 **Bug Fixes:**
 - [#068] Fixed string not translated in `generateRSSFeed()`
 - [#067] Fixed rss.php issues ... Finally...
