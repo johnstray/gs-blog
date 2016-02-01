@@ -2,7 +2,7 @@
 /**
  * Plugin Name: GetSimple Blog
  * Description: A simple and easy to use blog/newsfeed for GetSimple
- * Version: 3.3.2
+ * Version: 3.4.0
  * Author: John Stray
  * Author URI: https://www.johnstray.com/
  */
