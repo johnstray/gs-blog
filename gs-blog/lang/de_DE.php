@@ -3,8 +3,7 @@
 * German (Deutsch) Language File for GetSimple Blog                                                *
 * ------------------------------------------------------------------------------------------------ *
 * Last Modified: 13 February 2016                                                                  *
-* Compiled By: nok3s (Niko ?)                                                                      *
-* Updated By: gschintgen                                                                           *
+* Compiled By: gschintgen ()                                                                       *
 \**************************************************************************************************/
  
 $i18n = array(
