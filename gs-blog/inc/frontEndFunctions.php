@@ -124,6 +124,8 @@ function show_blog_categories($echo=true) {
   if ($echo) {
     if(!empty($categories)) { // If we have categories to display...
       foreach($categories as $category) { // For each of the categories...
+        // How many posts are there in this category?
+        $post_count = ($blogSettings['archivepostcount'] == 'Y') || $count == true ? ' ('.count(show_blog_category($category)).')' : '';
         // Output a list item with a link to the category
         echo '<li><a href="'.$url.$category.'">'.$category.'</a></li>';
       }
