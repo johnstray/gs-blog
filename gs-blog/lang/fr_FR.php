@@ -25,7 +25,7 @@ $i18n = array(
   'AUTOIMPORTER_BUTTON'       =>  'RSS Auto-Importer',
   'SETTINGS_BUTTON'           =>  'Paramètres',
   'UPDATE_BUTTON'             =>  'Mise à jour',
-  'HELP_BUTTON'               =>  'Aide'
+  'HELP_BUTTON'               =>  'Aide',
   
   # Generic Strings
   'WRITE_OK'                  =>  'Fichier enregistré avec succès&nbsp;!',
