@@ -1,3 +1,13 @@
+### Version 3.4.1
+**Bug Fixes:**
+- [#075] German and French language files were missing some commas in the array.
+- [#075] German language file had 9 missing strings.
+- [#074] Fixed issues with post count in categories: casting of XMLobjects to string, a few missing punctuation marks, updated en_US language file to add Categories to Archvie Post Count string.
+- [#074] Fixed 'illegal offset' warning in `show_blog_category()` function. XMLoject is now cast properly as a string to use as array ofset. This prevented `show_blog_categories()` from being able to count the posts.
+
+**Front End UI Improvements**
+- [#074] Properly implemented post counts in categories. This was incomplete in the previous release. Rebuilt methods to make it more robust than originally planned.
+
 ### Version 3.4.0
 **Bug Fixes:**
 - [#068] Fixed string not translated in `generateRSSFeed()`
