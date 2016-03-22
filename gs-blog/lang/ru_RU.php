@@ -2,8 +2,8 @@
 /**************************************************************************************************\
 * Russian (ру́сский язы́к) Language File for GetSimple Blog                                          *
 * ------------------------------------------------------------------------------------------------ *
-* Last Modified: 31 March 2015                                                                  *
-* Compiled By: Google Translate (John Stray)                                                                        *
+* Last Modified: 31 March 2015                                                                     *
+* Compiled By: Google Translate (John Stray)                                                       *
 \**************************************************************************************************/
  
 $i18n = array(
@@ -25,7 +25,7 @@ $i18n = array(
   'AUTOIMPORTER_BUTTON'       =>  'RSS Авто-импортер',
   'SETTINGS_BUTTON'           =>  'настройки',
   'UPDATE_BUTTON'             =>  'Проверка обновления',
-  'HELP_BUTTON'               =>  'Помощь'
+  'HELP_BUTTON'               =>  'Помощь',
   
   # Generic Strings
   'WRITE_OK'                  =>  'Файл успешно записан!',
