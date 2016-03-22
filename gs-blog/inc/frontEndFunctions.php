@@ -110,24 +110,35 @@ function show_blog_post($slug, $excerpt=false, $echo=true) {
 
 /**-------------------------------------------------------------------------------------------------
  * show_blog_categories()
- * Shows a list of blog categories
+ * Shows or returns a list of blog categories. Set first parameter to true to echo the output or false to return the
+ * list as a 2d-array of categories with 'name', 'link' and 'count' in second dimension. Set second parameter to true
+ * to force enable showing of post count or false to force disable post count; default is to respect the
+ * 'archivepostcount' setting. 
  * 
- * @return void (void)
+ * @param $echo (bool) - Echo [true] or return [false] the list of categories - Default: true
+ * @param $count (bool) - Display the number of posts in the category / Ignored when $echo=false
+ *                      - Default: null (<-- Makes arg optional, uses $blogSettings['archivepostcount'] as default) 
+ * @return void (void) - When $echo = true
+ * @return $catout (2d-array) - When $echo = false, returns 2d-array of categories with info for each.
  */  
-function show_blog_categories($echo=true) {
+function show_blog_categories($echo=true,$count=null) {
 	
   $Blog = new Blog; // Create a new instance of the Blog class
 	$categories = getXML(BLOGCATEGORYFILE); // Get the list of categories
 	$url = $Blog->get_blog_url('category'); // What's the URL for the categories page?
 	$main_url = $Blog->get_blog_url(); // The base URL for the blog.
   
+  // Shoud post counting be enabled? Set 'archivepostcount' as default if not specified.
+  $count_enable = ($blogSettings['archivepostcount'] == 'Y' ? true : false;
+  $count = ($count !== true || $count !== false) ? $count_enable : $count ;
+  
   if ($echo) {
     if(!empty($categories)) { // If we have categories to display...
       foreach($categories as $category) { // For each of the categories...
         // How many posts are there in this category?
-        $post_count = ($blogSettings['archivepostcount'] == 'Y') || $count == true ? ' ('.count(show_blog_category($category)).')' : '';
+        $post_count = ($count == true ? ' ('.count(show_blog_category($category,false)).')' : '';
         // Output a list item with a link to the category
-        echo '<li><a href="'.$url.$category.'">'.$category.'</a></li>';
+        echo '<li><a href="'.$url.$category.'">'.$category.$post_count'</a></li>';
       }
     } else { // We have no categories
       echo "<li>".i18n(BLOGFILE.'/NO_CATEGORIES')."</li>"; // Let the user know
@@ -138,6 +149,7 @@ function show_blog_categories($echo=true) {
       foreach($categories as $category) {
         $catout[$k]['name'] = $category; // The category's name
         $catout[$k]['link'] = $url.$category; // Link URL to category's page.
+        $catout[$k]['count'] = count(show_blog_category($category,false)); // number of posts in category
         $k++; // Increment counter
       }
     }
@@ -449,8 +461,6 @@ function show_posts_page($index=0) {
 	$Blog = new Blog; // Create a new instance of the Blog class
 	$posts = $Blog->listPosts(true, true); // Get the list of posts.
 	if(!empty($posts)) { // If we have posts to display...
-		ob_start(); // Create a buffer to build this page in
-		require(BLOGPLUGINFOLDER.'layout-listBefore.php'); // Get the listBefore layout (stuff before list of posts)
 		$pages = array_chunk($posts, intval($blogSettings["postperpage"]), TRUE); // Split posts onto multiple pages
 		if (is_numeric($index) && $index >= 0 && $index < sizeof($pages)) { // What page should we show?
 			$posts = $pages[$index]; // Show specified page number
@@ -473,9 +483,6 @@ function show_posts_page($index=0) {
 				}
 			}
 		}
-		require(BLOGPLUGINFOLDER.'layout-listAfter.php'); // Get the listAfter layout (stuff after list of posts)
-		ob_end_flush(); // Get the formatted contents of the output buffer.
-		
 	} else { // We have no posts to display. Let the user know.
 		echo '<p>' . i18n(BLOGFILE.'/NO_POSTS') . '</p>';
 	}

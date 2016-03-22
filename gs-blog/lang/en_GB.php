@@ -121,7 +121,7 @@ $i18n = array(
   'EXCERPT_LENGTH'            =>  'Length of excerpt (characters)',
   'POSTS_PER_PAGE'            =>  '&num; of posts per page',
   'RECENT_POSTS'              =>  '&num; of recent posts',
-  'DISPLAY_POST_COUNT_ARCH'   =>  'Display post count in Archives',
+  'DISPLAY_POST_COUNT_ARCH'   =>  'Display post count in Archives/Categories',
   'HTACCESS_HEADLINE'         =>  'Pretty URLs',
   'PRETTY_URLS'               =>  'Use pretty URLs',
   'VIEW_HTACCESS'             =>  'View what your site&apos;s .htaccess should be!',
@@ -136,7 +136,7 @@ $i18n = array(
   # 'Help' Strings
   'HELP'                      =>  'Help',
   'FRONT_END_FUNCTIONS'       =>  'Front End Functions',
-  'HELP_CATEGORIES'           =>  'Display blog categories',
+  'HELP_CATEGORIES'           =>  'Display blog categories - Show post count (&apos;true,true&apos; Enable / &apos;true,false&apos; Disable / Default: Archive post count setting)',
   'HELP_SEARCH'               =>  'Display blog search bar',
   'HELP_ARCHIVES'             =>  'Display blog archives',
   'HELP_RECENT'               =>  'Show your blogs most recent posts',
