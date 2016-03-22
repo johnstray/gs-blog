@@ -123,22 +123,25 @@ function show_blog_post($slug, $excerpt=false, $echo=true) {
  */  
 function show_blog_categories($echo=true,$count=null) {
 	
+  GLOBAL $blogSettings;
   $Blog = new Blog; // Create a new instance of the Blog class
 	$categories = getXML(BLOGCATEGORYFILE); // Get the list of categories
 	$url = $Blog->get_blog_url('category'); // What's the URL for the categories page?
 	$main_url = $Blog->get_blog_url(); // The base URL for the blog.
   
   // Shoud post counting be enabled? Set 'archivepostcount' as default if not specified.
-  $count_enable = ($blogSettings['archivepostcount'] == 'Y' ? true : false;
-  $count = ($count !== true || $count !== false) ? $count_enable : $count ;
+  $count_enable = ($blogSettings['archivepostcount'] == 'Y') ? true : false;
+  if (is_bool($count) === false) {$count = $count_enable;}
   
   if ($echo) {
     if(!empty($categories)) { // If we have categories to display...
       foreach($categories as $category) { // For each of the categories...
+        $category = (string) $category; // Convert object to string
         // How many posts are there in this category?
-        $post_count = ($count == true ? ' ('.count(show_blog_category($category,false)).')' : '';
+        $sizeof = (string) sizeof(show_blog_category($category,false));
+        $post_count = ($count == true) ? ' ('.$sizeof.')' : '';
         // Output a list item with a link to the category
-        echo '<li><a href="'.$url.$category.'">'.$category.$post_count'</a></li>';
+        echo '<li><a href="'.$url.$category.'">'.$category.$post_count.'</a></li>';
       }
     } else { // We have no categories
       echo "<li>".i18n(BLOGFILE.'/NO_CATEGORIES')."</li>"; // Let the user know
@@ -147,9 +150,10 @@ function show_blog_categories($echo=true,$count=null) {
     $catout = array();$k=0;
     if(!empty($categories)) {
       foreach($categories as $category) {
+        $category = (string) $category; // Convert object to string
         $catout[$k]['name'] = $category; // The category's name
         $catout[$k]['link'] = $url.$category; // Link URL to category's page.
-        $catout[$k]['count'] = count(show_blog_category($category,false)); // number of posts in category
+        $catout[$k]['count'] = sizeof(show_blog_category($category,false)); // number of posts in category
         $k++; // Increment counter
       }
     }
@@ -187,6 +191,7 @@ function show_blog_category($category, $echo=true) {
       $data = getXML($file['filename']); // Get the XML data of the post
       if($data->category == $category || empty($category)) { // Is the post in the requested category?
         $count++; // Increase the counter.
+        $slug = (string) $data->slug;
         $post_array[$data->slug] = $file;
       }
     }
