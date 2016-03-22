@@ -100,6 +100,15 @@ $i18n = array(
   'RSS_FEED'                  =>  'RSS-Feed',
   'FEED_CATEGORY'             =>  'RSS-Feed-Kategorie',
   'DELETE_FEED'               =>  'Feed l&ouml;schen',
+  /* Missing Strings */
+  'RSS_SETTINGS_HEADER'       =>  'RSS Auto-Importer Settings',
+  'SETTINGS_RSS_DESC'         =>  'Choose your settings for the RSS Auto-Importer. The Auto-Importer can import either the full content of feeds or a summary with a link back to the original article.',
+  'RSS_IMPORTER'              =>  'Enable RSS Auto-Importer',
+  'RSS_CONTENT_DESCRIPTION'   =>  'Include RSS Content or Summary',
+  'RSS_TITLE'                 =>  'RSS Feed Title',
+  'RSS_DESCRIPTION'           =>  'RSS Feed Description',
+  'RSS_IMPORTER_PASS'         =>  'Auto-Importer Password (anything)',
+  'RSS_FEED_NUM_POSTS'        =>  '&num; of posts in RSS feed',
   
   # 'Settings' Strings
   'SETTINGS_SAVE_OK'          =>  'Einstellungen erfolgreich gesichert.',
@@ -123,6 +132,8 @@ $i18n = array(
   'HTACCESS_3'                =>  'WICHTIG -> Falls die Website in einem Unterordner angesiedelt ist, musst Du dies entsprechend anpassen (z.B. /unterordner/)',
   'BLOG_PRETTY_NOTICE'        =>  'Du musst lesbare URLs in GetSimple aktivieren, damit hier Anweisungen angezeigt werden.',
   'SAVE_SETTINGS'             =>  'Einstellungen sichern',
+  /* Missing Strings */
+  'MAIN_SETTINGS_BUTTON'      =>  'Main Settings',
   
   # 'Help' Strings
   'HELP'                      =>  'Hilfe',
