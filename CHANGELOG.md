@@ -1,5 +1,6 @@
 ### Version 3.4.1
 **Bug Fixes:**
+- [#---] Some language files were missing some commas in the array. Added html entities for certain characters.
 - [#075] German and French language files were missing some commas in the array.
 - [#075] German language file had 9 missing strings.
 - [#074] Fixed issues with post count in categories: casting of XMLobjects to string, a few missing punctuation marks, updated en_US language file to add Categories to Archvie Post Count string.
