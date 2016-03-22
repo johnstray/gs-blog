@@ -100,15 +100,14 @@ $i18n = array(
   'RSS_FEED'                  =>  'RSS-Feed',
   'FEED_CATEGORY'             =>  'RSS-Feed-Kategorie',
   'DELETE_FEED'               =>  'Feed l&ouml;schen',
-  /* Missing Strings */
-  'RSS_SETTINGS_HEADER'       =>  'RSS Auto-Importer Settings',
-  'SETTINGS_RSS_DESC'         =>  'Choose your settings for the RSS Auto-Importer. The Auto-Importer can import either the full content of feeds or a summary with a link back to the original article.',
-  'RSS_IMPORTER'              =>  'Enable RSS Auto-Importer',
-  'RSS_CONTENT_DESCRIPTION'   =>  'Include RSS Content or Summary',
-  'RSS_TITLE'                 =>  'RSS Feed Title',
-  'RSS_DESCRIPTION'           =>  'RSS Feed Description',
-  'RSS_IMPORTER_PASS'         =>  'Auto-Importer Password (anything)',
-  'RSS_FEED_NUM_POSTS'        =>  '&num; of posts in RSS feed',
+  'RSS_SETTINGS_HEADER'       =>  'RSS Auto-Importer Einstellungen',
+  'SETTINGS_RSS_DESC'         =>  'Wähle deine Einstellungen für den RSS Auto-Importer. Der Auto-Importer kann entweder den ganzen Inhalt von Feeds importieren oder eine Textvorschau mit einem Link zum Original-Artikel.',
+  'RSS_IMPORTER'              =>  'RSS Auto-Importer aktivieren',
+  'RSS_CONTENT_DESCRIPTION'   =>  'RSS-Inhalt oder Vorschau',
+  'RSS_TITLE'                 =>  'Titel des RSS-Feeds',
+  'RSS_DESCRIPTION'           =>  'Beschreibung des RSS-Feeds',
+  'RSS_IMPORTER_PASS'         =>  'Auto-Importer-Passwort (beliebig)',
+  'RSS_FEED_NUM_POSTS'        =>  'Anzahl Artikel im RSS-Feed',
   
   # 'Settings' Strings
   'SETTINGS_SAVE_OK'          =>  'Einstellungen erfolgreich gesichert.',
