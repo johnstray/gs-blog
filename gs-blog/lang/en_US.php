@@ -183,7 +183,7 @@ $i18n = array(
   'CATEGORY_PRETITLE'         =>  'Blog Category: ',
   
   # Custom Fields Manager
-  'CUSTOM_FIELDS'             =>  'Custom Fields',
+  'CUSTOM_FIELDS'             =>  'Manage Custom Fields',
   'CUSTOMFIELDS_DESCR'        =>  'This plugin allows you to specify custom fields which are displayed when you edit a page.',
   'CUSTOM_FIELDS_OPTIONS_AREA'=>  'Options Area',
   'OPTIONS_AREA_DESCRP'       =>  '(Options: Custom fields will be displayed in the "Post Options" section).',

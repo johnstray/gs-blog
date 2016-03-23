@@ -10,7 +10,7 @@ function show_custom_fields()
 	$customFields = $CustomFields->getCustomFields();
 ?>
 	<style> .hidden_main {display:none;} </style>
-	<h3 class="floated"><?php echo i18n_r(BLOGFILE.'/MANAGE').' '.i18n_r(BLOGFILE.'/CUSTOM_FIELDS'); ?></h3>
+	<h3 class="floated"><?php echo i18n_r(BLOGFILE.'/CUSTOM_FIELDS'); ?></h3>
 	<p class="clear">
 		<?php i18n(BLOGFILE.'/CUSTOMFIELDS_DESCR'); ?>
 	</p>
