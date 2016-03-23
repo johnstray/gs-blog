@@ -67,7 +67,7 @@ $i18n = array(
   'UPLOAD_ENABLE_JAVASCRIPT'  =>  'JavaScript muss aktiviert sein, um den Datei-Uploader zu benutzen.',
   'SAVE_POST'                 =>  'Artikel speichern',
   'MANAGE_POSTS'              =>  'Artikel',
-  'CUSTOM_FIELDS_BUTTON'      =>  'benutzerdefinierte Felder',
+  'CUSTOM_FIELDS_BUTTON'      =>  'Benutzerdefinierte Felder',
   'NEW_POST_BUTTON'           =>  'Artikel erstellen',
   'MANAGE_POSTS_DESC'         =>  'Bestehende Artikel bearbeiten oder neue erstellen. Die nachstehende Tabelle zeigt die derzeit bestehenden Artikel.',
   'NO_POSTS'                  =>  'Keine Artikel vorhanden',
@@ -101,11 +101,11 @@ $i18n = array(
   'FEED_CATEGORY'             =>  'RSS-Feed-Kategorie',
   'DELETE_FEED'               =>  'Feed l&ouml;schen',
   'RSS_SETTINGS_HEADER'       =>  'RSS Auto-Importer Einstellungen',
-  'SETTINGS_RSS_DESC'         =>  'Wähle deine Einstellungen für den RSS Auto-Importer. Der Auto-Importer kann entweder den ganzen Inhalt von Feeds importieren oder eine Textvorschau mit einem Link zum Original-Artikel.', // Modified string in v3.4.1 ('Summary' changed to 'Excerpt') [not yet re-translated]
+  'SETTINGS_RSS_DESC'         =>  'Wähle deine Einstellungen für den RSS Auto-Importer. Der Auto-Importer kann entweder den ganzen Inhalt von Feeds importieren oder eine Textvorschau mit einem Link zum Original-Artikel.',
   'RSS_IMPORTER'              =>  'RSS Auto-Importer aktivieren',
-  'RSS_CONTENT_DESCRIPTION'   =>  'RSS-Inhalt oder Vorschau', // Modified string in v3.4.1 ('Summary' changed to 'Excerpt') [not yet re-translated]
-  'RSS_INCLUDE_CONTENT'       =>  'Full Content', // New String in 3.4.1
-  'RSS_INCLUDE_EXCERPT'       =>  'Create Excerpt', // New String in v3.4.1
+  'RSS_CONTENT_DESCRIPTION'   =>  'Ganzer RSS-Inhalt oder Textauszug',
+  'RSS_INCLUDE_CONTENT'       =>  'ganzer Inhalt',
+  'RSS_INCLUDE_EXCERPT'       =>  'Auszug',
   'RSS_TITLE'                 =>  'Titel des RSS-Feeds',
   'RSS_DESCRIPTION'           =>  'Beschreibung des RSS-Feeds',
   'RSS_IMPORTER_PASS'         =>  'Auto-Importer-Passwort (beliebig)',
@@ -133,8 +133,7 @@ $i18n = array(
   'HTACCESS_3'                =>  'WICHTIG -> Falls die Website in einem Unterordner angesiedelt ist, musst Du dies entsprechend anpassen (z.B. /unterordner/)',
   'BLOG_PRETTY_NOTICE'        =>  'Du musst lesbare URLs in GetSimple aktivieren, damit hier Anweisungen angezeigt werden.',
   'SAVE_SETTINGS'             =>  'Einstellungen sichern',
-  /* Missing Strings */
-  'MAIN_SETTINGS_BUTTON'      =>  'Main Settings',
+  'MAIN_SETTINGS_BUTTON'      =>  'Haupteinstellungen',
   
   # 'Help' Strings
   'HELP'                      =>  'Hilfe',
@@ -186,7 +185,7 @@ $i18n = array(
   'CATEGORY_PRETITLE'         =>  'Blog-Kategorie: ',
   
   # Custom Fields Manager
-  'CUSTOM_FIELDS'             =>  'benutzerdefinierte Felder',
+  'CUSTOM_FIELDS'             =>  'Benutzerdefinierte Felder verwalten',
   'CUSTOMFIELDS_DESCR'        =>  'Diese Erweiterung erm&ouml;glicht es, benutzerdefinierte Felder beim Bearbeiten einer Seite anzuzeigen.',
   'CUSTOM_FIELDS_OPTIONS_AREA'=>  'Einstellungsbereich',
   'OPTIONS_AREA_DESCRP'       =>  '(Einstellungsbereich: benutzerdefinierte Felder werden <em>in</em> den "Artikel-Einstellungen" angezeigt.)',
