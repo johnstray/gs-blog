@@ -29,10 +29,10 @@
     <p>
       <label for="rss_include"><?php i18n(BLOGFILE.'/RSS_CONTENT_DESCRIPTION'); ?>:</label>
       <input name="rss_include" type="radio" value="Y" <?php if ($Blog->getSettingsData("rssinclude") == 'Y') echo 'checked="checked"'; ?> style="vertical-align: middle;" />
-      &nbsp;<?php i18n(BLOGFILE.'/RSS_CONTENT'); ?>
+      &nbsp;<?php i18n(BLOGFILE.'/RSS_INCLUDE_CONTENT'); ?>
       <span style="margin-left: 30px;">&nbsp;</span>
       <input name="rss_include" type="radio" value="N" <?php if ($Blog->getSettingsData("rssinclude") != 'Y') echo 'checked="checked"'; ?> style="vertical-align: middle;" />
-      &nbsp;<?php i18n(BLOGFILE.'/RSS_DESCRIPTION'); ?>
+      &nbsp;<?php i18n(BLOGFILE.'/RSS_INCLUDE_EXCERPT'); ?>
     </p>
   </div>
   <div class="clear"></div>
