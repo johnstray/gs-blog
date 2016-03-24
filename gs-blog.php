@@ -34,6 +34,7 @@ register_plugin(
 add_action('nav-tab','createNavTab',array('blog',BLOGFILE, i18n_r(BLOGFILE.'/BLOG_TAB_BUTTON'), 'manage'));
 add_action('blog-sidebar','createSideMenu',array(BLOGFILE, i18n_r(BLOGFILE.'/MANAGE_POSTS_BUTTON'),'manage'));
 add_action('blog-sidebar','createSideMenu',array(BLOGFILE, i18n_r(BLOGFILE.'/CATEGORIES_BUTTON'),'categories'));
+add_action('blog-sidebar','createSideMenu',array(BLOGFILE, i18n_r(BLOGFILE.'/CUSTOM_FIELDS'),'custom_fields'));
 add_action('blog-sidebar','createSideMenu',array(BLOGFILE, i18n_r(BLOGFILE.'/RSS_HEADER'),'auto_importer'));
 add_action('blog-sidebar','createSideMenu',array(BLOGFILE, i18n_r(BLOGFILE.'/SETTINGS_BUTTON'),'settings'));
 add_action('blog-sidebar','createSideMenu',array(BLOGFILE, i18n_r(BLOGFILE.'/UPDATE_BUTTON'),'update'));

@@ -282,7 +282,7 @@ function displayCustomFields($area='options')
 				echo '<select id="post-'.$key.'" name="post-'.$key.'" class="text shorts">';
 				if($key == 'category')
 				{
-					category_dropdown($data_edit->category);
+					category_dropdown($value);
 				}
 				else
 				{
