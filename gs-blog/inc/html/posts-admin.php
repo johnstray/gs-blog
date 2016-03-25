@@ -18,7 +18,7 @@
 		<table class="edittable highlight paginate">
 			<tr>
 				<th><?php i18n(BLOGFILE.'/PAGE_TITLE'); ?></th>
-				<th style="text-align:right;" ><?php i18n(BLOGFILE.'/DATE'); ?></th>
+				<th><?php i18n(BLOGFILE.'/DATE'); ?></th>
 				<th></th>
 			</tr>
 		<?php
@@ -27,9 +27,9 @@
 			$post = $Blog->getPostData($post_name['filename']);
 			?>
 				<tr>
-					<td class="blog_post_title"><a title="<?php echo $post->title; ?>" href="load.php?id=<?php echo BLOGFILE; ?>&edit_post=<?php echo $post->slug; ?>" ><?php echo $post->title; ?></a></td>
-					<td style="text-align:right;"><span><?php echo $post->date; ?></span></td>
-					<td class="delete" ><a class="delconfirm" href="load.php?id=<?php echo BLOGFILE; ?>&delete_post=<?php echo $post->slug; ?>" title="<?php i18n(BLOGFILE.'/DELETE'); ?>: <?php echo $post->title; ?>" >X</a></td>
+					<td><a title="<?php echo $post->title; ?>" href="load.php?id=<?php echo BLOGFILE; ?>&edit_post=<?php echo $post->slug; ?>" ><?php echo $post->title; ?></a></td>
+					<td><?php echo date(i18n_r(BLOGFILE.'/DATE_FORMAT'),strtotime($post->date)); ?></td>
+					<td class="delete"><a class="delconfirm" href="load.php?id=<?php echo BLOGFILE; ?>&delete_post=<?php echo $post->slug; ?>" title="<?php i18n(BLOGFILE.'/DELETE'); ?>: <?php echo $post->title; ?>" >&times;</a></td>
 				</tr>
 			<?php
 		}

@@ -304,11 +304,11 @@ class Blog
 
 		if($post_data['date'] != '')
 		{
-			$date = $post_data['date'];
+			$date = date('Y-m-d H:i:s',strtotime($post_data['date']));
 		} 
 		else
 		{
-			$date = date(i18n_r(BLOGFILE.'/DATE_FORMAT'), time());
+			$date = date('Y-m-d H:i:s', time());
 		}
 		if($post_data['tags'] != '')
 		{
