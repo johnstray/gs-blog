@@ -8,6 +8,7 @@
 - [#076] Fixed language string concatenated use for 'Manage Custom Fields'.
 - [#077] Fixed incorrect language string references for the RSS Auto-Importer Settings page.
 - [#079] Fixed some issues with the CustomFields Manager. Also added a sidebar button so that CFM could actually be used.
+- [#080] Much better handling of date format internationalisation.
 
 **Front End UI Improvements**
 - [#074] Properly implemented post counts in categories. This was incomplete in the previous release. Rebuilt methods to make it more robust than originally planned.
