@@ -5,6 +5,9 @@
 **Front End UI Improvements:**
 - [#083] Category and Date are now links to their relevant category or archive page when showing a post or in a list.
 
+**Code Changes:**
+- [#080] Even better date internationalisation on both the front end and the backend. Creating/editing a post will now accept any date format supported by `strtotime()`, including "today".
+
 ### Version 3.4.1
 **Bug Fixes:**
 - [#---] Some language files were missing some commas in the array. Added html entities for certain characters.
