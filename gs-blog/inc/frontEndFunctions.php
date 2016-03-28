@@ -192,7 +192,7 @@ function show_blog_category($category, $echo=true) {
       if($data->category == $category || empty($category)) { // Is the post in the requested category?
         $count++; // Increase the counter.
         $slug = (string) $data->slug;
-        $post_array[$data->slug] = $file;
+        $post_array[$slug] = $file;
       }
     }
     return $post_array;
