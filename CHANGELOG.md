@@ -1,3 +1,10 @@
+### Version 3.4.2
+**Bug Fixes:**
+- [#074] Missed part of this fix... Whoops...
+
+**Front End UI Improvements:**
+- [#083] Category and Date are now links to their relevant category or archive page when showing a post or in a list.
+
 ### Version 3.4.1
 **Bug Fixes:**
 - [#---] Some language files were missing some commas in the array. Added html entities for certain characters.
