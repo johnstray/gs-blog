@@ -76,7 +76,7 @@ add_action('common', 'checkPermissions');                // Check what permissio
  */  
 function formatPostDate($date) {
 	$Blog = new Blog;
-	return $Blog->get_locale_date(strtotime($date), '%b %e, %Y');
+	return $Blog->get_locale_date(strtotime($date), i18n_r(BLOGFILE.'/DATE_DISPLAY'));
 }
 
 /**-------------------------------------------------------------------------------------------------

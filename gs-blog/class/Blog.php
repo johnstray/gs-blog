@@ -772,7 +772,7 @@ class Blog
 	public function get_locale_date($timestamp, $format) 
 	{
 		$locale = setlocale(LC_TIME, NULL);
-		setlocale(LC_TIME, $this->getSettingsData("lang"));
+		setlocale(LC_TIME, i18n_r(BLOGFILE.'/LANGUAGE_CODE'));
     if (strtoupper(substr(PHP_OS, 0, 3)) == 'WIN') {
       $format = preg_replace('#(?<!%)((?:%%)*)%e#', '\1%#d', $format);
     }

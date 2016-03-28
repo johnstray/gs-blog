@@ -28,7 +28,7 @@
 			?>
 				<tr>
 					<td><a title="<?php echo $post->title; ?>" href="load.php?id=<?php echo BLOGFILE; ?>&edit_post=<?php echo $post->slug; ?>" ><?php echo $post->title; ?></a></td>
-					<td><?php echo date(i18n_r(BLOGFILE.'/DATE_FORMAT'),strtotime($post->date)); ?></td>
+					<td><?php $date=(string)$post->date; echo $Blog->get_locale_date(strtotime($date), i18n_r(BLOGFILE.'/DATE_FORMAT')); ?></td>
 					<td class="delete"><a class="delconfirm" href="load.php?id=<?php echo BLOGFILE; ?>&delete_post=<?php echo $post->slug; ?>" title="<?php i18n(BLOGFILE.'/DELETE'); ?>: <?php echo $post->title; ?>" >&times;</a></td>
 				</tr>
 			<?php
