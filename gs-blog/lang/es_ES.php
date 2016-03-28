@@ -183,6 +183,7 @@ $i18n = array(
   'PREV_PAGE'                 =>  'Previous Page &rarr;',
   'ARCHIVE_PRETITLE'          =>  'Blog Archive: ',
   'CATEGORY_PRETITLE'         =>  'Blog Category: ',
+  'READ_MORE'                 =>  'Read More', // <-- New in 3.4.2
   
   # Custom Fields Manager
   'CUSTOM_FIELDS'             =>  'Custom Fields',

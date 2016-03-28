@@ -183,6 +183,7 @@ $i18n = array(
   'PREV_PAGE'                 =>  'vorherige Seite &rarr;',
   'ARCHIVE_PRETITLE'          =>  'Blog-Archiv: ',
   'CATEGORY_PRETITLE'         =>  'Blog-Kategorie: ',
+  'READ_MORE'                 =>  'Weiterlesen', // <-- New in 3.4.2
   
   # Custom Fields Manager
   'CUSTOM_FIELDS'             =>  'Benutzerdefinierte Felder verwalten',

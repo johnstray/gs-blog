@@ -183,6 +183,7 @@ $i18n = array(
   'PREV_PAGE'                 =>  'Page précédente &rarr;',
   'ARCHIVE_PRETITLE'          =>  'Archives du blog&nbsp;: ',
   'CATEGORY_PRETITLE'         =>  'Catégorie du blog&nbsp;: ',
+  'READ_MORE'                 =>  'Lire la suite', // <-- New in 3.4.2
   
   # Custom Fields Manager
   'CUSTOM_FIELDS'             =>  'Champs personnalisés',

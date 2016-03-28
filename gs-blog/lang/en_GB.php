@@ -143,7 +143,7 @@ $i18n = array(
   'HELP_ARCHIVES'             =>  'Display blog archives',
   'HELP_RECENT'               =>  'Show your blogs most recent posts',
   'HELP_RECENT_2'             =>  'This function has 4 <strong>optional</strong> available parameters',
-  'HELP_RECENT_3'             =>  'Usage Example (display excerpt, default excerpt length, display thumbnail and display read more link)',
+  'HELP_RECENT_3'             =>  'Usage Example (display excerpt, default excerpt length, display thumbnail, display read more link and limit quantity)', // <-- Changed in 3.4.2
   'RSS_LOCATION'              =>  'Below is your blogs RSS Feed',
   'DYNAMIC_RSS_LOCATION'      =>  'Dynamic RSS Feed Location (Generates RSS feed on the fly)',
   'AUTO_IMPORTER_TITLE'       =>  'RSS Feed Auto Importer Cronjob Setup',
@@ -183,6 +183,7 @@ $i18n = array(
   'PREV_PAGE'                 =>  'Previous Page &rarr;',
   'ARCHIVE_PRETITLE'          =>  'Blog Archive: ',
   'CATEGORY_PRETITLE'         =>  'Blog Category: ',
+  'READ_MORE'                 =>  'Read More',
   
   # Custom Fields Manager
   'CUSTOM_FIELDS'             =>  'CustomFields Manager',

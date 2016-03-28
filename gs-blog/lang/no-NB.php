@@ -183,6 +183,7 @@ $i18n = array(
   'PREV_PAGE'                 =>  'Forrige Side &rarr;',
   'ARCHIVE_PRETITLE'          =>  'Blogg Arkiv: ',
   'CATEGORY_PRETITLE'         =>  'Blogg Kategori: ',
+  'READ_MORE'                 =>  'Les mer', // <-- New in 3.4.2
 
   # Custom Fields Manager
   'CUSTOM_FIELDS'             =>  'Egendefinerte felt',

@@ -183,6 +183,7 @@ $i18n = array(
   'PREV_PAGE'                 =>  'предыдущая страница &rarr;',
   'ARCHIVE_PRETITLE'          =>  'Архив блога: ',
   'CATEGORY_PRETITLE'         =>  'Блог Категории: ',
+  'READ_MORE'                 =>  'Прочитайте больше', // <-- New in 3.4.2
   
   # Custom Fields Manager
   'CUSTOM_FIELDS'             =>  'Настраиваемые поля',

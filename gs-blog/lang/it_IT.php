@@ -183,6 +183,7 @@ $i18n = array(
   'PREV_PAGE'                 =>  'Pagina precedente &rarr;',
   'ARCHIVE_PRETITLE'          =>  'Archivio: ',
   'CATEGORY_PRETITLE'         =>  'Categoria: ',
+  'READ_MORE'                 =>  'Leggi di più', // <-- New in 3.4.2
   
   # Custom Fields Manager
   'CUSTOM_FIELDS'             =>  'Campi personalizzati',

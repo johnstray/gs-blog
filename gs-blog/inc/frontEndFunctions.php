@@ -310,7 +310,7 @@ function show_blog_archive($archive, $echo=true) {
  * @param $read_more      (string) A text string to show for "Read More" link. Not shown if null
  * @return string or void
  */
-function show_blog_recent_posts($excerpt=false, $excerpt_length=null, $thumbnail=false, $read_more=null, $echo=true) {
+function show_blog_recent_posts($excerpt=false, $excerpt_length=null, $thumbnail=false, $read_more=false, $echo=true, $limit=null) {
 	
   GLOBAL $SITEURL, $blogSettings; // Declare GLOBAL variables
   $Blog = new Blog; // Create new instance of Blog class
@@ -318,10 +318,13 @@ function show_blog_recent_posts($excerpt=false, $excerpt_length=null, $thumbnail
   if($excerpt_length == null) { // If the excerpt length was not provided...
     $excerpt_length = $blogSettings["excerptlength"]; // Get excerpt length from settings.
   }
+  if(!is_integer($limit)) { // If a $limit is not given use limit from settings.
+    $limit = $blogSettings["recentposts"];
+  }
   
   if($echo) {
     if (!empty($posts)) { // If we have any posts to display
-      $posts = array_slice($posts, 0, $blogSettings["recentposts"], TRUE); // Shorten list to setting
+      $posts = array_slice($posts, 0, $limit, TRUE); // Shorten list to setting
       foreach ($posts as $file) {
         $data = getXML($file['filename']); // Get the XML data of the post
         $url = $Blog->get_blog_url('post') . $data->slug; // Create the URL for the post
@@ -335,9 +338,12 @@ function show_blog_recent_posts($excerpt=false, $excerpt_length=null, $thumbnail
               $excerpt_string = '<img src="'.$SITEURL.'data/uploads/'.$thumbfile.'" class="blog_recent_posts_thumbnail" />'.$excerpt_string;
             }
           }
-          if($read_more != null) { // Do we want the "Read More" link to show?
+          if(is_bool($read_more) && $read_more === true) { // Do we want the "Read More" link to show?
+            // Show the default read more string
+            $excerpt_string = $excerpt_string.'<a href="'.$url.'" class="recent_posts_read_more">'.i18n_r(BLOGFILE.'/READ_MORE').'</a>';
+          } elseif (!is_bool($read_more)) {
             // Show the "Read More" link with the string given in argument
-            $excerpt_string = $excerpt_string.'<br/><a href="'.$url.'" class="recent_posts_read_more">'.$read_more.'</a>';
+            $excerpt_string = $excerpt_string.'<a href="'.$url.'" class="recent_posts_read_more">'.$read_more.'</a>';
           }
           // Output the HTML for the list item with excerpt
           echo '<li><a href="'.$url.'">'.$title.'</a><p class="blog_recent_posts_excerpt">'.$excerpt_string.'</p></li>';
