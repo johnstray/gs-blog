@@ -25,8 +25,19 @@
   -->
   <p class="blog_post_info">
     <?php if(!empty($p['author'])){?><span class="blog_post_author"><?php i18n(BLOGFILE.'/BY'); ?> <?php echo $p['author']; ?></span><?php } ?>
-    <?php if(!empty($p['date'])){?><span class="blog_post_date"><?php i18n(BLOGFILE.'/ON'); ?> <?php echo date(i18n_r(BLOGFILE.'/DATE_DISPLAY'), $p['date']); ?></span><?php } ?>
-    <?php if(!empty($p['categories'][0])){?><span class="blog_post_category"><?php i18n(BLOGFILE.'/IN'); ?> <?php echo $p['categories'][0]; ?></span><?php } ?>
+    <?php if(!empty($p['date'])){ ?>
+      <span class="blog_post_date"><?php i18n(BLOGFILE.'/ON'); ?>
+        <a href="<?php echo $p['archiveurl'].$p['archivedate']; ?>" title="<?php echo i18n_r(BLOGFILE.'/ARCHIVE_PRETITLE').$p['archivetitle']; ?>">
+          <?php echo $p['date']; ?>
+        </a>
+      </span>
+    <?php } if(!empty($p['categories'][0])) { ?>
+      <span class="blog_post_category"><?php i18n(BLOGFILE.'/IN'); ?>
+        <a href="<?php echo $p['categoryurl'].$p['categories'][0]; ?>" title="<?php echo i18n_r(BLOGFILE.'/CATEGORY_PRETITLE').$p['categories'][0]; ?>">
+          <?php echo $p['categories'][0]; ?>
+        </a>
+      </span>
+    <?php } ?>
   </p>
   
   <!-- Post thumbnail

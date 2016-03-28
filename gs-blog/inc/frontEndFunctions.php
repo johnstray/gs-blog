@@ -75,11 +75,13 @@ function show_blog_post($slug, $excerpt=false, $echo=true) {
   
   if(strtotime($post->date) >= time()) {return false;} // Is this a future post?
   
+  $post_date = strtotime((string) $post->date); // Prepare the date...
+  
   # Prepare the array of information available to the template.
   $p = array(); // Init the array for the template
   $p['title'] = (string) $post->title; // Title of the post
   $p['posturl'] = $Blog->get_blog_url('post').$post->slug; // URL of the post
-  $p['date'] = strtotime($post->date); // UNIX timestamp of post
+  $p['date'] = $Blog->get_locale_date($post_date, i18n_r(BLOGFILE.'/DATE_DISPLAY')); // UNIX timestamp of post
   $p['author'] = (string) $post->author; //Author of the post
   $p['categoryurl'] = $Blog->get_blog_url('category'); // Category base URL
   $p['categories'] = explode(',',$post->category); // Categories the post is in
@@ -87,6 +89,9 @@ function show_blog_post($slug, $excerpt=false, $echo=true) {
   $p['thumbnail'] = (string) $post->thumbnail; // Thumbnail Filename
   $p['tagsurl'] = $Blog->get_blog_url('tag'); // Tags base URL
   $p['tags'] = explode(',',$post->tags); // Tags applied to the post
+  $p['archiveurl'] = $Blog->get_blog_url('archive'); // Archive base URL
+  $p['archivetitle'] = date(i18n_r(BLOGFILE.'/DATE_ARCHIVE'),$post_date); // Archive the post is in
+  $p['archivedate'] = date('Ym', $post_date);
 
   # Determine if we should be showing an excerpt or full post.
   if(($excerpt == false) || (($excerpt == true) && ($blogSettings['postformat'] == 'Y'))) {
