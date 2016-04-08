@@ -38,19 +38,6 @@
   <div class="clear"></div>
   <div class="leftsec">
     <p>
-      <label for="rss_title"><?php i18n(BLOGFILE.'/RSS_TITLE'); ?>:</label>
-      <input class="text" type="text" name="rss_title" value="<?php echo $Blog->getSettingsData("rsstitle"); ?>" />
-    </p>
-  </div>
-  <div class="rightsec">
-    <p>
-      <label for="rss_description"><?php i18n(BLOGFILE.'/RSS_DESCRIPTION'); ?>:</label>
-      <input class="text" type="text" name="rss_description" value="<?php echo $Blog->getSettingsData("rssdescription"); ?>" />
-    </p>
-  </div>
-  <div class="clear"></div>
-  <div class="leftsec">
-    <p>
       <label for="recent_posts"><?php i18n(BLOGFILE.'/RSS_IMPORTER_PASS'); ?>:</label>
       <input class="text" type="text" name="auto_importer_pass" value="<?php echo $Blog->getSettingsData("autoimporterpass"); ?>" />
     </p>
