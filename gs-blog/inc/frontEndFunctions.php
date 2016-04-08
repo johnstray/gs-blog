@@ -290,7 +290,8 @@ function show_blog_archive($archive, $echo=true) {
     if (!empty($posts)) { // If there are posts in the blog...
       foreach ($posts as $file) { // For each post in the list...
         $data = getXML($file['filename']); // Get the XML data of the post
-        if (date('Ym', strtotime($data->date)) == $archive) { // If the date on the post is in the requested archive...
+        $date = date('Ym', strtotime($data->date));
+        if (date('Ym',$date) == $archive) { // If the date on the post is in the requested archive...
           $archive_posts[$k] = $file; // Add it to the output array
           $k++; // Increment counter
         }
@@ -327,15 +328,20 @@ function show_blog_recent_posts($excerpt=false, $excerpt_length=null, $thumbnail
       $posts = array_slice($posts, 0, $limit, TRUE); // Shorten list to setting
       foreach ($posts as $file) {
         $data = getXML($file['filename']); // Get the XML data of the post
-        $url = $Blog->get_blog_url('post') . $data->slug; // Create the URL for the post
-        $title = strip_tags(strip_decode($data->title)); // Sanitize the posts title.
+        $dataA = array( // Do string casting here. Solves PHP warning about inline string casting.
+          'slug' = (string) $data->slug,
+          'title' = (string) $data->title,
+          'content' = (string) $data->content,
+          'thumbnail' = (string) $data->thumbnail
+        )
+        $url = $Blog->get_blog_url('post') . $dataA['slug']; // Create the URL for the post
+        $title = strip_tags(strip_decode($dataA['title'])); // Sanitize the posts title.
         if($excerpt) { // If we are showing the excerpt...
-          $excerpt_string = $Blog->create_excerpt(html_entity_decode($data->content), 0, $excerpt_length); // Create the excerpt
+          $excerpt_string = $Blog->create_excerpt(html_entity_decode($dataA['content']), 0, $excerpt_length); // Create the excerpt
           if($thumbnail) { // If we are showing a thumbnail with it...
-            if(!empty((string)$data->thumbnail)) { // Does a thumbnail exist with the post?
+            if(!empty($dataA['thumbnail'])) { // Does a thumbnail exist with the post?
               // Output the HTML for the image
-              $thumbfile = (string) $data->thumbnail;
-              $excerpt_string = '<img src="'.$SITEURL.'data/uploads/'.$thumbfile.'" class="blog_recent_posts_thumbnail" />'.$excerpt_string;
+              $excerpt_string = '<img src="'.$SITEURL.'data/uploads/'.$dataA['thumbnail'].'" class="blog_recent_posts_thumbnail" />'.$excerpt_string;
             }
           }
           if(is_bool($read_more) && $read_more === true) { // Do we want the "Read More" link to show?
@@ -391,8 +397,9 @@ function show_blog_tag($tag, $echo=true) {
   if ($echo) {
     foreach ($all_posts as $file) { // For each blog post in the list...
       $data = getXML($file['filename']); // Get the XML data for the post
-      if(!empty($data->tags)) { // If the post has been tagged...
-        $tags = explode(',', $data->tags); // Convert the string of tags to array list
+      $dtags = (string) $data->tags;
+      if(!empty($dtags) { // If the post has been tagged...
+        $tags = explode(',', $dtags); // Convert the string of tags to array list
         if (in_array($tag, $tags)) { //If the requested tag is in the list of tags on the post
           show_blog_post($file['filename'], true); // Show the blog post
         }
@@ -402,8 +409,9 @@ function show_blog_tag($tag, $echo=true) {
     $tag_posts = array();$k=0;
     foreach ($all_posts as $file) {
       $data = getXML($file['filename']);
-      if(!empty($data->tags)) {
-        $tags = explode(',', $data->tags);
+      $dtags = (string) $data->tags;
+      if(!empty($dtags)) {
+        $tags = explode(',', $dtags);
         if (in_array($tag, $tags)) {
           $tag_posts[$k] = $file;
           $k++;
