@@ -9,9 +9,9 @@
 $i18n = array(
   
   # Language Configuration
-  'LANGUAGE_CODE'             =>  'ru_RU',
-  'DATE_FORMAT'               =>  'm/d/Y h:i:s a',
-  'DATE_DISPLAY'              =>  'F jS, Y',
+  'LANGUAGE_CODE'             =>  array('ru_RU','ru','rus','russian'), // Cross-Platform posibilities for `setlocal()`
+  'DATE_FORMAT'               =>  '%c',
+  'DATE_DISPLAY'              =>  '%B %e, %Y',
   'DATE_ARCHIVE'              =>  'F Y',
   
   # Plugin Information

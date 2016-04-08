@@ -9,9 +9,9 @@
 $i18n = array(
   
   # Language Configuration
-  'LANGUAGE_CODE'             =>  'es_ES',
-  'DATE_FORMAT'               =>  'm/d/Y h:i:s a',
-  'DATE_DISPLAY'              =>  'F jS, Y',
+  'LANGUAGE_CODE'             =>  array('es_ES','es','esp','spanish'), // Cross-Platform posibilities for `setlocal()`
+  'DATE_FORMAT'               =>  '%c',
+  'DATE_DISPLAY'              =>  '%B %e, %Y',
   'DATE_ARCHIVE'              =>  'F Y',
   
   # Plugin Information

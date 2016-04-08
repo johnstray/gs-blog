@@ -9,7 +9,7 @@
 $i18n = array(
   
   # Language Configuration
-  'LANGUAGE_CODE'             =>  array('en_US','usa','us','en'),
+  'LANGUAGE_CODE'             =>  array('en_US','enu','american','en','english'),
   'DATE_FORMAT'               =>  '%c',
   'DATE_DISPLAY'              =>  '%B %e, %Y',
   'DATE_ARCHIVE'              =>  'F Y',

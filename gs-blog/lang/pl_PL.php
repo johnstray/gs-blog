@@ -9,9 +9,9 @@
 $i18n = array(
 
 	# Language Configuration
-	'LANGUAGE_CODE'             =>  'pl_PL',
-	'DATE_FORMAT'               =>  'd.m.Y G:i:s',
-	'DATE_DISPLAY'              =>  'd.m.Y',
+	'LANGUAGE_CODE'             =>  array('pl_PL','pl','plk','polish'), // Cross-Platform posibilities for `setlocal()`
+	'DATE_FORMAT'               =>  '%c',
+  'DATE_DISPLAY'              =>  '%B %e, %Y',
 	'DATE_ARCHIVE'              =>  'Y.m',
 
 	# Plugin Information

@@ -9,9 +9,9 @@
 $i18n = array(
   
   # Language Configuration
-  'LANGUAGE_CODE'             =>  'en_GB',
-  'DATE_FORMAT'               =>  'm/d/Y h:i:s a',
-  'DATE_DISPLAY'              =>  'F jS, Y',
+  'LANGUAGE_CODE'             =>  array('en_AU','en_GB','ena','eng','australian','english-uk','en','english'),
+  'DATE_FORMAT'               =>  '%c',
+  'DATE_DISPLAY'              =>  '%B %e, %Y',
   'DATE_ARCHIVE'              =>  'F Y',
   
   # Plugin Information
