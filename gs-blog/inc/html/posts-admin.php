@@ -1,7 +1,6 @@
   <h3 class="floated" style="float:left"><?php i18n(BLOGFILE.'/MANAGE_POSTS'); ?></h3>
   <div class="edit-nav">
     <p class="text 1">
-      <a href="load.php?id=<?php echo BLOGFILE; ?>&custom_fields"><?php i18n(BLOGFILE.'/CUSTOM_FIELDS_BUTTON'); ?></a>
       <a href="load.php?id=<?php echo BLOGFILE; ?>&create_post"><?php i18n(BLOGFILE.'/NEW_POST_BUTTON'); ?></a>
     </p>
     <div class="clear"></div>
