@@ -29,3 +29,31 @@ padding-right: 6px;
     color:rgba(255,255,255,.75);
   }
 }
+
+/* Pager - Pagination system for table elements */
+.pg-normal {
+  color: black;
+  font-weight: normal;
+  text-decoration: none;
+  background: #fefefe;
+  padding: 2px 5px;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+}
+.pg-normal:hover {
+  cursor: pointer;
+  background-color: #ffffd5;
+}
+.pg-selected {
+  color: black;
+  font-weight: bold; 
+  text-decoration: none; 
+  background: #ffffec;
+  border: 1px solid #ccc;
+  border-radius:2px;
+  cursor: pointer;
+  padding: 2px 5px;
+}
+td {
+  vertical-align:middle !important;
+}

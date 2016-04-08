@@ -1,4 +1,7 @@
 ### Version 3.4.2
+**Back End (Admin) Changes:**
+- [#088] Added paging of posts list on Post Management page. Qty per page is determined by "# posts per page" blog setting.
+
 **Bug Fixes:**
 - [#074] Missed part of this fix... Whoops...
 

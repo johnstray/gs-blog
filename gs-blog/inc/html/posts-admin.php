@@ -15,7 +15,7 @@
 	else
 	{
 		?>
-		<table class="edittable highlight paginate">
+		<table class="edittable highlight paginate" id="datatable">
 			<tr>
 				<th><?php i18n(BLOGFILE.'/PAGE_TITLE'); ?></th>
 				<th><?php i18n(BLOGFILE.'/DATE'); ?></th>
@@ -34,4 +34,20 @@
 			<?php
 		}
 		echo '</table>';
-	}
+	} ?>
+  <div id="metadata_window" style="margin:0;padding:5px;">
+    <div style="text-align:center;line-height:23px;">
+      <div id="pageNavPosition"></div>
+    </div>
+    <div class="clear"></div>
+  </div>
+  
+  <script type="text/javascript"><!--
+    var pager;
+    document.addEventListener("DOMContentLoaded", function(event) { 
+      pager = new Pager('datatable', <?php echo $Blog->getSettingsData("postperpage"); ?>); 
+      pager.init(); 
+      pager.showPageNav('pager', 'pageNavPosition'); 
+      pager.showPage(1);
+    });
+  //--></script>
