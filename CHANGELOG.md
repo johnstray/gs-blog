@@ -1,6 +1,7 @@
 ### Version 3.4.2
 **Back End (Admin) Changes:**
 - [#088] Added paging of posts list on Post Management page. Qty per page is determined by "# posts per page" blog setting.
+- [#088] Implemented Column width limiting on Post Management page; Prevents line-wrapping, making things a bit neater.
 
 **Bug Fixes:**
 - [#074] Missed part of this fix... Whoops...

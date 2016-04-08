@@ -27,8 +27,8 @@
 			$post = $Blog->getPostData($post_name['filename']);
 			?>
 				<tr>
-					<td><a title="<?php echo $post->title; ?>" href="load.php?id=<?php echo BLOGFILE; ?>&edit_post=<?php echo $post->slug; ?>" ><?php echo $post->title; ?></a></td>
-					<td><?php $date=(string)$post->date; echo $Blog->get_locale_date(strtotime($date), i18n_r(BLOGFILE.'/DATE_FORMAT')); ?></td>
+					<td><a title="<?php echo $post->title; ?>" href="load.php?id=<?php echo BLOGFILE; ?>&edit_post=<?php echo $post->slug; ?>" ><?php echo getExcerpt($post->title,80,false,' ...',false,false); ?></a></td>
+					<td style="width:135px;"><?php $date=(string)$post->date; echo $Blog->get_locale_date(strtotime($date), i18n_r(BLOGFILE.'/DATE_FORMAT')); ?></td>
 					<td class="delete"><a class="delconfirm" href="load.php?id=<?php echo BLOGFILE; ?>&delete_post=<?php echo $post->slug; ?>" title="<?php i18n(BLOGFILE.'/DELETE'); ?>: <?php echo $post->title; ?>" >&times;</a></td>
 				</tr>
 			<?php
