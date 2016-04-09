@@ -5,6 +5,7 @@
 - [#088] Removed redundant "Custom Fields" button on Post Management page.
 - [#087] Moved RSS Feed Title and Description to the correct settings page. Cleaned up layout of Main Settings page.
 - [#088] Post searching feature now available on Post Management page.
+- [#064] Sorted out the Spanish es_ES language file. Some translations may be incomplete or incorrect.
 
 **Bug Fixes:**
 - [#074] Missed part of this fix... Whoops...
