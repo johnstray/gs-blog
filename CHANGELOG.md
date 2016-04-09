@@ -11,6 +11,7 @@
 
 **Front End UI Improvements:**
 - [#083] Category and Date are now links to their relevant category or archive page when showing a post or in a list.
+- [#081] All list sections (categories, archives, tags, search) now include layout-listBefore and layout-listAfter files.
 
 **Code Changes:**
 - [#080] Even better date internationalisation on both the front end and the backend. Creating/editing a post will now accept any date format supported by `strtotime()`, including "today".
