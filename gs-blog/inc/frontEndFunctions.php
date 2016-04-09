@@ -180,6 +180,8 @@ function show_blog_category($category, $echo=true) {
 	$count = 0; // Set a counter for the following loop
   
   if($echo) {
+    ob_start(); // Create a buffer to build this page in
+    require(BLOGPLUGINFOLDER.'layout-listBefore.php'); // Get the listBefore layout (stuff before list of posts)
     foreach($all_posts as $file) { // For each post in the list...
       $data = getXML($file['filename']); // Get the XML data of the post
       if($data->category == $category || empty($category)) { // Is the post in the requested category?
@@ -190,6 +192,8 @@ function show_blog_category($category, $echo=true) {
     if($count < 1) { // Counter is still 0? We have no posts in this category.
       echo '<p class="blog_category_noposts">'.i18n_r(BLOGFILE.'/NO_POSTS').'</p>';
     }
+    require(BLOGPLUGINFOLDER.'layout-listAfter.php'); // Get the listAfter layout (stuff after list of posts)
+    ob_end_flush(); // Get the formatted contents of the output buffer.
   } elseif(!$echo) {
     $post_array = array();
     foreach($all_posts as $file) { // For each post in the list...
@@ -274,6 +278,8 @@ function show_blog_archive($archive, $echo=true) {
 	$posts = $Blog->listPosts(true, true); // Get a list of all the posts in the blog
   
   if ($echo) {
+    ob_start(); // Create a buffer to build this page in
+    require(BLOGPLUGINFOLDER.'layout-listBefore.php'); // Get the listBefore layout (stuff before list of posts)
     if (!empty($posts)) { // If there are posts in the blog...
       foreach ($posts as $file) { // For each post in the list...
         $data = getXML($file['filename']); // Get the XML data of the post
@@ -285,6 +291,8 @@ function show_blog_archive($archive, $echo=true) {
     } else { // We have no posts in this archive
       echo i18n(BLOGFILE.'/NO_POSTS'); // Let the user know
     }
+    require(BLOGPLUGINFOLDER.'layout-listAfter.php'); // Get the listAfter layout (stuff after list of posts)
+    ob_end_flush(); // Get the formatted contents of the output buffer.
   } elseif(!$echo) {
     $archive_posts = array();$k=0;
     if (!empty($posts)) { // If there are posts in the blog...
@@ -395,6 +403,8 @@ function show_blog_tag($tag, $echo=true) {
 	$all_posts = $Blog->listPosts(true, true); // Get a list of all posts in the blog
   
   if ($echo) {
+    ob_start(); // Create a buffer to build this page in
+    require(BLOGPLUGINFOLDER.'layout-listBefore.php'); // Get the listBefore layout (stuff before list of posts)
     foreach ($all_posts as $file) { // For each blog post in the list...
       $data = getXML($file['filename']); // Get the XML data for the post
       $dtags = (string) $data->tags;
@@ -405,6 +415,8 @@ function show_blog_tag($tag, $echo=true) {
         }
       }
     }
+    require(BLOGPLUGINFOLDER.'layout-listAfter.php'); // Get the listAfter layout (stuff after list of posts)
+    ob_end_flush(); // Get the formatted contents of the output buffer.
   } elseif(!$echo) {
     $tag_posts = array();$k=0;
     foreach ($all_posts as $file) {
@@ -452,6 +464,8 @@ function search_posts($keyphrase, $echo=true) {
 	$posts = $Blog->searchPosts($keyphrase); // Get the list of search results
   
   if($echo) {
+    ob_start(); // Create a buffer to build this page in
+    require(BLOGPLUGINFOLDER.'layout-listBefore.php'); // Get the listBefore layout (stuff before list of posts)
     if (!empty($posts)) { // If there were search results returned...
       echo '<p class="blog_search_header">'.i18n(BLOGFILE.'/FOUND').'</p>'; // Output the page title
       foreach ($posts as $file) { // For each result in the list...
@@ -460,6 +474,8 @@ function search_posts($keyphrase, $echo=true) {
     } else { // There were no results to display. Let the user know.
       echo '<p class="blog_search_header">'.i18n(BLOGFILE.'/NOT_FOUND').'</p>';
     }
+    require(BLOGPLUGINFOLDER.'layout-listAfter.php'); // Get the listAfter layout (stuff after list of posts)
+    ob_end_flush(); // Get the formatted contents of the output buffer.
   } elseif(!$echo) {
     $search_results = array();$k=0;
     if(!empty($posts)) {
