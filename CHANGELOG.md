@@ -4,6 +4,7 @@
 - [#088] Implemented Column width limiting on Post Management page; Prevents line-wrapping, making things a bit neater.
 - [#088] Removed redundant "Custom Fields" button on Post Management page.
 - [#087] Moved RSS Feed Title and Description to the correct settings page. Cleaned up layout of Main Settings page.
+- [#088] Post searching feature now available on Post Management page.
 
 **Bug Fixes:**
 - [#074] Missed part of this fix... Whoops...

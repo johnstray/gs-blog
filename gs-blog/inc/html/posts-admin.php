@@ -2,6 +2,7 @@
   <div class="edit-nav">
     <p class="text 1">
       <a href="load.php?id=<?php echo BLOGFILE; ?>&create_post"><?php i18n(BLOGFILE.'/NEW_POST_BUTTON'); ?></a>
+      <a href="#" id="metadata_toggle"><?php i18n(BLOGFILE.'/SEARCH'); ?></a>
     </p>
     <div class="clear"></div>
   </div>
@@ -14,6 +15,26 @@
 	else
 	{
 		?>
+    <style>#metadata_window p {margin: 0 0 10px 0;}</style>
+    <div id="metadata_window" style="display:none;text-align:left;">
+      <form class="largeform" action="load.php" method="get">
+          <input type="hidden" name="id" value="<?php echo BLOGFILE; ?>" />
+          <p style="float:left;width:50px;">
+            <label for="page-url"><?php i18n(BLOGFILE.'/SEARCH'); ?>:</label>
+          </p>
+          <p style="float:left;width:150px;">
+            <input class="text" type="text" name="search" value="" style="padding-bottom:5px;" />
+          </p>
+          <p style="float:left;width:200px;margin-left:20px;">
+          <span>
+            <input class="submit" type="submit" name="" value="<?php i18n(BLOGFILE.'/SEARCH'); ?>" style="width:auto;" />
+          </span>
+          &nbsp;&nbsp;<?php i18n(BLOGFILE.'/OR'); ?>&nbsp;&nbsp;
+          <a href="load.php?id=<?php echo BLOGFILE; ?>" class="cancel"><?php i18n(BLOGFILE.'/CANCEL'); ?></a>
+        </p>
+      </form>
+      <div class="clear"></div>
+    </div>
 		<table class="edittable highlight paginate" id="datatable">
 			<tr>
 				<th><?php i18n(BLOGFILE.'/PAGE_TITLE'); ?></th>

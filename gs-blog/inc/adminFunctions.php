@@ -75,6 +75,27 @@ function blog_admin_controller() {
 			}
 		}
 		show_custom_fields();
+  } elseif(isset($_GET['search'])) {
+    $all_posts = $Blog->searchPosts($_GET['search']); // Get a list of posts containing keyword
+    if(($all_posts===false) || (count($all_posts) < 1))
+		{
+			$posts=array();
+		}
+		else
+		{
+			$count = 0;			
+      foreach($all_posts as $post)
+      {
+        $data = getXML($post);
+        $posts[$count]['filename'] = $post;
+        $posts[$count]['date'] = (string) $data->date;
+        $posts[$count]['category'] = (string) $data->category;
+        $posts[$count]['tags'] = (string) $data->tags;
+        if(isset($data->author)) { $posts[$count]['author'] = (string) $data->author; }
+        $count++;
+      }
+		} $all_posts = $posts;
+    require_once('html/posts-admin.php'); // Bring in the HTML to show this section
 	} else {
 		if(isset($_GET['save_post'])) {
 			savePost();
