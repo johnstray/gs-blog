@@ -337,11 +337,11 @@ function show_blog_recent_posts($excerpt=false, $excerpt_length=null, $thumbnail
       foreach ($posts as $file) {
         $data = getXML($file['filename']); // Get the XML data of the post
         $dataA = array( // Do string casting here. Solves PHP warning about inline string casting.
-          'slug' = (string) $data->slug,
-          'title' = (string) $data->title,
-          'content' = (string) $data->content,
-          'thumbnail' = (string) $data->thumbnail
-        )
+          'slug' => (string) $data->slug,
+          'title' => (string) $data->title,
+          'content' => (string) $data->content,
+          'thumbnail' => (string) $data->thumbnail
+        );
         $url = $Blog->get_blog_url('post') . $dataA['slug']; // Create the URL for the post
         $title = strip_tags(strip_decode($dataA['title'])); // Sanitize the posts title.
         if($excerpt) { // If we are showing the excerpt...
