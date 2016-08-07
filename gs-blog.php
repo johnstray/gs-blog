@@ -16,7 +16,7 @@ require_once(BLOGFILE.'/inc/common.php');
 
 # Setup languages and language settings.
 i18n_merge(BLOGFILE) || i18n_merge(BLOGFILE, "en_US");
-define('BLOGLANGUAGE',i18n_r(BLOGFILE.'/LANGUAGE_CODE'));
+define('BLOGLANGUAGE',i18n_r(BLOGFILE.'/LANGUAGE_CODE')[0]);
 
 # register plugin
 register_plugin(
