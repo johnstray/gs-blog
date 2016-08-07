@@ -1,5 +1,8 @@
 <?php 
 require_once('inc/common.php');
+i18n_merge(BLOGFILE) || i18n_merge(BLOGFILE, "en_US");
+define('BLOGLANGUAGE',i18n_r(BLOGFILE.'/LANGUAGE_CODE')[0]);
+
 $Blog = new Blog;
 if(isset($_GET['filter']) && isset($_GET['value']))
 {
