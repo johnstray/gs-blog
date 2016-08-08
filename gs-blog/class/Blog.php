@@ -823,6 +823,7 @@ class Blog
 		$RSSString     .= "<link>".$locationOfFeed."</link>\n";
 		$RSSString     .= "<description>".$this->getSettingsData("rssdescription")."</description>\n";
 		$RSSString     .= "<lastBuildDate>".date(DATE_RSS)."</lastBuildDate>\n";
+		$RSSString     .= "<language>".BLOGLANGUAGE."</language>\n";
 		$RSSString     .= '<atom:link href="'.$locationOfFeed."\" rel=\"self\" type=\"application/rss+xml\" />\n";
 
 		$limit = $this->getSettingsData("rssfeedposts");
