@@ -564,7 +564,7 @@ class Blog
 		foreach($post_data as $key => $value)
 		{
 			$parent_nodes_node = $xml->addChild($key);
-				$parent_nodes_node->addCData($value);
+				$parent_nodes_node->addCData(is_array($value)?strval($value[0]):strval($value));
 		}
 		$blog_settings = XMLsave($xml, BLOGSETTINGS);
 		if($blog_settings)
