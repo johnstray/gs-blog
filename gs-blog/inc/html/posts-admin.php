@@ -53,7 +53,11 @@
 			<?php
 		}
 		echo '</table>';
-	} ?>
+	} 
+  
+  if(!empty($all_posts)) {
+  
+  ?>
   <div id="metadata_window" style="margin:0;padding:5px;">
     <div style="text-align:center;line-height:23px;">
       <div id="pageNavPosition"></div>
@@ -70,3 +74,4 @@
       pager.showPage(1);
     });
   //--></script>
+  <?php } ?>
