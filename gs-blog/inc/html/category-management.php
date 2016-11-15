@@ -6,17 +6,11 @@
     <div class="clear"></div>
   </div>
   <p class="text 2"><?php i18n(BLOGFILE.'/SETTINGS_CATEGORY_DESC'); ?></p>
-  <div id="metadata_window" style="display:none;text-align:left;">
+  <div id="metadata_window" style="display:none;text-align:left;padding:10px 15px;">
 		<form class="largeform" action="load.php?id=<?php echo BLOGFILE; ?>&categories&edit_category" method="post">
-		    <p style="float:left;width:150px;">
-          <label for="page-url"><?php i18n(BLOGFILE.'/ADD_CATEGORY'); ?></label>
-          <input class="text" type="text" name="new_category" value="" style="padding-bottom:5px;" />
-		    </p>
-		    <p style="float:left;width:200px;margin-left:20px;margin-top:8px;">
-		    <span>
-          <input class="submit" type="submit" name="category_edit" value="<?php i18n(BLOGFILE.'/ADD_CATEGORY'); ?>" style="width:auto;" />
-		    </span>
-		  </p>
+      <label for="page-url" style="display:inline;margin-right:15px;"><?php i18n(BLOGFILE.'/ADD_CATEGORY'); ?>:</label>
+      <input class="text" type="text" name="new_category" value="" style="height:16px;width:150px;margin-right:15px !important;" />
+      <input class="submit" type="submit" name="category_edit" value="<?php i18n(BLOGFILE.'/ADD_CATEGORY'); ?>" style="width:auto;height:24px;padding:3px 10px;" />
 		</form>
     <div class="clear"></div>
 	</div>

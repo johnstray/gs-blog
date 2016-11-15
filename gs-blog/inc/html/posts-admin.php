@@ -9,22 +9,13 @@
   <p class="text 2"><?php i18n(BLOGFILE.'/MANAGE_POSTS_DESC'); ?></p>
   <style>#metadata_window p {margin: 0 0 10px 0;}</style>
   <?php $search_display = (isset($_GET['search'])) ? 'block' : 'none'; ?>
-  <div id="metadata_window" style="display:<?php echo $search_display; ?>;text-align:left;">
+  <div id="metadata_window" style="display:<?php echo $search_display; ?>;text-align:left;padding:10px 15px;">
     <form class="largeform" action="load.php" method="get">
-        <input type="hidden" name="id" value="<?php echo BLOGFILE; ?>" />
-        <p style="float:left;width:50px;">
-          <label for="page-url"><?php i18n(BLOGFILE.'/SEARCH'); ?>:</label>
-        </p>
-        <p style="float:left;width:150px;">
-          <input class="text" type="text" name="search" value="" style="padding-bottom:5px;" />
-        </p>
-        <p style="float:left;width:200px;margin-left:20px;">
-        <span>
-          <input class="submit" type="submit" name="" value="<?php i18n(BLOGFILE.'/SEARCH'); ?>" style="width:auto;" />
-        </span>
-        &nbsp;&nbsp;<?php i18n(BLOGFILE.'/OR'); ?>&nbsp;&nbsp;
-        <a href="load.php?id=<?php echo BLOGFILE; ?>" class="cancel"><?php i18n(BLOGFILE.'/CANCEL'); ?></a>
-      </p>
+      <input type="hidden" name="id" value="<?php echo BLOGFILE; ?>" />
+      <label for="page-url"  style="display:inline;margin-right:15px;"><?php i18n(BLOGFILE.'/SEARCH'); ?>:</label>
+      <input class="text" type="text" name="search" value="" style="height:16px;width:150px;margin-right:15px !important;" />
+      <input class="submit" type="submit" name="" value="<?php i18n(BLOGFILE.'/SEARCH'); ?>" style="width:auto;height:24px;padding:3px 10px;" />
+      <a href="load.php?id=<?php echo BLOGFILE; ?>" class="button" style="padding:5px 10px;font-size:11px;"><?php i18n(BLOGFILE.'/CANCEL'); ?></a>
     </form>
     <div class="clear"></div>
   </div>
