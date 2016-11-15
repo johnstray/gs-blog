@@ -2,7 +2,7 @@
   <div class="edit-nav">
     <p class="text 1">
       <a href="load.php?id=<?php echo BLOGFILE; ?>&create_post"><?php i18n(BLOGFILE.'/NEW_POST_BUTTON'); ?></a>
-      <a href="#" id="metadata_toggle"><?php i18n(BLOGFILE.'/SEARCH'); ?></a>
+      <?php if(!empty($all_posts) && !isset($_GET['search'])) { ?><a href="#" id="metadata_toggle"><?php i18n(BLOGFILE.'/SEARCH'); ?></a><?php } ?>
     </p>
     <div class="clear"></div>
   </div>
