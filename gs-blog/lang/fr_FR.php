@@ -2,7 +2,7 @@
 /**************************************************************************************************\
 * French (Français) Language File for GetSimple Blog                                               *
 * ------------------------------------------------------------------------------------------------ *
-* Last Modified: 21 March 2016                                                                     *
+* Last Modified: 15 November 2016 by Google Translate                                              *
 * Compiled By: gschintgen                                                                          *
 \**************************************************************************************************/
  
@@ -71,6 +71,7 @@ $i18n = array(
   'NEW_POST_BUTTON'           =>  'Créer un article',
   'MANAGE_POSTS_DESC'         =>  'Modifier un article existant ou créer un nouvel article. La table ci-dessous montre les articles existants.',
   'NO_POSTS'                  =>  'Il n&apos;y a pas d&apos;articles à afficher&nbsp;!',
+  'NO_POSTS_MATCH_SEARCH'     =>  'Il n&apos;y aucun message à afficher correspondant à vos critères! Peut-être essayer quelque chose de différent?',
   'CLICK_TO_CREATE'           =>  'Cliquez ici pour en créer un',
   'PAGE_TITLE'                =>  'Titre de la page',
   

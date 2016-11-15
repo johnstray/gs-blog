@@ -71,6 +71,7 @@ $i18n = array(
   'NEW_POST_BUTTON'           =>  'New Post',
   'MANAGE_POSTS_DESC'         =>  'Edit existing posts or create new posts. The table below shows posts that currently exist.',
   'NO_POSTS'                  =>  'There are no posts to show!',
+  'NO_POSTS_MATCH_SEARCH'     =>  'There are no posts to display that match your search criteria! Maybe try something different?',
   'CLICK_TO_CREATE'           =>  'Click here to create one',
   'PAGE_TITLE'                =>  'Page Title',
   

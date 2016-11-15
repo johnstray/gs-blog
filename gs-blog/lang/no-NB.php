@@ -2,7 +2,7 @@
 /**************************************************************************************************\
 * Norwegian (Bokmål) Language File for GetSimple Blog                                              *
 * ------------------------------------------------------------------------------------------------ *
-* Last Modified: 24 June     2015                                                                  *
+* Last Modified: 15 November 2016 by Google Translate                                              *
 * Compiled By: helgesverre ( https://helgesverre.com )                                             *
 \**************************************************************************************************/
 
@@ -71,6 +71,7 @@ $i18n = array(
   'NEW_POST_BUTTON'           =>  'Nytt Innlegg',
   'MANAGE_POSTS_DESC'         =>  'Redigere eksisterende innlegg eller lage nye innlegg. Tabellen nedenfor viser eksisterende innlegg.',
   'NO_POSTS'                  =>  'Det finnes ingen innlegg å vise frem.',
+  'NO_POSTS_MATCH_SEARCH'     =>  'Det finnes ingen innlegg å vise som samsvarer med søkekriteriene ! Kanskje prøve noe annerledes?',
   'CLICK_TO_CREATE'           =>  'Klikk her for å lage eit nytt innlegg',
   'PAGE_TITLE'                =>  'Sidetittel',
 

@@ -29,13 +29,12 @@
     <div class="clear"></div>
   </div>
   <?php
-	if(empty($all_posts))
-	{
-		echo '<strong>'.i18n_r(BLOGFILE.'/NO_POSTS').' <a href="load.php?id='.BLOGFILE.'&create_post">'.i18n_r(BLOGFILE.'/CLICK_TO_CREATE').'</a>.';
-	}
-	else
-	{
-		?>
+  if (isset($_GET['search'])) {
+    echo '<h4 style="text-align:center;font-weight:bold;margin-bottom:15px;">'.i18n_r(BLOGFILE.'/NO_POSTS_MATCH_SEARCH').'<h4>';
+  } elseif (empty($all_posts)) {
+		echo '<h5 style="text-align:center;">'.i18n_r(BLOGFILE.'/NO_POSTS').' <a href="load.php?id='.BLOGFILE.'&create_post">'.i18n_r(BLOGFILE.'/CLICK_TO_CREATE').'</a>.</h5>';
+	} else {
+  ?>
 		<table class="edittable highlight paginate" id="datatable">
 			<tr>
 				<th><?php i18n(BLOGFILE.'/PAGE_TITLE'); ?></th>
@@ -43,8 +42,7 @@
 				<th></th>
 			</tr>
 		<?php
-		foreach($all_posts as $post_name)
-		{
+		foreach($all_posts as $post_name) {
 			$post = $Blog->getPostData($post_name['filename']);
 			?>
 				<tr>

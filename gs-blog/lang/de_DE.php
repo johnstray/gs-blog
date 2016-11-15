@@ -2,7 +2,7 @@
 /**************************************************************************************************\
 * German (Deutsch) Language File for GetSimple Blog                                                *
 * ------------------------------------------------------------------------------------------------ *
-* Last Modified: 13 February 2016                                                                  *
+* Last Modified: 15 November 2016 by Google Translate                                              *
 * Compiled By: gschintgen ()                                                                       *
 \**************************************************************************************************/
  
@@ -71,6 +71,7 @@ $i18n = array(
   'NEW_POST_BUTTON'           =>  'Artikel erstellen',
   'MANAGE_POSTS_DESC'         =>  'Bestehende Artikel bearbeiten oder neue erstellen. Die nachstehende Tabelle zeigt die derzeit bestehenden Artikel.',
   'NO_POSTS'                  =>  'Keine Artikel vorhanden',
+  'NO_POSTS_MATCH_SEARCH'     =>  'Es sind keine Einträge vorhanden, die Ihren Suchkriterien entsprechen! Vielleicht etwas anderes ausprobieren?',
   'CLICK_TO_CREATE'           =>  'Hier klicken zum Erstellen',
   'PAGE_TITLE'                =>  'Seitentitel',
   

@@ -2,7 +2,7 @@
 /**************************************************************************************************\
 * Italian (Italiano) Language File for GetSimple Blog                                              *
 * ------------------------------------------------------------------------------------------------ *
-* Last Modified: 28 Marzo 2015                                                                     *
+* Last Modified: 15 November 2016 by Google Translate                                              *
 * Compiled By: nikynik (Nicola Laviola)                                                            *
 \**************************************************************************************************/
  
@@ -71,6 +71,7 @@ $i18n = array(
   'NEW_POST_BUTTON'           =>  'Nuovo articolo',
   'MANAGE_POSTS_DESC'         =>  'Edita o crea nuovo articolo. La tabella seguente visualizza gli articoli esistenti.',
   'NO_POSTS'                  =>  'Nessun articolo trovato!',
+  'NO_POSTS_MATCH_SEARCH'     =>  'Non ci sono messaggi da visualizzare in base ai criteri di ricerca! Forse provare qualcosa di diverso?',
   'CLICK_TO_CREATE'           =>  'Clicca qui per crearne uno',
   'PAGE_TITLE'                =>  'Titolo pagina',
   

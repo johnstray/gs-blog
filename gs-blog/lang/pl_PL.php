@@ -2,7 +2,7 @@
 /**************************************************************************************************\
 * Polish (Język Polski) Language File for GetSimple Blog                                           *
 * ------------------------------------------------------------------------------------------------ *
-* Last Modified: 01 April 2015                                                                     *
+* Last Modified: 15 November 2016 by Google Translate                                              *
 * Compiled By: Every0ne (? ?)                                                                      *
 \**************************************************************************************************/
 
@@ -71,6 +71,7 @@ $i18n = array(
 	'NEW_POST_BUTTON'           =>  'Utwórz wpis',
 	'MANAGE_POSTS_DESC'         =>  'Twórz nowe wpisy lub edytuj istniejące. Tabela poniżej przedstawia istniejące obecnie wpisy.',
 	'NO_POSTS'                  =>  'Nie ma jeszcze żadnych wpisów.',
+  'NO_POSTS_MATCH_SEARCH'     =>  'Nie ma postów do wyświetlenia, które pasują do kryteriów wyszukiwania! Może spróbować czegoś innego?',
 	'CLICK_TO_CREATE'           =>  'Kliknij tu, by utworzyć pierwszy',
 	'PAGE_TITLE'                =>  'Tytuł strony',
 

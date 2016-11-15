@@ -2,7 +2,7 @@
 /**************************************************************************************************\
 * Spanish (Español / Castilian) Language File for GetSimple Blog                                   *
 * ------------------------------------------------------------------------------------------------ *
-* Last Modified: 15 February 2015                                                                  *
+* Last Modified: 15 November 2016 by Google Translate                                              *
 * Compiled By: ferchosj (? ?) / jEsuSdA (? ?)                                                      *
 \**************************************************************************************************/
  
@@ -71,6 +71,7 @@ $i18n = array(
   'NEW_POST_BUTTON'           =>  'Crear Post',
   'MANAGE_POSTS_DESC'         =>  'Editar posts existentes o crear nuevos posts. La tabla de abajo muestra los posts que existen actualmente.',
   'NO_POSTS'                  =>  'No hay post encontrados',
+  'NO_POSTS_MATCH_SEARCH'     =>  '¡No hay artículos que mostrar tu búsqueda! Tal vez intentar algo diferente?',
   'CLICK_TO_CREATE'           =>  'Haga click Aquí para Crear Uno',
   'PAGE_TITLE'                =>  'Título de Página',
   
