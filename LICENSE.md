@@ -1,12 +1,12 @@
 # LICENCE AGREEMENT
-Creative Commons Attribution-ShareAlike 3.0 Australia
+**Creative Commons Attribution-ShareAlike 3.0 Australia**
 
 
 THE WORK (AS DEFINED BELOW) IS PROVIDED UNDER THE TERMS OF THIS CREATIVE COMMONS PUBLIC LICENCE ("LICENCE"). THE WORK IS PROTECTED BY COPYRIGHT AND/OR OTHER APPLICABLE LAW. ANY USE OF THE WORK OTHER THAN AS AUTHORISED UNDER THIS LICENCE OR COPYRIGHT LAW IS PROHIBITED.
 
 BY EXERCISING ANY RIGHTS TO THE WORK PROVIDED HERE, YOU ACCEPT AND AGREE TO BE BOUND BY THE TERMS OF THIS LICENCE. THE LICENSOR GRANTS YOU THE RIGHTS CONTAINED HERE IN CONSIDERATION OF YOUR ACCEPTANCE OF SUCH TERMS AND CONDITIONS.
 
-1. Definitions
+## 1. Definitions
 
 "Collection" means the Work in its entirety in unmodified form along with one or more other separate and independent works, assembled into a collective whole. A Collection may, for example, include a periodical, encyclopedia or anthology. A Collection will not be considered a Derivative Work for the purposes of this Licence.
 "Creative Commons Compatible Licence" means a licence that is listed at http://creativecommons.org/compatiblelicenses that has been approved by Creative Commons as being essentially equivalent to this Licence, including, at a minimum, because that licence:
@@ -20,13 +20,14 @@ explicitly permits the relicensing of derivatives of works made available under 
 "Reproduce" means to make a copy of the Work in any material form (eg storage in digital form).
 "Work" means the material (including any work or other subject matter) protected by copyright which is offered under the terms of this Licence. This may include (without limitation) a literary, dramatic, musical or artistic work; a sound recording or cinematograph film; a published edition of a literary, dramatic, musical or artistic work; or a television or sound broadcast.
 "You" means an individual or entity exercising rights under this Licence who has not previously violated the terms of this Licence with respect to the Work, or who has received express permission from the Licensor to exercise rights under this Licence despite a previous violation.
-2. Fair Dealing and Other Rights
+
+## 2. Fair Dealing and Other Rights
 
 Nothing in this Licence is intended to reduce, limit, or restrict any uses free from copyright or rights arising from limitations or exceptions under copyright law or any other applicable laws.
 
-3. Licence Grant
+## 3. Licence Grant
 
-3A Grant of Rights
+### 3A. Grant of Rights
 
 Provided that the terms set out in this Licence are satisfied, the Licensor grants to You a worldwide, royalty-free, non-exclusive, perpetual (for the duration of the applicable copyright) licence to exercise the following rights:
 
@@ -35,19 +36,20 @@ incorporate the Work into one or more Collections;
 Reproduce the Work as incorporated in any Collection;
 create and Reproduce one or more Derivative Works; and
 Distribute and publicly perform the Work, a Derivative Work or the Work as incorporated in any Collection.
-3B Media and Formats
+
+### 3B. Media and Formats
 
 The above rights may be exercised in any media or format whether now known or hereafter created. They include the right to make modifications that are technically necessary to exercise the rights in other media and formats.
 
-3C Other Rights Reserved
+### 3C. Other Rights Reserved
 
 All rights not expressly granted by the Licensor are reserved. The Licensor waives the right to collect royalties for any exercise by You of the rights granted under this Licence.
 
-4. Restrictions
+## 4. Restrictions
 
 The licence granted above is limited by the following restrictions.
 
-4A Restrictions on Distribution and Public Performance of the Work
+### 4A. Restrictions on Distribution and Public Performance of the Work
 
 You may Distribute and publicly perform the Work only under the terms of this Licence.
 You must include a copy of, or the Uniform Resource Identifier (such as a web link) for, this Licence with every copy of the Work You Distribute or publicly perform.
@@ -56,7 +58,8 @@ You are not granted the right to sublicense the Work. The rights of recipients o
 You must keep intact all notices that refer to this Licence and to the disclaimer of warranties with every copy of the Work You Distribute or publicly perform.
 When You Distribute or publicly perform the Work, You must not impose any technological measures on it that restrict the ability of a recipient of the Work from You to exercise the rights granted to them by this Licence.
 For the avoidance of doubt, while this clause 4A applies to the Work as incorporated into a Collection, it does not require other material within the Collection, or the Collection apart from the Work itself, to be made subject to this Licence.
-4B Restrictions on Distribution and Public Performance of Derivative Works
+
+### 4B. Restrictions on Distribution and Public Performance of Derivative Works
 
 You may only Distribute or publicly perform a Derivative Work if You apply one of the following licences to it:
 this Licence;
@@ -70,7 +73,8 @@ You must not impose any terms on the Derivative Work that restrict the Applicabl
 You must keep intact all notices that refer to this Licence and to the disclaimer of warranties with every copy of the Work as included in the Derivative Work that You Distribute or publicly perform.
 When You Distribute or publicly perform a Derivative Work You must not impose any technological measures on it that restrict the ability of a recipient of the Derivative Work from You to exercise the rights granted to them by the Applicable Licence.
 For the avoidance of doubt, while this clause 4B applies to any Derivative Work as incorporated into a Collection, it does not require other material within the Collection, or the Collection as a whole, to be made subject to the terms of the Applicable Licence.
-4C Attribution and Notice Requirements
+
+### 4C. Attribution and Notice Requirements
 
 When You Distribute or publicly perform the Work or any Derivative Work or Collection You must keep intact all copyright notices for the Work.
 When You Distribute or publicly perform the Work or any Derivative Work or Collection You must provide, in a manner reasonable to the medium or means You are using:
@@ -84,11 +88,12 @@ For the avoidance of doubt, You may only use the credit required by this clause 
 any connection between the Original Author, Licensor or any other Attribution Party and You or Your use of the Work; or
 sponsorship or endorsement by the Original Author, Licensor or any other Attribution Party of You or Your use of the Work,
 without their separate, express prior written permission.
-4D Moral Rights
+
+### 4D. Moral Rights
 
 Moral rights remain unaffected to the extent they are recognised and nonwaivable at law. In this clause 4D, "moral rights" means the personal rights granted by law to the Original Author of a copyright work. For example, Part IX of the Copyright Act 1968 (Cth) grants authors the right of integrity of authorship, the right of attribution of authorship, and the right not to have authorship falsely attributed.
 
-5. Representations, Warranties and Disclaimer
+## 5. Representations, Warranties and Disclaimer
 
 Except as expressly stated in this Licence or otherwise agreed to by the parties in writing, and to the full extent permitted by applicable law, the Licensor offers the Work "as-is" and makes no representations, warranties or conditions of any kind concerning the Work, express, implied, statutory or otherwise. This includes, without limitation, any representations, warranties or conditions regarding:
 the contents or accuracy of the Work;
@@ -97,7 +102,8 @@ non-infringement;
 the absence of latent or other defects; or
 the presence or absence of errors, whether or not discoverable.
 The Trade Practices Act 1974 (Cth), and the corresponding State and Territory fair trading legislation, imply certain warranties and conditions in certain circumstances, such as the right to supply or fitness for purpose of goods or services supplied to a consumer. Clause 5(a) cannot and is not intended to exclude, restrict or modify these warranties.
-6. Limit of Liability
+
+## 6. Limit of Liability
 
 To the full extent permitted by applicable law, and except for any liability arising from contrary agreement, in no event will the Licensor be liable to You on any legal basis (including without limitation, negligence) for any loss or damage whatsoever, including (without limitation):
 loss of production or operation time, loss, damage or corruption of data or records; or
@@ -113,30 +119,31 @@ in the case of services:
 the supplying of the services again; or
 the payment of the cost of having the services supplied again.
 The Trade Practices Act 1974 (Cth), and the corresponding State and Territory fair trading legislation, restrict the limitation of liability in certain circumstances, such as a contract for the supply of goods or services of a kind ordinarily acquired for personal, domestic, or household use. Clauses 6(a) and 6(b) cannot and are not intended to apply in circumstances where it is prohibited by law.
-7. Termination
+
+## 7. Termination
 
 This Licence and the rights granted to You under this Licence shall terminate automatically upon any breach by You of the terms of the Licence. Individuals or entities who have received a Derivative Work or a Collection from You pursuant to this Licence, however, will not have their licences terminated provided they remain in full compliance with those licences. Clauses 1, 2, 5, 6, 7, 8, 9, 10, 11, 12 and 13 shall survive any termination of this Licence.
 
-8. Licensor’s Rights Retained
+## 8. Licensor’s Rights Retained
 
 Subject to the above terms, the Licence granted here is perpetual (for the duration of the applicable copyright in the Work). Notwithstanding this, the Licensor reserves the right to release the Work under different licence terms or to stop distributing the Work at any time. However, any such release will not serve to withdraw this Licence (or any other licence that has been granted under the terms of this Licence), and this Licence will continue in full force and effect unless terminated as stated above.
 
-9. Licence Grant to Recipients of the Work from You
+## 9. Licence Grant to Recipients of the Work from You
 
 Each time You Distribute or publicly perform the Work, a Derivative Work or a Collection the Licensor offers the recipient a licence to the Work on the same terms as are granted to You under this Licence.
 
-10. Severability
+## 10. Severability
 
 If any provision of this Licence is invalid or unenforceable under applicable law, it shall not affect the validity or enforceability of the remainder of the terms of this Licence. Without further action by the parties to this agreement, such provision shall be reformed to the minimum extent necessary to make such provision valid and enforceable.
 
-11. Waivers and Consents
+## 11. Waivers and Consents
 
 No term of this Licence shall be deemed waived and no breach consented to unless such waiver or consent is in writing and signed by the relevant party.
 
-12. Entire Agreement
+## 12. Entire Agreement
 
 This Licence constitutes the entire agreement between the parties. To the full extent permitted by law, there are no understandings, agreements or representations with respect to the Work not specified here. The Licensor shall not be bound by any additional provisions that may appear in any communication from You. This Licence may not be modified without the written agreement of the Licensor and You.
 
-13. Governing Law
+## 13. Governing Law
 
 The construction, validity and performance of this Licence shall be governed by the laws in force in the Australian Capital Territory, Australia.
