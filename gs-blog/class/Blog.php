@@ -824,6 +824,7 @@ class Blog
 		$RSSString     .= "<description>".$this->getSettingsData("rssdescription")."</description>\n";
 		$RSSString     .= "<lastBuildDate>".date(DATE_RSS)."</lastBuildDate>\n";
 		$RSSString     .= "<language>".BLOGLANGUAGE."</language>\n";
+    $RSSString     .= "<generator>GetSimple CMS : GSBlog Plugin (v".BLOGVERSION.")</generator>\n";
 		$RSSString     .= '<atom:link href="'.$locationOfFeed."\" rel=\"self\" type=\"application/rss+xml\" />\n";
 
 		$limit = $this->getSettingsData("rssfeedposts");
@@ -833,17 +834,18 @@ class Blog
     if(!count($posts) < 1) {
       foreach ($posts as $post) 
       {
-        $blog_post = simplexml_load_file($post['filename']);
+        $blog_post  = simplexml_load_file($post['filename']);
         $RSSDate    = $blog_post->date;
         $RSSTitle   = $blog_post->title;
-        // $RSSBody 	= html_entity_decode(str_replace("&nbsp;", " ", substr(htmlspecialchars(strip_tags($blog_post->content)),0,200)));
-        $RSSBody = $this->create_excerpt($blog_post->content,0,200);
-        $ID 		= $blog_post->slug;
+        $RSSExcerpt = $this->create_excerpt($blog_post->content,0,$this->getSettingsData('excerptlength'));
+        $ID 		    = $blog_post->slug;
         $RSSString .= "<item>\n";
-        $RSSString .= "\t  <title>".$RSSTitle."</title>\n";
-        $RSSString .= "\t  <link>".$this->get_blog_url('post').$ID."</link>\n";
-        $RSSString .= "\t  <guid>".$this->get_blog_url('post').$ID."</guid>\n";
-        $RSSString .= "\t  <description>".$RSSBody."</description>\n";
+        $RSSString .= "\t<title>".$RSSTitle."</title>\n";
+        $RSSString .= "\t<pubDate>".date(DATE_RSS,strtotime($blog_post->date))."</pubDate>\n";
+        $RSSString .= "\t<link>".$this->get_blog_url('post').$ID."</link>\n";
+        $RSSString .= "\t<guid>".$this->get_blog_url('post').$ID."</guid>\n";
+        $RSSString .= "\t<description>".$RSSExcerpt."</description>\n";
+        $RSSString .= "\t<content:encoded>".$blog_post->content."</content:encoded>\n";
         if(isset($blog_post->category) and !empty($blog_post->category) and $blog_post->category!='') 
         {
           $RSSString .= "\t  <category>".$blog_post->category."</category>\n";
