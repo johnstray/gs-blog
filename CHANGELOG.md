@@ -1,3 +1,27 @@
+### Version 3.4.3
+**Feature Enhancements:**
+- [#095] A few minor imrovements to the RSS generator:
+         - `<description>` now respects the excerpt length setting.
+         - Added `<content:encoded>` tag to include the full text including html of the post.
+         - Added `<pubDate>` tag to each post in the feed.
+         - Added `<generator>` tag to the `<channel>`.
+- [#102] Minor enhancements to the Posts Management page:
+         - Search button is now hidden when there are no posts in the database.
+         - The search field is now shown by default when listing the results of a search. Allows use of the 'Cancel' button to clear a search.
+         - When showing the results of a search and no posts were found, a new message is now displayed instead of the default no posts message.
+         - Covnerted no posts message to use the `<h5>` tag instead of `<strong>`, added centre alignment and fixed missing closing tag. `<h4>` used for notice on no search results.
+         - The page navigation container box is now hidden when there are no posts on the page. 
+         - Category Admin Page: Removed the uncecessary 'Or Cancel' button in the 'Add Category' box
+         - Added unversal alignment layouts and properties for the search box on the posts admin page and the add category box on the category admin page.
+
+**Bug Fixes:**
+- [#097] Fixed unprotected quotes in Russian language file.
+- [#098] Fixed critical error where adding a node to the settings xml would fail because an array was given when a string was expected.
+- [#100] Fixed "Search Engine Suicide" bug where the meta description of a multi-post page would contain the excerpt of the last post on the page.
+
+**Languages:**
+- [#099] Updates to the Russian language file thanks to f30d0r.
+
 ### Version 3.4.2
 **Back End (Admin) Changes:**
 - [#088] Added paging of posts list on Post Management page. Qty per page is determined by "# posts per page" blog setting.
