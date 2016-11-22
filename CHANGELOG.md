@@ -1,18 +1,18 @@
 ### Version 3.4.3
 **Feature Enhancements:**
 - [#095] A few minor imrovements to the RSS generator:
-         - `<description>` now respects the excerpt length setting.
-         - Added `<content:encoded>` tag to include the full text including html of the post.
-         - Added `<pubDate>` tag to each post in the feed.
-         - Added `<generator>` tag to the `<channel>`.
+  - `<description>` now respects the excerpt length setting.
+  - Added `<content:encoded>` tag to include the full text including html of the post.
+  - Added `<pubDate>` tag to each post in the feed.
+  - Added `<generator>` tag to the `<channel>`.
 - [#102] Minor enhancements to the Posts Management page:
-         - Search button is now hidden when there are no posts in the database.
-         - The search field is now shown by default when listing the results of a search. Allows use of the 'Cancel' button to clear a search.
-         - When showing the results of a search and no posts were found, a new message is now displayed instead of the default no posts message.
-         - Covnerted no posts message to use the `<h5>` tag instead of `<strong>`, added centre alignment and fixed missing closing tag. `<h4>` used for notice on no search results.
-         - The page navigation container box is now hidden when there are no posts on the page. 
-         - Category Admin Page: Removed the uncecessary 'Or Cancel' button in the 'Add Category' box
-         - Added unversal alignment layouts and properties for the search box on the posts admin page and the add category box on the category admin page.
+  - Search button is now hidden when there are no posts in the database.
+  - The search field is now shown by default when listing the results of a search. Allows use of the 'Cancel' button to clear a search.
+  - When showing the results of a search and no posts were found, a new message is now displayed instead of the default no posts message.
+  - Covnerted no posts message to use the `<h5>` tag instead of `<strong>`, added centre alignment and fixed missing closing tag. `<h4>` used for notice on no search results.
+  - The page navigation container box is now hidden when there are no posts on the page. 
+  - Category Admin Page: Removed the uncecessary 'Or Cancel' button in the 'Add Category' box
+  - Added unversal alignment layouts and properties for the search box on the posts admin page and the add category box on the category admin page.
 
 **Bug Fixes:**
 - [#097] Fixed unprotected quotes in Russian language file.
