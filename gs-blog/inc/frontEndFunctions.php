@@ -586,8 +586,18 @@ function set_post_description() {
 	$Blog = new Blog; // Create a new instance of the Blog class
   
 	if((isset($_GET['id'])) && ($_GET['id'] == $blogSettings['blogurl']) && (isset($_GET['post']))) {
-		$excerpt_length = ($blogSettings["excerptlength"] == '') ? 150 : $blogSettings["excerptlength"];
-		$metad = $Blog->create_excerpt(html_entity_decode($post->content), 0, $excerpt_length);
+    if(isset($_GET['post'])) {
+      $excerpt_length = ($blogSettings["excerptlength"] == '') ? 150 : $blogSettings["excerptlength"];
+      $metad = $Blog->create_excerpt(html_entity_decode($post->content), 0, $excerpt_length);
+    } elseif(isset($_GET['category'])) {
+      // Get Category meta description
+    } elseif(isset($_GET['archive'])) {
+      // Get Archive meta description
+    } elseif(isset($_GET['tag'])) {
+      // Get Tag meta description
+    } elseif(isset($_POST['search_blog'])) {
+      // Get Search meta description
+    }
 	}
 }
 
