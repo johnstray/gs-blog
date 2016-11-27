@@ -17,7 +17,7 @@ function blog_version_check() {
 	$return = array();
 	$return[0] = 'unknown';
 	$return[1] = $current_version;
-	$retuen[2] = '0.0.0';
+	$return[2] = '0.0.0';
 	$return[3] = i18n_r(BLOGFILE.'/VERSION_NOMESSAGE');
 	
 	// Call to Extend API for information

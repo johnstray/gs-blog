@@ -18,6 +18,7 @@
 - [#097] Fixed unprotected quotes in Russian language file.
 - [#098] Fixed critical error where adding a node to the settings xml would fail because an array was given when a string was expected.
 - [#100] Fixed "Search Engine Suicide" bug where the meta description of a multi-post page would contain the excerpt of the last post on the page.
+- [#105] Corrected a spelling error in a variable name in `versionCheck.php`.
 - [#106] Removed a runaway closing `</p>` tag on the Post Editor page.
 
 **Languages:**
