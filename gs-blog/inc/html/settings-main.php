@@ -35,66 +35,66 @@
   </div>
   <div class="rightsec">
     <p>
-      <label for="posts_per_page"><?php i18n(BLOGFILE.'/POSTS_PER_PAGE'); ?>:</label>
-      <input class="text" type="text" name="posts_per_page" value="<?php echo $Blog->getSettingsData("postperpage"); ?>" />
+      <label for="postperpage"><?php i18n(BLOGFILE.'/POSTS_PER_PAGE'); ?>:</label>
+      <input class="text" type="text" name="postperpage" value="<?php echo $Blog->getSettingsData("postperpage"); ?>" />
     </p>
   </div>
   <div class="clear"></div>
   <div class="leftsec">
-    <p><label for="show_excerpt"><?php i18n(BLOGFILE.'/EXCERPT_OPTION'); ?>:</label>
+    <p><label for="postformat"><?php i18n(BLOGFILE.'/EXCERPT_OPTION'); ?>:</label>
     <span style="width:49%;display:inline-block;">
-      <input name="show_excerpt" type="radio" value="Y" <?php if ($Blog->getSettingsData("postformat") == 'Y') echo 'checked="checked"'; ?> style="vertical-align: middle;" />
+      <input name="postformat" type="radio" value="Y" <?php if ($Blog->getSettingsData("postformat") == 'Y') echo 'checked="checked"'; ?> style="vertical-align: middle;" />
       &nbsp;<?php i18n(BLOGFILE.'/FULL_TEXT'); ?>
     </span><span style="width:49%;display:inline-block;">
-      <input name="show_excerpt" type="radio" value="N" <?php if ($Blog->getSettingsData("postformat") != 'Y') echo 'checked="checked"'; ?> style="vertical-align: middle;" />
+      <input name="postformat" type="radio" value="N" <?php if ($Blog->getSettingsData("postformat") != 'Y') echo 'checked="checked"'; ?> style="vertical-align: middle;" />
       &nbsp;<?php i18n(BLOGFILE.'/EXCERPT'); ?>
     </span></p>
   </div>
   <div class="rightsec">
     <p>
-      <label for="excerpt_length"><?php i18n(BLOGFILE.'/EXCERPT_LENGTH'); ?>:</label>
-      <input class="text" type="text" name="excerpt_length" value="<?php echo $Blog->getSettingsData("excerptlength"); ?>" />
+      <label for="excerptlength"><?php i18n(BLOGFILE.'/EXCERPT_LENGTH'); ?>:</label>
+      <input class="text" type="text" name="excerptlength" value="<?php echo $Blog->getSettingsData("excerptlength"); ?>" />
     </p>
   </div>
   <div class="clear"></div>
   <div class="leftsec">
-    <p><label for="display_archives_post_count"><?php i18n(BLOGFILE.'/DISPLAY_POST_COUNT_ARCH'); ?>:</label>
+    <p><label for="archivepostcount"><?php i18n(BLOGFILE.'/DISPLAY_POST_COUNT_ARCH'); ?>:</label>
     <span style="width:49%;display:inline-block;">
-      <input name="display_archives_post_count" type="radio" value="Y" <?php if ($Blog->getSettingsData("archivepostcount") == 'Y') echo 'checked="checked"'; ?> style="vertical-align: middle;" />
+      <input name="archivepostcount" type="radio" value="Y" <?php if ($Blog->getSettingsData("archivepostcount") == 'Y') echo 'checked="checked"'; ?> style="vertical-align: middle;" />
       &nbsp;<?php i18n(BLOGFILE.'/YES'); ?>
     </span><span style="width:49%;display:inline-block;">
-      <input name="display_archives_post_count" type="radio" value="N" <?php if ($Blog->getSettingsData("archivepostcount") != 'Y') echo 'checked="checked"'; ?> style="vertical-align: middle;" />
+      <input name="archivepostcount" type="radio" value="N" <?php if ($Blog->getSettingsData("archivepostcount") != 'Y') echo 'checked="checked"'; ?> style="vertical-align: middle;" />
       &nbsp;<?php i18n(BLOGFILE.'/NO'); ?>
     </span></p>
   </div>
   <div class="rightsec">
     <p>
-      <label for="recent_posts"><?php i18n(BLOGFILE.'/RECENT_POSTS'); ?>:</label>
-      <input class="text" type="text" name="recent_posts" value="<?php echo $Blog->getSettingsData("recentposts"); ?>" />
+      <label for="recentposts"><?php i18n(BLOGFILE.'/RECENT_POSTS'); ?>:</label>
+      <input class="text" type="text" name="recentposts" value="<?php echo $Blog->getSettingsData("recentposts"); ?>" />
     </p>
   </div>
   <div class="clear"></div>
   <div class="leftsec">
     <p>
-      <label for="rss_title"><?php i18n(BLOGFILE.'/RSS_TITLE'); ?>:</label>
-      <input class="text" type="text" name="rss_title" value="<?php echo $Blog->getSettingsData("rsstitle"); ?>" />
+      <label for="rsstitle"><?php i18n(BLOGFILE.'/RSS_TITLE'); ?>:</label>
+      <input class="text" type="text" name="rsstitle" value="<?php echo $Blog->getSettingsData("rsstitle"); ?>" />
     </p>
   </div>
   <div class="rightsec">
     <p>
-      <label for="rss_description"><?php i18n(BLOGFILE.'/RSS_DESCRIPTION'); ?>:</label>
-      <input class="text" type="text" name="rss_description" value="<?php echo $Blog->getSettingsData("rssdescription"); ?>" />
+      <label for="rssdescription"><?php i18n(BLOGFILE.'/RSS_DESCRIPTION'); ?>:</label>
+      <input class="text" type="text" name="rssdescription" value="<?php echo $Blog->getSettingsData("rssdescription"); ?>" />
     </p>
   </div>
   <div class="clear"></div>
   <h3 style="font-size:15px;"><?php i18n(BLOGFILE.'/HTACCESS_HEADLINE'); ?></h3>
   <?php global $PRETTYURLS; if ($PRETTYURLS == 1) { ?>
   <p>
-    <label for="pretty_urls"><?php i18n(BLOGFILE.'/PRETTY_URLS'); ?>:</label>
-    <input name="pretty_urls" type="radio" value="Y" <?php if ($Blog->getSettingsData("prettyurls") == 'Y') echo 'checked="checked"'; ?> style="vertical-align: middle;" />
+    <label for="prettyurls"><?php i18n(BLOGFILE.'/PRETTY_URLS'); ?>:</label>
+    <input name="prettyurls" type="radio" value="Y" <?php if ($Blog->getSettingsData("prettyurls") == 'Y') echo 'checked="checked"'; ?> style="vertical-align: middle;" />
     &nbsp;<?php i18n(BLOGFILE.'/YES'); ?>
     <span style="margin-left: 30px;">&nbsp;</span>
-    <input name="pretty_urls" type="radio" value="N" <?php if ($Blog->getSettingsData("prettyurls") != 'Y') echo 'checked="checked"'; ?> style="vertical-align: middle;" />
+    <input name="prettyurls" type="radio" value="N" <?php if ($Blog->getSettingsData("prettyurls") != 'Y') echo 'checked="checked"'; ?> style="vertical-align: middle;" />
     &nbsp;<?php i18n(BLOGFILE.'/NO'); ?>
   </p>
   <p>

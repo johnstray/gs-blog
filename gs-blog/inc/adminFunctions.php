@@ -128,25 +128,14 @@ function show_settings_admin() {
   
   # Build the array of setting to save to the blog_settings.xml file
 	if(isset($_POST['blog_settings'])) { // The user has submitted an update.
-		$blog_settings_array = array( 
-      'blogurl' => (!empty($_POST['blog_url'])) ? $_POST['blog_url'] : $Blog->getSettingsData("blogurl"),
-      'template' => (!empty($_POST['template'])) ? $_POST['template'] : $Blog->getSettingsData("template"),
-      'excerptlength' => (!empty($_POST['excerpt_length'])) ? $_POST['excerpt_length'] : $Blog->getSettingsData("excerptlength"),
-      'postformat' => (!empty($_POST['show_excerpt'])) ? $_POST['show_excerpt'] : $Blog->getSettingsData("postformat"),
-      'postperpage' => (!empty($_POST['posts_per_page'])) ? $_POST['posts_per_page'] : $Blog->getSettingsData("postperpage"),
-      'recentposts' => (!empty($_POST['recent_posts'])) ? $_POST['recent_posts'] : $Blog->getSettingsData("recentposts"),
-      'prettyurls' => (!empty($_POST['pretty_urls'])) ? $_POST['pretty_urls'] : $Blog->getSettingsData("prettyurls"),
-      'autoimporter' => (!empty($_POST['auto_importer'])) ? $_POST['auto_importer'] : $Blog->getSettingsData("autoimporter"),
-      'autoimporterpass' => (!empty($_POST['auto_importer_pass'])) ? $_POST['auto_importer_pass'] : $Blog->getSettingsData("autoimporterpass"),
-      'rsstitle' => (!empty($_POST['rss_title'])) ? $_POST['rss_title'] : $Blog->getSettingsData("rsstitle"),
-      'rssinclude' => (!empty($_POST['rss_include'])) ? $_POST['rss_include'] : $Blog->getSettingsData("rssinclude"),
-      'rssdescription' => (!empty($_POST['rss_description'])) ? $_POST['rss_description'] : $Blog->getSettingsData("rssdescription"),
-      'rssfeedposts' => (!empty($_POST['rss_feed_num_posts'])) ? $_POST['rss_feed_num_posts'] : $Blog->getSettingsData("rssfeedposts"),
-      'archivepostcount' => (!empty($_POST['display_archives_post_count'])) ? $_POST['display_archives_post_count'] : $Blog->getSettingsData("archivespostcount"),
-    );
+		$existing_settings = $Blog->getSettingsData();
+    $updated_settings = array();
+    foreach ($existing_settings as $key => $value) {
+      $updated_settings[$key] = (!empty($_POST[$key])) ? $_POST[$key] : $value;
+    }
     
     # Attempt to save the settings array to file.
-		if($Blog->saveSettings($blog_settings_array)) { // Success: Notify the user.
+		if($Blog->saveSettings($updated_settings)) { // Success: Notify the user.
       echo '<script>clearNotify();notifyOk(\''.i18n_r(BLOGFILE.'/SETTINGS_SAVE_OK').'\').popit().removeit();</script>';
     } else { // Failed: Notify the user.
       echo '<script>clearNotify();notifyError(\''.i18n_r(BLOGFILE.'/SETTINGS_SAVE_ERROR').'\').popit().removeit();</script>';

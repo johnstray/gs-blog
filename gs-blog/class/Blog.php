@@ -16,116 +16,83 @@ class Blog
 	* 
 	* @return void
 	*/  
-	public function __construct()
-	{
-		//Create data/blog_posts directory
-		if(!file_exists(BLOGPOSTSFOLDER))
-		{
-			$create_post_path = mkdir(BLOGPOSTSFOLDER);
-			if($create_post_path)
-			{
-				echo '<div class="updated">'.i18n_r(BLOGFILE.'/DATA_BLOG_DIR').'</div>';
-			}
-			else
-			{
-				echo '<div class="error"><strong>'.i18n_r(BLOGFILE.'/DATA_BLOG_DIR_ERR').'</strong><br/>'.i18n_r(BLOGFILE.'/DATA_BLOG_DIR_ERR_HINT').'</div>';
-			}
-		}
-		if(!file_exists(BLOGCATEGORYFILE))
-		{
-			$xml = new SimpleXMLExtended('<?xml version="1.0"?><item></item>');
-			$create_category_file = XMLsave($xml, BLOGCATEGORYFILE);
-			if($create_category_file)
-			{
-				echo '<div class="updated">'.i18n_r(BLOGFILE.'/DATA_BLOG_CATEGORIES').'</div>';
-			}
-			else
-			{
-				echo '<div class="error"><strong>'.i18n_r(BLOGFILE.'/DATA_BLOG_CATEGORIES_ERR').'</strong></div>';
-			}
-		}
-		if(!file_exists(BLOGRSSFILE))
-		{
-			$xml = new SimpleXMLExtended('<?xml version="1.0"?><item></item>');
-			$create_rss_file = XMLsave($xml, BLOGRSSFILE);
-			if($create_rss_file)
-			{
-				echo '<div class="updated">'.i18n_r(BLOGFILE.'/DATA_BLOG_RSS').'</div>';
-			}
-			else
-			{
-				echo '<div class="error"><strong>'.i18n_r(BLOGFILE.'/DATA_BLOG_RSS_ERR').'</strong></div>';
-			}
-		}
-		if(!file_exists(BLOGSETTINGS))
-		{
-			$css_code ='.blog_post_thumbnail {&#xD;
-	width:200px;&#xD;
-	height:auto;&#xD;
-	float:left;&#xD;
-	padding-right:10px;&#xD;
-	padding-bottom:10px;&#xD;
-}&#xD;
-&#xD;
-.blog_post_container {&#xD;
-	clear:both;&#xD;
-}					';
-			 $settings_array = array('blogurl' => "index",
-									 'lang' => i18n_r(BLOGFILE.'/LANGUAGE_CODE'), // Changed here just in case something else relies on this.
-									 'excerptlength' => '350',
-									 'postformat' => 'N',
-									 'postperpage' => '8',
-									 'recentposts' => '4',
-									 'prettyurls' => 'N',
-									 'autoimporter' => 'N',
-									 'autoimporterpass' => 'passphrase',
-									 'displaytags' => 'Y',
-									 'rsstitle' => '',
-									 'rssdescription' => '',
-                   'rssinclude' => 'N',
-									 'postthumbnail' => 'N',
-									 'displaydate' => 'Y',
-                   'displayauthor' => 'N',
-                   'defaultauthor' => 'hidden',
-                   'displaycategory' => 'N',
-									 'displaycss' => 'Y',
-									 'csscode' => $css_code,
-									 'rssfeedposts' => '10',
-									 'comments'  => '',
-									 'sharethis'  => '',
-									 'addthis'  => '',
-									 'addata' => '',
-									 'allpostsadtop' => '',
-									 'allpostsadbottom' => '',
-									 'postadtop' => '',
-									 'postadbottom' => '',
-									 'customfields' => '',
-									 'blogpage' => '',
-									 'displayreadmore' => '',
-									 'readmore' => '',
-									 'archivepostcount' => '',
-									 'disqusshortname' => '',
-									 'disquscount' => '',
-									 'postdescription' => '');
-			$create_rss_file = $this->saveSettings($settings_array);
-			if($create_rss_file)
-			{
-				echo '<div class="updated">'.i18n_r(BLOGFILE.'/BLOG_SETTINGS').' '.i18n_r(BLOGFILE.'/WRITE_OK').'</div>';
-			}
-			else
-			{
-				echo '<div class="error"><strong>'.i18n_r(BLOGFILE.'/BLOG_SETTINGS').' '. i18n_r(BLOGFILE.'/DATA_FILE_ERROR').'</strong></div>';
-			}
-		}
-		if(!file_exists(BLOGCUSTOMFIELDS))
-		{
-			$custom_fields_file = BLOGPLUGINFOLDER.'inc/reserved_blog_custom_fields.xml';
-      		if(!copy($custom_fields_file, BLOGCUSTOMFIELDS))
-      		{
-      			echo '<div class="error"><strong>Catastrophic ERROR!!!</strong> - You are going to need to copy the contents of the below file, save it as a new document named "blog_custom_fields.xml" and then move it to the "'.GSDATAOTHERPATH.'" folder!<br/><strong>XML File To Copy:</strong> '.BLOGCUSTOMFIELDS.'</div>';
-      		}
-		}
-	}
+	public function __construct() {
+    
+    # Blog posts folder
+    if(!file_exists(BLOGPOSTSFOLDER)) {
+      if(mkdir(BLOGPOSTSFOLDER)) {
+        echo '<div class="updated">'.i18n_r(BLOGFILE.'/DATA_BLOG_DIR').'</div>';
+      } else {
+        echo '<div class="error"><strong>'.i18n_r(BLOGFILE.'/DATA_BLOG_DIR_ERR').'</strong><br/>'.i18n_r(BLOGFILE.'/DATA_BLOG_DIR_ERR_HINT').'</div>';
+      }
+    }
+    
+    # Categories File
+    if(!file_exists(BLOGCATEGORYFILE)) {
+      $xml = new SimpleXMLExtended('<?xml version="1.0"?><item></item>');
+      if(XMLsave($xml, BLOGCATEGORYFILE)) {
+        echo '<div class="updated">'.i18n_r(BLOGFILE.'/DATA_BLOG_CATEGORIES').'</div>';
+      } else {
+        echo '<div class="error"><strong>'.i18n_r(BLOGFILE.'/DATA_BLOG_CATEGORIES_ERR').'</strong></div>';
+      }
+    }
+    
+    # RSS Feed File
+    if(!file_exists(BLOGRSSFILE)) {
+      $xml = new SimpleXMLExtended('<?xml version="1.0"?><item></item>');
+      if(XMLsave($xml, BLOGRSSFILE)) {
+        echo '<div class="updated">'.i18n_r(BLOGFILE.'/DATA_BLOG_RSS').'</div>';
+      } else {
+        echo '<div class="error"><strong>'.i18n_r(BLOGFILE.'/DATA_BLOG_RSS_ERR').'</strong></div>';
+      }
+    }
+    
+    # The Settings File
+    $default_settings = array(
+      'blogurl'           => "index",
+      'prettyurls'        => "N",
+      'rsstitle'          => "My RSS Feed",
+      'rssdescription'    => "Welcome to my blog!!",
+      'rssfeedposts'      => "10",
+      'rssinclude'        => "N",
+      'excerptlength'     => "350",
+      'postformat'        => "N",
+      'postperpage'       => "10",
+      'recentposts'       => "4",
+      'achivespostcount'  => "Y",
+      'autoimporter'      => "N",
+      'autoimporterpass'  => "passphrase",
+    );
+    if(!file_exists(BLOGSETTINGS)) {
+      if($this->saveSettings($default_settings)) {
+        echo '<div class="updated">'.i18n_r(BLOGFILE.'/BLOG_SETTINGS').' '.i18n_r(BLOGFILE.'/WRITE_OK').'</div>';
+      } else {
+        echo '<div class="error"><strong>'.i18n_r(BLOGFILE.'/BLOG_SETTINGS').' '. i18n_r(BLOGFILE.'/DATA_FILE_ERROR').'</strong></div>';
+      }
+    } else {
+      $saved_settings = $this->getSettingsData();
+      $missing_settings = array_diff($default_settings, $saved_settings)
+      if(count($missing_settings) > 0) {
+        foreach ($missing_settings as $key => $value) {
+          $saved_settings[$key] = $value;
+        }
+        if($this->saveSettings($default_settings)) {
+          echo '<div class="updated">'.i18n_r(BLOGFILE.'/BLOG_SETTINGS').' '.i18n_r(BLOGFILE.'/WRITE_OK').'</div>';
+        } else {
+          echo '<div class="error"><strong>'.i18n_r(BLOGFILE.'/BLOG_SETTINGS').' '. i18n_r(BLOGFILE.'/DATA_FILE_ERROR').'</strong></div>';
+        }
+      }
+    }
+    
+    # Reserved Custom Fields
+    if(!file_exists(BLOGCUSTOMFIELDS)) {
+      $custom_fields_file = BLOGPLUGINFOLDER.'inc/reserved_blog_custom_fields.xml';
+      if(!copy($custom_fields_file, BLOGCUSTOMFIELDS)) {
+        echo '<div class="error"><strong>Catastrophic ERROR!!!</strong> - You are going to need to copy the contents of the below file, save it as a new document named "blog_custom_fields.xml" and then move it to the "'.GSDATAOTHERPATH.'" folder!<br/><strong>XML File To Copy:</strong> '.BLOGCUSTOMFIELDS.'</div>';
+      }
+    }
+    
+  }
 
 	/** 
 	* Lists All Blog Posts
