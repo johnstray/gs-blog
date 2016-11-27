@@ -71,16 +71,27 @@ class Blog
       }
     } else {
       $saved_settings = $this->getSettingsData();
+      
+      # Check for missing settings
       $missing_settings = array_diff($default_settings, $saved_settings)
       if(count($missing_settings) > 0) {
         foreach ($missing_settings as $key => $value) {
           $saved_settings[$key] = $value;
         }
-        if($this->saveSettings($default_settings)) {
-          echo '<div class="updated">'.i18n_r(BLOGFILE.'/BLOG_SETTINGS').' '.i18n_r(BLOGFILE.'/WRITE_OK').'</div>';
-        } else {
-          echo '<div class="error"><strong>'.i18n_r(BLOGFILE.'/BLOG_SETTINGS').' '. i18n_r(BLOGFILE.'/DATA_FILE_ERROR').'</strong></div>';
+      }
+      
+      # Check for redundant settings
+      foreach($saved_settings as $key => $value) {
+        if(!array_key_exists($key, $default_settings)) {
+          unset($saved_settings[$key]);
         }
+      }
+      
+      # Write the settings to file after update
+      if($this->saveSettings($default_settings)) {
+        echo '<div class="updated">'.i18n_r(BLOGFILE.'/BLOG_SETTINGS').' '.i18n_r(BLOGFILE.'/WRITE_OK').'</div>';
+      } else {
+        echo '<div class="error"><strong>'.i18n_r(BLOGFILE.'/BLOG_SETTINGS').' '. i18n_r(BLOGFILE.'/DATA_FILE_ERROR').'</strong></div>';
       }
     }
     
