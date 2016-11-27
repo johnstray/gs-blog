@@ -66,6 +66,7 @@ add_action('index-pretemplate', 'blog_display_posts');   // Displays posts on fr
 add_action('theme-header', 'includeRssFeed');            // Add RSS link to site header
 add_action('index-pretemplate', 'set_post_description'); // Place excerpt into meta description
 add_action('common', 'checkPermissions');                // Check what permission the user has
+add_action('common', 'reorderUserManagement');           // Reorder the User Management Plugin
 
 /**-------------------------------------------------------------------------------------------------
  * formatPostDate($date)
@@ -150,4 +151,50 @@ function getBlogUserPermissions() {
 	global $blogUserPermissions;
 	$current_user = get_cookie('GS_ADMIN_USERNAME');
 	$blogUserPermissions = check_user_permissions($current_user);
+}
+
+/**-------------------------------------------------------------------------------------------------
+ * reorderUserManagement()
+ * Tries to reorder the loading of the MultiUser plugin so that it loads first allowing it's
+ * functions to work as expected.
+ * 
+ * @return void (void)
+ */
+function reorderUserManagement() {
+  GLOBAL $live_plugins;
+  
+  if (file_exists(GSPLUGINPATH)){
+    $pluginfiles = getFiles(GSPLUGINPATH);
+  }
+  $phpfiles = array();
+  foreach ($pluginfiles as $fi) {
+    if (lowercase(pathinfo($fi, PATHINFO_EXTENSION))=='php') {
+      $phpfiles[] = $fi;
+    }
+  }
+  
+  if($phpfiles[0] !== 'user-managment.php') { # Only reorder if user-managment is not first
+    if(($key = array_search('user-managment.php', $phpfiles)) !== false) {
+      unset($phpfiles[$key]);
+    }
+    $temp = array('user-managment.php');
+    $phpfiles = $temp + $phpfiles;
+    
+    # Re-write the plugins.xml file with the new ordering
+    $xml = @new SimpleXMLExtended('<?xml version="1.0" encoding="UTF-8"?><channel></channel>'); 
+    foreach ($phpfiles as $fi) {
+      $plugins = $xml->addChild('item');  
+      $p_note = $plugins->addChild('plugin');
+      $p_note->addCData($fi);
+      $p_note = $plugins->addChild('enabled');
+      if (isset($live_plugins[(string)$fi])){
+        $p_note->addCData($live_plugins[(string)$fi]);     
+      } else {
+       $p_note->addCData('false'); 
+      } 
+    }
+    XMLsave($xml, GSDATAOTHERPATH."plugins.xml");  
+    read_pluginsxml();
+  }
+  
 }
