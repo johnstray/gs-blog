@@ -15,12 +15,15 @@
   - Added unversal alignment layouts and properties for the search box on the posts admin page and the add category box on the category admin page.
 
 **Bug Fixes:**
-- [#090] Implemented a function that will read, reorder, then write the `plugins.xml` file so that the 'user-managment.php (MultiUser)' plugin will work as expected.
 - [#097] Fixed unprotected quotes in Russian language file.
 - [#098] Fixed critical error where adding a node to the settings xml would fail because an array was given when a string was expected.
 - [#100] Fixed "Search Engine Suicide" bug where the meta description of a multi-post page would contain the excerpt of the last post on the page.
 - [#105] Corrected a spelling error in a variable name in `versionCheck.php`.
 - [#106] Removed a runaway closing `</p>` tag on the Post Editor page.
+
+**Core Code Changes:**
+- [#090] Implemented a function that will read, reorder, then write the `plugins.xml` file so that the 'user-managment.php (MultiUser)' plugin will work as expected.
+- [#109] Rewrote the class constructor function: Added check for missing or redundant settings in the settings file and update if required.
 
 **Languages:**
 - [#099] Updates to the Russian language file thanks to f30d0r.
