@@ -20,14 +20,14 @@ define('BLOGLANGUAGE',i18n_r(BLOGFILE.'/LANGUAGE_CODE')[0]);
 
 # register plugin
 register_plugin(
-	BLOGFILE, // ID of plugin, should be filename minus php
-	i18n_r(BLOGFILE.'/PLUGIN_TITLE'), 	
-	BLOGVERSION,
-	'John Stray',
-	'https://www.johnstray.id.au/get-simple/plug-ins/gs-blog-3/', 
-	i18n_r(BLOGFILE.'/PLUGIN_DESC'),
-	'blog',
-	'blog_admin_controller'  
+    BLOGFILE, // ID of plugin, should be filename minus php
+    i18n_r(BLOGFILE.'/PLUGIN_TITLE'),
+    BLOGVERSION,
+    'John Stray',
+    'https://www.johnstray.id.au/get-simple/plug-ins/gs-blog-3/',
+    i18n_r(BLOGFILE.'/PLUGIN_DESC'),
+    'blog',
+    'blog_admin_controller'
 );
 
 # Tab/Sidebar Actions
