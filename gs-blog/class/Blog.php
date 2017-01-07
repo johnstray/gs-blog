@@ -28,7 +28,7 @@ class Blog
             require_once($targetPath);
             blogSetup($this->getSettingsData());
         } else {
-            throw new Exception("Unable to load $func_name.");
+            throw new Exception("Unable to load blogSetup.php");
         }
     }
 
