@@ -72,7 +72,7 @@ class Blog
       }
     } else {
       $saved_settings = $this->getSettingsData();
-      $update_settings = true;
+      $update_settings = false;
       
       # Check for missing settings
       $missing_settings = array_diff_key($default_settings, $saved_settings);
