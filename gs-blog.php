@@ -2,16 +2,16 @@
 /**
  * Plugin Name: GetSimple Blog
  * Description: A simple and easy to use blog/newsfeed for GetSimple
- * Version: 3.4.2
- * Author: John Stray
- * Author URI: https://www.johnstray.com/
+ * Version: 3.5.0
+ * Authors: Mike Henken, John Stray, David Negrello
+ *
  */
 
 # Define some important stuff
 define('BLOGFILE', basename(__FILE__, ".php"));
 define('BLOGPLUGINNAME', i18n_r(BLOGFILE.'/PLUGIN_TITLE'));
 define('BLOGEXTENDID','810');
-define('BLOGVERSION','3.4.2');
+define('BLOGVERSION','3.5.0');
 require_once(BLOGFILE.'/inc/common.php');
 
 # Setup languages and language settings.
@@ -20,14 +20,14 @@ define('BLOGLANGUAGE',i18n_r(BLOGFILE.'/LANGUAGE_CODE')[0]);
 
 # register plugin
 register_plugin(
-	BLOGFILE, // ID of plugin, should be filename minus php
-	i18n_r(BLOGFILE.'/PLUGIN_TITLE'), 	
-	BLOGVERSION,
-	'John Stray',
-	'https://www.johnstray.id.au/get-simple/plug-ins/gs-blog-3/', 
-	i18n_r(BLOGFILE.'/PLUGIN_DESC'),
-	'blog',
-	'blog_admin_controller'  
+    BLOGFILE, // ID of plugin, should be filename minus php
+    i18n_r(BLOGFILE.'/PLUGIN_TITLE'),
+    BLOGVERSION,
+    'John Stray',
+    'https://www.johnstray.id.au/get-simple/plug-ins/gs-blog-3/',
+    i18n_r(BLOGFILE.'/PLUGIN_DESC'),
+    'blog',
+    'blog_admin_controller'
 );
 
 # Tab/Sidebar Actions
