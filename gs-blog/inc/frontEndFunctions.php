@@ -67,38 +67,40 @@ function blog_display_posts() {
  * @return:  $displayed (bool) - True:  Post was in the past (displayed)
  *                               False: Post was in the future (not displayed)
  */
-function show_blog_post($slug, $excerpt=false, $echo=true) {
+function show_blog_post($slug, $excerpt=false, $echo=true, array $links=null) {
 
-  GLOBAL $SITEURL, $blogSettings, $post; // Get GLOBAL variables
+  GLOBAL $SITEURL, $blogSettings, $postData; // Get GLOBAL variables
   $Blog = new Blog; // Prepare the Blog class
-  $post = getXML($slug); // Get XML data of post
+  $postData = getXML($slug); // Get XML data of post
 
-  if(strtotime($post->date) >= time()) {return false;} // Is this a future post?
-
-  $post_date = strtotime((string) $post->date); // Prepare the date...
-
+  if(strtotime($postData->date) >= time()) {return false;} // Is this a future post?
+  $post_date = strtotime((string) $postData->date); // Prepare the date...
   # Prepare the array of information available to the template.
-  $p = array(); // Init the array for the template
-  $post['title'] = (string) $post->title; // Title of the post
-  $post['posturl'] = $Blog->get_blog_url('post').$post->slug; // URL of the post
+  $post = array(); // Init the array for the template
+  $post['title'] = (string) $postData->title; // Title of the post
+  $post['posturl'] = $Blog->get_blog_url('post').$postData->slug; // URL of the post
   $post['date'] = $Blog->get_locale_date($post_date, i18n_r(BLOGFILE.'/DATE_DISPLAY')); // UNIX timestamp of post
-  $post['author'] = (string) $post->author; //Author of the post
+  $post['author'] = (string) $postData->author; //Author of the post
   $post['categoryurl'] = $Blog->get_blog_url('category'); // Category base URL
-  $post['categories'] = explode(',',$post->category); // Categories the post is in
+  $post['categories'] = explode(',',$postData->category); // Categories the post is in
   $post['thumburl'] = $SITEURL.'data/uploads/'; // Thumbnail URL
-  $post['thumbnail'] = (string) $post->thumbnail; // Thumbnail Filename
+  $post['thumbnail'] = (string) $postData->thumbnail; // Thumbnail Filename
   $post['tagsurl'] = $Blog->get_blog_url('tag'); // Tags base URL
-  $post['tags'] = explode(',',$post->tags); // Tags applied to the post
+  $post['tags'] = explode(',',$postData->tags); // Tags applied to the post
   $post['archiveurl'] = $Blog->get_blog_url('archive'); // Archive base URL
   $post['archivetitle'] = date(i18n_r(BLOGFILE.'/DATE_ARCHIVE'),$post_date); // Archive the post is in
   $post['archivedate'] = date('Ym', $post_date);
+  if(!is_null($links)){
+    $post['next'] = $links['next'];
+    $post['previous'] = $links['previous'];
+  }
 
   # Determine if we should be showing an excerpt or full post.
   if(($excerpt == false) || (($excerpt == true) && ($blogSettings['postformat'] == 'Y'))) {
-    $post['content'] = html_entity_decode($post->content); // Get the full contents of the post
+    $post['content'] = html_entity_decode($postData->content); // Get the full contents of the post
   } elseif(($excerpt == true) && ($blogSettings['postformat'] == 'N')) { // It's an excerpt...
     $el = (empty($blogSettings['excerptlength']) ? 250 : $blogSettings['excerptlength']); // Length?
-    $post['content'] = $Blog->create_excerpt(html_entity_decode($post->content),0,$el); // Create excerpt
+    $post['content'] = $Blog->create_excerpt(html_entity_decode($postData->content),0,$el); // Create excerpt
   } else {echo 'Uh oh! Something went wrong!';}
 
   if($echo) {
@@ -109,7 +111,7 @@ function show_blog_post($slug, $excerpt=false, $echo=true) {
       include(BLOGPLUGINFOLDER.'layout-list.php');
     }
   } elseif(!$echo) {
-    return $p;
+    return $post;
   }
 }
 
@@ -442,7 +444,7 @@ function show_blog_tag($tag, $echo=true) {
  */
 function show_all_blog_posts() {
 
-	$Blog = new Blog; // Create a new instance of the Blog class
+
 	if(isset($_GET['page'])) { // If a specific page is required...
 		$page = $_GET['page']; // What page do we want?
 	} else { // No page given?
@@ -582,13 +584,13 @@ function show_blog_navigation($index, $total, $count, $lastPostOfPage) {
  */
 function set_post_description() {
 
-	GLOBAL $metad, $post, $blogSettings; // Declare GLOBAL variables
+	GLOBAL $metad, $postData, $blogSettings; // Declare GLOBAL variables
 	$Blog = new Blog; // Create a new instance of the Blog class
 
 	if((isset($_GET['id'])) && ($_GET['id'] == $blogSettings['blogurl']) && (isset($_GET['post']))) {
     if(isset($_GET['post'])) {
       $excerpt_length = ($blogSettings["excerptlength"] == '') ? 150 : $blogSettings["excerptlength"];
-      $metad = $Blog->create_excerpt(html_entity_decode($post->content), 0, $excerpt_length);
+      $metad = $Blog->create_excerpt(html_entity_decode($postData->content), 0, $excerpt_length);
     } elseif(isset($_GET['category'])) {
       // Get Category meta description
     } elseif(isset($_GET['archive'])) {
@@ -611,12 +613,12 @@ function set_post_description() {
  */
 function get_blog_title () {
 
-	GLOBAL $title, $blogSettings, $post; // Declare GLOBAL variables
+	GLOBAL $title, $blogSettings, $postData; // Declare GLOBAL variables
 	$slug = base64_encode(return_page_slug()); // What page are we on?
 
 	if($slug == base64_encode($blogSettings["blogurl"])) { // If we're on the blog page...
 		if(isset($_GET['post']) && !empty($post)) { // If viewing a post...
-			$title = (string) $post->title; // Set title of post
+			$title = (string) $postData->title; // Set title of post
 		} else if (isset($_GET['archive'])) { // If viewing an archive...
       // Set the archive title
 			$title = (string) i18n_r(BLOGFILE.'/ARCHIVE_PRETITLE').date('F Y',strtotime($_GET['archive']));

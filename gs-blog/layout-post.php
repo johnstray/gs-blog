@@ -73,4 +73,14 @@
     <?php } ?>
   </p>
 
+
+  <?php
+    if(isset($post['next'])){
+        echo $post['next'];
+      }
+    if(isset($post['previous'])){
+      echo $post['previous'];
+    }
+  ?>
+
 </div>
