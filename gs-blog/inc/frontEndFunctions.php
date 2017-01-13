@@ -27,7 +27,26 @@ function blog_display_posts() {
 		switch(true) { // Ok, so what are we going to do?
 			case (isset($_GET['post']) == true) : // Display a post
 				$post_file = BLOGPOSTSFOLDER.$_GET['post'].'.xml'; // Get the post's XML file
-				show_blog_post($post_file); // Show the post
+        // Get a list of all posts in the blog to retrieve current post position
+        $all_posts = $Blog->listPosts(true, true);
+        $postPosition = null;
+        $nearbyPosts = null;
+        foreach ($all_posts as $key => $postItem) {
+          $postsOrderList[$key] = basename($postItem['filename'], ".xml");
+          if ($_GET['post'] == basename($postItem['filename'], ".xml")) {
+            $postPosition = $key;
+            break;
+          }
+        }
+        if (array_key_exists($key - 1, $all_posts)) {
+          $nextPostData = getXML($all_posts[$key - 1]['filename']);
+          $nearbyPosts['next'] = (string)$nextPostData->slug;
+        }
+        if (array_key_exists($key + 1, $all_posts)){
+          $previousPostData = getXML($all_posts[$key + 1]['filename']);
+          $nearbyPosts['previous'] = (string)$previousPostData->slug;
+        }
+				show_blog_post($post_file, false, true, $nearbyPosts); // Show the post
 				break;
 			case (isset($_POST['search_blog']) == true) : // Search the blog
 				search_posts($_POST['keyphrase']); // Search the blog with the given keyphrase
@@ -67,7 +86,7 @@ function blog_display_posts() {
  * @return:  $displayed (bool) - True:  Post was in the past (displayed)
  *                               False: Post was in the future (not displayed)
  */
-function show_blog_post($slug, $excerpt=false, $echo=true, array $links=null) {
+function show_blog_post($slug, $excerpt=false, $echo=true, array $nearbyPostsLinks=null) {
 
   GLOBAL $SITEURL, $blogSettings, $postData; // Get GLOBAL variables
   $Blog = new Blog; // Prepare the Blog class
@@ -92,9 +111,9 @@ function show_blog_post($slug, $excerpt=false, $echo=true, array $links=null) {
   $post['archiveurl'] = $Blog->get_blog_url('archive'); // Archive base URL
   $post['archivetitle'] = date(i18n_r(BLOGFILE.'/DATE_ARCHIVE'),$post_date); // Archive the post is in
   $post['archivedate'] = date('Ym', $post_date);
-  if(!is_null($links)){
-    $post['next'] = $links['next'];
-    $post['previous'] = $links['previous'];
+  if(!is_null($nearbyPostsLinks)){
+    $post['next'] = (empty($nearbyPostsLinks['next'])) ? null : $nearbyPostsLinks['next'];
+    $post['previous'] = (empty($nearbyPostsLinks['previous'])) ? null : $nearbyPostsLinks['previous'];
   }
 
   # Determine if we should be showing an excerpt or full post.

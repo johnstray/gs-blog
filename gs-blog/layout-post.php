@@ -77,11 +77,15 @@
 
 
   <?php
-    if(isset($post['next'])){
-        echo $post['next'];
-      }
-    if(isset($post['previous'])){
-      echo $post['previous'];
+    if(isset($post['next']) or isset($post['previous'])){
+      echo '<div class="blog_post_nextprev_link">';
+        if(isset($post['next'])){
+          echo "<a class='post_next_link' href='?post=".$post['next']."'>< Next</a>";
+          }
+        if(isset($post['previous'])){
+          echo "<a class='post_previous_link' href='?post=".$post['previous']."'>Previous ></a>";
+        }
+      echo '</div>';
     }
   ?>
 
