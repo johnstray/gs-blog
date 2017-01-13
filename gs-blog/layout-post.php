@@ -16,6 +16,12 @@
     .blog_post_container {
       clear:both;
     }
+    .blog_post_nextprev_link {
+      height:2em;
+    }
+    .blog_post_nextprev_link .post_previous_link {
+      float:right;
+    }
   </style>
 
   <!-- Blog post information
@@ -80,10 +86,10 @@
     if(isset($post['next']) or isset($post['previous'])){
       echo '<div class="blog_post_nextprev_link">';
         if(isset($post['next'])){
-          echo "<a class='post_next_link' href='?post=".$post['next']."'>< Next</a>";
+          echo "<a class='post_next_link' href='?post=".$post['next']."'>< next post</a>";
           }
         if(isset($post['previous'])){
-          echo "<a class='post_previous_link' href='?post=".$post['previous']."'>Previous ></a>";
+          echo "<a class='post_previous_link' href='?post=".$post['previous']."'>previous post ></a>";
         }
       echo '</div>';
     }
