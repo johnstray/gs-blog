@@ -86,7 +86,9 @@ function show_blog_post($slug, $excerpt=false, $echo=true, array $links=null) {
   $post['thumburl'] = $SITEURL.'data/uploads/'; // Thumbnail URL
   $post['thumbnail'] = (string) $postData->thumbnail; // Thumbnail Filename
   $post['tagsurl'] = $Blog->get_blog_url('tag'); // Tags base URL
-  $post['tags'] = explode(',',$postData->tags); // Tags applied to the post
+  if(!empty($postData->tags)){
+    $post['tags'] = explode(',',$postData->tags); // Tags applied to the post
+  }
   $post['archiveurl'] = $Blog->get_blog_url('archive'); // Archive base URL
   $post['archivetitle'] = date(i18n_r(BLOGFILE.'/DATE_ARCHIVE'),$post_date); // Archive the post is in
   $post['archivedate'] = date('Ym', $post_date);
