@@ -2,7 +2,7 @@
 /**
  * Plugin Name: GetSimple Blog
  * Description: A simple and easy to use blog/newsfeed for GetSimple
- * Version: 3.5.0
+ * Version: 3.4.4
  * Authors: Mike Henken, John Stray, David Negrello
  *
  */
@@ -11,7 +11,7 @@
 define('BLOGFILE', basename(__FILE__, ".php"));
 define('BLOGPLUGINNAME', i18n_r(BLOGFILE.'/PLUGIN_TITLE'));
 define('BLOGEXTENDID','810');
-define('BLOGVERSION','3.5.0');
+define('BLOGVERSION','3.4.4');
 require_once(BLOGFILE.'/inc/common.php');
 
 # Setup languages and language settings.
