@@ -86,13 +86,18 @@
     if(isset($post['next']) or isset($post['previous'])){
       echo '<div class="blog_post_nextprev_link">';
         if(isset($post['next'])){
-          echo "<a class='post_next_link' href='?post=".$post['next']."'>< next post</a>";
+          echo "<a class='post_next_link' href='?post=".$post['next']."'>";
+          echo i18n(BLOGFILE.'/NEXT_POST');
+          echo "</a>";
           }
         if(isset($post['previous'])){
-          echo "<a class='post_previous_link' href='?post=".$post['previous']."'>previous post ></a>";
+          echo "<a class='post_previous_link' href='?post=".$post['previous']."'>";
+          echo i18n(BLOGFILE.'/PREV_POST');
+          echo "</a>";
         }
       echo '</div>';
     }
   ?>
 
 </div>
+

@@ -5,19 +5,19 @@
 * Last Modified: 15 November 2016 by Google Translate                                              *
 * Compiled By: gschintgen                                                                          *
 \**************************************************************************************************/
- 
+
 $i18n = array(
-  
+
   # Language Configuration
   'LANGUAGE_CODE'             =>  array('fr_FR','fr','fra','french'), // Cross-Platform posibilities for `setlocal()`
   'DATE_FORMAT'               =>  '%c',
   'DATE_DISPLAY'              =>  '%B %e, %Y',
   'DATE_ARCHIVE'              =>  'F Y',
-  
+
   # Plugin Information
   'PLUGIN_TITLE'              =>  ($plugin = 'GetSimple Blog'),
   'PLUGIN_DESC'               =>  'Une gestion de Blog simple et efficace pour le CMS GetSimple',
-  
+
   # Tab/Sidebar Actions (Administration)
   'BLOG_TAB_BUTTON'           =>  'B<em>l</em>og',
   'MANAGE_POSTS_BUTTON'       =>  'Gérer les articles',
@@ -26,7 +26,7 @@ $i18n = array(
   'SETTINGS_BUTTON'           =>  'Paramètres',
   'UPDATE_BUTTON'             =>  'Mise à jour',
   'HELP_BUTTON'               =>  'Aide',
-  
+
   # Generic Strings
   'WRITE_OK'                  =>  'Fichier enregistré avec succès&nbsp;!',
   'EDIT_OK'                   =>  'Fichier modifié avec succès&nbsp;!',
@@ -41,7 +41,7 @@ $i18n = array(
   'MANAGE'                    =>  'Gestion',
   'LANGUAGE'                  =>  'Langue',
   'DATE'                      =>  'Date',
-  
+
   # Class Constructor
   'DATA_BLOG_DIR'             =>  'Répertoire <em>data/blog</em> créé avec succès.',
   'DATA_BLOG_DIR_ERR'         =>  'Le répertoire <em>data/blog</em> ne peut être créé&nbsp;!',
@@ -51,7 +51,7 @@ $i18n = array(
   'DATA_BLOG_RSS'             =>  'Fichier <em>blog_rss.xml</em> créé avec succès&nbsp;!',
   'DATA_BLOG_RSS_ERR'         =>  'Le fichier <em>blog_rss.xml</em> ne peut être créé&nbsp;!',
   'BLOG_SETTINGS'             =>  'Paramètres du Blog',
-  
+
   # 'Post Management' Strings
   'POST_ADDED'                =>  'Article sauvegardé avec succès.',
   'POST_ERROR'                =>  'L&apos;article ne peut être sauvegardé&nbsp;!',
@@ -74,7 +74,7 @@ $i18n = array(
   'NO_POSTS_MATCH_SEARCH'     =>  'Il n&apos;y aucun message à afficher correspondant à vos critères! Peut-être essayer quelque chose de différent?',
   'CLICK_TO_CREATE'           =>  'Cliquez ici pour en créer un',
   'PAGE_TITLE'                =>  'Titre de la page',
-  
+
   # 'Category Management' Strings
   'CATEGORY_ADDED'            =>  'Catégorie créée avec succès.',
   'CATEGORY_ERROR'            =>  'La catégorie n&apos;a pu être enregistrée&nbsp;!',
@@ -83,7 +83,7 @@ $i18n = array(
   'SETTINGS_CATEGORY_DESC'    =>  'Ajouter ou modifier des catégories pour organiser vos articles. Ceci permet de trier vos articles et de n&apos;afficher que ceux appartenant à une catégorie donnée.',
   'CATEGORY_NAME'             =>  'Nom de la catégorie',
   'CATEGORY_RSS_FEED'         =>  'Flux RSS de la catégorie',
-  
+
   # 'RSS Auto-Importer' Strings
   'FEED_ADDED'                =>  'Flux RSS ajouté avec succès.',
   'FEED_ERROR'                =>  'Le flux RSS n&apos;a pu être enregistré&nbsp;!',
@@ -111,7 +111,7 @@ $i18n = array(
   'RSS_DESCRIPTION'           =>  'Description du flux RSS',
   'RSS_IMPORTER_PASS'         =>  'Mot de passe pour l&apos;importateur RSS',
   'RSS_FEED_NUM_POSTS'        =>  '&num; d&apos;articles dans le flux RSS',
-  
+
   # 'Settings' Strings
   'SETTINGS_SAVE_OK'          =>  'Paramètres enregistrés avec succès&nbsp;!',
   'SETTINGS_SAVE_ERROR'       =>  'Impossible de sauvegarder vos paramètres&nbsp;!',
@@ -135,7 +135,7 @@ $i18n = array(
   'BLOG_PRETTY_NOTICE'        =>  'Vous devez au préalable activer les URLs simplifiées dans GetSimple afin d&apos;afficher des instructions ici',
   'SAVE_SETTINGS'             =>  'Enregistrer les paramètres',
   'MAIN_SETTINGS_BUTTON'      =>  'Paramètres principaux',
-  
+
   # 'Help' Strings
   'HELP'                      =>  'Aide',
   'FRONT_END_FUNCTIONS'       =>  'Fonctions du front-end',
@@ -168,7 +168,7 @@ $i18n = array(
   'BLOG_PAGE_CREATE_EXCERPT'  =>  'Créer extrait',
   'BLOG_PAGE_EXCERPT_DESC'    =>  'Ceci crée un extrait de longueur donnée. La variable $excerpt_length doit être un entier et indique la longueur de l&apos;extrait.',
   'BLOG_PAGE_DECODE_CONTENT'  =>  'Décoder contenu',
-  
+
   # 'Front-End' Strings
   'BY'                        =>  'par',
   'ON'                        =>  'le',
@@ -182,10 +182,12 @@ $i18n = array(
   'NOT_FOUND'                 =>  'Aucun article trouvé.',
   'NEXT_PAGE'                 =>  '&larr; Page suivante',
   'PREV_PAGE'                 =>  'Page précédente &rarr;',
+  'NEXT_POST'                 =>  '&larr; Article suivant',
+  'PREV_POST'                 =>  'Article précédent &rarr;',
   'ARCHIVE_PRETITLE'          =>  'Archives du blog&nbsp;: ',
   'CATEGORY_PRETITLE'         =>  'Catégorie du blog&nbsp;: ',
   'READ_MORE'                 =>  'Lire la suite', // <-- New in 3.4.2
-  
+
   # Custom Fields Manager
   'CUSTOM_FIELDS'             =>  'Champs personnalisés',
   'CUSTOMFIELDS_DESCR'        =>  'Ce plugin permet de spécifier des champs personnalisés qui seront affichés quand vous modifiez une page.',
@@ -205,7 +207,7 @@ $i18n = array(
   'WYSIWYG_EDITOR'            =>  'Éditeur WYSIWYG',
   'TITLE'                     =>  'Titre',
   'HIDDEN_FIELD'              =>  'Champ caché',
-  
+
   # VersionCheck Updater
   'VERSION_NOMESSAGE'         =>  'Pas de message d&apos;erreur donné&nbsp;! Ceci est un problème.',
   'VERSION_NORESPONSE'        =>  'Pas de réponse du serveur de l&apos;Extend API.',
@@ -221,5 +223,5 @@ $i18n = array(
   'VERSION_UPDATESTATUS'      =>  'État des mises à jour',
   'VERSION_CURRENTVER'        =>  'Version actuelle',
   'VERSION_LATESTVER'         =>  'Dernière version disponible',
-  
+
 );

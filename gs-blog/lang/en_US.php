@@ -5,19 +5,19 @@
 * Last Modified: 15 February 2015                                                                  *
 * Compiled By: johnstray (John Stray)                                                              *
 \**************************************************************************************************/
- 
+
 $i18n = array(
-  
+
   # Language Configuration
   'LANGUAGE_CODE'             =>  array('en_US','enu','american','en','english'),
   'DATE_FORMAT'               =>  '%c',
   'DATE_DISPLAY'              =>  '%B %e, %Y',
   'DATE_ARCHIVE'              =>  'F Y',
-  
+
   # Plugin Information
   'PLUGIN_TITLE'              =>  ($plugin = 'GetSimple Blog'),
   'PLUGIN_DESC'               =>  'A simple yet powerful Blog system for GetSimple CMS',
-  
+
   # Tab/Sidebar Actions (Administration)
   'BLOG_TAB_BUTTON'           =>  'B<em>l</em>og',
   'MANAGE_POSTS_BUTTON'       =>  'Manage Posts',
@@ -26,7 +26,7 @@ $i18n = array(
   'SETTINGS_BUTTON'           =>  'Settings',
   'UPDATE_BUTTON'             =>  'Update Check',
   'HELP_BUTTON'               =>  'Help',
-  
+
   # Generic Strings
   'WRITE_OK'                  =>  'File successfully written!',
   'EDIT_OK'                   =>  'File successfully modified!',
@@ -41,7 +41,7 @@ $i18n = array(
   'MANAGE'                    =>  'Manage',
   'LANGUAGE'                  =>  'Language',
   'DATE'                      =>  'Date',
-  
+
   # Class Constructor
   'DATA_BLOG_DIR'             =>  '<em>data/blog</em> directory successfully created.',
   'DATA_BLOG_DIR_ERR'         =>  'The <em>data/blog</em> folder could not be created!',
@@ -51,7 +51,7 @@ $i18n = array(
   'DATA_BLOG_RSS'             =>  '<em>blog_rss.xml</em> file successfully created!',
   'DATA_BLOG_RSS_ERR'         =>  '<em>blog_rss.xml</em> file could not be created!',
   'BLOG_SETTINGS'             =>  'Blog Settings',
-  
+
   # 'Post Management' Strings
   'POST_ADDED'                =>  'Successfully saved post!',
   'POST_ERROR'                =>  'Post could not be saved!',
@@ -74,7 +74,7 @@ $i18n = array(
   'NO_POSTS_MATCH_SEARCH'     =>  'There are no posts to display that match your search criteria! Maybe try something different?',
   'CLICK_TO_CREATE'           =>  'Click here to create one',
   'PAGE_TITLE'                =>  'Page Title',
-  
+
   # 'Category Management' Strings
   'CATEGORY_ADDED'            =>  'Successfully added Category!',
   'CATEGORY_ERROR'            =>  'Category could not be saved!',
@@ -83,7 +83,7 @@ $i18n = array(
   'SETTINGS_CATEGORY_DESC'    =>  'Add or Edit categories to assign your posts to. This will enable you to sort your posts by displaying only those in a given category.',
   'CATEGORY_NAME'             =>  'Category Name',
   'CATEGORY_RSS_FEED'         =>  'Category RSS Feed',
-  
+
   # 'RSS Auto-Importer' Strings
   'FEED_ADDED'                =>  'Successfully added RSS Feed!',
   'FEED_ERROR'                =>  'RSS Feed could not be saved!',
@@ -111,7 +111,7 @@ $i18n = array(
   'RSS_DESCRIPTION'           =>  'RSS Feed Description',
   'RSS_IMPORTER_PASS'         =>  'Auto-Importer Password (anything)',
   'RSS_FEED_NUM_POSTS'        =>  '&num; of posts in RSS feed',
-  
+
   # 'Settings' Strings
   'SETTINGS_SAVE_OK'          =>  'Successfully saved settings!',
   'SETTINGS_SAVE_ERROR'       =>  'Could not save your settings!',
@@ -135,7 +135,7 @@ $i18n = array(
   'BLOG_PRETTY_NOTICE'        =>  'You need to turn on pretty urls in GetSimple before instructions will show here',
   'SAVE_SETTINGS'             =>  'Save Settings',
   'MAIN_SETTINGS_BUTTON'      =>  'Main Settings',
-  
+
   # 'Help' Strings
   'HELP'                      =>  'Help',
   'FRONT_END_FUNCTIONS'       =>  'Front End Functions',
@@ -168,7 +168,7 @@ $i18n = array(
   'BLOG_PAGE_CREATE_EXCERPT'  =>  'Create Excerpt',
   'BLOG_PAGE_EXCERPT_DESC'    =>  'This will create an excerpt of specified length. The $excerpt_length variable would need to be an integer and is the length of the excerpt.',
   'BLOG_PAGE_DECODE_CONTENT'  =>  'Decode Content',
-  
+
   # 'Front-End' Strings
   'BY'                        =>  'By',
   'ON'                        =>  'On',
@@ -182,10 +182,12 @@ $i18n = array(
   'NOT_FOUND'                 =>  'Sorry, No posts were found!',
   'NEXT_PAGE'                 =>  '&larr; Next Page',
   'PREV_PAGE'                 =>  'Previous Page &rarr;',
+  'NEXT_POST'                 =>  '&larr; Next post',
+  'PREV_POST'                 =>  'Previous post &rarr;',
   'ARCHIVE_PRETITLE'          =>  'Blog Archive: ',
   'CATEGORY_PRETITLE'         =>  'Blog Category: ',
   'READ_MORE'                 =>  'Read More',
-  
+
   # Custom Fields Manager
   'CUSTOM_FIELDS'             =>  'CustomFields Manager',
   'CUSTOMFIELDS_DESCR'        =>  'This plugin allows you to specify custom fields which are displayed when you edit a page.',
@@ -205,7 +207,7 @@ $i18n = array(
   'WYSIWYG_EDITOR'            =>  'WYSIWYG Editor',
   'TITLE'                     =>  'Title',
   'HIDDEN_FIELD'              =>  'Hidden Field',
-  
+
   # VersionCheck Updater
   'VERSION_NOMESSAGE'         =>  'No error message has been set! This is a problem.',
   'VERSION_NORESPONSE'        =>  'Could not get a response from the Extend API server.',
@@ -221,5 +223,5 @@ $i18n = array(
   'VERSION_UPDATESTATUS'      =>  'Update Status',
   'VERSION_CURRENTVER'        =>  'Current Version',
   'VERSION_LATESTVER'         =>  'Latest Version',
-  
+
 );
