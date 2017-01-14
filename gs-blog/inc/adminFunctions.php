@@ -5,14 +5,14 @@
  * @action: Administration
  * @author: John Stray [https://www.johnstray.id.au/]
  */
- 
- 
+
+
 /**-------------------------------------------------------------------------------------------------
  * blog_admin_controller()
  * This functions controls what to do and where to go throughout the admin areas.
- * 
+ *
  * @return void (void)
- */ 
+ */
 function blog_admin_controller() {
 
 	$Blog = new Blog;
@@ -83,7 +83,7 @@ function blog_admin_controller() {
 		}
 		else
 		{
-			$count = 0;			
+			$count = 0;
       foreach($all_posts as $post)
       {
         $data = getXML($post);
@@ -115,17 +115,17 @@ function blog_admin_controller() {
 }
 
 /**-------------------------------------------------------------------------------------------------
- * show_settings_admin($slug, $excerpt) 
+ * show_settings_admin($slug, $excerpt)
  * Function used to display and manage the 'Settings' section of the blog admin.
- * 
+ *
  * @return:  void (void)
- */ 
+ */
 function show_settings_admin() {
 
 	# Init function
   global $SITEURL; // Declare required GLOBALS
 	$Blog = new Blog; // Bring in the Blog class
-  
+
   # Build the array of setting to save to the blog_settings.xml file
 	if(isset($_POST['blog_settings'])) { // The user has submitted an update.
 		$existing_settings = $Blog->getSettingsData();
@@ -133,7 +133,7 @@ function show_settings_admin() {
     foreach ($existing_settings as $key => $value) {
       $updated_settings[$key] = (!empty($_POST[$key])) ? $_POST[$key] : $value;
     }
-    
+
     # Attempt to save the settings array to file.
 		if($Blog->saveSettings($updated_settings)) { // Success: Notify the user.
       echo '<script>clearNotify();notifyOk(\''.i18n_r(BLOGFILE.'/SETTINGS_SAVE_OK').'\').popit().removeit();</script>';
@@ -141,7 +141,7 @@ function show_settings_admin() {
       echo '<script>clearNotify();notifyError(\''.i18n_r(BLOGFILE.'/SETTINGS_SAVE_ERROR').'\').popit().removeit();</script>';
     }
 	}
-  
+
   # Include the HTML for the settings page we are trying to display.
   if ($_GET['settings'] == 'rss') { // RSS Auto-Importer settings
     require_once('html/settings-rss.php');
@@ -153,15 +153,15 @@ function show_settings_admin() {
 /**-------------------------------------------------------------------------------------------------
  * editPost($post_id)
  * Edit/Create post screen
- * 
+ *
  * @param $post_id (string) The id of the post to edit. Null if creating new post
  * @return void (void)
- */  
+ */
 function editPost($post_id=null) {
 
 	GLOBAL $SITEURL;
 	$Blog = new Blog;
-  
+
 	if($post_id != null) {
 		$blog_data = getXML(BLOGPOSTSFOLDER.$post_id.'.xml');
 	} else {
@@ -174,41 +174,41 @@ function editPost($post_id=null) {
 /**-------------------------------------------------------------------------------------------------
  * category_dropdown($current_category)
  * Echos all categories to place into a select menu
- * 
+ *
  * @param  $current_category (string) Name of the current category. Marks it as selected.
  * @return void              (void)
- */  
+ */
 function category_dropdown($current_category=null) {
 
-	$category_file = getXML(BLOGCATEGORYFILE);	
-  
-	foreach($category_file->category as $category_item)	{		
+	$category_file = getXML(BLOGCATEGORYFILE);
+
+	foreach($category_file->category as $category_item)	{
 		$category_item = (string) $category_item;
 		if($category_item == $current_category) {
-			echo '<option value="'.$current_category.'" selected>'.$current_category.'</option>';	
+			echo '<option value="'.$current_category.'" selected>'.$current_category.'</option>';
 		} else {
-			echo '<option value="'.$category_item.'">'.$category_item.'</option>';	
-		}	
-	}	
-  
+			echo '<option value="'.$category_item.'">'.$category_item.'</option>';
+		}
+	}
+
 	if($current_category == null) {
-		echo '<option value="" selected></option>';	
+		echo '<option value="" selected></option>';
 	} else {
-		echo '<option value=""></option>';	
+		echo '<option value=""></option>';
 	}
 }
 
 /**-------------------------------------------------------------------------------------------------
- * savePost() 
+ * savePost()
  * Saves A Post
- * 
+ *
  * @return void (void) success or error message
- */  
+ */
 function savePost() {
 
 	$Blog = new Blog;
 	$xmlNodes = $Blog->getXMLnodes(true);
-  
+
 	if(isset($_POST['post-title'])) {
 		foreach($xmlNodes as $key => $value) {
 			if(!isset($_POST["post-".$key])) {$post_value = '';}

@@ -8,26 +8,45 @@
 
 
 /**-------------------------------------------------------------------------------------------------
- * blog_display_posts($slug, $excerpt) 
+ * blog_display_posts($slug, $excerpt)
  * Displays the posts required for the relevant page.
- * 
+ *
  * @return:  $content (buffer) - Legacy support for non filter hook calls to this function
  */
 function blog_display_posts() {
-	
+
   GLOBAL $content, $blogSettings, $data_index; // Declare GLOBAL variables
 	$Blog = new Blog; // Create a new instance of the Blog class
 	$slug = base64_encode(return_page_slug()); // Determine the page we are on.
 	$blogSettings = $Blog->getSettingsData(); // Get the blog's settings
 	$blog_slug = base64_encode($blogSettings["blogurl"]); // What page should the blog show on?
-	
+
   if($slug == $blog_slug) { // If we are on the page that should be showing the blog...
 		$content = ''; // Legacy support
 		ob_start(); // Create a buffer to load everything into
 		switch(true) { // Ok, so what are we going to do?
 			case (isset($_GET['post']) == true) : // Display a post
 				$post_file = BLOGPOSTSFOLDER.$_GET['post'].'.xml'; // Get the post's XML file
-				show_blog_post($post_file); // Show the post
+        // Get a list of all posts in the blog to retrieve current post position
+        $all_posts = $Blog->listPosts(true, true);
+        $postPosition = null;
+        $nearbyPosts = null;
+        foreach ($all_posts as $key => $postItem) {
+          $postsOrderList[$key] = basename($postItem['filename'], ".xml");
+          if ($_GET['post'] == basename($postItem['filename'], ".xml")) {
+            $postPosition = $key;
+            break;
+          }
+        }
+        if (array_key_exists($key - 1, $all_posts)) {
+          $nextPostData = getXML($all_posts[$key - 1]['filename']);
+          $nearbyPosts['next'] = (string)$nextPostData->slug;
+        }
+        if (array_key_exists($key + 1, $all_posts)){
+          $previousPostData = getXML($all_posts[$key + 1]['filename']);
+          $nearbyPosts['previous'] = (string)$previousPostData->slug;
+        }
+				show_blog_post($post_file, false, true, $nearbyPosts); // Show the post
 				break;
 			case (isset($_POST['search_blog']) == true) : // Search the blog
 				search_posts($_POST['keyphrase']); // Search the blog with the given keyphrase
@@ -58,49 +77,53 @@ function blog_display_posts() {
 }
 
 /**-------------------------------------------------------------------------------------------------
- * show_blog_post($slug, $excerpt) 
+ * show_blog_post($slug, $excerpt)
  * Shows an individual blog post chosen by $slug
- * 
+ *
  * @param:   $slug (string)    - Slug of post to display
  * @param:   $excerpt (bool)   - True:  Display excerpt of post
  *                               False: Display full content of post
  * @return:  $displayed (bool) - True:  Post was in the past (displayed)
  *                               False: Post was in the future (not displayed)
  */
-function show_blog_post($slug, $excerpt=false, $echo=true) {
-  
-  GLOBAL $SITEURL, $blogSettings, $post; // Get GLOBAL variables
+function show_blog_post($slug, $excerpt=false, $echo=true, array $nearbyPostsLinks=null) {
+
+  GLOBAL $SITEURL, $blogSettings, $postData; // Get GLOBAL variables
   $Blog = new Blog; // Prepare the Blog class
-  $post = getXML($slug); // Get XML data of post
-  
-  if(strtotime($post->date) >= time()) {return false;} // Is this a future post?
-  
-  $post_date = strtotime((string) $post->date); // Prepare the date...
-  
+  $postData = getXML($slug); // Get XML data of post
+
+  if(strtotime($postData->date) >= time()) {return false;} // Is this a future post?
+  $post_date = strtotime((string) $postData->date); // Prepare the date...
   # Prepare the array of information available to the template.
-  $p = array(); // Init the array for the template
-  $p['title'] = (string) $post->title; // Title of the post
-  $p['posturl'] = $Blog->get_blog_url('post').$post->slug; // URL of the post
-  $p['date'] = $Blog->get_locale_date($post_date, i18n_r(BLOGFILE.'/DATE_DISPLAY')); // UNIX timestamp of post
-  $p['author'] = (string) $post->author; //Author of the post
-  $p['categoryurl'] = $Blog->get_blog_url('category'); // Category base URL
-  $p['categories'] = explode(',',$post->category); // Categories the post is in
-  $p['thumburl'] = $SITEURL.'data/uploads/'; // Thumbnail URL
-  $p['thumbnail'] = (string) $post->thumbnail; // Thumbnail Filename
-  $p['tagsurl'] = $Blog->get_blog_url('tag'); // Tags base URL
-  $p['tags'] = explode(',',$post->tags); // Tags applied to the post
-  $p['archiveurl'] = $Blog->get_blog_url('archive'); // Archive base URL
-  $p['archivetitle'] = date(i18n_r(BLOGFILE.'/DATE_ARCHIVE'),$post_date); // Archive the post is in
-  $p['archivedate'] = date('Ym', $post_date);
+  $post = array(); // Init the array for the template
+  $post['title'] = (string) $postData->title; // Title of the post
+  $post['posturl'] = $Blog->get_blog_url('post').$postData->slug; // URL of the post
+  $post['date'] = $Blog->get_locale_date($post_date, i18n_r(BLOGFILE.'/DATE_DISPLAY')); // UNIX timestamp of post
+  $post['author'] = (string) $postData->author; //Author of the post
+  $post['categoryurl'] = $Blog->get_blog_url('category'); // Category base URL
+  $post['categories'] = explode(',',$postData->category); // Categories the post is in
+  $post['thumburl'] = $SITEURL.'data/uploads/'; // Thumbnail URL
+  $post['thumbnail'] = (string) $postData->thumbnail; // Thumbnail Filename
+  $post['tagsurl'] = $Blog->get_blog_url('tag'); // Tags base URL
+  if(!empty($postData->tags)){
+    $post['tags'] = explode(',',$postData->tags); // Tags applied to the post
+  }
+  $post['archiveurl'] = $Blog->get_blog_url('archive'); // Archive base URL
+  $post['archivetitle'] = date(i18n_r(BLOGFILE.'/DATE_ARCHIVE'),$post_date); // Archive the post is in
+  $post['archivedate'] = date('Ym', $post_date);
+  if(!is_null($nearbyPostsLinks)){
+    $post['next'] = (empty($nearbyPostsLinks['next'])) ? null : $nearbyPostsLinks['next'];
+    $post['previous'] = (empty($nearbyPostsLinks['previous'])) ? null : $nearbyPostsLinks['previous'];
+  }
 
   # Determine if we should be showing an excerpt or full post.
   if(($excerpt == false) || (($excerpt == true) && ($blogSettings['postformat'] == 'Y'))) {
-    $p['content'] = html_entity_decode($post->content); // Get the full contents of the post
+    $post['content'] = html_entity_decode($postData->content); // Get the full contents of the post
   } elseif(($excerpt == true) && ($blogSettings['postformat'] == 'N')) { // It's an excerpt...
     $el = (empty($blogSettings['excerptlength']) ? 250 : $blogSettings['excerptlength']); // Length?
-    $p['content'] = $Blog->create_excerpt(html_entity_decode($post->content),0,$el); // Create excerpt
+    $post['content'] = $Blog->create_excerpt(html_entity_decode($postData->content),0,$el); // Create excerpt
   } else {echo 'Uh oh! Something went wrong!';}
-  
+
   if($echo) {
     # Lets load the template now and let it put all this together.
     if(isset($_GET['post'])) {
@@ -109,7 +132,7 @@ function show_blog_post($slug, $excerpt=false, $echo=true) {
       include(BLOGPLUGINFOLDER.'layout-list.php');
     }
   } elseif(!$echo) {
-    return $p;
+    return $post;
   }
 }
 
@@ -118,26 +141,26 @@ function show_blog_post($slug, $excerpt=false, $echo=true) {
  * Shows or returns a list of blog categories. Set first parameter to true to echo the output or false to return the
  * list as a 2d-array of categories with 'name', 'link' and 'count' in second dimension. Set second parameter to true
  * to force enable showing of post count or false to force disable post count; default is to respect the
- * 'archivepostcount' setting. 
- * 
+ * 'archivepostcount' setting.
+ *
  * @param $echo (bool) - Echo [true] or return [false] the list of categories - Default: true
  * @param $count (bool) - Display the number of posts in the category / Ignored when $echo=false
- *                      - Default: null (<-- Makes arg optional, uses $blogSettings['archivepostcount'] as default) 
+ *                      - Default: null (<-- Makes arg optional, uses $blogSettings['archivepostcount'] as default)
  * @return void (void) - When $echo = true
  * @return $catout (2d-array) - When $echo = false, returns 2d-array of categories with info for each.
- */  
+ */
 function show_blog_categories($echo=true,$count=null) {
-	
+
   GLOBAL $blogSettings;
   $Blog = new Blog; // Create a new instance of the Blog class
 	$categories = getXML(BLOGCATEGORYFILE); // Get the list of categories
 	$url = $Blog->get_blog_url('category'); // What's the URL for the categories page?
 	$main_url = $Blog->get_blog_url(); // The base URL for the blog.
-  
+
   // Shoud post counting be enabled? Set 'archivepostcount' as default if not specified.
   $count_enable = ($blogSettings['archivepostcount'] == 'Y') ? true : false;
   if (is_bool($count) === false) {$count = $count_enable;}
-  
+
   if ($echo) {
     if(!empty($categories)) { // If we have categories to display...
       foreach($categories as $category) { // For each of the categories...
@@ -169,16 +192,16 @@ function show_blog_categories($echo=true,$count=null) {
 /**-------------------------------------------------------------------------------------------------
  * show_blog_category($category)
  * Shows posts from a requested category
- * 
+ *
  * @param $category (string) the category to show posts from
  * @return void (void)
- */  
+ */
 function show_blog_category($category, $echo=true) {
 
 	$Blog = new Blog; // Create a new instance of the Blog class
 	$all_posts = $Blog->listPosts(true, true); // Get a list of all the posts in the blog
 	$count = 0; // Set a counter for the following loop
-  
+
   if($echo) {
     ob_start(); // Create a buffer to build this page in
     require(BLOGPLUGINFOLDER.'layout-listBefore.php'); // Get the listBefore layout (stuff before list of posts)
@@ -211,15 +234,15 @@ function show_blog_category($category, $echo=true) {
 /**-------------------------------------------------------------------------------------------------
  * show_blog_search()
  * Shows a form for searching the blog.
- * 
+ *
  * @return void (void)
  * @TODO: Maybe this could be moved to the template now?
- */  
+ */
 function show_blog_search() {
-	
+
   $Blog = new Blog; // Create a new instance of the Blog class
 	$url = $Blog->get_blog_url(); // Get the base URL of the blog
-  
+
   # Output the search form
 	?><form id="blog_search" action="<?php echo $url; ?>" method="post">
 		<input type="text" class="blog_search_input" name="keyphrase" />
@@ -230,15 +253,15 @@ function show_blog_search() {
 /**-------------------------------------------------------------------------------------------------
  * show_blog_archives()
  * Shows a list of Archives
- * 
+ *
  * @return void (void)
- */  
+ */
 function show_blog_archives($echo=true) {
 
 	GLOBAL $blogSettings; // Define GLOBAL variables
 	$Blog = new Blog; // Create a new instance of the Blog class
 	$archives = $Blog->get_blog_archives(); // Get a list of archives.
-  
+
   if ($echo) {
     if (!empty($archives)) { // If we there are any archives in the list...
       foreach ($archives as $archive => $archive_data) { // For each archive in the list...
@@ -268,15 +291,15 @@ function show_blog_archives($echo=true) {
 /**-------------------------------------------------------------------------------------------------
  * show_blog_archive($archive)
  * Show Posts from requested archive
- * 
+ *
  * @param  $archive (string) - Show posts from this given archive
  * @return void     (void)
- */  
+ */
 function show_blog_archive($archive, $echo=true) {
 
 	$Blog = new Blog; // Create a new instance of the Blog class
 	$posts = $Blog->listPosts(true, true); // Get a list of all the posts in the blog
-  
+
   if ($echo) {
     ob_start(); // Create a buffer to build this page in
     require(BLOGPLUGINFOLDER.'layout-listBefore.php'); // Get the listBefore layout (stuff before list of posts)
@@ -320,7 +343,7 @@ function show_blog_archive($archive, $echo=true) {
  * @return string or void
  */
 function show_blog_recent_posts($excerpt=false, $excerpt_length=null, $thumbnail=false, $read_more=false, $echo=true, $limit=null) {
-	
+
   GLOBAL $SITEURL, $blogSettings; // Declare GLOBAL variables
   $Blog = new Blog; // Create new instance of Blog class
 	$posts = $Blog->listPosts(true, true); // Get a list of posts
@@ -330,7 +353,7 @@ function show_blog_recent_posts($excerpt=false, $excerpt_length=null, $thumbnail
   if(!is_integer($limit)) { // If a $limit is not given use limit from settings.
     $limit = $blogSettings["recentposts"];
   }
-  
+
   if($echo) {
     if (!empty($posts)) { // If we have any posts to display
       $posts = array_slice($posts, 0, $limit, TRUE); // Shorten list to setting
@@ -393,15 +416,15 @@ function show_blog_recent_posts($excerpt=false, $excerpt_length=null, $thumbnail
 /**-------------------------------------------------------------------------------------------------
  * show_blog_tag($tag)
  * Show posts for requested tag
- * 
+ *
  * @param  $tag (string) - Display posts containing this tag
  * @return void (void)
- */  
+ */
 function show_blog_tag($tag, $echo=true) {
 
 	$Blog = new Blog; // Create a new instance of the Blog class
 	$all_posts = $Blog->listPosts(true, true); // Get a list of all posts in the blog
-  
+
   if ($echo) {
     ob_start(); // Create a buffer to build this page in
     require(BLOGPLUGINFOLDER.'layout-listBefore.php'); // Get the listBefore layout (stuff before list of posts)
@@ -437,12 +460,12 @@ function show_blog_tag($tag, $echo=true) {
 /**-------------------------------------------------------------------------------------------------
  * show_all_blog_posts()
  * Show all posts in the blog. Include pagination.
- * 
+ *
  * @return void (void)
- */  
+ */
 function show_all_blog_posts() {
 
-	$Blog = new Blog; // Create a new instance of the Blog class
+
 	if(isset($_GET['page'])) { // If a specific page is required...
 		$page = $_GET['page']; // What page do we want?
 	} else { // No page given?
@@ -454,15 +477,15 @@ function show_all_blog_posts() {
 /**-------------------------------------------------------------------------------------------------
  * search_posts($keyphrase)
  * Display blog posts results from a search
- * 
+ *
  * @param  $keyphrase (string) - The phrase to search for in the posts
  * @return void       (void)
- */  
+ */
 function search_posts($keyphrase, $echo=true) {
 
 	$Blog = new Blog; // Create new instance of the Blog class
 	$posts = $Blog->searchPosts($keyphrase); // Get the list of search results
-  
+
   if($echo) {
     ob_start(); // Create a buffer to build this page in
     require(BLOGPLUGINFOLDER.'layout-listBefore.php'); // Get the listBefore layout (stuff before list of posts)
@@ -487,11 +510,11 @@ function search_posts($keyphrase, $echo=true) {
     return $search_results;
   }
 }
- 
+
 /**-------------------------------------------------------------------------------------------------
  * show_posts_page($index)
  * Show all posts for the given page.
- * 
+ *
  * @param  $index (int)  - page index (pagination)
  * @return void   (void)
  */
@@ -534,15 +557,15 @@ function show_posts_page($index=0) {
 
 /**-------------------------------------------------------------------------------------------------
  * Blog posts navigation (pagination)
- * 
+ *
  * @param $index          (int)  the current page index
  * @param $total          (int)  total number of pages
  * @param $count          (int)  current post
- * @param $lastPostOfPage (bool) 
- * @return void           (void) 
- */  
+ * @param $lastPostOfPage (bool)
+ * @return void           (void)
+ */
 function show_blog_navigation($index, $total, $count, $lastPostOfPage) {
-	
+
   GLOBAL $blogSettings; // Declare GLOBAL variables
 	$Blog = new Blog; // Create a new instance of the Blog class
 	$url = $Blog->get_blog_url('page'); // Get the "page" URL
@@ -557,7 +580,7 @@ function show_blog_navigation($index, $total, $count, $lastPostOfPage) {
           <?php i18n(BLOGFILE.'/NEXT_PAGE'); ?>
         </a>
       </div>
-	  <?php	
+	  <?php
 	}
 	if ($index > 0 && $lastPostOfPage) { // Generate "Previous Page" link
     ?>
@@ -577,18 +600,18 @@ function show_blog_navigation($index, $total, $count, $lastPostOfPage) {
 /**-------------------------------------------------------------------------------------------------
  * set_post_description()
  * Sets the pages meta description to an excerpt of the post
- * 
+ *
  * @return void (void)
  */
 function set_post_description() {
 
-	GLOBAL $metad, $post, $blogSettings; // Declare GLOBAL variables
+	GLOBAL $metad, $postData, $blogSettings; // Declare GLOBAL variables
 	$Blog = new Blog; // Create a new instance of the Blog class
-  
+
 	if((isset($_GET['id'])) && ($_GET['id'] == $blogSettings['blogurl']) && (isset($_GET['post']))) {
     if(isset($_GET['post'])) {
       $excerpt_length = ($blogSettings["excerptlength"] == '') ? 150 : $blogSettings["excerptlength"];
-      $metad = $Blog->create_excerpt(html_entity_decode($post->content), 0, $excerpt_length);
+      $metad = $Blog->create_excerpt(html_entity_decode($postData->content), 0, $excerpt_length);
     } elseif(isset($_GET['category'])) {
       // Get Category meta description
     } elseif(isset($_GET['archive'])) {
@@ -606,17 +629,17 @@ function set_post_description() {
  * Get Page/POST Title - This function is a modified version of the core get_page_clean_title()
  * function. It will function normally on all pages except blog based pages, where the post/archive/
  * category title will be placed in instead of the page title.
- * 
+ *
  * @return void (void)
  */
 function get_blog_title () {
 
-	GLOBAL $title, $blogSettings, $post; // Declare GLOBAL variables
+	GLOBAL $title, $blogSettings, $postData; // Declare GLOBAL variables
 	$slug = base64_encode(return_page_slug()); // What page are we on?
-  
+
 	if($slug == base64_encode($blogSettings["blogurl"])) { // If we're on the blog page...
 		if(isset($_GET['post']) && !empty($post)) { // If viewing a post...
-			$title = (string) $post->title; // Set title of post
+			$title = (string) $postData->title; // Set title of post
 		} else if (isset($_GET['archive'])) { // If viewing an archive...
       // Set the archive title
 			$title = (string) i18n_r(BLOGFILE.'/ARCHIVE_PRETITLE').date('F Y',strtotime($_GET['archive']));

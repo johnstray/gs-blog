@@ -4,6 +4,7 @@
  * Description: A simple and easy to use blog/newsfeed for GetSimple
  * Version: 3.4.4
  * Authors: Mike Henken, John Stray, David Negrello
+ *
  */
 
 # Define some important stuff
@@ -27,7 +28,7 @@ register_plugin(
     i18n_r(BLOGFILE.'/PLUGIN_DESC'),
     'blog',
     'blog_admin_controller'
-    );
+);
 
 # Tab/Sidebar Actions
 add_action('nav-tab','createNavTab',array('blog',BLOGFILE, i18n_r(BLOGFILE.'/BLOG_TAB_BUTTON'), 'manage'));
