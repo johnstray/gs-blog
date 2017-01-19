@@ -57,13 +57,18 @@
        $post['tagurl'] is available to give you the base url for the tags, just add the tag to the end
        of the final url.
   -->
-  <?php if (!empty($post['tags']) && count($post['tags']) >= 1) { ?>
-  <p class="blog_post_tags">
-    <b><?php i18n(BLOGFILE.'/TAGS'); ?> :</b>
-    <?php foreach ($post['tags'] as $tag) { ?>
-      <a href="<?php echo $post['tagsurl'].$tag; ?>"><?php echo $tag; ?></a>,&nbsp;
-    <?php } ?>
-  </p>
+  <?php if (!empty($post['tags'])) { ?>
+    <p class="blog_tags">
+      <b><?php i18n(BLOGFILE.'/TAGS'); ?> :</b>
+      <?php
+          foreach ($post['tags'] as $tag) {
+            echo "<a href='".$post['tagsurl'].$tag."'>".$tag."</a>";
+            if(end($post['tags']) !== $tag){
+                echo ', &nbsp'; // comma if not the last element
+            }
+          }
+      ?>
+    </p>
   <?php } ?>
 
 </div>
