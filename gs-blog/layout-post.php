@@ -15,11 +15,23 @@
     }
     .blog_post_container {
       clear:both;
+      margin-bottom: 2em;
+    }
+    .blog_post_content {
+      clear:both;
+      margin-bottom: 2em;
+      overflow-x: auto;
     }
     .blog_post_nextprev_link {
-      height:2em;
+      height:1.5em;
     }
-    .blog_post_nextprev_link .post_previous_link {
+    a:link {
+      text-decoration: none;
+    }
+    .left {
+      float:left;
+    }
+    .right {
       float:right;
     }
   </style>
@@ -86,12 +98,12 @@
     if(isset($post['next']) or isset($post['previous'])){
       echo '<div class="blog_post_nextprev_link">';
         if(isset($post['next'])){
-          echo "<a class='post_next_link' href='?post=".$post['next']."'>";
+          echo "<a class='left' href='?post=".$post['next']."'>";
           echo i18n(BLOGFILE.'/NEXT_POST');
           echo "</a>";
           }
         if(isset($post['previous'])){
-          echo "<a class='post_previous_link' href='?post=".$post['previous']."'>";
+          echo "<a class='right' href='?post=".$post['previous']."'>";
           echo i18n(BLOGFILE.'/PREV_POST');
           echo "</a>";
         }

@@ -13,7 +13,20 @@
   }
   .blog_list_container {
     clear:both;
-  }	
+    margin-bottom: 2em;
+  }
+  .blog_page_navigation {
+    height:1.5em;
+  }
+  a:link {
+    text-decoration: none;
+  }
+  .left {
+    float:left;
+  }
+  .right {
+    float:right;
+  }
 </style>
 
 <!-- You can use the following space to write an introduction paragraph to
