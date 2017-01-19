@@ -87,9 +87,14 @@
   <?php if(isset($post['tags'])){ ?>
   <p class="blog_tags">
     <b><?php i18n(BLOGFILE.'/TAGS'); ?> :</b>
-    <?php foreach ($post['tags'] as $tag) { ?>
-      <a href="<?php echo $post['tagsurl'].$tag; ?>"><?php echo $tag; ?></a>,&nbsp;
-    <?php } ?>
+    <?php
+        foreach ($post['tags'] as $tag) {
+          echo "<a href='".$post['tagsurl'].$tag."'>".$tag."</a>";
+          if(end($post['tags']) !== $tag){
+              echo ', &nbsp'; // comma if not the last element
+          }
+        }
+    ?>
   </p>
   <?php }?>
 
