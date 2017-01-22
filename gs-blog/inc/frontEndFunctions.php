@@ -576,17 +576,17 @@ function show_blog_navigation($index, $total, $count, $lastPostOfPage) {
 	if ($lastPostOfPage) { // Only show navigation if we've past the last post on the page
 		echo '<div class="blog_page_navigation">';
 	}
-	if($index < $total && $lastPostOfPage) { // Generate "Next Page" link
+	if($index < $total && $lastPostOfPage) { // Generate "Previous Page" link
 	  ?>
-        <a class="left blog-next-prev-link" href="<?php echo $url . ($index+1); ?>">
-          <?php i18n(BLOGFILE.'/NEXT_PAGE'); ?>
+        <a class="right blog-next-prev-link" href="<?php echo $url . ($index+1); ?>">
+          <?php i18n(BLOGFILE.'/PREV_PAGE'); ?>
         </a>
 	  <?php
 	}
-	if ($index > 0 && $lastPostOfPage) { // Generate "Previous Page" link
+	if ($index > 0 && $lastPostOfPage) { // Generate "Next Page" link
     ?>
-        <a class="right blog-next-prev-link" href="<?php echo ($index > 1) ? $url . ($index-1) : substr($url, 0, -6); ?>">
-          <?php i18n(BLOGFILE.'/PREV_PAGE'); ?>
+        <a class="left blog-next-prev-link" href="<?php echo ($index > 1) ? $url . ($index-1) : substr($url, 0, -6); ?>">
+          <?php i18n(BLOGFILE.'/NEXT_PAGE'); ?>
         </a>
     <?php
 	}
