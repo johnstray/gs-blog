@@ -225,7 +225,7 @@ class Blog
 				$settingsArray[$settingsNode] = (string) $settingsNodeValue;
         // Get the Language Code from the loaded language file instead of using stored settings.
         // This allows for the language setting to be constantly up to date without the need to save settings to update.
-        $settingsArray['lang'] = i18n_r(BLOGFILE.'/LANGUAGE_CODE')[0];
+        $settingsArray['lang'] = reset(i18n_r(BLOGFILE.'/LANGUAGE_CODE'));
 			}
 			return $settingsArray;
 		}
