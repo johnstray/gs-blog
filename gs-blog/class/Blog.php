@@ -618,11 +618,11 @@ class Blog
 			}
 			elseif($blogurl == 'index')
 			{
-				$url = $SITEURL . "index.php?$query=";
+				$url = $SITEURL . "?$query=";
 			}
 			else
 			{
-				$url = $SITEURL . "index.php?id=$blogurl&$query=";
+				$url = $SITEURL . "?id=$blogurl&$query=";
 			}
 		}
 		return $url;
