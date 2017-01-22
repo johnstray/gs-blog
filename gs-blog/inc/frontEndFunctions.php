@@ -122,6 +122,9 @@ function show_blog_post($slug, $excerpt=false, $echo=true, array $nearbyPostsLin
   } elseif(($excerpt == true) && ($blogSettings['postformat'] == 'N')) { // It's an excerpt...
     $el = (empty($blogSettings['excerptlength']) ? 250 : $blogSettings['excerptlength']); // Length?
     $post['content'] = $Blog->create_excerpt(html_entity_decode($postData->content),0,$el); // Create excerpt
+    $urlSlug = $Blog->get_blog_url('post').(string) $postData->slug;
+    $readMoreHtmlLink = '<a href="'.$urlSlug.'" class="post_read_more"> ... '.i18n_r(BLOGFILE.'/READ_MORE').'</a>';
+    $post['content'] = (string)$post['content'].$readMoreHtmlLink;
   } else {echo 'Uh oh! Something went wrong!';}
 
   if($echo) {
