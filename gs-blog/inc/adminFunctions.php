@@ -16,14 +16,13 @@
 function blog_admin_controller() {
 
 	$Blog = new Blog;
-	getBlogUserPermissions();
-	GLOBAL $blogUserPermissions, $SITEURL;
+	GLOBAL $SITEURL;
 
-	if(isset($_GET['edit_post']) && $blogUserPermissions['blogeditpost'] == true) {
+	if(isset($_GET['edit_post'])) {
 		editPost($_GET['edit_post']);
-	} elseif(isset($_GET['create_post']) && $blogUserPermissions['blogcreatepost'] == true) {
+	} elseif(isset($_GET['create_post'])) {
 		editPost();
-	} elseif(isset($_GET['categories']) && $blogUserPermissions['blogcategories'] == true) {
+	} elseif(isset($_GET['categories'])) {
 		if(isset($_GET['edit_category'])) {
 			$add_category = $Blog->saveCategory($_POST['new_category']);
 			if($add_category == true) {
@@ -38,7 +37,7 @@ function blog_admin_controller() {
     #edit_categories
 		$category_file = getXML(BLOGCATEGORYFILE);
     require_once('html/category-management.php');
-	} elseif(isset($_GET['auto_importer']) && $blogUserPermissions['blogrssimporter'] == true) {
+	} elseif(isset($_GET['auto_importer'])) {
 		if(isset($_POST['post-rss'])) {
 			$post_data = array();
 			$post_data['name'] = $_POST['post-rss'];
@@ -60,13 +59,13 @@ function blog_admin_controller() {
     #edit_rss
 		$rss_file = getXML(BLOGRSSFILE);
     require_once('html/feed-management.php');
-	} elseif(isset($_GET['settings']) && $blogUserPermissions['blogsettings'] == true) {
+	} elseif(isset($_GET['settings'])) {
 		show_settings_admin();
-	} elseif(isset($_GET['update']) && $blogUserPermissions['blogsettings'] == true) {
+	} elseif(isset($_GET['update'])) {
 		show_update_admin();
-	} elseif(isset($_GET['help']) && $blogUserPermissions['bloghelp'] == true) {
+	} elseif(isset($_GET['help'])) {
 		require_once('html/help-admin.php');
-	} elseif(isset($_GET['custom_fields']) && $blogUserPermissions['blogcustomfields'] == true) {
+	} elseif(isset($_GET['custom_fields'])) {
 		$CustomFields = new customFields;
 		if(isset($_POST['save_custom_fields'])) {
 			$saveCustomFields = $CustomFields->saveCustomFields();
@@ -99,7 +98,7 @@ function blog_admin_controller() {
 	} else {
 		if(isset($_GET['save_post'])) {
 			savePost();
-		} elseif(isset($_GET['delete_post']) && $blogUserPermissions['blogdeletepost'] == true) {
+		} elseif(isset($_GET['delete_post'])) {
 			$post_id = urldecode($_GET['delete_post']);
 			$delete_post = $Blog->deletePost($post_id);
 			if($delete_post == true) {
