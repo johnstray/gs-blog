@@ -5,19 +5,19 @@
 * Last Modified: 15 November 2016 by Google Translate                                              *
 * Compiled By: ferchosj (? ?) / jEsuSdA (? ?)                                                      *
 \**************************************************************************************************/
- 
+
 $i18n = array(
-  
+
   # Language Configuration
   'LANGUAGE_CODE'             =>  array('es_ES','es','esp','spanish'), // Cross-Platform posibilities for `setlocal()`
   'DATE_FORMAT'               =>  '%c',
   'DATE_DISPLAY'              =>  '%B %e, %Y',
   'DATE_ARCHIVE'              =>  'F Y',
-  
+
   # Plugin Information
   'PLUGIN_TITLE'              =>  ($plugin = 'GetSimple Blog'),
   'PLUGIN_DESC'               =>  'Un blog/noticiero simple de usar para GetSimple.',
-  
+
   # Tab/Sidebar Actions (Administration)
   'BLOG_TAB_BUTTON'           =>  'B<em>l</em>og',
   'MANAGE_POSTS_BUTTON'       =>  'Administrar Posts',
@@ -26,7 +26,7 @@ $i18n = array(
   'SETTINGS_BUTTON'           =>  'Configuración',
   'UPDATE_BUTTON'             =>  'Chequeo de Actualización',
   'HELP_BUTTON'               =>  'Ayuda',
-  
+
   # Generic Strings
   'WRITE_OK'                  =>  'Archivo Exitosamente Guardado!',
   'EDIT_OK'                   =>  'Archivo Exitosamente Guardado',
@@ -41,17 +41,17 @@ $i18n = array(
   'MANAGE'                    =>  'Administrar',
   'LANGUAGE'                  =>  'Idioma',
   'DATE'                      =>  'Fecha',
-  
+
   # Class Constructor
   'DATA_BLOG_DIR'             =>  "Directorio de data/blog exitosamente creado",
-  'DATA_BLOG_DIR_ERR'         =>  "La carpeta data/blog_posts no pudo ser creada!", 
-  'DATA_BLOG_DIR_ERR_HINT'    =>  "Va a tener que crear este directorio manualmente para que el plugin funcione apropiadamente", 
-  'DATA_BLOG_CATEGORIES'      =>  "Archivo data/other/blog_categories.xml exitosamente creado", 
-  'DATA_BLOG_CATEGORIES_ERR'  =>  "El archivo data/other/blog_categories.xml no pudo ser creado!", 
-  'DATA_BLOG_RSS'             =>  "Archivo data/other/blog_rss.xml exitosamente creado", 
+  'DATA_BLOG_DIR_ERR'         =>  "La carpeta data/blog_posts no pudo ser creada!",
+  'DATA_BLOG_DIR_ERR_HINT'    =>  "Va a tener que crear este directorio manualmente para que el plugin funcione apropiadamente",
+  'DATA_BLOG_CATEGORIES'      =>  "Archivo data/other/blog_categories.xml exitosamente creado",
+  'DATA_BLOG_CATEGORIES_ERR'  =>  "El archivo data/other/blog_categories.xml no pudo ser creado!",
+  'DATA_BLOG_RSS'             =>  "Archivo data/other/blog_rss.xml exitosamente creado",
   'DATA_BLOG_RSS_ERR'         =>  "El Archivo data/other/blog_rss.xml no pudo ser creado!",
   'BLOG_SETTINGS'             =>  'Ajustes de blog',
-  
+
   # 'Post Management' Strings
   'POST_ADDED'                =>  'Post Exitosamente Guardado!',
   'POST_ERROR'                =>  'El Post No Pudo Ser Guardado!',
@@ -74,7 +74,7 @@ $i18n = array(
   'NO_POSTS_MATCH_SEARCH'     =>  '¡No hay artículos que mostrar tu búsqueda! Tal vez intentar algo diferente?',
   'CLICK_TO_CREATE'           =>  'Haga click Aquí para Crear Uno',
   'PAGE_TITLE'                =>  'Título de Página',
-  
+
   # 'Category Management' Strings
   'CATEGORY_ADDED'            =>  'Categoría Exitosamente Añadida!',
   'CATEGORY_ERROR'            =>  'La Categoría No Pudo Ser Guardada!',
@@ -83,7 +83,7 @@ $i18n = array(
   'SETTINGS_CATEGORY_DESC'    =>  'Añadir o Editar Categorías a las que asignar sus posts.',
   'CATEGORY_NAME'             =>  'Nombre de la Categoría',
   'CATEGORY_RSS_FEED'         =>  'Categoría RSS',
-  
+
   # 'RSS Auto-Importer' Strings
   'FEED_ADDED'                =>  'Entrada RSS Exitosamente Añadida!',
   'FEED_ERROR'                =>  'La Entrada RSS Feed No Pudo Ser Guardada!',
@@ -111,7 +111,7 @@ $i18n = array(
   'RSS_DESCRIPTION'           =>  'Descripción de la Entrada RSS',
   'RSS_IMPORTER_PASS'         =>  'Contraseña del Auto-importador (cualquier cosa)',
   'RSS_FEED_NUM_POSTS'        =>  '&num; de posts en la entrada RSS',
-  
+
   # 'Settings' Strings
   'SETTINGS_SAVE_OK'          =>  '¡La configuración ha sido exitosamente guardada!',
   'SETTINGS_SAVE_ERROR'       =>  '¡No se pudo guardar su configuración!',
@@ -135,7 +135,7 @@ $i18n = array(
   'BLOG_PRETTY_NOTICE'        =>  'Necesita habilitar las URLs Bonitas en GetSimple para que las instrucciones se muestren aquí',
   'SAVE_SETTINGS'             =>  'Guardar Configuración',
   'MAIN_SETTINGS_BUTTON'      =>  'Configuración Principal',
-  
+
   # 'Help' Strings
   'HELP'                      =>  'Ayuda',
   'FRONT_END_FUNCTIONS'       =>  'Funciones de Front-End',
@@ -168,7 +168,7 @@ $i18n = array(
   'BLOG_PAGE_CREATE_EXCERPT'  =>  'Crear Resumen',
   'BLOG_PAGE_EXCERPT_DESC'    =>  'Esto creará un resumen de la longitud especificada. La variable $excerpt_length necesitaría ser un número entero y es la longitud del resumen.',
   'BLOG_PAGE_DECODE_CONTENT'  =>  'Decodificar Contenido',
-  
+
   # 'Front-End' Strings
   'BY'                        =>  'por',
   'ON'                        =>  'en',
@@ -182,10 +182,12 @@ $i18n = array(
   'NOT_FOUND'                 =>  'Disculpe, ningún post fue encontrado.',
   'NEXT_PAGE'                 =>  '&larr; Siguiente Página',
   'PREV_PAGE'                 =>  'Anterior Página &rarr;',
+  'NEXT_POST'                 =>  '&larr; Siguiente Post',
+  'PREV_POST'                 =>  'Anterior Post &rarr;',
   'ARCHIVE_PRETITLE'          =>  'Archivo del Blog: ',
   'CATEGORY_PRETITLE'         =>  'Cateogría del Blog: ',
   'READ_MORE'                 =>  'Leer más', // <-- New in 3.4.2
-  
+
   # Custom Fields Manager
   'CUSTOM_FIELDS'             =>  'Campos Personalizados',
   'CUSTOMFIELDS_DESCR'        =>  'Este plugin le permite especificar campos personalizados que son mostrados cuando edita una página.',
@@ -205,7 +207,7 @@ $i18n = array(
   'WYSIWYG_EDITOR'            =>  'Editor WYSIWYG',
   'TITLE'                     =>  'Título',
   'HIDDEN_FIELD'              =>  'Campo escondido',
-  
+
   # VersionCheck Updater
   'VERSION_NOMESSAGE'         =>  'Ningún mensaje ha sido puesto! Esto es un problema.',
   'VERSION_NORESPONSE'        =>  'No se pudo obtener una respuesta del servidor de Extend API.',
@@ -221,5 +223,5 @@ $i18n = array(
   'VERSION_UPDATESTATUS'      =>  'Estado de Actualización',
   'VERSION_CURRENTVER'        =>  'Versión Actual',
   'VERSION_LATESTVER'         =>  'Útima Versión',
-  
+
 );

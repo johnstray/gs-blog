@@ -5,19 +5,19 @@
 * Last Modified: 15 November 2016 by Google Translate                                              *
 * Compiled By: nikynik (Nicola Laviola)                                                            *
 \**************************************************************************************************/
- 
+
 $i18n = array(
-  
+
   # Language Configuration
   'LANGUAGE_CODE'             =>  array('it_IT','it','ita','italian'), // Cross-Platform posibilities for `setlocal()`
   'DATE_FORMAT'               =>  '%c',
   'DATE_DISPLAY'              =>  '%B %e, %Y',
   'DATE_ARCHIVE'              =>  'F Y',
-  
+
   # Plugin Information
   'PLUGIN_TITLE'              =>  ($plugin = 'GetSimple Blog'),
   'PLUGIN_DESC'               =>  'Semplice ed efficace Blog per GetSimple CMS',
-  
+
   # Tab/Sidebar Actions (Administration)
   'BLOG_TAB_BUTTON'           =>  'B<em>l</em>og',
   'MANAGE_POSTS_BUTTON'       =>  'Gestisci Articoli',
@@ -26,7 +26,7 @@ $i18n = array(
   'SETTINGS_BUTTON'           =>  'Impostazioni',
   'UPDATE_BUTTON'             =>  'Controlla aggiornamenti',
   'HELP_BUTTON'               =>  'Aiuto',
-  
+
   # Generic Strings
   'WRITE_OK'                  =>  'File scritto correttamente!',
   'EDIT_OK'                   =>  'File modificato correttamente!',
@@ -41,7 +41,7 @@ $i18n = array(
   'MANAGE'                    =>  'Gestisci',
   'LANGUAGE'                  =>  'Lingua',
   'DATE'                      =>  'Data',
-  
+
   # Class Constructor
   'DATA_BLOG_DIR'             =>  'La directory <em>data/blog</em> creata correttamente.',
   'DATA_BLOG_DIR_ERR'         =>  'La directory <em>data/blog</em> non pu&ograve; essere creata!',
@@ -51,7 +51,7 @@ $i18n = array(
   'DATA_BLOG_RSS'             =>  'Il file <em>blog_rss.xml</em> &egrave;  stato creato correttamente!',
   'DATA_BLOG_RSS_ERR'         =>  'Il file <em>blog_rss.xml</em> non pu&ograve; essere creato!',
   'BLOG_SETTINGS'             =>  'Impostazioni del Blog',
-  
+
   # 'Post Management' Strings
   'POST_ADDED'                =>  'Articolo salvato con successo!',
   'POST_ERROR'                =>  'Errore nel salvataggio articolo!',
@@ -74,7 +74,7 @@ $i18n = array(
   'NO_POSTS_MATCH_SEARCH'     =>  'Non ci sono messaggi da visualizzare in base ai criteri di ricerca! Forse provare qualcosa di diverso?',
   'CLICK_TO_CREATE'           =>  'Clicca qui per crearne uno',
   'PAGE_TITLE'                =>  'Titolo pagina',
-  
+
   # 'Category Management' Strings
   'CATEGORY_ADDED'            =>  'Categoria creata correttamente!',
   'CATEGORY_ERROR'            =>  'Categoria non pu&ograve; essere creata!',
@@ -111,7 +111,7 @@ $i18n = array(
   'RSS_DESCRIPTION'           =>  'Descrizione Feed RSS',
   'RSS_IMPORTER_PASS'         =>  'Password Auto-Importer (qualsiasi)',
   'RSS_FEED_NUM_POSTS'        =>  '&num; di feed da visualizzare',
-  
+
   # 'Settings' Strings
   'SETTINGS_SAVE_OK'          =>  'Impostazioni salvate!',
   'SETTINGS_SAVE_ERROR'       =>  'Non posso salvare le impostazioni!',
@@ -135,7 +135,7 @@ $i18n = array(
   'BLOG_PRETTY_NOTICE'        =>  'Devi abilitare pretty urls in GetSimple prima. Le istruzioni saranno visualizzate qui',
   'SAVE_SETTINGS'             =>  'Salva Impostazioni',
   'MAIN_SETTINGS_BUTTON'      =>  'Impostazioni generali',
-  
+
   # 'Help' Strings
   'HELP'                      =>  'Aiuto',
   'FRONT_END_FUNCTIONS'       =>  'Funzioni',
@@ -148,9 +148,9 @@ $i18n = array(
   'RSS_LOCATION'              =>  'Questo &egrave; il Feed Rss del blog',
   'DYNAMIC_RSS_LOCATION'      =>  'Dynamic RSS Feed Location (Genera Feed RSS al volo)',
   'AUTO_IMPORTER_TITLE'       =>  'Setup importatore Feed RSS',
-  'AUTO_IMPORTER_DESC'        =>  'Dovresti effettuare il setup dei cronjobs attraverso il tuo pannello di amministrazione interfaccia del tuo web hosting. Si presume che tu conosca questo plugin. I frammenti di codici seguenti ti danno un esempio..', 
+  'AUTO_IMPORTER_DESC'        =>  'Dovresti effettuare il setup dei cronjobs attraverso il tuo pannello di amministrazione interfaccia del tuo web hosting. Si presume che tu conosca questo plugin. I frammenti di codici seguenti ti danno un esempio..',
   'BLOG_PAGE_DESC_TITLE'      =>  'Aiuto personalizzazione Pagina Blog',
-  'BLOG_PAGE_RECOM'           =>  'Si raccomanda di visualizzare la funzione show_blog_post() presente in plugins/blog/inc/frontEndFunctions.php per vedere come meglio impostare una pagina personalizzata del blog.',  
+  'BLOG_PAGE_RECOM'           =>  'Si raccomanda di visualizzare la funzione show_blog_post() presente in plugins/blog/inc/frontEndFunctions.php per vedere come meglio impostare una pagina personalizzata del blog.',
   'BLOG_PAGE_DESC_LINE_1'     =>  'Puoi usare html, php, xml e js in questo campo testo.',
   'BLOG_PAGE_DESC_LINE_2'     =>  'Si comporter&agrave; come se si codifica direttamente dal plugin stesso.I dati dell&acute;articolo sono passati tramite oggetto.',
   'BLOG_PAGE_DESC_LINE_3'     =>  'Per accedere a un campo personalizzato puoi inserire qualcosa di simile a qui sotto',
@@ -168,7 +168,7 @@ $i18n = array(
   'BLOG_PAGE_CREATE_EXCERPT'  =>  'Crea Excerpt',
   'BLOG_PAGE_EXCERPT_DESC'    =>  'Questo crea un excerpt con una lunghezza specifica. La variabile $excerpt_length deve essere intero e rappresenta la lunghezza del campo excerpt.',
   'BLOG_PAGE_DECODE_CONTENT'  =>  'Decodifica Contenuto',
-  
+
   # 'Front-End' Strings
   'BY'                        =>  'da',
   'ON'                        =>  'Il',
@@ -182,22 +182,24 @@ $i18n = array(
   'NOT_FOUND'                 =>  'Peccato, non ho trovato nessun articolo!',
   'NEXT_PAGE'                 =>  '&larr; Pagina seguente',
   'PREV_PAGE'                 =>  'Pagina precedente &rarr;',
+  'NEXT_POST'                 =>  '&larr; Articolo seguente',
+  'PREV_POST'                 =>  'Articolo precedente &rarr;',
   'ARCHIVE_PRETITLE'          =>  'Archivio: ',
   'CATEGORY_PRETITLE'         =>  'Categoria: ',
   'READ_MORE'                 =>  'Leggi di più', // <-- New in 3.4.2
-  
+
   # Custom Fields Manager
   'CUSTOM_FIELDS'             =>  'Campi personalizzati',
   'CUSTOMFIELDS_DESCR'        =>  'Questo plugin ti permette di specificare dei campi personalizzati che saranno visualizzati quando editi una pagina.',
   'CUSTOM_FIELDS_OPTIONS_AREA'=>  'Area Opzioni',
-  'OPTIONS_AREA_DESCRP'       =>  'Le Opzioni dei campi personalizzati saranno visualizzati nella sezione "Opzioni Articolo',  
+  'OPTIONS_AREA_DESCRP'       =>  'Le Opzioni dei campi personalizzati saranno visualizzati nella sezione "Opzioni Articolo',
   'NAME'                      =>  'Nome',
   'LABEL'                     =>  'Etichetta',
   'TYPE'                      =>  'Tipo',
   'DEFAULT_VALUE'             =>  'Valore predefinito',
   'ADD'                       =>  'Aggiungi campo',
   'CUSTOM_FIELDS_MAIN_AREA'   =>  'Area principale',
-  'MAIN_AREA_DESCRP'          =>  '(Campi personalizzati principali saranno visualizzati nella sezione Opzioni articolo).', 
+  'MAIN_AREA_DESCRP'          =>  '(Campi personalizzati principali saranno visualizzati nella sezione Opzioni articolo).',
   'TEXT_FIELD'                =>  'Campo Testo',
   'LONG_TEXT_FIELD'           =>  'Campo Testo',
   'DROPDOWN_BOX'              =>  'Box Drop-down',
@@ -205,7 +207,7 @@ $i18n = array(
   'WYSIWYG_EDITOR'            =>  'Editore WYSIWYG',
   'TITLE'                     =>  'Titolo',
   'HIDDEN_FIELD'              =>  'Campi nascosti',
-  
+
   # VersionCheck Updater
   'VERSION_NOMESSAGE'         =>  'Nessun messaggio inviato! Questo &egrave; un problema.',
   'VERSION_NORESPONSE'        =>  'Nessuna risposta dal serve API.',
@@ -221,5 +223,5 @@ $i18n = array(
   'VERSION_UPDATESTATUS'      =>  'Stato aggiornamento',
   'VERSION_CURRENTVER'        =>  'Versione Corrente',
   'VERSION_LATESTVER'         =>  'Ultima Versione',
-  
+
 );
