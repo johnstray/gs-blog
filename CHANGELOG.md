@@ -1,6 +1,10 @@
 ### Version 3.5.0 ~ Beta
 **Feature Enhancements:**
 - [#006] Created a new Post Image uploader/selector
+- [#116] Dump Support for the old UserManagement plugin / Implement support for new GS-Users plugin
+
+**Bug Fixes:**
+- [#109] Another minor bugfix to the Missing Settings Checek
 
 ### Version 3.4.3 ~ Latest Stable
 **Feature Enhancements:**
