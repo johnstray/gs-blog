@@ -16,7 +16,7 @@
 function blog_admin_controller() {
 
 	$Blog = new Blog;
-	GLOBAL $SITEURL;
+	GLOBAL $SITEURL, $GSASMIN, $SESSIONHASH;
 
 	if(isset($_GET['edit_post'])) {
 		editPost($_GET['edit_post']);

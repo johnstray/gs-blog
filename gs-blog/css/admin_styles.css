@@ -57,3 +57,109 @@ padding-right: 6px;
 td {
   vertical-align:middle !important;
 }
+
+/* Uploader - Post Image upload system */
+#uploader {
+    margin: 0 0 5px;
+    background: #fcfcfc;
+    border: 1px solid #e8e8e8;
+    padding: 10px;
+    -webkit-border-radius: 3px;
+       -moz-border-radius: 3px;
+            border-radius: 3px;
+}
+.uploaderImageBox {
+    background: #ffffff;
+    border: 1px solid #efefef;
+    -webkit-border-radius: 3px;
+       -moz-border-radius: 3px;
+            border-radius: 3px;
+    position: relative;
+    width: 175px;
+    height: 92px;
+    float: left;
+    z-index:100;
+    cursor: pointer;
+}
+.uploaderImageBox img + div {
+    line-height: 15px;
+    height: 30px;
+    width: 92px;
+    position: absolute;
+    top: 50%; left: 50%;
+    margin-top: -15px;
+    margin-left: -46px;
+    z-index: 102;
+    -webket-transition: all 0.218s;
+       -moz-transition: all 0.218s;
+         -o-transition: all 0.218s;
+            transition: all 0.218s;
+    text-align: center;
+    color: transparent;
+}
+.uploaderImageBox:hover img + div {
+    color: #ffffff;
+}
+.uploaderStatusBar {
+    display: none;
+    position: absolute;
+    bottom: 5px;
+    left: 5px;
+    right: 5px;
+    background: #efefef;
+    border: 1px solid #ccc;
+    height: 5px;
+    z-index: 104;
+    padding: 1px;
+}
+.uploaderStatusBar div {
+    height: 100%;
+    background: #336699;
+}
+#uploaderPreviewImage {
+    width: 175px;
+    height: 92px;
+    position: absolute;
+    top: 0; left: 0;
+    z-index: 101;
+    -webkit-border-radius: 3px;
+       -moz-border-radius: 3px;
+            border-radius: 3px;
+}
+.uploaderFileInfo {
+    height: 92px;
+    margin-left: 185px;
+}
+.uploaderFileInfo label small {
+    font-weight: normal;
+    color: #999999;
+    float: right;
+}
+.uploaderFileInfo div {
+    font-size: 0;
+    margin-bottom: 14px;
+    line-height: 18px;
+}
+.uploaderFileInfo input[type=text] {
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    height: 20px;
+}
+.uploaderFileName {
+    width: 60% !important;
+}
+#post-thumbalt {
+    width: 100% !important;
+}
+.uploaderFileInfo .button {
+    width: 20%;
+    height: 20px;
+    line-height: 11px;
+    font-size: 11px;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    vertical-align: top;
+}
+.uploaderHiddenFileBox {
+    display: none;
+}

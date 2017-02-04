@@ -50,5 +50,7 @@ queue_style ('font_awesome', GSBACK );
 # Register/Queue Scripts
 register_script('pluginManagementFA', $SITEURL.'plugins/'.BLOGFILE.'/js/pluginManagementFA.js', '1.0', TRUE);
 register_script('table_paging', $SITEURL.'plugins/'.BLOGFILE.'/js/paging.js', '1.0', FALSE);
+register_script('image_upload', $SITEURL.'plugins/'.BLOGFILE.'/js/image_upload.js', '1.0.0', TRUE);
 queue_script('pluginManagementFA', GSBACK);
 queue_script('table_paging', GSBACK);
+queue_script('image_upload', GSBACK);

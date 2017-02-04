@@ -1,5 +1,19 @@
-	<link href="../plugins/<?php echo BLOGFILE; ?>/inc/uploader/client/fileuploader.css" rel="stylesheet" type="text/css">
-	<script src="../plugins/<?php echo BLOGFILE; ?>/inc/uploader/client/fileuploader.js" type="text/javascript"></script>
+<?php
+if ( isset( $_GET[ 'edit_post' ] )
+     && $post_id != null
+     && file_exists( BLOGPOSTSFOLDER . $blog_data->slug . '.xml' )
+     && !empty( $blog_data->thumbnail ) )
+{
+    $thumbnail = (string) $blog_data->thumbnail;
+    $preview_image = $SITEURL . 'data/uploads/' . $thumbnail; // <!-- Editing Post: Get current image url
+}
+else
+{
+    $thumbnail = '';
+    $preview_image = $SITEURL . 'plugins/' . BLOGFILE . '/images/missing.png';
+}
+?>
+
 	<noscript><style>#metadata_window {display:block !important} </style></noscript>
 	<h3 class="floated">
 	  <?php
@@ -34,30 +48,75 @@
 	<?php if($post_id != null) { echo "<p><input name=\"post-current_slug\" type=\"hidden\" value=\"$blog_data->slug\" /></p>"; } ?>
 	<div id="metadata_window" style="display:none;text-align:left;">
 		<?php displayCustomFields(); ?>
-		<div class="leftopt">
-				<label><?php i18n(BLOGFILE.'/UPLOAD_THUMBNAIL'); ?></label>
-			<div class="uploader_container"> 
-			    <div id="file-uploader-thumbnail"> 
-			        <noscript> 
-			            <p><?php i18n(BLOGFILE.'/UPLOAD_ENABLE_JAVASCRIPT'); ?></p>
-			        </noscript> 
-			    </div> 
-			    <script> 
-			   		 var uploader = new qq.FileUploader({
-				        element: document.getElementById('file-uploader-thumbnail'),
-				        // path to server-side upload script
-				        action: '../plugins/<?php echo BLOGFILE; ?>/inc/uploader/server/php.php',
-			        	onComplete: function(id, fileName, responseJSON){
-				        	$('#post-thumbnail').attr('value', responseJSON.newFilename);
-				    	}
 
-			    }, '<?php i18n(BLOGFILE.'/UPLOAD_THUMBNAIL'); ?>');
-			    </script>
-			</div>
-			<input type="text" id="post-thumbnail" name="post-thumbnail" value="<?php echo $blog_data->thumbnail; ?>" style="width:130px;float:right;margin-top:12px !important;" />
-		</div>
+        <?php // Image Selector ?>
+        <div class="wideopt">
+            <div id="uploader">
+
+                <div class="uploaderImageBox">
+                    <img src="<?php echo $preview_image; ?>" id="uploaderPreviewImage" />
+                    <div>Click here to Select Image</div>
+                    <div class="uploaderStatusBar"><div style="width: 0%;"></div></div>
+                </div>
+
+                <div class="uploaderFileInfo">
+                    <div>
+                        <label for="post-thumbnail">Selected Image File: <small>Filename is relative to &apos;data/uploads/&apos;</small></label>
+                        <input type="text" class="text uploaderFileName" id="post-thumbnail" name="post-thumbnail" value="<?php echo $thumbnail; ?>" />
+                        <button type="button" class="button" id="uploaderSelectButton">Select File</button>
+                        <button type="button" class="button singleupload_input" id="uploaderUploadButton" onClick="singleupload_input.click();">Upload File</button>
+                        <input type="file" class="uploaderHiddenFileBox" id="singleupload_input" name="post-image" value="" />
+                    </div>
+                    <div>
+                        <label for="post-thumbalt">Image Alternate Text</label>
+                        <input type="text" class="text" id="post-thumbalt" name="post-thumbalt" />
+                    </div>
+                </div>
+                <div class="clear"></div>
+
+                <script><?php GLOBAL $SITEURL, $GSADMIN, $SESSIONHASH; ?>
+                    $(function() {$("#uploaderUploadButton").singleupload({
+                        action: '<?php echo tsl($SITEURL); ?>plugins/<?php echo BLOGFILE; ?>/uploader.php',
+                        sessionHash: '<?php echo $SESSIONHASH; ?>',
+                        filePath: '', // <-- Insert filepath here - get from settings
+                        inputId: 'singleupload_input',
+                        progressBar: '.uploaderStatusBar',
+                        onError: function(code) {
+                            $('.uploaderStatusBar div').css('background-color', 'red');
+                            $('.uploaderStatusBar div').css('width', '100%');
+                            alert('Uploader Error: ' + res.code); },
+                        onSuccess: function(url, data) {
+                            if (url.indexOf('/') === 0) {url = url.substring(1);}
+                            $('input[name="post-thumbnail"]').prop('value', url);
+                            $('#uploaderPreviewImage').attr('src', '<?php echo tsl($SITEURL); ?>data/uploads/' + url);
+                            $('.uploaderStatusBar').css('display', 'none');
+                        },
+                        onProgress: function(event) {
+                            if (event.lengthComputable) {
+                                var percent = Math.round( 100 * (event.loaded / event.total) );
+                                $('.uploaderStatusBar div').css('width', percent+'%');
+                            } else {
+                                console.warn('File size is not computable. Upload progress bar will be disabled.');
+                            }
+                        } // <!-- Implement this at a later stage
+                    });});
+                    $('.uploaderImageBox, #uploaderSelectButton').on('click', function() {
+                        window.open('<?php echo tsl($SITEURL.$GSADMIN); ?>filebrowser.php?path=&returnid=post-thumbnail&func=triggerUploaderChange&type=image&CKEditorFuncNum=0','_blank','scrollbars=1,resizable=1,height=300,width=450');
+                    });
+                    $('.uploaderFileName').on('change', function() {
+                        $('#uploaderPreviewImage').attr('src', $(this).val());
+                        $(this).val($(this).val().replace('<?php echo tsl($SITEURL); ?>data/uploads/', ''));
+                    });
+                    function triggerUploaderChange(id) {$('#'+id).trigger('change');}
+                    $('#uploaderPreviewImage').error(function(){$(this).attr('src', '<?php echo $SITEURL; ?>plugins/<?php echo BLOGFILE; ?>/images/missing.png');});
+                </script>
+
+            </div>
+        </div>
+        <?php // END Image Selector ?>
+
 		<div class="clear"></div>
-    <?php exec_action('edit-extras'); // Added to allow for compatibility with other plugins ?>
+        <?php exec_action('edit-extras'); // Added to allow for compatibility with other plugins ?>
 	</div>
 
 		<?php displayCustomFields('main'); ?>
