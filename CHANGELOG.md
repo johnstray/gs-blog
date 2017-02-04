@@ -1,4 +1,8 @@
-### Version 3.4.3
+### Version 3.5.0 ~ Beta
+**Feature Enhancements:**
+- [#006] Created a new Post Image uploader/selector
+
+### Version 3.4.3 ~ Latest Stable
 **Feature Enhancements:**
 - [#095] A few minor imrovements to the RSS generator:
   - `<description>` now respects the excerpt length setting.
