@@ -5,6 +5,7 @@
 
 **Bug Fixes:**
 - [#109] Another minor bugfix to the Missing Settings Checek
+- [#117] The list of tags below a post will now be hidden when no tags are attached to a post.
 
 ### Version 3.4.3 ~ Latest Stable
 **Feature Enhancements:**

@@ -66,11 +66,13 @@
        $p['tagurl'] is available to give you the base url for the tags, just add the tag to the end
        of the final url.
   -->
+  <?php if(!empty($p['tags'])) { ?>
   <p class="blog_tags">
     <b><?php i18n(BLOGFILE.'/TAGS'); ?> :</b>
     <?php foreach ($p['tags'] as $tag) { ?>
       <a href="<?php echo $p['tagsurl'].$tag; ?>"><?php echo $tag; ?></a>,&nbsp;
     <?php } ?>
   </p>
+  <?php } ?>
   
 </div>

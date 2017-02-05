@@ -88,10 +88,15 @@ function show_blog_post($slug, $excerpt=false, $echo=true) {
   $p['thumburl'] = $SITEURL.'data/uploads/'; // Thumbnail URL
   $p['thumbnail'] = (string) $post->thumbnail; // Thumbnail Filename
   $p['tagsurl'] = $Blog->get_blog_url('tag'); // Tags base URL
-  $p['tags'] = explode(',',$post->tags); // Tags applied to the post
   $p['archiveurl'] = $Blog->get_blog_url('archive'); // Archive base URL
   $p['archivetitle'] = date(i18n_r(BLOGFILE.'/DATE_ARCHIVE'),$post_date); // Archive the post is in
   $p['archivedate'] = date('Ym', $post_date);
+  
+  if(!empty($post->tags)) { // Tags applied to the post
+    $p['tags'] = explode(',', $post->tags);
+  } else {
+    $p['tags'] = array();
+  }
 
   # Determine if we should be showing an excerpt or full post.
   if(($excerpt == false) || (($excerpt == true) && ($blogSettings['postformat'] == 'Y'))) {

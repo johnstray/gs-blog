@@ -57,7 +57,7 @@
        $p['tagurl'] is available to give you the base url for the tags, just add the tag to the end
        of the final url.
   -->
-  <?php if (!empty($p['tags']) && count($p['tags']) >= 1) { ?>
+  <?php if (!empty($p['tags'])) { ?>
   <p class="blog_post_tags">
     <b><?php i18n(BLOGFILE.'/TAGS'); ?> :</b>
     <?php foreach ($p['tags'] as $tag) { ?>
