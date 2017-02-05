@@ -4,16 +4,12 @@ img.rss_feed {
 .odd_meta {
 	float: left;
 	width: 48%;
+    height: 40px;
 }
 .even_meta {
 	float: right;
 	width: 48%;
-}
-
-li#nav_gs-blog a:before {
-font-family: FontAwesome;
-content: "\f044";
-padding-right: 6px;
+    height: 40px;
 }
 
 @media only screen and (max-width: 768px) and (min-width: 320px) {

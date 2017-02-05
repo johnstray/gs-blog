@@ -43,14 +43,10 @@ add_action('index-pretemplate', 'get_blog_title', array() );
 
 # Register/Queue Styles
 register_style (BLOGFILE.'_css', $SITEURL.'/plugins/'.BLOGFILE.'/css/admin_styles.css', '1.0', 'screen');
-register_style ('font_awesome', '//netdna.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css', '4.2.0', 'all');
 queue_style (BLOGFILE.'_css',GSBACK);
-queue_style ('font_awesome', GSBACK );
 
 # Register/Queue Scripts
-register_script('pluginManagementFA', $SITEURL.'plugins/'.BLOGFILE.'/js/pluginManagementFA.js', '1.0', TRUE);
 register_script('table_paging', $SITEURL.'plugins/'.BLOGFILE.'/js/paging.js', '1.0', FALSE);
 register_script('image_upload', $SITEURL.'plugins/'.BLOGFILE.'/js/image_upload.js', '1.0.0', TRUE);
-queue_script('pluginManagementFA', GSBACK);
 queue_script('table_paging', GSBACK);
 queue_script('image_upload', GSBACK);
