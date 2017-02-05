@@ -573,7 +573,7 @@ class Blog
 	public function getXMLnodes($array=false)
 	{
 		$cfData = getXML(BLOGCUSTOMFIELDS);
-		$blog_data = array('current_slug' => '', 'thumbnail' => '');
+		$blog_data = array('current_slug' => '', 'thumbnail' => '', 'thumbalt' => '');
 		foreach($cfData->item as $custom_field)
 		{
 			$value = (string) $custom_field->desc;

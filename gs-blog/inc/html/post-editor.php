@@ -69,7 +69,7 @@ else
                     </div>
                     <div>
                         <label for="post-thumbalt"><?php i18n(BLOGFILE.'/IMAGE_ALTERNATE_TEXT'); ?></label>
-                        <input type="text" class="text" id="post-thumbalt" name="post-thumbalt" />
+                        <input type="text" class="text" id="post-thumbalt" name="post-thumbalt" value="<?php echo $blog_data->thumbalt; ?>" />
                     </div>
                 </div>
                 <div class="clear"></div>

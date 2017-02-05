@@ -7,11 +7,19 @@
   -->
   <style scoped>
     .blog_post_thumbnail {
-      width:200px;
+      width:100%;
       height:auto;
-      float:left;
-      padding-right:10px;
-      padding-bottom:10px;
+      position:relative;
+      border:1px solid rgba(0,0,0,0.5);
+      border-radius: 3px;
+    }
+    .blog_post_thumbnail img {
+        border-radius:3px;
+        width:100%;
+        max-height:319px;
+    }
+    .blog_post_thumbnail div {
+        position:absolute;bottom:0;left:0;right:0;padding:0 12.5px;height:30px;line-height:30px;font-size:10px;color:white;background:rgba(0,0,0,0.5);border-bottom-left-radius:3px;border-bottom-right-radius:3px;white-space: nowrap;overflow: hidden;text-overflow: ellipsis;
     }
     .blog_post_container {
       clear:both;
@@ -46,9 +54,10 @@
        If you don't want to show a thumbnail on the full post, remove this code.
   -->
   <?php if(!empty($p['thumbnail'])) { ?>
-    <a href="<?php echo $p['posturl']; ?>">
-      <img src="<?php echo $p['thumburl'].$p['thumbnail']; ?>" class="blog_post_thumbnail" />
-    </a>
+    <div class="blog_post_thumbnail">
+        <img src="<?php echo $p['thumburl'].$p['thumbnail']; ?>" class="img-responsive" alt="<?php echo $p['thumbalt']; ?>" />
+        <?php if(!empty($p['thumbalt'])) { echo '<div>'.$p['thumbalt'].'</div>';} ?>
+    </div>
   <?php } ?>
   
   <!-- Post content

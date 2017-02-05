@@ -38,7 +38,7 @@
   -->
   <?php if(!empty($p['thumbnail'])) { ?>
     <a href="<?php echo $p['posturl']; ?>">
-      <img src="<?php echo $p['thumburl'].$p['thumbnail']; ?>" class="blog_post_thumbnail" />
+      <img src="<?php echo $p['thumburl'].$p['thumbnail']; ?>" class="blog_post_thumbnail" alt="<?php echo $p['thumbalt']; ?>" />
     </a>
   <?php } ?>
   

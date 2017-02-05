@@ -87,6 +87,7 @@ function show_blog_post($slug, $excerpt=false, $echo=true) {
   $p['categories'] = explode(',',$post->category); // Categories the post is in
   $p['thumburl'] = $SITEURL.'data/uploads/'; // Thumbnail URL
   $p['thumbnail'] = (string) $post->thumbnail; // Thumbnail Filename
+  $p['thumbalt'] = (string) $post->thumbalt; // Thumbnail Alternate Text
   $p['tagsurl'] = $Blog->get_blog_url('tag'); // Tags base URL
   $p['archiveurl'] = $Blog->get_blog_url('archive'); // Archive base URL
   $p['archivetitle'] = date(i18n_r(BLOGFILE.'/DATE_ARCHIVE'),$post_date); // Archive the post is in
