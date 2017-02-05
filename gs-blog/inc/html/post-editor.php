@@ -55,20 +55,20 @@ else
 
                 <div class="uploaderImageBox">
                     <img src="<?php echo $preview_image; ?>" id="uploaderPreviewImage" />
-                    <div>Click here to Select Image</div>
+                    <div><?php i18n(BLOGFILE.'/CLICK_TO_SELECT_IMAGE'); ?></div>
                     <div class="uploaderStatusBar"><div style="width: 0%;"></div></div>
                 </div>
 
                 <div class="uploaderFileInfo">
                     <div>
-                        <label for="post-thumbnail">Selected Image File: <small>Filename is relative to &apos;data/uploads/&apos;</small></label>
+                        <label for="post-thumbnail"><?php i18n(BLOGFILE.'/SELECTED_IMAGE_FILE'); ?>: <small><?php i18n(BLOGFILE.'/SELECTED_IMAGE_FILE_HINT'); ?></small></label>
                         <input type="text" class="text uploaderFileName" id="post-thumbnail" name="post-thumbnail" value="<?php echo $thumbnail; ?>" />
-                        <button type="button" class="button" id="uploaderSelectButton">Select File</button>
-                        <button type="button" class="button singleupload_input" id="uploaderUploadButton" onClick="singleupload_input.click();">Upload File</button>
+                        <button type="button" class="button" id="uploaderSelectButton"><?php i18n(BLOGFILE.'/SELECT_FILE_BUTTON'); ?></button>
+                        <button type="button" class="button singleupload_input" id="uploaderUploadButton" onClick="singleupload_input.click();"><?php i18n(BLOGFILE.'/UPLOAD_FILE_BUTTON'); ?></button>
                         <input type="file" class="uploaderHiddenFileBox" id="singleupload_input" name="post-image" value="" />
                     </div>
                     <div>
-                        <label for="post-thumbalt">Image Alternate Text</label>
+                        <label for="post-thumbalt"><?php i18n(BLOGFILE.'/IMAGE_ALTERNATE_TEXT'); ?></label>
                         <input type="text" class="text" id="post-thumbalt" name="post-thumbalt" />
                     </div>
                 </div>
@@ -78,7 +78,7 @@ else
                     $(function() {$("#uploaderUploadButton").singleupload({
                         action: '<?php echo tsl($SITEURL); ?>plugins/<?php echo BLOGFILE; ?>/uploader.php',
                         sessionHash: '<?php echo $SESSIONHASH; ?>',
-                        filePath: '', // <-- Insert filepath here - get from settings
+                        filePath: '<?php echo $Blog->getSettingsData("uploaderpath"); ?>', // <-- Insert filepath here - get from settings
                         inputId: 'singleupload_input',
                         progressBar: '.uploaderStatusBar',
                         onError: function(code) {

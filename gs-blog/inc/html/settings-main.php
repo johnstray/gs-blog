@@ -86,6 +86,13 @@
       <input class="text" type="text" name="rssdescription" value="<?php echo $Blog->getSettingsData("rssdescription"); ?>" />
     </p>
   </div>
+  <div class="leftsec">
+    <p>
+      <label for="uploaderpath"><?php i18n(BLOGFILE.'/UPLOADER_PATH'); ?>:</label>
+      <span class="hint"><?php i18n(BLOGFILE.'/UPLOADER_PATH_HINT'); ?></span>
+      <input class="text" type="text" name="uploaderpath" value="<?php echo $Blog->getSettingsData("uploaderpath"); ?>" />
+    </p>
+  </div>
   <div class="clear"></div>
   <h3 style="font-size:15px;"><?php i18n(BLOGFILE.'/HTACCESS_HEADLINE'); ?></h3>
   <?php global $PRETTYURLS; if ($PRETTYURLS == 1) { ?>

@@ -2,7 +2,7 @@
 /**************************************************************************************************\
 * French (Français) Language File for GetSimple Blog                                               *
 * ------------------------------------------------------------------------------------------------ *
-* Last Modified: 15 November 2016 by Google Translate                                              *
+* Last Modified: 5 February 2016 by Google Translate                                               *
 * Compiled By: gschintgen                                                                          *
 \**************************************************************************************************/
  
@@ -74,6 +74,13 @@ $i18n = array(
   'NO_POSTS_MATCH_SEARCH'     =>  'Il n&apos;y aucun message à afficher correspondant à vos critères! Peut-être essayer quelque chose de différent?',
   'CLICK_TO_CREATE'           =>  'Cliquez ici pour en créer un',
   'PAGE_TITLE'                =>  'Titre de la page',
+  // New in version 3.5.0 - Please translate
+  'CLICK_TO_SELECT_IMAGE'     =>  'Cliquez ici pour sélectionner l&apos;image',
+  'SELECTED_IMAGE_FILE'       =>  'Fichier d&apos;image sélectionné',
+  'SELECTED_IMAGE_FILE_HINT'  =>  'Le nom de fichier est relatif à &apos;data/uploads/&apos;',
+  'SELECT_FILE_BUTTON'        =>  'Sélectionner',
+  'UPLOAD_FILE_BUTTON'        =>  'Télécharger',
+  'IMAGE_ALTERNATE_TEXT'      =>  'Image Autre texte',
   
   # 'Category Management' Strings
   'CATEGORY_ADDED'            =>  'Catégorie créée avec succès.',
@@ -135,6 +142,9 @@ $i18n = array(
   'BLOG_PRETTY_NOTICE'        =>  'Vous devez au préalable activer les URLs simplifiées dans GetSimple afin d&apos;afficher des instructions ici',
   'SAVE_SETTINGS'             =>  'Enregistrer les paramètres',
   'MAIN_SETTINGS_BUTTON'      =>  'Paramètres principaux',
+  // New in version 3.5.0 - Please translate
+  'UPLOADER_PATH'             =>  'Image par défaut',
+  'UPLOADER_PATH_HINT'        =>  'Chemin par défaut du chargeur d&apos;images, par rapport à &apos;data/uploads/&apos;',
   
   # 'Help' Strings
   'HELP'                      =>  'Aide',

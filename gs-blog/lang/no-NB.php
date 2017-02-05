@@ -2,7 +2,7 @@
 /**************************************************************************************************\
 * Norwegian (Bokmål) Language File for GetSimple Blog                                              *
 * ------------------------------------------------------------------------------------------------ *
-* Last Modified: 15 November 2016 by Google Translate                                              *
+* Last Modified: 5 February 2017 by Google Translate                                               *
 * Compiled By: helgesverre ( https://helgesverre.com )                                             *
 \**************************************************************************************************/
 
@@ -74,6 +74,13 @@ $i18n = array(
   'NO_POSTS_MATCH_SEARCH'     =>  'Det finnes ingen innlegg å vise som samsvarer med søkekriteriene ! Kanskje prøve noe annerledes?',
   'CLICK_TO_CREATE'           =>  'Klikk her for å lage eit nytt innlegg',
   'PAGE_TITLE'                =>  'Sidetittel',
+  // New in version 3.5.0 - Please translate
+  'CLICK_TO_SELECT_IMAGE'     =>  'Klikk her for å velge bilde',
+  'SELECTED_IMAGE_FILE'       =>  'Valgte bildefilen',
+  'SELECTED_IMAGE_FILE_HINT'  =>  'Filnavn er i forhold til &apos;data/uploads/&apos;',
+  'SELECT_FILE_BUTTON'        =>  'Velg Fil',
+  'UPLOAD_FILE_BUTTON'        =>  'Last opp fil',
+  'IMAGE_ALTERNATE_TEXT'      =>  'Bilde Alternativ tekst',
 
   # 'Category Management' Strings
   'CATEGORY_ADDED'            =>  'La til kategori!',
@@ -135,6 +142,9 @@ $i18n = array(
   'BLOG_PRETTY_NOTICE'        =>  'Du må slå på søkevennlige addresser i GetSimple før instruksjonene viser her',
   'SAVE_SETTINGS'             =>  'Lagre innstillingenne',
   'MAIN_SETTINGS_BUTTON'      =>  'Hovedinnstillingene',
+  // New in version 3.5.0 - Please translate
+  'UPLOADER_PATH'             =>  'Bildeopplasteren Standardbane',
+  'UPLOADER_PATH_HINT'        =>  'Standard banen til bildeopplasteren, i forhold til &apos;data/uploads/&apos;',
 
   # 'Help' Strings
   'HELP'                      =>  'Hjelp',

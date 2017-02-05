@@ -63,6 +63,7 @@ class Blog
       'achivespostcount'  => "Y",
       'autoimporter'      => "N",
       'autoimporterpass'  => "passphrase",
+      'uploaderpath'      => "",
     );
     if(!file_exists(BLOGSETTINGS)) {
       if($this->saveSettings($default_settings)) {

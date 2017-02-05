@@ -2,7 +2,7 @@
 /**************************************************************************************************\
 * Spanish (Español / Castilian) Language File for GetSimple Blog                                   *
 * ------------------------------------------------------------------------------------------------ *
-* Last Modified: 15 November 2016 by Google Translate                                              *
+* Last Modified: 5 February 2017 by Google Translate                                               *
 * Compiled By: ferchosj (? ?) / jEsuSdA (? ?)                                                      *
 \**************************************************************************************************/
  
@@ -74,6 +74,13 @@ $i18n = array(
   'NO_POSTS_MATCH_SEARCH'     =>  '¡No hay artículos que mostrar tu búsqueda! Tal vez intentar algo diferente?',
   'CLICK_TO_CREATE'           =>  'Haga click Aquí para Crear Uno',
   'PAGE_TITLE'                =>  'Título de Página',
+  // New in version 3.5.0 - Please translate
+  'CLICK_TO_SELECT_IMAGE'     =>  'Haga clic aquí para seleccionar la imagen',
+  'SELECTED_IMAGE_FILE'       =>  'Archivo de imagen seleccionado',
+  'SELECTED_IMAGE_FILE_HINT'  =>  'El nombre de archivo es relativo a &apos;data/uploads/&apos;',
+  'SELECT_FILE_BUTTON'        =>  'Seleccione',
+  'UPLOAD_FILE_BUTTON'        =>  'Subir',
+  'IMAGE_ALTERNATE_TEXT'      =>  'Imagen Texto alternativo',
   
   # 'Category Management' Strings
   'CATEGORY_ADDED'            =>  'Categoría Exitosamente Añadida!',
@@ -135,6 +142,9 @@ $i18n = array(
   'BLOG_PRETTY_NOTICE'        =>  'Necesita habilitar las URLs Bonitas en GetSimple para que las instrucciones se muestren aquí',
   'SAVE_SETTINGS'             =>  'Guardar Configuración',
   'MAIN_SETTINGS_BUTTON'      =>  'Configuración Principal',
+  // New in version 3.5.0 - Please translate
+  'UPLOADER_PATH'             =>  'Carga por defecto de la imagen',
+  'UPLOADER_PATH_HINT'        =>  'Camino predeterminado del cargador de imágenes, relativo a &apos;data/uploads/&apos;',
   
   # 'Help' Strings
   'HELP'                      =>  'Ayuda',

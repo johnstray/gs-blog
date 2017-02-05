@@ -2,7 +2,7 @@
 /**************************************************************************************************\
 * Italian (Italiano) Language File for GetSimple Blog                                              *
 * ------------------------------------------------------------------------------------------------ *
-* Last Modified: 15 November 2016 by Google Translate                                              *
+* Last Modified: 5 February 2017 by Google Translate                                               *
 * Compiled By: nikynik (Nicola Laviola)                                                            *
 \**************************************************************************************************/
  
@@ -74,6 +74,13 @@ $i18n = array(
   'NO_POSTS_MATCH_SEARCH'     =>  'Non ci sono messaggi da visualizzare in base ai criteri di ricerca! Forse provare qualcosa di diverso?',
   'CLICK_TO_CREATE'           =>  'Clicca qui per crearne uno',
   'PAGE_TITLE'                =>  'Titolo pagina',
+  // New in version 3.5.0 - Please translate
+  'CLICK_TO_SELECT_IMAGE'     =>  'Clicca qui per selezionare l&apos;immagine',
+  'SELECTED_IMAGE_FILE'       =>  'Scelto di file Immagine',
+  'SELECTED_IMAGE_FILE_HINT'  =>  'Nome file è relativo al &apos;data/uploads/&apos;',
+  'SELECT_FILE_BUTTON'        =>  'Seleziona',
+  'UPLOAD_FILE_BUTTON'        =>  'Carica',
+  'IMAGE_ALTERNATE_TEXT'      =>  'Immagine Testo alternativo',
   
   # 'Category Management' Strings
   'CATEGORY_ADDED'            =>  'Categoria creata correttamente!',
@@ -135,6 +142,9 @@ $i18n = array(
   'BLOG_PRETTY_NOTICE'        =>  'Devi abilitare pretty urls in GetSimple prima. Le istruzioni saranno visualizzate qui',
   'SAVE_SETTINGS'             =>  'Salva Impostazioni',
   'MAIN_SETTINGS_BUTTON'      =>  'Impostazioni generali',
+  // New in version 3.5.0 - Please translate
+  'UPLOADER_PATH'             =>  'Caricatore foto percorso predefinito',
+  'UPLOADER_PATH_HINT'        =>  'Percorso predefinito del caricamento dell&apos;immagine, rispetto al &apos;data/uploads/&apos;',
   
   # 'Help' Strings
   'HELP'                      =>  'Aiuto',

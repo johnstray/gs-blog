@@ -2,7 +2,7 @@
 /**************************************************************************************************\
 * English (American) Language File for GetSimple Blog                                              *
 * ------------------------------------------------------------------------------------------------ *
-* Last Modified: 15 February 2015                                                                  *
+* Last Modified: 5 February 2017                                                                   *
 * Compiled By: johnstray (John Stray)                                                              *
 \**************************************************************************************************/
  
@@ -74,6 +74,13 @@ $i18n = array(
   'NO_POSTS_MATCH_SEARCH'     =>  'There are no posts to display that match your search criteria! Maybe try something different?',
   'CLICK_TO_CREATE'           =>  'Click here to create one',
   'PAGE_TITLE'                =>  'Page Title',
+  // New in version 3.5.0 - Please translate
+  'CLICK_TO_SELECT_IMAGE'     =>  'Click here to Select Image',
+  'SELECTED_IMAGE_FILE'       =>  'Selected Image File',
+  'SELECTED_IMAGE_FILE_HINT'  =>  'Filename is relative to &apos;data/uploads/&apos;',
+  'SELECT_FILE_BUTTON'        =>  'Select File',
+  'UPLOAD_FILE_BUTTON'        =>  'Upload File',
+  'IMAGE_ALTERNATE_TEXT'      =>  'Image Alternate Text',
   
   # 'Category Management' Strings
   'CATEGORY_ADDED'            =>  'Successfully added Category!',
@@ -135,6 +142,9 @@ $i18n = array(
   'BLOG_PRETTY_NOTICE'        =>  'You need to turn on pretty urls in GetSimple before instructions will show here',
   'SAVE_SETTINGS'             =>  'Save Settings',
   'MAIN_SETTINGS_BUTTON'      =>  'Main Settings',
+  // New in version 3.5.0 - Please translate
+  'UPLOADER_PATH'             =>  'Image Uploader Default Path',
+  'UPLOADER_PATH_HINT'        =>  'Default path of the image uploader, relative to &apos;data/uploads/&apos;',
   
   # 'Help' Strings
   'HELP'                      =>  'Help',

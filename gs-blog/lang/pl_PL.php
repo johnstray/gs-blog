@@ -2,7 +2,7 @@
 /**************************************************************************************************\
 * Polish (Język Polski) Language File for GetSimple Blog                                           *
 * ------------------------------------------------------------------------------------------------ *
-* Last Modified: 15 November 2016 by Google Translate                                              *
+* Last Modified: 5 February 2017 by Google Translate                                               *
 * Compiled By: Every0ne (? ?)                                                                      *
 \**************************************************************************************************/
 
@@ -74,6 +74,13 @@ $i18n = array(
   'NO_POSTS_MATCH_SEARCH'     =>  'Nie ma postów do wyświetlenia, które pasują do kryteriów wyszukiwania! Może spróbować czegoś innego?',
 	'CLICK_TO_CREATE'           =>  'Kliknij tu, by utworzyć pierwszy',
 	'PAGE_TITLE'                =>  'Tytuł strony',
+    // New in version 3.5.0 - Please translate
+  'CLICK_TO_SELECT_IMAGE'     =>  'Kliknij tutaj, aby wybrać obraz',
+  'SELECTED_IMAGE_FILE'       =>  'Wybrany plik obrazu',
+  'SELECTED_IMAGE_FILE_HINT'  =>  'Nazwa pliku jest w stosunku do &apos;data/uploads/&apos;',
+  'SELECT_FILE_BUTTON'        =>  'Wybierz',
+  'UPLOAD_FILE_BUTTON'        =>  'Przekazać',
+  'IMAGE_ALTERNATE_TEXT'      =>  'Obraz tekst alternatywny',
 
 	# 'Category Management' Strings
 	'CATEGORY_ADDED'            =>  'Kategoria dodana',
@@ -135,6 +142,9 @@ $i18n = array(
 	'BLOG_PRETTY_NOTICE'        =>  'Musisz włączyć ładne URLe w ustawieniach GetSimple by pojawiły się tu dalsze instrukcje',
 	'SAVE_SETTINGS'             =>  'Zapisz ustawienia',
 	'MAIN_SETTINGS_BUTTON'      =>  'Główne ustawienia',
+    // New in version 3.5.0 - Please translate
+  'UPLOADER_PATH'             =>  'Image Uploader domyślną ścieżkę',
+  'UPLOADER_PATH_HINT'        =>  'Ścieżka domyślna uploader obrazu, w stosunku do&apos;data/uploads/&apos;',
 
 	# 'Help' Strings
 	'HELP'                      =>  'Pomoc',

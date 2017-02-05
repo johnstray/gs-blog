@@ -30,6 +30,12 @@ padding-right: 6px;
   }
 }
 
+.leftsec .hint, .rightsec .hint, .widesec .hint {
+    display: block;
+    margin-top: -3px;
+    font-size: 10px;
+}
+
 /* Pager - Pagination system for table elements */
 .pg-normal {
   color: black;

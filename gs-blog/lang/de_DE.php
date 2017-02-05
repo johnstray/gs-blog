@@ -2,7 +2,7 @@
 /**************************************************************************************************\
 * German (Deutsch) Language File for GetSimple Blog                                                *
 * ------------------------------------------------------------------------------------------------ *
-* Last Modified: 15 November 2016 by Google Translate                                              *
+* Last Modified: 5 February 2017 by Google Translate                                               *
 * Compiled By: gschintgen ()                                                                       *
 \**************************************************************************************************/
  
@@ -74,6 +74,13 @@ $i18n = array(
   'NO_POSTS_MATCH_SEARCH'     =>  'Es sind keine Einträge vorhanden, die Ihren Suchkriterien entsprechen! Vielleicht etwas anderes ausprobieren?',
   'CLICK_TO_CREATE'           =>  'Hier klicken zum Erstellen',
   'PAGE_TITLE'                =>  'Seitentitel',
+  // New in version 3.5.0 - Please translate
+  'CLICK_TO_SELECT_IMAGE'     =>  'Klicken Sie hier, um Bild auszuwählen',
+  'SELECTED_IMAGE_FILE'       =>  'Ausgewählte Bilddatei',
+  'SELECTED_IMAGE_FILE_HINT'  =>  'Dateiname ist relativ zu &apos;data/uploads/&apos;',
+  'SELECT_FILE_BUTTON'        =>  'Wählen',
+  'UPLOAD_FILE_BUTTON'        =>  'hochladen',
+  'IMAGE_ALTERNATE_TEXT'      =>  'Bild Alternativen Text',
   
   # 'Category Management' Strings
   'CATEGORY_ADDED'            =>  'Kategorie erfolgreich angelegt.',
@@ -135,6 +142,9 @@ $i18n = array(
   'BLOG_PRETTY_NOTICE'        =>  'Du musst lesbare URLs in GetSimple aktivieren, damit hier Anweisungen angezeigt werden',
   'SAVE_SETTINGS'             =>  'Einstellungen sichern',
   'MAIN_SETTINGS_BUTTON'      =>  'Haupteinstellungen',
+  // New in version 3.5.0 - Please translate
+  'UPLOADER_PATH'             =>  'Bild-Uploader Standardpfad',
+  'UPLOADER_PATH_HINT'        =>  'Standardpfad des Bild-Uploaders, relativ zu &apos;data/uploads/&apos;',
   
   # 'Help' Strings
   'HELP'                      =>  'Hilfe',

@@ -2,7 +2,7 @@
 /**************************************************************************************************\
 * Russian (Русский Язык) Language File for GetSimple Blog                                          *
 * ------------------------------------------------------------------------------------------------ *
-* Last Modified: 15 November 2016 by Google Translate                                              *
+* Last Modified: 5 February 2017 by Google Translate                                               *
 * Compiled By: f30d0r ( https://feodor.me/ )                                                       *
 \**************************************************************************************************/
 
@@ -74,6 +74,13 @@ $i18n = array(
   'NO_POSTS_MATCH_SEARCH'     =>  'Там нет сообщений для отображения, которые соответствуют вашим критериям поиска! Может быть, попробовать что-то другое?',
   'CLICK_TO_CREATE'           =>  'Создать публикацию',
   'PAGE_TITLE'                =>  'Заголовок',
+  // New in version 3.5.0 - Please translate
+  'CLICK_TO_SELECT_IMAGE'     =>  'Нажмите здесь, чтобы выбрать изображение',
+  'SELECTED_IMAGE_FILE'       =>  'Выбранный файл изображения',
+  'SELECTED_IMAGE_FILE_HINT'  =>  'Имя файла задается относительно &apos;data/uploads/&apos;',
+  'SELECT_FILE_BUTTON'        =>  'Выбрать',
+  'UPLOAD_FILE_BUTTON'        =>  'Загрузить',
+  'IMAGE_ALTERNATE_TEXT'      =>  'Изображение Альтернативный текст',
 
   # 'Category Management' Strings
   'CATEGORY_ADDED'            =>  'Категория добавлена.',
@@ -135,6 +142,9 @@ $i18n = array(
   'BLOG_PRETTY_NOTICE'        =>  'Вы должны включить ЧПУ (Pretty URLs) в настройках GetSimple до выполнения указанных инструкций',
   'SAVE_SETTINGS'             =>  'Сохранить настройки',
   'MAIN_SETTINGS_BUTTON'      =>  'Основные настройки',
+  // New in version 3.5.0 - Please translate
+  'UPLOADER_PATH'             =>  'Загрузка изображений По умолчанию Путь',
+  'UPLOADER_PATH_HINT'        =>  'По умолчанию путь пользователя изображения, по отношению к &apos;data/uploads/&apos;',
 
   # 'Help' Strings
   'HELP'                      =>  'помощь',
