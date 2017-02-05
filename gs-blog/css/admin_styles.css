@@ -169,3 +169,19 @@ td {
 .uploaderHiddenFileBox {
     display: none;
 }
+
+.copyright-text {
+  text-shadow: 1px 1px 0 rgba(255,255,255,.4);
+  margin: -30px 0 0 0;
+  padding: 10px 0 0;
+  font-size: 11px;
+  color: #999;
+  text-align: center;
+}
+.copyright-text div {
+  font-size:10px;
+}
+.copyright-text a {
+  color:#888 !important;
+  text-decoration:none !important;
+}

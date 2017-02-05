@@ -111,6 +111,11 @@ function blog_admin_controller() {
 		$all_posts = $Blog->listPosts(true, true); // Get a list of all the posts in the blog
     require_once('html/posts-admin.php'); // Bring in the HTML to show this section
 	}
+    
+    $year = date('Y');
+    echo "</div><div class=\"copyright-text\">GetSimple Blog Plugin &copy; 2014 - {$year} John Stray - Licenced under <a href=\"https://www.gnu.org/licenses/gpl-3.0.en.html\">GNU GPLv3</a>";
+    echo "<div>If you like this plugin or have found it useful, please consider a <a href=\"https://paypal.me/JohnStray\">donation</a></div>";
+    
 }
 
 /**-------------------------------------------------------------------------------------------------
