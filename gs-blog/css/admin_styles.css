@@ -32,6 +32,40 @@ img.rss_feed {
     font-size: 10px;
 }
 
+/* Post Management */
+#datatable td {
+    padding: 10px;
+}
+#datatable td > img {
+    background-color: #fff;
+    height: 37px;
+    width: 66px;
+    float: left;
+    margin: -5px 10px -5px -5px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.5);
+}
+#datatable td > a {
+    text-decoration: none;
+    width: 100%;
+    display: block;
+    line-height: 15px;
+}
+#datatable td > div {
+    position: relative;
+    font-size: 10px;
+    line-height: 12px;
+}
+#datatable td > div > div {
+    float: left;
+}
+#datatable td > div > div:nth-child(-n+2) {
+    width: 28%;
+}
+#datatable td > div > div.clear {
+    float: none;
+    clear: both;
+}
+
 /* Pager - Pagination system for table elements */
 .pg-normal {
   color: black;

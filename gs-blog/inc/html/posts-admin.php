@@ -27,23 +27,26 @@
 	} else {
   ?>
 		<table class="edittable highlight paginate" id="datatable">
-			<tr>
-				<th><?php i18n(BLOGFILE.'/PAGE_TITLE'); ?></th>
-				<th><?php i18n(BLOGFILE.'/DATE'); ?></th>
-				<th></th>
-			</tr>
-		<?php
-		foreach($all_posts as $post_name) {
-			$post = $Blog->getPostData($post_name['filename']);
+			<?php
+            foreach($all_posts as $post_name) {
+                $post = $Blog->getPostData($post_name['filename']);
 			?>
 				<tr>
-					<td><a title="<?php echo $post->title; ?>" href="load.php?id=<?php echo BLOGFILE; ?>&edit_post=<?php echo $post->slug; ?>" ><?php echo getExcerpt($post->title,80,false,' ...',false,false); ?></a></td>
-					<td style="width:135px;"><?php $date=(string)$post->date; echo $Blog->get_locale_date(strtotime($date), i18n_r(BLOGFILE.'/DATE_FORMAT')); ?></td>
-					<td class="delete"><a class="delconfirm" href="load.php?id=<?php echo BLOGFILE; ?>&delete_post=<?php echo $post->slug; ?>" title="<?php i18n(BLOGFILE.'/DELETE'); ?>: <?php echo $post->title; ?>" >&times;</a></td>
+					<td>
+                        <img src="../data/uploads/<?php if(!empty($post->thumbnail)){echo $post->thumbnail;}else{echo 'no_post_image.jpg';} ?>" />
+                        <a title="<?php echo $post->title; ?>" href="load.php?id=<?php echo BLOGFILE; ?>&edit_post=<?php echo $post->slug; ?>"><?php echo getExcerpt($post->title,90,false,' ...',false,false); ?></a>
+                        <div>
+                            <div>Category: <span style="font-size:inherit"><?php echo $post->category; ?></span></div>
+                            <div>Author: <span style="font-size:inherit"><?php echo $post->author; ?></span></div>
+                            <div>Published: <span style="font-size:inherit"><?php $date=(string)$post->date; echo $Blog->get_locale_date(strtotime($date), i18n_r(BLOGFILE.'/DATE_DISPLAY')); ?></span></div>
+                            <div class="clear"></div>
+                        </div>
+                    </td>
+                    <td class="delete"><a class="delconfirm" href="load.php?id=<?php echo BLOGFILE; ?>&delete_post=<?php echo $post->slug; ?>" title="<?php i18n(BLOGFILE.'/DELETE'); ?>: <?php echo $post->title; ?>" ><i class="fa fa-trash-o"></i></a></td>
 				</tr>
 			<?php
 		}
-		echo '</table>';
+		echo '</tbody></table>';
 	} 
   
   if(!empty($all_posts)) {
