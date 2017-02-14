@@ -2,6 +2,7 @@
 **Feature Enhancements:**
 - [#006] Created a new Post Image uploader/selector
 - [#116] Dump Support for the old UserManagement plugin / Implement support for new GS-Users plugin
+- [#120] Added support for layout templates in the active theme's directory
 
 **Bug Fixes:**
 - [#109] Another minor bugfix to the Missing Settings Checek

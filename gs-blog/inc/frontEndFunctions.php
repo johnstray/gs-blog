@@ -69,7 +69,7 @@ function blog_display_posts() {
  */
 function show_blog_post($slug, $excerpt=false, $echo=true) {
   
-  GLOBAL $SITEURL, $blogSettings, $post; // Get GLOBAL variables
+  GLOBAL $SITEURL, $TEMPLATE, $blogSettings, $post; // Get GLOBAL variables
   $Blog = new Blog; // Prepare the Blog class
   $post = getXML($slug); // Get XML data of post
   
@@ -107,16 +107,24 @@ function show_blog_post($slug, $excerpt=false, $echo=true) {
     $p['content'] = $Blog->create_excerpt(html_entity_decode($post->content),0,$el); // Create excerpt
   } else {echo 'Uh oh! Something went wrong!';}
   
-  if($echo) {
-    # Lets load the template now and let it put all this together.
-    if(isset($_GET['post'])) {
-      include(BLOGPLUGINFOLDER.'layout-post.php');
-    } else {
-      include(BLOGPLUGINFOLDER.'layout-list.php');
+    if($echo) { # Lets load the template now and let it put all this together.
+        $theme_dir = GSTHEMESPATH . $TEMPLATE . "/";
+        if ( isset( $_GET['post'] ) ) {
+            if ( file_exists ( $theme_dir . "layout.post.php" ) ) {
+                include( $theme_dir . "layout.post.php" );
+            } else {
+                include( BLOGPLUGINFOLDER . "layout-post.php" );
+            }
+        } else {
+            if ( file_exists ( $theme_dir . "layout.list.php" ) ) {
+                include( $theme_dir . "layout.list.php" );
+            } else {
+                include( BLOGPLUGINFOLDER . "layout-list.php" );
+            }
+        }
+    } elseif(!$echo) {
+        return $p;
     }
-  } elseif(!$echo) {
-    return $p;
-  }
 }
 
 /**-------------------------------------------------------------------------------------------------
@@ -181,13 +189,19 @@ function show_blog_categories($echo=true,$count=null) {
  */  
 function show_blog_category($category, $echo=true) {
 
-	$Blog = new Blog; // Create a new instance of the Blog class
+	GLOBAL $TEMPLATE;
+    $Blog = new Blog; // Create a new instance of the Blog class
 	$all_posts = $Blog->listPosts(true, true); // Get a list of all the posts in the blog
 	$count = 0; // Set a counter for the following loop
   
   if($echo) {
     ob_start(); // Create a buffer to build this page in
-    require(BLOGPLUGINFOLDER.'layout-listBefore.php'); // Get the listBefore layout (stuff before list of posts)
+    // Get the listBefore layout (stuff before list of posts)
+    if ( file_exists ( GSTHEMESPATH . $TEMPLATE . "/layout.list-before.php" ) ) {
+        include( GSTHEMESPATH . $TEMPLATE . "/layout.list-before.php" );
+    } else {
+        include( BLOGPLUGINFOLDER . "layout-listBefore.php" );
+    }
     foreach($all_posts as $file) { // For each post in the list...
       $data = getXML($file['filename']); // Get the XML data of the post
       if($data->category == $category || empty($category)) { // Is the post in the requested category?
@@ -198,7 +212,12 @@ function show_blog_category($category, $echo=true) {
     if($count < 1) { // Counter is still 0? We have no posts in this category.
       echo '<p class="blog_category_noposts">'.i18n_r(BLOGFILE.'/NO_POSTS').'</p>';
     }
-    require(BLOGPLUGINFOLDER.'layout-listAfter.php'); // Get the listAfter layout (stuff after list of posts)
+    // Get the listAfter layout (stuff after list of posts)
+    if ( file_exists ( GSTHEMESPATH . $TEMPLATE . "/layout.list-after.php" ) ) {
+        include( GSTHEMESPATH . $TEMPLATE . "/layout.list-after.php" );
+    } else {
+        include( BLOGPLUGINFOLDER . "layout-listAfter.php" );
+    }
     ob_end_flush(); // Get the formatted contents of the output buffer.
   } elseif(!$echo) {
     $post_array = array();
@@ -280,12 +299,18 @@ function show_blog_archives($echo=true) {
  */  
 function show_blog_archive($archive, $echo=true) {
 
-	$Blog = new Blog; // Create a new instance of the Blog class
+	GLOBAL $TEMPLATE;
+    $Blog = new Blog; // Create a new instance of the Blog class
 	$posts = $Blog->listPosts(true, true); // Get a list of all the posts in the blog
   
   if ($echo) {
     ob_start(); // Create a buffer to build this page in
-    require(BLOGPLUGINFOLDER.'layout-listBefore.php'); // Get the listBefore layout (stuff before list of posts)
+    // Get the listBefore layout (stuff before list of posts)
+    if ( file_exists ( GSTHEMESPATH . $TEMPLATE . "/layout.list-before.php" ) ) {
+        include( GSTHEMESPATH . $TEMPLATE . "/layout.list-before.php" );
+    } else {
+        include( BLOGPLUGINFOLDER . "layout-listBefore.php" );
+    }
     if (!empty($posts)) { // If there are posts in the blog...
       foreach ($posts as $file) { // For each post in the list...
         $data = getXML($file['filename']); // Get the XML data of the post
@@ -297,7 +322,12 @@ function show_blog_archive($archive, $echo=true) {
     } else { // We have no posts in this archive
       echo i18n(BLOGFILE.'/NO_POSTS'); // Let the user know
     }
-    require(BLOGPLUGINFOLDER.'layout-listAfter.php'); // Get the listAfter layout (stuff after list of posts)
+    // Get the listAfter layout (stuff after list of posts)
+    if ( file_exists ( GSTHEMESPATH . $TEMPLATE . "/layout.list-after.php" ) ) {
+        include( GSTHEMESPATH . $TEMPLATE . "/layout.list-after.php" );
+    } else {
+        include( BLOGPLUGINFOLDER . "layout-listAfter.php" );
+    }
     ob_end_flush(); // Get the formatted contents of the output buffer.
   } elseif(!$echo) {
     $archive_posts = array();$k=0;
@@ -405,12 +435,18 @@ function show_blog_recent_posts($excerpt=false, $excerpt_length=null, $thumbnail
  */  
 function show_blog_tag($tag, $echo=true) {
 
-	$Blog = new Blog; // Create a new instance of the Blog class
+	GLOBAL $TEMPLATE;
+    $Blog = new Blog; // Create a new instance of the Blog class
 	$all_posts = $Blog->listPosts(true, true); // Get a list of all posts in the blog
   
   if ($echo) {
     ob_start(); // Create a buffer to build this page in
-    require(BLOGPLUGINFOLDER.'layout-listBefore.php'); // Get the listBefore layout (stuff before list of posts)
+    // Get the listBefore layout (stuff before list of posts)
+    if ( file_exists ( GSTHEMESPATH . $TEMPLATE . "/layout.list-before.php" ) ) {
+        include( GSTHEMESPATH . $TEMPLATE . "/layout.list-before.php" );
+    } else {
+        include( BLOGPLUGINFOLDER . "layout-listBefore.php" );
+    }
     foreach ($all_posts as $file) { // For each blog post in the list...
       $data = getXML($file['filename']); // Get the XML data for the post
       $dtags = (string) $data->tags;
@@ -421,7 +457,12 @@ function show_blog_tag($tag, $echo=true) {
         }
       }
     }
-    require(BLOGPLUGINFOLDER.'layout-listAfter.php'); // Get the listAfter layout (stuff after list of posts)
+    // Get the listAfter layout (stuff after list of posts)
+    if ( file_exists ( GSTHEMESPATH . $TEMPLATE . "/layout.list-after.php" ) ) {
+        include( GSTHEMESPATH . $TEMPLATE . "/layout.list-after.php" );
+    } else {
+        include( BLOGPLUGINFOLDER . "layout-listAfter.php" );
+    }
     ob_end_flush(); // Get the formatted contents of the output buffer.
   } elseif(!$echo) {
     $tag_posts = array();$k=0;
@@ -466,12 +507,18 @@ function show_all_blog_posts() {
  */  
 function search_posts($keyphrase, $echo=true) {
 
-	$Blog = new Blog; // Create new instance of the Blog class
+	GLOBAL $TEMPLATE;
+    $Blog = new Blog; // Create new instance of the Blog class
 	$posts = $Blog->searchPosts($keyphrase); // Get the list of search results
   
   if($echo) {
     ob_start(); // Create a buffer to build this page in
-    require(BLOGPLUGINFOLDER.'layout-listBefore.php'); // Get the listBefore layout (stuff before list of posts)
+    // Get the listBefore layout (stuff before list of posts)
+    if ( file_exists ( GSTHEMESPATH . $TEMPLATE . "/layout.list-before.php" ) ) {
+        include( GSTHEMESPATH . $TEMPLATE . "/layout.list-before.php" );
+    } else {
+        include( BLOGPLUGINFOLDER . "layout-listBefore.php" );
+    }
     if (!empty($posts)) { // If there were search results returned...
       echo '<p class="blog_search_header">'.i18n(BLOGFILE.'/FOUND').'</p>'; // Output the page title
       foreach ($posts as $file) { // For each result in the list...
@@ -480,7 +527,12 @@ function search_posts($keyphrase, $echo=true) {
     } else { // There were no results to display. Let the user know.
       echo '<p class="blog_search_header">'.i18n(BLOGFILE.'/NOT_FOUND').'</p>';
     }
-    require(BLOGPLUGINFOLDER.'layout-listAfter.php'); // Get the listAfter layout (stuff after list of posts)
+    // Get the listAfter layout (stuff after list of posts)
+    if ( file_exists ( GSTHEMESPATH . $TEMPLATE . "/layout.list-after.php" ) ) {
+        include( GSTHEMESPATH . $TEMPLATE . "/layout.list-after.php" );
+    } else {
+        include( BLOGPLUGINFOLDER . "layout-listAfter.php" );
+    }
     ob_end_flush(); // Get the formatted contents of the output buffer.
   } elseif(!$echo) {
     $search_results = array();$k=0;
@@ -503,12 +555,17 @@ function search_posts($keyphrase, $echo=true) {
  */
 function show_posts_page($index=0) {
 
-	GLOBAL $blogSettings; // Declare GLOBAL variables
+	GLOBAL $TEMPLATE, $blogSettings; // Declare GLOBAL variables
 	$Blog = new Blog; // Create a new instance of the Blog class
 	$posts = $Blog->listPosts(true, true); // Get the list of posts.
 	if(!empty($posts)) { // If we have posts to display...
     ob_start(); // Create a buffer to build this page in
-    require(BLOGPLUGINFOLDER.'layout-listBefore.php'); // Get the listBefore layout (stuff before list of posts)
+    // Get the listBefore layout (stuff before list of posts)
+    if ( file_exists ( GSTHEMESPATH . $TEMPLATE . "/layout.list-before.php" ) ) {
+        include( GSTHEMESPATH . $TEMPLATE . "/layout.list-before.php" );
+    } else {
+        include( BLOGPLUGINFOLDER . "layout-listBefore.php" );
+    }
 		$pages = array_chunk($posts, intval($blogSettings["postperpage"]), TRUE); // Split posts onto multiple pages
 		if (is_numeric($index) && $index >= 0 && $index < sizeof($pages)) { // What page should we show?
 			$posts = $pages[$index]; // Show specified page number
@@ -531,7 +588,12 @@ function show_posts_page($index=0) {
 				}
 			}
 		}
-    require(BLOGPLUGINFOLDER.'layout-listAfter.php'); // Get the listAfter layout (stuff after list of posts)
+    // Get the listAfter layout (stuff after list of posts)
+    if ( file_exists ( GSTHEMESPATH . $TEMPLATE . "/layout.list-after.php" ) ) {
+        include( GSTHEMESPATH . $TEMPLATE . "/layout.list-after.php" );
+    } else {
+        include( BLOGPLUGINFOLDER . "layout-listAfter.php" );
+    }
     ob_end_flush(); // Get the formatted contents of the output buffer.
 	} else { // We have no posts to display. Let the user know.
 		echo '<p>' . i18n(BLOGFILE.'/NO_POSTS') . '</p>';
