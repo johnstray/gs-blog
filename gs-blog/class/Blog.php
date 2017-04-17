@@ -723,7 +723,7 @@ class Blog
 	* @param $keyphrase string the keyphrase to search for
 	* @return array Search results
 	*/  
-	public function searchPosts($keyphrase)
+	public function searchPosts($keyphrase, $filter)
 	{
 		$keywords = @explode(' ', $keyphrase);
 		$posts = $this->listPosts();
@@ -734,12 +734,11 @@ class Blog
 			foreach ($posts as $file) 
 			{
 				$data = getXML($file);
-				$content = $data->title . $data->content;
-				$slug = $data->slug;
-				if (stripos($content, $keyword) !== FALSE)
-				{
-					$match[$count] = $file;
-				}
+				
+                if (stripos($data->{$filter}, $keyword) !== FALSE)
+                {
+                    $match[$count] = $file;
+                }
 
 				$count++;
 			}

@@ -2,7 +2,8 @@
   <div class="edit-nav">
     <p class="text 1">
       <a href="load.php?id=<?php echo BLOGFILE; ?>&create_post"><?php i18n(BLOGFILE.'/NEW_POST_BUTTON'); ?></a>
-      <?php if(!empty($all_posts) && !isset($_GET['search'])) { ?><a href="#" id="metadata_toggle"><?php i18n(BLOGFILE.'/SEARCH'); ?></a><?php } ?>
+      <?php if(!empty($all_posts) && !isset($_GET['search'])) { ?><a href="#" id="metadata_toggle"><?php i18n(BLOGFILE.'/FILTER_POSTS'); ?></a><?php } ?>
+      <?php if(isset($_GET['search'])) { ?><a href="load.php?id=<?php echo BLOGFILE; ?>"><?php i18n(BLOGFILE.'/CLEAR_FILTERS'); ?></a><?php } ?>
     </p>
     <div class="clear"></div>
   </div>
@@ -10,12 +11,19 @@
   <style>#metadata_window p {margin: 0 0 10px 0;}</style>
   <?php $search_display = (isset($_GET['search'])) ? 'block' : 'none'; ?>
   <div id="metadata_window" style="display:<?php echo $search_display; ?>;text-align:left;padding:10px 15px;">
+    <p style="border-bottom:1px dotted #ccc;margin-bottom: 10px;font-size:11px;line-height:12px;"><strong><?php i18n(BLOGFILE.'/FILTER_POSTS'); ?></strong> : <?php i18n(BLOGFILE.'/FILTER_DESC'); ?></p>
     <form class="largeform" action="load.php" method="get">
       <input type="hidden" name="id" value="<?php echo BLOGFILE; ?>" />
-      <label for="page-url"  style="display:inline;margin-right:15px;"><?php i18n(BLOGFILE.'/SEARCH'); ?>:</label>
-      <input class="text" type="text" name="search" value="" style="height:16px;width:150px;margin-right:15px !important;" />
-      <input class="submit" type="submit" name="" value="<?php i18n(BLOGFILE.'/SEARCH'); ?>" style="width:auto;height:24px;padding:3px 10px;" />
-      <a href="load.php?id=<?php echo BLOGFILE; ?>" class="button" style="padding:5px 10px;font-size:11px;"><?php i18n(BLOGFILE.'/CANCEL'); ?></a>
+        <select class="text" name="filter" style="height:24px;display:inline;width:35.6%;vertical-align:top;">
+          <option value="title"<?php if(isset($_GET['filter']) && $_GET['filter'] == "title") {echo "selected=\"selected\"";} ?>><?php i18n(BLOGFILE.'/POST_TITLE'); ?></option>
+          <option value="content"<?php if(isset($_GET['filter']) && $_GET['filter'] == "content") {echo "selected=\"selected\"";} ?>><?php i18n(BLOGFILE.'/POST_CONTENT'); ?></option>
+          <option value="category"<?php if(isset($_GET['filter']) && $_GET['filter'] == "category") {echo "selected=\"selected\"";} ?>><?php i18n(BLOGFILE.'/CATEGORY_NAME'); ?></option>
+          <option value="author"<?php if(isset($_GET['filter']) && $_GET['filter'] == "author") {echo "selected=\"selected\"";} ?>><?php i18n(BLOGFILE.'/POST_AUTHOR'); ?></option>
+          <option value="date"<?php if(isset($_GET['filter']) && $_GET['filter'] == "date") {echo "selected=\"selected\"";} ?>><?php i18n(BLOGFILE.'/PUBLISHED_DATE'); ?> [YYYY-MM-DD]</option>
+          <option value="tags"<?php if(isset($_GET['filter']) && $_GET['filter'] == "tags") {echo "selected=\"selected\"";} ?>><?php i18n(BLOGFILE.'/TAG'); ?></option>
+        </select>
+        <input class="text" type="text" name="search" value="<?php if(isset($_GET['search'])) {echo $_GET['search'];} ?>" style="height:16px;width:50%;" />
+        <input class="submit" type="submit" name="" value="<?php i18n(BLOGFILE.'/SEARCH'); ?>" style="width:12%;height:24px;padding:3px 10px;vertical-align:top;" />
     </form>
     <div class="clear"></div>
   </div>

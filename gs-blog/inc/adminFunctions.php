@@ -56,7 +56,7 @@ function blog_admin_controller() {
 				echo '<div class="error">'.i18n_r(BLOGFILE.'/FEED_DELETE_ERROR').'</div>';
 			}
 		}
-    #edit_rss
+        #edit_rss
 		$rss_file = getXML(BLOGRSSFILE);
     require_once('html/feed-management.php');
 	} elseif(isset($_GET['settings'])) {
@@ -74,43 +74,28 @@ function blog_admin_controller() {
 			}
 		}
 		show_custom_fields();
-  } elseif(isset($_GET['search'])) {
-    $all_posts = $Blog->searchPosts($_GET['search']); // Get a list of posts containing keyword
-    if(($all_posts===false) || (count($all_posts) < 1))
-		{
-			$posts=array();
-		}
-		else
-		{
-			$count = 0;			
-      foreach($all_posts as $post)
-      {
-        $data = getXML($post);
-        $posts[$count]['filename'] = $post;
-        $posts[$count]['date'] = (string) $data->date;
-        $posts[$count]['category'] = (string) $data->category;
-        $posts[$count]['tags'] = (string) $data->tags;
-        if(isset($data->author)) { $posts[$count]['author'] = (string) $data->author; }
-        $count++;
-      }
-		} $all_posts = $posts;
-    require_once('html/posts-admin.php'); // Bring in the HTML to show this section
-	} else {
-		if(isset($_GET['save_post'])) {
-			savePost();
-		} elseif(isset($_GET['delete_post'])) {
-			$post_id = urldecode($_GET['delete_post']);
-			$delete_post = $Blog->deletePost($post_id);
-			if($delete_post == true) {
-				echo '<div class="updated">'.i18n_r(BLOGFILE.'/POST_DELETED').'</div>';
-			} else {
-				echo '<div class="error">'.i18n(BLOGFILE.'/POST_DELETE_ERROR').'</div>';
-			}
-		}
-    #show_posts_admin
-		$all_posts = $Blog->listPosts(true, true); // Get a list of all the posts in the blog
-    require_once('html/posts-admin.php'); // Bring in the HTML to show this section
-	}
+    } elseif( isset( $_GET['search'] ) && isset( $_GET['filter'] ) ) { # Search and Filter Function
+  
+        ( $filtered_posts = $Blog->searchPosts( $_GET['search'], $_GET['filter'] ) ) || ( $filtered_posts = array() );
+        $all_posts = $filtered_posts;
+        require_once( 'html/posts-admin.php' );
+    
+    } else {
+        if(isset($_GET['save_post'])) {
+            savePost();
+        } elseif(isset($_GET['delete_post'])) {
+            $post_id = urldecode($_GET['delete_post']);
+            $delete_post = $Blog->deletePost($post_id);
+            if($delete_post == true) {
+                echo '<div class="updated">'.i18n_r(BLOGFILE.'/POST_DELETED').'</div>';
+            } else {
+                echo '<div class="error">'.i18n(BLOGFILE.'/POST_DELETE_ERROR').'</div>';
+            }
+        }
+        #show_posts_admin
+        $all_posts = $Blog->listPosts(true, true); // Get a list of all the posts in the blog
+        require_once('html/posts-admin.php'); // Bring in the HTML to show this section
+    }
     
     $year = date('Y');
     echo "</div><div class=\"copyright-text\">GetSimple Blog Plugin &copy; 2014 - {$year} John Stray - Licenced under <a href=\"https://www.gnu.org/licenses/gpl-3.0.en.html\">GNU GPLv3</a>";

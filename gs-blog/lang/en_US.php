@@ -81,6 +81,13 @@ $i18n = array(
   'SELECT_FILE_BUTTON'        =>  'Select File',
   'UPLOAD_FILE_BUTTON'        =>  'Upload File',
   'IMAGE_ALTERNATE_TEXT'      =>  'Image Alternate Text',
+  'FILTER_POSTS'              =>  'Filter Posts',
+  'FILTER_DESC'               =>  'Choose from the options below to filter the list of posts',
+  'CLEAR_FILTERS'             =>  'Clear Filters',
+  'POST_TITLE'                =>  'Post Title',
+  'POST_AUTHOR'               =>  'Author&apos;s Name',
+  'PUBLISHED_DATE'            =>  'Published Date',
+  'TAG'                       =>  'Tag',
   
   # 'Category Management' Strings
   'CATEGORY_ADDED'            =>  'Successfully added Category!',
