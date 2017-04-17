@@ -1,7 +1,7 @@
-##GetSimple Blog
+## GetSimple Blog
 A simple an easy to use blog for GetSimple. With this plugin, you can create blog posts, sort posts by category, view posts in monthly archives, plus much more. This version is a fork of the original by @mikehenken and is now being actively maintained here.
 
-###Features Include:
+### Features Include:
 - GetSimple Blog Plugin
 - Blog Categories
 - Post Archives
@@ -14,7 +14,7 @@ A simple an easy to use blog for GetSimple. With this plugin, you can create blo
 - Post Thumbnails
 - Custom Fields
 
-###Installation
+### Installation
 You can install this plugin to your GetSimple installation by following these simple instructions.
 
 - Download ZIP file with plugin from the GetSimple Extend Repository.
@@ -24,9 +24,9 @@ You can install this plugin to your GetSimple installation by following these si
 - Log in to your GetSimple administration panel.
 - Activate the plugin under the Plugins tab.
 
-###Useage
+### Useage
 Once installed, click on the new "Blog" tab in the Admin panel then click on "Help" in the side menu. Instructions for usage of this plugin can be found there.
 
-###Rules of this Repository
+### Rules of this Repository
 - All commits must reference its related issue in the comment. EG: "Part of #XX" or "Fixes #XX". If an issue doesn't exist, create one and assign it to yourself with the relevant Milestone and Labels added.
 - All files uploaded must contain a blank line at the end of the file. This is good coding practice anyway.
