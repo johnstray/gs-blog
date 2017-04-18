@@ -137,12 +137,12 @@ class Blog
 				foreach($all_posts as $post)
 				{
 					$data = getXML($post);
-          $posts[$count]['filename'] = $post;
-          $posts[$count]['date'] = (string) $data->date;
-          $posts[$count]['category'] = (string) $data->category;
-          $posts[$count]['tags'] = (string) $data->tags;
-          if(isset($data->author)) { $posts[$count]['author'] = (string) $data->author; }
-          $count++;
+                    $posts[$count]['filename'] = $post;
+                    $posts[$count]['date'] = (string) $data->date;
+                    $posts[$count]['category'] = (string) $data->category;
+                    $posts[$count]['tags'] = (string) $data->tags;
+                    if(isset($data->author)) { $posts[$count]['author'] = (string) $data->author; }
+                    $count++;
 				}
 				if($sort_dates != false && $array != false)
 				{
@@ -153,50 +153,7 @@ class Blog
 		}
 	}
 
-	/** 
-	* Filter Blog Posts
-	* 
-	* @param $filter string The node to filter by 
-	* @param $value string The value to check the filter
-	* @return array the matched posts
-	*/  
-	public function filterPosts($filter, $value)
-	{
-		$posts = $this->listPosts(true, true);
-		$count = 0;
-		foreach($posts as $post)
-		{
-			if($filter == 'category')
-			{
-				if($post['category'] == $value)
-				{
-					$filtered_posts[$count] = $post;
-				}
-			}
-			elseif($filter == 'tags')
-			{
-				if(strpos($post['tags'], $value) !== false)
-				{
-					$filtered_posts[$count] = $post;
-				}
-			}
-			if($filter == 'date')
-			{
-				$date = date();
-				$date = strtotime($date);
-				if((strtotime("-$value days") < $date && $date < strtotime("-$value days")))
-				{
-					$filtered_posts[$count] = $post;
-				}
-			}
-			$count++;
-		}
-		if(empty($filtered_posts))
-		{
-			$filtered_posts = array();
-		}
-		return $filtered_posts;
-	}
+
 
 	/** 
 	* Get Data From Settings File
@@ -718,34 +675,54 @@ class Blog
 	}
 
 	/** 
-	* Generates search results
+	* Generate Search Results
 	* 
 	* @param $keyphrase string the keyphrase to search for
 	* @return array Search results
 	*/  
-	public function searchPosts($keyphrase, $filter)
+	public function searchPosts( $keyphrase, $filter = array( 'content', 'title' ) )
 	{
-		$keywords = @explode(' ', $keyphrase);
+		$keywords = @explode( ' ', $keyphrase );
 		$posts = $this->listPosts();
-		foreach ($keywords as $keyword) 
+        $filters = array('title', 'content', 'category' 'author', 'date', 'tags');
+		foreach ( $keywords as $keyword )
 		{
 			$match = array();
-			$count = 0;
-			foreach ($posts as $file) 
+			foreach ( $posts as $file )
 			{
-				$data = getXML($file);
-				
-                if (stripos($data->{$filter}, $keyword) !== FALSE)
+				$data = getXML( $file );
+                
+                if ( is_array( $filter ) )
                 {
-                    $match[$count] = $file;
+                    foreach ( $filter as $fltr )
+                    {
+                        if ( in_array($fltr, $filters) &&
+                            stripos($data->{$fltr}, $keyword) !== FALSE &&
+                            in_array($file, $match) == FALSE )
+                        {
+                            $match[] = $file;
+                        }
+                    }
                 }
-
-				$count++;
+                elseif ( is_string( $filter ) && in_array( $filter, $filters ))
+                {
+                    if ( stripos( $data->{$filter}, $keyword) !== FALSE )
+                    {
+                        $match[] = $file;
+                    }
+                }
 			}
-			$posts = $match;
 		}
-		return $posts;
+		return $match;
 	}
+
+    /**
+    * Filter Posts (Depreciated Function) - here for backwards compatibility
+    * This method is mapped to the `searchPosts` method
+    */
+    public function filterPosts( $filter, $value ) {
+        return $this->searchPosts( $value, $keyphrase );
+    }
 
 	/** 
 	* get_locale_date
