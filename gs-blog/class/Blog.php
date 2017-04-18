@@ -704,6 +704,13 @@ class Blog
                         }
                     }
                 }
+                elseif ( is_string( $filter ) && $filter == 'all')
+                {
+                    foreach ( $filters as $nodes ) {
+                        $results = $this->searchPosts( $keyphrase, $node );
+                        $match = array_merge( $match, $results );
+                    }
+                }
                 elseif ( is_string( $filter ) && in_array( $filter, $filters ))
                 {
                     if ( stripos( $data->{$filter}, $keyword) !== FALSE )
@@ -711,6 +718,7 @@ class Blog
                         $match[] = $file;
                     }
                 }
+                // else { bad $filter parameter given }
 			}
 		}
 		return $match;

@@ -21,6 +21,7 @@
           <option value="author"<?php if(isset($_GET['filter']) && $_GET['filter'] == "author") {echo "selected=\"selected\"";} ?>><?php i18n(BLOGFILE.'/POST_AUTHOR'); ?></option>
           <option value="date"<?php if(isset($_GET['filter']) && $_GET['filter'] == "date") {echo "selected=\"selected\"";} ?>><?php i18n(BLOGFILE.'/PUBLISHED_DATE'); ?> [YYYY-MM-DD]</option>
           <option value="tags"<?php if(isset($_GET['filter']) && $_GET['filter'] == "tags") {echo "selected=\"selected\"";} ?>><?php i18n(BLOGFILE.'/TAG'); ?></option>
+          <option value="all"<?php if(isset($_GET['filter']) && $_GET['filter'] == "all") {echo "selected=\"selected\"";} ?>><?php i18n(BLOGFILE.'/ALL_FILEDS'); ?></option>
         </select>
         <input class="text" type="text" name="search" value="<?php if(isset($_GET['search'])) {echo $_GET['search'];} ?>" style="height:16px;width:50%;" />
         <input class="submit" type="submit" name="" value="<?php i18n(BLOGFILE.'/SEARCH'); ?>" style="width:12%;height:24px;padding:3px 10px;vertical-align:top;" />
