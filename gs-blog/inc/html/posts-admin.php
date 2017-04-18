@@ -42,7 +42,7 @@
 			?>
 				<tr>
 					<td>
-                        <img src="../data/uploads/<?php if(!empty($post->thumbnail)){echo $post->thumbnail;}else{echo 'no_post_image.jpg';} ?>" />
+                        <img src="<?php if(!empty($post->thumbnail)){echo '../data/uploads/'.$post->thumbnail;}else{echo '../plugins/'.BLOGFILE.'/images/missing.png';} ?>" />
                         <a title="<?php echo $post->title; ?>" href="load.php?id=<?php echo BLOGFILE; ?>&edit_post=<?php echo $post->slug; ?>"><?php echo getExcerpt($post->title,90,false,' ...',false,false); ?></a>
                         <div>
                             <div>Category: <span style="font-size:inherit"><?php echo $post->category; ?></span></div>
