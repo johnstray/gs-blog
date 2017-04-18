@@ -3,10 +3,21 @@
 - [#006] Created a new Post Image uploader/selector
 - [#116] Dump Support for the old UserManagement plugin / Implement support for new GS-Users plugin
 - [#120] Added support for layout templates in the active theme's directory
+- [#110] More enhancements to the Posts Admin Page
+  - Created post filtering mechanisim to compliment the search function
+  - Modified the layout of the posts list to now include a bit more information about a post
+  - New layout now includes a mini version of the image thats attached to the post
+  - Action icon changed to now use the FontAwesome library of icons.
 
 **Bug Fixes:**
 - [#109] Another minor bugfix to the Missing Settings Checek
 - [#117] The list of tags below a post will now be hidden when no tags are attached to a post.
+- [#122] `listPosts` class method returned filenames with a double slash
+
+**Core Code Changes**
+- [#110] Significant improovements to the search class method to also include filtering.
+  - Allows searching for keyword in specific node, combining search and filter functions
+  - Removed the now redundant filtering class method, but mapped it to search to allow backwards compatibility
 
 ### Version 3.4.3 ~ Latest Stable
 **Feature Enhancements:**
