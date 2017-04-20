@@ -404,6 +404,34 @@ class Blog
 		}
 	}
 
+    /**
+    * Update category
+    *
+    * @param $before Category's current name
+    * @param $after Category's new name
+    * @return bool
+    */
+    public function updateCategory( $before, $after )
+    {
+        if ( this->deleteCategory( $before ) ) {
+            if ( this->saveCategory( $after ) ) {
+                
+                $all_posts = $this->listPosts();
+                $error = false;
+                
+                foreach ( $all_posts as $post )
+                {
+                    $postdata = $this->getPostData( $post );
+                    $postdata['category'] = $after;
+                    if ( !$this->savePost( $postdata ) ) { $error = true; break; }
+                }
+                
+                if ( $error ) { return false; } else { return true; }
+                
+            } else { return false; }
+        } else { return false; }
+    }
+
 	/** 
 	* Saves RSS feed added or edited
 	* 
