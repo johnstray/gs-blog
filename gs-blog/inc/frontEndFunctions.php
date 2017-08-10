@@ -73,7 +73,10 @@ function show_blog_post($slug, $excerpt=false, $echo=true) {
   $Blog = new Blog; // Prepare the Blog class
   $post = getXML($slug); // Get XML data of post
   
-  if(strtotime($post->date) >= time()) {return false;} // Is this a future post?
+  if(strtotime($post->date) >= time()) { // Is this a future post?
+    if(isset($_GET['post']) && $_GET['post'] == $post->slug) {}
+    else {return false;} // Hide it if we're not accessing it directly.
+  }
   
   $post_date = strtotime((string) $post->date); // Prepare the date...
   
