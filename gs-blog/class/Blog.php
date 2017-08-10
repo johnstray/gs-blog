@@ -21,9 +21,9 @@ class Blog
     # Blog posts folder
     if(!file_exists(BLOGPOSTSFOLDER)) {
       if(mkdir(BLOGPOSTSFOLDER)) {
-        echo '<div class="updated">'.i18n_r(BLOGFILE.'/DATA_BLOG_DIR').'</div>';
+        display_message(i18n_r(BLOGFILE.'/DATA_BLOG_DIR'), 'ok', true);
       } else {
-        echo '<div class="error"><strong>'.i18n_r(BLOGFILE.'/DATA_BLOG_DIR_ERR').'</strong><br/>'.i18n_r(BLOGFILE.'/DATA_BLOG_DIR_ERR_HINT').'</div>';
+        display_message('<strong>'.i18n_r(BLOGFILE.'/DATA_BLOG_DIR_ERR').'</strong><br/>'.i18n_r(BLOGFILE.'/DATA_BLOG_DIR_ERR_HINT'), 'error');
       }
     }
     
@@ -31,9 +31,9 @@ class Blog
     if(!file_exists(BLOGCATEGORYFILE)) {
       $xml = new SimpleXMLExtended('<?xml version="1.0"?><item></item>');
       if(XMLsave($xml, BLOGCATEGORYFILE)) {
-        echo '<div class="updated">'.i18n_r(BLOGFILE.'/DATA_BLOG_CATEGORIES').'</div>';
+        display_message(i18n_r(BLOGFILE.'/DATA_BLOG_CATEGORIES'), 'ok', true);
       } else {
-        echo '<div class="error"><strong>'.i18n_r(BLOGFILE.'/DATA_BLOG_CATEGORIES_ERR').'</strong></div>';
+        display_message(i18n_r(BLOGFILE.'/DATA_BLOG_CATEGORIES_ERR'), 'error');
       }
     }
     
@@ -41,9 +41,9 @@ class Blog
     if(!file_exists(BLOGRSSFILE)) {
       $xml = new SimpleXMLExtended('<?xml version="1.0"?><item></item>');
       if(XMLsave($xml, BLOGRSSFILE)) {
-        echo '<div class="updated">'.i18n_r(BLOGFILE.'/DATA_BLOG_RSS').'</div>';
+        display_message(i18n_r(BLOGFILE.'/DATA_BLOG_RSS'), 'ok', true);
       } else {
-        echo '<div class="error"><strong>'.i18n_r(BLOGFILE.'/DATA_BLOG_RSS_ERR').'</strong></div>';
+        display_message(i18n_r(BLOGFILE.'/DATA_BLOG_RSS_ERR'), 'error');
       }
     }
     
@@ -67,9 +67,9 @@ class Blog
     );
     if(!file_exists(BLOGSETTINGS)) {
       if($this->saveSettings($default_settings)) {
-        echo '<div class="updated">'.i18n_r(BLOGFILE.'/BLOG_SETTINGS').' '.i18n_r(BLOGFILE.'/WRITE_OK').'</div>';
+        display_message(i18n_r(BLOGFILE.'/BLOG_SETTINGS').' '.i18n_r(BLOGFILE.'/WRITE_OK'), 'ok', true);
       } else {
-        echo '<div class="error"><strong>'.i18n_r(BLOGFILE.'/BLOG_SETTINGS').' '. i18n_r(BLOGFILE.'/DATA_FILE_ERROR').'</strong></div>';
+        display_message(i18n_r(BLOGFILE.'/BLOG_SETTINGS').' '. i18n_r(BLOGFILE.'/DATA_FILE_ERROR'), 'error');
       }
     } else {
       $saved_settings = $this->getSettingsData();
@@ -94,9 +94,9 @@ class Blog
       # Write the settings to file after update
       if($update_settings === true) {
         if($this->saveSettings($default_settings)) {
-          echo '<div class="updated">'.i18n_r(BLOGFILE.'/BLOG_SETTINGS').' '.i18n_r(BLOGFILE.'/WRITE_OK').'</div>';
+          display_message(i18n_r(BLOGFILE.'/BLOG_SETTINGS').' '.i18n_r(BLOGFILE.'/WRITE_OK'), 'ok', true);
         } else {
-          echo '<div class="error"><strong>'.i18n_r(BLOGFILE.'/BLOG_SETTINGS').' '. i18n_r(BLOGFILE.'/DATA_FILE_ERROR').'</strong></div>';
+          display_message(i18n_r(BLOGFILE.'/BLOG_SETTINGS').' '. i18n_r(BLOGFILE.'/DATA_FILE_ERROR'), 'error');
         }
       }
     }
@@ -105,7 +105,7 @@ class Blog
     if(!file_exists(BLOGCUSTOMFIELDS)) {
       $custom_fields_file = BLOGPLUGINFOLDER.'inc/reserved_blog_custom_fields.xml';
       if(!copy($custom_fields_file, BLOGCUSTOMFIELDS)) {
-        echo '<div class="error"><strong>Catastrophic ERROR!!!</strong> - You are going to need to copy the contents of the below file, save it as a new document named "blog_custom_fields.xml" and then move it to the "'.GSDATAOTHERPATH.'" folder!<br/><strong>XML File To Copy:</strong> '.BLOGCUSTOMFIELDS.'</div>';
+        display_message('<strong>Catastrophic ERROR!!!</strong> - You are going to need to copy the contents of the below file, save it as a new document named "blog_custom_fields.xml" and then move it to the "'.GSDATAOTHERPATH.'" folder!<br/><strong>XML File To Copy:</strong> '.BLOGCUSTOMFIELDS, 'error');
       }
     }
     

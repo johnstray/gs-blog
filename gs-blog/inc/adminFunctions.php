@@ -26,9 +26,9 @@ function blog_admin_controller() {
 		if(isset($_GET['edit_category'])) {
 			$add_category = $Blog->saveCategory($_POST['new_category']);
 			if($add_category == true) {
-				echo '<div class="updated">'.i18n_r(BLOGFILE.'/CATEGORY_ADDED').'</div>';
+				display_message(i18n_r(BLOGFILE.'/CATEGORY_ADDED'), 'ok', true);
 			} else {
-				echo '<div class="error">'.i18n_r(BLOGFILE.'/CATEGORY_ERROR').'</div>';
+				display_message(i18n_r(BLOGFILE.'/CATEGORY_ERROR'), 'error');
 			}
 		}
 		if(isset($_GET['delete_category'])) {
@@ -44,16 +44,16 @@ function blog_admin_controller() {
 			$post_data['category'] = $_POST['post-category'];
 			$add_feed = $Blog->saveRSS($post_data);
 			if($add_feed == true) {
-				echo '<div class="updated">'.i18n_r(BLOGFILE.'/FEED_ADDED').'</div>';
+				display_message(i18n_r(BLOGFILE.'/FEED_ADDED'), 'ok', true);
 			} else {
-				echo '<div class="error">'.i18n_r(BLOGFILE.'/FEED_ERROR').'</div>';
+				display_message(i18n_r(BLOGFILE.'/FEED_ERROR'), 'error');
 			}
 		} elseif(isset($_GET['delete_rss'])) {
 			$delete_feed = $Blog->deleteRSS($_GET['delete_rss']);
 			if($delete_feed == true) {
-				echo '<div class="updated">'.i18n_r(BLOGFILE.'/FEED_DELETED').'</div>';
+				display_message(i18n_r(BLOGFILE.'/FEED_DELETED'), 'ok', true);
 			} else {
-				echo '<div class="error">'.i18n_r(BLOGFILE.'/FEED_DELETE_ERROR').'</div>';
+				display_message(i18n_r(BLOGFILE.'/FEED_DELETE_ERROR'), 'error');
 			}
 		}
         #edit_rss
@@ -70,7 +70,7 @@ function blog_admin_controller() {
 		if(isset($_POST['save_custom_fields'])) {
 			$saveCustomFields = $CustomFields->saveCustomFields();
 			if($saveCustomFields) {
-				echo '<div class="updated">'.i18n_r(BLOGFILE.'/EDIT_OK').'</div>';
+				display_message(i18n_r(BLOGFILE.'/EDIT_OK'), 'ok', true);
 			}
 		}
 		show_custom_fields();
@@ -87,9 +87,9 @@ function blog_admin_controller() {
             $post_id = urldecode($_GET['delete_post']);
             $delete_post = $Blog->deletePost($post_id);
             if($delete_post == true) {
-                echo '<div class="updated">'.i18n_r(BLOGFILE.'/POST_DELETED').'</div>';
+                display_message(i18n_r(BLOGFILE.'/POST_DELETED'), 'ok', true);
             } else {
-                echo '<div class="error">'.i18n(BLOGFILE.'/POST_DELETE_ERROR').'</div>';
+               display_message(i18n(BLOGFILE.'/POST_DELETE_ERROR'), 'error');
             }
         }
         #show_posts_admin
@@ -124,10 +124,10 @@ function show_settings_admin() {
     }
     
     # Attempt to save the settings array to file.
-		if($Blog->saveSettings($updated_settings)) { // Success: Notify the user.
-      echo '<script>clearNotify();notifyOk(\''.i18n_r(BLOGFILE.'/SETTINGS_SAVE_OK').'\').popit().removeit();</script>';
+    if($Blog->saveSettings($updated_settings)) { // Success: Notify the user.
+      display_message(i18n_r(BLOGFILE.'/SETTINGS_SAVE_OK'), 'ok', true);
     } else { // Failed: Notify the user.
-      echo '<script>clearNotify();notifyError(\''.i18n_r(BLOGFILE.'/SETTINGS_SAVE_ERROR').'\').popit().removeit();</script>';
+      display_message(i18n_r(BLOGFILE.'/SETTINGS_SAVE_ERROR'), 'error');
     }
 	}
   
@@ -208,13 +208,11 @@ function savePost() {
 		$generateRSS = $Blog->generateRSSFeed();
     exec_action('chagedata-save'); // Added to allow for compatibility with other plugins
 		if($savePost != false) {
-			echo '<div class="updated">'.i18n_r(BLOGFILE.'/POST_ADDED').'</div>';
+			display_message(i18n_r(BLOGFILE.'/POST_ADDED'), 'ok', true);
 		} else {
-			echo '<div class="error">'.i18n_r(BLOGFILE.'/POST_ERROR').'</div>';
+			display_message(i18n_r(BLOGFILE.'/POST_ERROR'), 'error');
 		}
 	} else {
-		echo '<div class="error">'.i18n_r(BLOGFILE.'/BLOG_CREATE_EDIT_NO_TITLE');
-		echo ' <a href="javascript:history.go(-1)">'.i18n_r(BLOGFILE.'/BLOG_RETURN_TO_PREV_PAGE').'</a>';
-		echo '</div>';
+		display_message(i18n_r(BLOGFILE.'/BLOG_CREATE_EDIT_NO_TITLE').' <a href="javascript:history.go(-1)">'.i18n_r(BLOGFILE.'/BLOG_RETURN_TO_PREV_PAGE').'</a>', 'error');
 	}
 }

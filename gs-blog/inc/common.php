@@ -1,5 +1,5 @@
 <?php if(basename($_SERVER["SCRIPT_FILENAME"]) != "rss.php"){
-  if(!defined('IN_GS')){die('You cannot load this file directly!');}} // Security Check
+    if(!defined('IN_GS')){die('You cannot load this file directly!');}} // Security Check
 /**
  * @file: common.php
  * @package: GetSimple Blog [plugin]
@@ -15,9 +15,9 @@
  */
 $rootPath = $_SERVER['DOCUMENT_ROOT'];
 if(!function_exists('getXML')) {
-  require_once($rootPath.'/admin/inc/common.php');
-  function add_action(){}
-  function add_filter(){}
+    require_once($rootPath.'/admin/inc/common.php');
+    function add_action(){}
+    function add_filter(){}
 }
 
 /**-------------------------------------------------------------------------------------------------
@@ -44,9 +44,9 @@ require_once(BLOGPLUGINFOLDER.'class/Blog.php');
 # Include the remaining class files
 $classFiles = glob(BLOGPLUGINFOLDER.'class/*.php');
 foreach($classFiles as $classFile) {
-  if($classFile != BLOGPLUGINFOLDER.'class/Blog.php') {
-	  require_once($classFile);
-  }
+    if($classFile != BLOGPLUGINFOLDER.'class/Blog.php') {
+        require_once($classFile);
+    }
 }
 
 /**-------------------------------------------------------------------------------------------------
@@ -74,8 +74,8 @@ add_action('index-pretemplate', 'set_post_description'); // Place excerpt into m
  * @return void (void)
  */  
 function formatPostDate($date) {
-	$Blog = new Blog;
-	return $Blog->get_locale_date(strtotime($date), i18n_r(BLOGFILE.'/DATE_DISPLAY'));
+    $Blog = new Blog;
+    return $Blog->get_locale_date(strtotime($date), i18n_r(BLOGFILE.'/DATE_DISPLAY'));
 }
 
 /**-------------------------------------------------------------------------------------------------
@@ -85,11 +85,29 @@ function formatPostDate($date) {
  * @return void
  */  
 function includeRssFeed() {
-	global $SITEURL; // Declare GLOBAL variables
+    global $SITEURL; // Declare GLOBAL variables
 	$locationOfFeed = $SITEURL."rss.rss"; // Define location of the RSS file.
 	$blog = new Blog;	// Create instance of the BLOG class
 	$blogTitle = htmlspecialchars($blog->getSettingsData("rsstitle")); // Get the RSS feed title
 	echo '<link href="'.$locationOfFeed.'"
     rel="alternate" type="application/rss+xml" title="'.$blogTitle.'">'; // Echo out the <link>
 }
+
+/**-------------------------------------------------------------------------------------------------
+ * display_message()
+ * Displays a Success/Error message only on the backend
+ * 
+ * @return void
+ */
+function display_message($message = '???', $type = 'info', $close = false) {
+    if(is_frontend() == false) {
+        $removeit = ($close ? ".removeit()" : "");
+        $type = ucfirst($type);
+        if($close == false) {
+            $message = $message . ' <a href="#" onclick="clearNotify();" style="float:right;">'.i18n_r(BLOGFILE.'/CLOSE').'</a>';
+        }
+        echo "<script>notify".$type."('".$message."').popit()".$removeit.";</script>";
+    }
+}
+    
 
