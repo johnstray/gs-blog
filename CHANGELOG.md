@@ -1,7 +1,8 @@
 ### Version 3.4.4
 **Feature Enhancements:**
-- passing thru pages, links Previous Page / Next Page
-- passing from post to post, links Previous Post / Next Post
+- [#118] Previous / Next links in posts list pages
+- Previous / Next links in posts
+- 'Read more...' links in posts list
 
 ### Version 3.4.3
 **Feature Enhancements:**
