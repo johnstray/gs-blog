@@ -16,7 +16,7 @@ With this plugin, you can get your blog, create posts, sort your posts by catego
 - External Comments Support
 - Custom Fields
 
-This fork is evolved from an initial version developed by @mikehenken.
+This fork is evolved from an initial version developed by @mikehenken .
 
 ## Installation
 [Installation of GetSimple](https://www.youtube.com/embed/6JgG6_VI4DU) is required.
@@ -33,9 +33,9 @@ Once installed, click on the new "Blog" tab in the Admin panel. You will find us
 
 Website [Demo](http://dvdn.online.fr)
 
-### Contributions
+## Contributions
 Feel free to improve this plugin :)
 
-#### Recommendations for Pull-Requests
+### Recommendations for Pull-Requests
 - Your description must reference related issue (EG: "Part of #XX" or "Fixes #XX"). If an issue doesn't exist, [create one](https://github.com/johnstray/gs-blog/issues) and assign it to yourself with the relevant Milestone and Labels added.
 - All files uploaded must contain a blank line at the end of the file. This is good coding practice anyway.
