@@ -1,3 +1,8 @@
+### Version 3.4.4
+**Feature Enhancements:**
+- passing thru pages, links Previous Page / Next Page
+- passing from post to post, links Previous Post / Next Post
+
 ### Version 3.4.3
 **Feature Enhancements:**
 - [#095] A few minor imrovements to the RSS generator:
@@ -10,7 +15,7 @@
   - The search field is now shown by default when listing the results of a search. Allows use of the 'Cancel' button to clear a search.
   - When showing the results of a search and no posts were found, a new message is now displayed instead of the default no posts message.
   - Covnerted no posts message to use the `<h5>` tag instead of `<strong>`, added centre alignment and fixed missing closing tag. `<h4>` used for notice on no search results.
-  - The page navigation container box is now hidden when there are no posts on the page. 
+  - The page navigation container box is now hidden when there are no posts on the page.
   - Category Admin Page: Removed the uncecessary 'Or Cancel' button in the 'Add Category' box
   - Added unversal alignment layouts and properties for the search box on the posts admin page and the add category box on the category admin page.
 
@@ -166,7 +171,7 @@
 ### Version 3.2.2
 **Bug Fixes:**
 - Updated version number in `gs-blog.php`. Forgot to do this in the previous version. Updater will now show the correct results.
-- Fix PrettyURL setting on Settings admin page. Converted to radio buttons to handle the page separation in settings. 
+- Fix PrettyURL setting on Settings admin page. Converted to radio buttons to handle the page separation in settings.
 - Fixed link to show .htaccess example for PrettyURLs. FancyBox script was in the wrong place. It has been moved accordingly.
 - Fixed thumbnail as link to post. Link A tag was missing but has now been added again.
 
@@ -180,7 +185,7 @@
 - MagpieRSS will now use the GS cache instead of trying to create its own. This would fail because of permissions in the plugin dir.
 - Added Italian (it_IT) language file, thanks to Nicola Laviola (nikynik)
 - Fixed typos and a missing string in `en_US` and `it_IT` language files.
-- Fixed issue with RSS Auto-Importer creating blank posts when using content. 
+- Fixed issue with RSS Auto-Importer creating blank posts when using content.
 - Fixed author not showing in post.
 - Changed strings in en_US language file for descriptions on settings pages.
 - CKeditor Bug? Mentioned in the forums, but I couldn't reproduce it. Used given fix anyway.
@@ -262,7 +267,7 @@
   - Page Title fix function moved to external include file.
 - Require_once paths now reference `$thisfile` to make future updating easier.
 - Fixed some spelling errors in en_US language file.
- 
+
 ### Version 3.0 (Where I took over)
 **Front End UI Improvements:**
 - Page Title is now changed to either the Post's Title, Category Name, or Archive Date
@@ -278,6 +283,6 @@
 - Clicking on Cancel in the post editor will now take you back to the Posts Management page. Previously it would take you to a different plugin, or throw an error if that plugin wasn't installed.
 - Fixed Read More links on post excerpts. Previously the link was empty.
 - Fixed default values not showing in custom fields when creating or editing a post.
-- Removed `<ul>` tags from Archive functions to bring it in line with the rest of the plugin and the standard list format used in GetSimple. You now need to provide your own `<ul>` tags and apply attributes as needed. 
+- Removed `<ul>` tags from Archive functions to bring it in line with the rest of the plugin and the standard list format used in GetSimple. You now need to provide your own `<ul>` tags and apply attributes as needed.
 - Fixed improperly closed `<strong>` tags on Help admin page.
 - Fixed error `Trying to get property of non-object in frontEndFunctions.php on line 671`.
