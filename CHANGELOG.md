@@ -1,7 +1,7 @@
 ### Version 3.4.4
 **Feature Enhancements:**
-- [#118] Previous / Next links in posts list pages
-- Previous / Next links in posts
+- Previous / Next links in posts list pages
+- [#118] Previous / Next links in posts
 - 'Read more...' links in posts list
 
 ### Version 3.4.3
