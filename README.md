@@ -24,7 +24,7 @@ You can install this plugin to your GetSimple installation by following these si
 - Log in to your GetSimple administration panel.
 - Activate the plugin under the Plugins tab.
 
-### Useage
+### Usage
 Once installed, click on the new "Blog" tab in the Admin panel then click on "Help" in the side menu. Instructions for usage of this plugin can be found there.
 
 ### Rules of this Repository
