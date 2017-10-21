@@ -51,11 +51,8 @@ Acceptance of pull requests is at the descretion of the repository manager. All 
 
 ### Thanks
 I would like to give a big thanks and a shoutout to all those who have contributed to this project so far. Your work is greatly appreciated.
-- @nikynik [ Nicola Laviola ]
-- @jeckyl [ Tanguy JACQUET ]
-- @dvdn [ David Negrello ]
-- @f30d0r [ Feodor Rusanov ]
-- @HelgeSverre [ Helge Sverre Hessevik Liseth ]
+- Nicola Laviola [ @nikynik ], Tanguy JACQUET [ @jeckyl ], David Negrello [ @dvdn ],<br />
+  Feodor Rusanov [ @f30d0r ], Helge Sverre Hessevik Liseth [ @HelgeSverre ]
 - Plus: @madvik, @jEsuSdA, @gschintgen, @ferchosj, @Every0ne
 - GS Forums: Oleg06
 
