@@ -1,4 +1,4 @@
-### Version 3.5.0 ~ Beta
+## Version 3.5.0 ~ Beta
 **Feature Enhancements:**
 - [#006] Created a new Post Image uploader/selector
 - [#116] Dump Support for the old UserManagement plugin / Implement support for new GS-Users plugin
@@ -28,7 +28,7 @@
   - Allows searching for keyword in specific node, combining search and filter functions
   - Removed the now redundant filtering class method, but mapped it to search to allow backwards compatibility
 
-### Version 3.4.3 ~ Latest Stable
+## Version 3.4.3 ~ Latest Stable
 **Feature Enhancements:**
 - [#095] A few minor imrovements to the RSS generator:
   - `<description>` now respects the excerpt length setting.
@@ -58,7 +58,7 @@
 **Languages:**
 - [#099] Updates to the Russian language file thanks to f30d0r.
 
-### Version 3.4.2
+## Version 3.4.2
 **Back End (Admin) Changes:**
 - [#088] Added paging of posts list on Post Management page. Qty per page is determined by "# posts per page" blog setting.
 - [#088] Implemented Column width limiting on Post Management page; Prevents line-wrapping, making things a bit neater.
@@ -77,7 +77,7 @@
 **Code Changes:**
 - [#080] Even better date internationalisation on both the front end and the backend. Creating/editing a post will now accept any date format supported by `strtotime()`, including "today".
 
-### Version 3.4.1
+## Version 3.4.1
 **Bug Fixes:**
 - [#---] Some language files were missing some commas in the array. Added html entities for certain characters.
 - [#075] German and French language files were missing some commas in the array.
@@ -92,7 +92,7 @@
 **Front End UI Improvements**
 - [#074] Properly implemented post counts in categories. This was incomplete in the previous release. Rebuilt methods to make it more robust than originally planned.
 
-### Version 3.4.0
+## Version 3.4.0
 **Bug Fixes:**
 - [#068] Fixed string not translated in `generateRSSFeed()`
 - [#067] Fixed rss.php issues ... Finally...
@@ -126,7 +126,7 @@
 - [#061] Updated Russian (RU) language file with new strings and removed old strings.
 - [#062 - #066] Layout of language files changed so that they are much neater and easier to read.
 
-### Version 3.3.1
+## Version 3.3.1
 **Bug Fixes:**
 - [#039] Fixed runaway string on Help page
 - [#038] Fixed hard coded English string in Custom Fields management.
@@ -134,7 +134,7 @@
 - [#044] Fixed only 1 blog post showing on main frontend page
 - [#045] Fixed RSSBody generation method. Now uses create_excerpt function instead. HTML characters shouldn't show up in there now.
 
-### Version 3.3.0
+## Version 3.3.0
 **Back End (Admin) UI Improvements:**
 - [#003] Implemented selectable layout templates system
   - Re-wrote `show_settings_admin()` function from scratch.
@@ -170,7 +170,7 @@
 - [#024] Added new strings to Spanish es_ES language file.
 - [#041] New Polish pl_PL language file added.
 
-### Version 3.2.4
+## Version 3.2.4
 **Bug Fixes:**
 - Removed blank line at start of English en_US language file that caused headers to be sent early.
 - Fixed `undefined variable $data in frontEndFunctions.php on line 71`. Should have been $post.
@@ -181,7 +181,7 @@
 **Front End UI Improvements:**
 - Separator pipe ( | ) has been removed from the info line. If you really want it back, create a custom layout.
 
-### Version 3.2.3
+## Version 3.2.3
 **Bug Fixes:**
 - Posts with dates in the future are now hidden in all frontend areas (inc. Archives) but not in admin.
 - Date format in RSS feeds should now be standards compliant.
@@ -193,7 +193,7 @@
 - Fixed missing strings in Spanish es_ES language file.
 - Fixed missing strings in English en_US language file.
 
-### Version 3.2.2
+## Version 3.2.2
 **Bug Fixes:**
 - Updated version number in `gs-blog.php`. Forgot to do this in the previous version. Updater will now show the correct results.
 - Fix PrettyURL setting on Settings admin page. Converted to radio buttons to handle the page separation in settings. 
@@ -201,7 +201,7 @@
 - Fixed thumbnail as link to post. Link A tag was missing but has now been added again.
 
 
-### Version 3.2.1
+## Version 3.2.1
 **Security Fixes:**
 - Added check if defined 'IN_GS' to all php files. This prevents files being loaded directly, rather they need to be called from within GS.
 - Updated MagpieRSS from 0.7a to 0.72
@@ -216,7 +216,7 @@
 - CKeditor Bug? Mentioned in the forums, but I couldn't reproduce it. Used given fix anyway.
 - Removed outdated language files. As translators come on board, languages will be added.
 
-### Version 3.2.0
+## Version 3.2.0
 **Back End (Admin) UI Improvements:**
 - Split 'Blog Settings' page into 4 sections : Main, Customisation, Advertisement, Social.
 - Moved 'Create Post' link from side-bar to 'Manage Posts' page.
@@ -247,7 +247,7 @@
 - RSS Auto-Importer now has the ability to search for a `<content:encoded>` tag in rss files, and if it exists, will fill the post with that rather than the description.
 - Fixed date localization on Windows based systems.
 
-### Version 3.1.3
+## Version 3.1.3
 **Back End (Admin) UI Improvements:**
 - VersionCheck updated to include the ability to show What's New information on update page.
 
@@ -259,13 +259,13 @@
 - Update MagpieRSS to use `explode()` instead of the depreciated `split()`.
 - Fixed stupid syntax mistakes. I really shouldn't code whilst tired...
 
-### Version 3.1.2
+## Version 3.1.2
 **Bug Fixes:**
 - Fixed a URL in `manage_custom_feilds.php`
 - Fixed 2 URLs in the Primary Class File `blog.php`
 - String `'Directory Successfully Created'` changed to `'File Successfully Created'` for categories XML file in EN_us language file.
 
-### Version 3.1.1
+## Version 3.1.1
 **Back End (Admin) UI Improvements:**
 - Updated VersionCheck system to use PHP's version_compare() function instead of a simple < or >.
 - Added strings to EN_us language file for VersionCheck's admin page status table.
@@ -275,7 +275,7 @@
 - Fixed missing forward-slash for the variable `BLOGPLUGINFOLDER` in `common.php` that caused issues with missing include files and a file copy failure on initial setup.
 - Fixed URLs for buttons and links across the admin area.
 
-### Version 3.1
+## Version 3.1
 **Back End (Admin) UI Improvements:**
 - Added Version Checking system
   - Created Function
