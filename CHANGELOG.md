@@ -16,7 +16,8 @@
 - [#109] Another minor bugfix to the Missing Settings Checek
 - [#117] The list of tags below a post will now be hidden when no tags are attached to a post.
 - [#122] `listPosts` class method returned filenames with a double slash
-- [#125] Unpublished posts (dated in the future) could not be viewed when accessed directly for previewing. 
+- [#125] Unpublished posts (dated in the future) could not be viewed when accessed directly for previewing.
+- [#131] Prevent trailing comma from showing at the end of the list of tags.
 
 **Core Code Changes**
 - [#110] Significant improovements to the search class method to also include filtering.

@@ -79,7 +79,8 @@
   <p class="blog_tags">
     <b><?php i18n(BLOGFILE.'/TAGS'); ?> :</b>
     <?php foreach ($p['tags'] as $tag) { ?>
-      <a href="<?php echo $p['tagsurl'].$tag; ?>"><?php echo $tag; ?></a>,&nbsp;
+      <a href="<?php echo $p['tagsurl'].$tag; ?>"><?php echo $tag; ?></a>
+      <?php if(end($p['tags']) !== $tag){echo ', &nbsp;';} // Comma if not the last element ?>
     <?php } ?>
   </p>
   <?php } ?>
