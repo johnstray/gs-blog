@@ -33,7 +33,5 @@ Everyone is welcome to make suggestions on how this plugin can be improved by ei
     // Note the spacing around brackets.
     // Curly braces should remain on the same line as the 'if' or 'else' statements.
     ```
-
-Changes that are cosmetic in nature and don't add anything substantial to the stability or functionality of the project will generally not be accepted.
-
-Acceptance of pull requests is at the descretion of the repository manager. All contributions to this repositiory will be appropriatly credited where possible.
+- Changes that are cosmetic in nature and don't add anything substantial to the stability or functionality of the project will generally not be accepted.
+- Acceptance of pull requests is at the descretion of the repository manager. All contributions to this repositiory will be appropriatly credited where possible.
