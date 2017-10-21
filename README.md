@@ -48,3 +48,14 @@ Everyone is welcome to make suggestions on how this plugin can be improved by ei
     ```
 
 Acceptance of pull requests is at the descretion of the repository manager. All contributions to this repositiory will be appropriatly credited where possible.
+
+### Thanks
+I would like to give a big thanks and a shoutout to all those who have contributed to this project so far. Your work is greatly appreciated.
+- @nikynik [ Nicola Laviola ]
+- @jeckyl [ Tanguy JACQUET ]
+- @dvdn [ David Negrello ]
+- @f30d0r [ Feodor Rusanov ]
+- @HelgeSverre [ Helge Sverre Hessevik Liseth ]
+- Plus: @madvik, @jEsuSdA, @gschintgen, @ferchosj, @Every0ne
+- GS Forums: Oleg06
+
