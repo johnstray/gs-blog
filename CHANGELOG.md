@@ -21,6 +21,7 @@
 - [#122] `listPosts` class method returned filenames with a double slash
 - [#125] Unpublished posts (dated in the future) could not be viewed when accessed directly for previewing.
 - [#131] Prevent trailing comma from showing at the end of the list of tags.
+- [#132] Fix PHP parse errors for improper method of accessing array element.
 
 **Core Code Changes**
 - [#110] Significant improovements to the search class method to also include filtering.
