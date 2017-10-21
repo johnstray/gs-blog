@@ -19,7 +19,7 @@ Everyone is welcome to make suggestions on how this plugin can be improved by ei
 ## Pull Request Guidelines.
 - Make sure that your fork is up to date with the master first. This helps to prevent conflicts from occuring. A pull request cannot be accepted if there is a conflict.
 - All commits must reference a related issue in the comment. For example, "Part of #xx" or "Fixes #xx". If a related issue does not exist, please first create one.
-- Code should follow common practises and the standards as set out in this [GetSimple Wiki](http://get-simple.info/wiki/getsimple_coding) article. This also includes:
+- Code should follow common practises and the standards as set out in this [GetSimple Wiki](http://get-simple.info/wiki/getsimple_coding) article. This includes:
   - Indenting of code should consist of 4 spaces, never tabs.
   - Each file should contain an empty line at the end.
   - To make it easier for others to read and understand the code, it is recomended that you space out the code a bit more more. An example is provided below:
