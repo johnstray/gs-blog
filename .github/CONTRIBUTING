@@ -1,1 +1,29 @@
+## Contributions
+Everyone is welcome to make suggestions on how this plugin can be improved by either submitting an issue or a pull-requests.
 
+#### When making pull requests, there are a few simple rules that should be followed.
+- Make sure that your fork is up to date with the master first. This helps to prevent conflicts from occuring. A pull request cannot be accepted if there is a conflict.
+- All commits must reference a related issue in the comment. For example, "Part of #xx" or "Fixes #xx". If a related issue does not exist, please first create one.
+- Code should follow common practises and the standards as set out in this [GetSimple Wiki] (http://get-simple.info/wiki/getsimple_coding) article. This also includes:
+  - Indenting of code should consist of 4 spaces, never tabs.
+  - Each file should contain an empty line at the end.
+  - To make it easier for others to read and understand the code, it is recomended that you space out the code a bit more more. An example is provided below:
+    ```php
+    if ( exampleFunction( $variable ) ) {
+      $exploded = explode( $variable );
+    } else {
+      $imploded = implode( $variable );
+    }
+    
+    // Note the spacing around brackets.
+    // Curly braces should remain on the same line as the 'if' or 'else' statements.
+    ```
+
+Acceptance of pull requests is at the descretion of the repository manager. All contributions to this repositiory will be appropriatly credited where possible.
+
+### Thanks
+I would like to give a big thanks and a shoutout to all those who have contributed to this project so far. Your work is greatly appreciated.
+- Nicola Laviola [ @nikynik ], Tanguy JACQUET [ @jeckyl ], David Negrello [ @dvdn ],<br />
+  Feodor Rusanov [ @f30d0r ], Helge Sverre Hessevik Liseth [ @HelgeSverre ]
+- Plus: @madvik, @jEsuSdA, @gschintgen, @ferchosj, @Every0ne
+- GS Forums: Oleg06
