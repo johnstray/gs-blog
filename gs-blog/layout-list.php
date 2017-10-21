@@ -49,6 +49,8 @@
   -->
   <div class="blog_post_content">
     <?php echo $p['content']; ?>
+    <!-- Read more link - Points to full post. Comment the line out if you don't want this. -->
+    <a href="<?php echo $p['posturl']; ?>" class="blog_read_more"> ... <?php i18n(BLOGFILE.'/READ_MORE'); ?></a>
   </div>
   
   <!-- Post tags

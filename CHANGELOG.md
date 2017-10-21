@@ -12,6 +12,9 @@
 **Back End (Admin) Changes:**
 - [#128] Created a more uniform method of displaying success/error messages that prevents displaying on the frontend.
 
+**Frontend UI Improvements:**
+- [#085] Added read more link to layout-list.php file.
+
 **Bug Fixes:**
 - [#109] Another minor bugfix to the Missing Settings Checek
 - [#117] The list of tags below a post will now be hidden when no tags are attached to a post.
