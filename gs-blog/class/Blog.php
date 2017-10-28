@@ -414,8 +414,8 @@ class Blog
     */
     public function updateCategory( $before, $after )
     {
-        if ( this->deleteCategory( $before ) ) {
-            if ( this->saveCategory( $after ) ) {
+        if ( $this->deleteCategory( $before ) ) {
+            if ( $this->saveCategory( $after ) ) {
                 
                 $all_posts = $this->listPosts();
                 $error = false;
@@ -713,7 +713,7 @@ class Blog
 	{
 		$keywords = @explode( ' ', $keyphrase );
 		$posts = $this->listPosts();
-        $filters = array('title', 'content', 'category' 'author', 'date', 'tags');
+        $filters = array('title', 'content', 'category', 'author', 'date', 'tags');
 		foreach ( $keywords as $keyword )
 		{
 			$match = array();
