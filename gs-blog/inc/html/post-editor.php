@@ -44,7 +44,7 @@ else
 		</a>
 		<div class="clear"></div>
 	</div>
-	<form class="largeform" action="load.php?id=<?php echo BLOGFILE; ?>&save_post" method="post" accept-charset="utf-8">
+	<form class="largeform" action="load.php?id=<?php echo BLOGFILE; ?>&save_post" method="post" accept-charset="utf-8" id="post-editor-form">
 	<?php if($post_id != null) { echo "<p><input name=\"post-current_slug\" type=\"hidden\" value=\"$blog_data->slug\" /></p>"; } ?>
 	<div id="metadata_window" style="display:none;text-align:left;">
 		<?php displayCustomFields(); ?>
@@ -135,8 +135,13 @@ else
 			}
     ?>
 	</form>
-	<script>
-	  $(document).ready(function(){
-	    $("#post-title").focus();
-	  });
+    <script>
+        $(document).ready(function(){
+            $("#post-title").focus();
+            /* Add 'Save Post' button to sidebar */
+            $("#sidebar .snav").after('<p id="js_submit_line"><input id="page-submit" name="post" type="submit" class="submit" value="<?php i18n(BLOGFILE.'/SAVE_POST'); ?>" /></p>');
+            $("#page-submit").on('click',function(){
+                $("#post-editor-form").submit();
+            });
+	    });
 	</script>

@@ -11,6 +11,7 @@
 
 **Back End (Admin) Changes:**
 - [#128] Created a more uniform method of displaying success/error messages that prevents displaying on the frontend.
+- [#134] Added 'Save Post' button to Post Editor page.
 
 **Frontend UI Improvements:**
 - [#085] Added read more link to layout-list.php file.
