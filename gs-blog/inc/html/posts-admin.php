@@ -2,12 +2,12 @@
   <div class="edit-nav">
     <p class="text 1">
       <a href="load.php?id=<?php echo BLOGFILE; ?>&create_post"><?php i18n(BLOGFILE.'/NEW_POST_BUTTON'); ?></a>
-      <?php if(!empty($all_posts) && !isset($_GET['search'])) { ?><a href="#" id="metadata_toggle"><?php i18n(BLOGFILE.'/FILTER_POSTS'); ?></a><?php } ?>
-      <?php if(isset($_GET['search'])) { ?><a href="load.php?id=<?php echo BLOGFILE; ?>"><?php i18n(BLOGFILE.'/CLEAR_FILTERS'); ?></a><?php } ?>
+      <?php if(!empty($all_posts) && !isset($_GET['filter'])) { ?><a href="#" id="metadata_toggle"><?php i18n(BLOGFILE.'/FILTER_POSTS'); ?></a><?php } ?>
+      <?php if(isset($_GET['filter'])) { ?><a href="load.php?id=<?php echo BLOGFILE; ?>"><?php i18n(BLOGFILE.'/CLEAR_FILTERS'); ?></a><?php } ?>
     </p>
     <div class="clear"></div>
   </div>
-  <p class="text 2"><?php i18n(BLOGFILE.'/MANAGE_POSTS_DESC'); ?></p>
+  <!--<p class="text 2"><?php i18n(BLOGFILE.'/MANAGE_POSTS_DESC'); ?></p>-->
   <style>#metadata_window p {margin: 0 0 10px 0;}</style>
   <?php $search_display = (isset($_GET['search'])) ? 'block' : 'none'; ?>
   <div id="metadata_window" style="display:<?php echo $search_display; ?>;text-align:left;padding:10px 15px;">
@@ -29,7 +29,7 @@
     <div class="clear"></div>
   </div>
   <?php
-  if (isset($_GET['search'])) {
+  if (isset($_GET['search']) && empty($all_posts)) {
     echo '<h4 style="text-align:center;font-weight:bold;margin-bottom:15px;">'.i18n_r(BLOGFILE.'/NO_POSTS_MATCH_SEARCH').'<h4>';
   } elseif (empty($all_posts)) {
 		echo '<h5 style="text-align:center;">'.i18n_r(BLOGFILE.'/NO_POSTS').' <a href="load.php?id='.BLOGFILE.'&create_post">'.i18n_r(BLOGFILE.'/CLICK_TO_CREATE').'</a>.</h5>';
@@ -58,7 +58,7 @@
 		echo '</tbody></table>';
 	} 
   
-  if(!empty($all_posts)) {
+  if(count($all_posts) >= (int) $Blog->getSettingsData("postperpage")) {
   
   ?>
   <div id="metadata_window" style="margin:0;padding:5px;">

@@ -45,7 +45,7 @@
         <tr>
             <td class="cat_name">
         <?php echo $category; ?> <span>[
-        <a href="load.php?id=<?php echo BLOGFILE; ?>&manage&filter=category&filterval=<?php echo $category; ?>"><?php echo $count; ?> posts</a> ]</span>
+        <a href="load.php?id=<?php echo BLOGFILE; ?>&manage&filter=category&search=<?php echo $category; ?>"><?php echo $count; ?> posts</a> ]</span>
       </td>
             <td class="edit"><a href="#" title="Edit Category: <?php echo $category; ?>" class="editButton" data-name="<?php echo $category; ?>"><i class="fa fa-pencil-square-o"></i></td>
       <td class="rss"><a href="<?php echo $Blog->get_blog_url('rss').'?filter=category&value='.$category; ?>" title="RSS Feed: <?php echo $category; ?>" target="_blank"><i class="fa fa-rss"></i></a></td>
