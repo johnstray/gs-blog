@@ -22,13 +22,14 @@
 - [#125] Unpublished posts (dated in the future) could not be viewed when accessed directly for previewing.
 - [#131] Prevent trailing comma from showing at the end of the list of tags.
 - [#132] Fix PHP parse errors for improper method of accessing array element.
+- [#119] Fixed php parse error: missing '$' on lines 417 and 418 in Blog.php
+- [#119] Fixed php parse error: missing ',' on line 716 in Blog.php
+- [#133] CKEditor trigered twice on Post Editor page. Removed `include()` of ckeditor.php in adminFunctions.php.
 
 **Core Code Changes**
 - [#110] Significant improovements to the search class method to also include filtering.
   - Allows searching for keyword in specific node, combining search and filter functions
   - Removed the now redundant filtering class method, but mapped it to search to allow backwards compatibility
-- [#119] Fixed php parse error: missing '$' on lines 417 and 418 in Blog.php
-- [#119] Fixed php parse error: missing ',' on line 716 in Blog.php
 
 ## Version 3.4.3 ~ Latest Stable
 **Feature Enhancements:**

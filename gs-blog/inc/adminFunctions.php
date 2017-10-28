@@ -157,7 +157,10 @@ function editPost($post_id=null) {
 		$blog_data = $Blog->getXMLnodes();
 	}
 	require_once('html/post-editor.php');
-	include(BLOGPLUGINFOLDER.'ckeditor.php');
+	
+	# Removing this include as it was causeing CKEditor to load twice against 'post-content' textbox.
+	# Not sure why this was here to begin with as Custom Fields manages the setup of CKEditor.
+	# include(BLOGPLUGINFOLDER.'ckeditor.php');
 }
 
 /**-------------------------------------------------------------------------------------------------
