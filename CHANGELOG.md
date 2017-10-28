@@ -27,6 +27,8 @@
 - [#110] Significant improovements to the search class method to also include filtering.
   - Allows searching for keyword in specific node, combining search and filter functions
   - Removed the now redundant filtering class method, but mapped it to search to allow backwards compatibility
+- [#119] Fixed php parse error: missing '$' on lines 417 and 418 in Blog.php
+- [#119] Fixed php parse error: missing ',' on line 716 in Blog.php
 
 ## Version 3.4.3 ~ Latest Stable
 **Feature Enhancements:**
