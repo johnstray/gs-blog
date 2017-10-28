@@ -90,6 +90,11 @@ $i18n = array(
   'SETTINGS_CATEGORY_DESC'    =>  'Añadir o Editar Categorías a las que asignar sus posts.',
   'CATEGORY_NAME'             =>  'Nombre de la Categoría',
   'CATEGORY_RSS_FEED'         =>  'Categoría RSS',
+  // New in version 3.5.0 - Please translate
+  'CATEGORY_UPDATED'          =>  'Se actualizó correctamente el nombre de la Categoría!',
+  'CATEGORY_UPDATE_ERROR'     =>  'El nombre de la categoría no se pudo actualizar!',
+  'CATEGORY_DELETED'          =>  'Eliminó la categoría con éxito Esto no ha eliminado las publicaciones en esta categoría.',
+  'CATEGORY_DELETE_ERROR'     =>  'La categoría no se pudo eliminar!',
   
   # 'RSS Auto-Importer' Strings
   'FEED_ADDED'                =>  'Entrada RSS Exitosamente Añadida!',

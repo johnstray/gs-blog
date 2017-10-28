@@ -23,7 +23,7 @@ function blog_admin_controller() {
 	} elseif(isset($_GET['create_post'])) {
 		editPost();
 	} elseif(isset($_GET['categories'])) {
-		if(isset($_GET['edit_category'])) {
+		if(isset($_GET['add_category'])) {
 			$add_category = $Blog->saveCategory($_POST['new_category']);
 			if($add_category == true) {
 				display_message(i18n_r(BLOGFILE.'/CATEGORY_ADDED'), 'ok', true);
@@ -32,8 +32,21 @@ function blog_admin_controller() {
 			}
 		}
 		if(isset($_GET['delete_category'])) {
-			$Blog->deleteCategory($_GET['delete_category']);
+			$delete_category = $Blog->deleteCategory($_GET['delete_category']);
+            if($delete_category == true) {
+                display_message(i18n_r(BLOGFILE.'/CATEGORY_DELETED'), 'ok', true);
+            } else {
+                display_message(i18n_r(BLOGFILE.'/CATEGORY_DELETE_ERROR'), 'error');
+            }
 		}
+        if ( isset( $_GET['edit_category'] ) ) {
+            $edit_category = $Blog->updateCategory( $_POST['previousName'], $_POST['newName'] );
+            if ( $edit_category == true ) {
+                display_message( i18n_r( BLOGFILE . '/CATEGORY_UPDATED' ) );
+            } else {
+                display_message( i18n_r( BLOGFILE . '/CATEGORY_UPDATE_ERROR' ) );
+            }
+        }
     #edit_categories
 		$category_file = getXML(BLOGCATEGORYFILE);
     require_once('html/category-management.php');

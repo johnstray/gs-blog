@@ -90,6 +90,11 @@ $i18n = array(
   'SETTINGS_CATEGORY_DESC'    =>  'Kategorien für Blog-Artikel hinzufügen oder bearbeiten. Dies ermöglicht es, die Artikel zu sortieren und nur die anzuzeigen, die einer bestimmten Kategorie angehören.',
   'CATEGORY_NAME'             =>  'Kategorie-Name',
   'CATEGORY_RSS_FEED'         =>  'RSS-Feed der Kategorie',
+  // New in version 3.5.0 - Please translate
+  'CATEGORY_UPDATED'          =>  'Der Name der Kategorie wurde erfolgreich aktualisiert.',
+  'CATEGORY_UPDATE_ERROR'     =>  'Der Kategoriename konnte nicht aktualisiert werden.',
+  'CATEGORY_DELETED'          =>  'Die Kategorie wurde erfolgreich entfernt. Dies hat die Beiträge in dieser Kategorie nicht gelöscht.',
+  'CATEGORY_DELETE_ERROR'     =>  'Kategorie konnte nicht entfernt werden!',
   
   # 'RSS Auto-Importer' Strings
   'FEED_ADDED'                =>  'Der RSS-Feed wurde erfolgrreich hinzugefügt.',

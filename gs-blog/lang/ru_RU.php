@@ -90,6 +90,11 @@ $i18n = array(
   'SETTINGS_CATEGORY_DESC'    =>  'Создание новых и изменение уже существующих категорий. Категории помогут вам отсортировать публикации на различные тематики.',
   'CATEGORY_NAME'             =>  'Название категории',
   'CATEGORY_RSS_FEED'         =>  'RSS канал категории',
+  // New in version 3.5.0 - Please translate
+  'CATEGORY_UPDATED'          =>  'Успешно обновлено название категории!',
+  'CATEGORY_UPDATE_ERROR'     =>  'Название категории не обновлялось!',
+  'CATEGORY_DELETED'          =>  'Успешно удалили категорию! Это не удалило сообщения в этой категории.',
+  'CATEGORY_DELETE_ERROR'     =>  'Категорию нельзя удалить!',
 
   # 'RSS Auto-Importer' Strings
   'FEED_ADDED'                =>  'RSS канал успешно добавлен.',

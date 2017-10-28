@@ -50,5 +50,7 @@ queue_style ('font_awesome', GSBACK );
 # Register/Queue Scripts
 register_script('table_paging', $SITEURL.'plugins/'.BLOGFILE.'/js/paging.js', '1.0', FALSE);
 register_script('image_upload', $SITEURL.'plugins/'.BLOGFILE.'/js/image_upload.js', '1.0.0', TRUE);
+register_script('stupidTable', $SITEURL.'plugins/'.BLOGFILE.'/js/stupidTable.js', '1.0.2', FALSE);
 queue_script('table_paging', GSBACK);
 queue_script('image_upload', GSBACK);
+queue_script('stupidTable', GSBACK);

@@ -84,12 +84,17 @@ $i18n = array(
   
   # 'Category Management' Strings
   'CATEGORY_ADDED'            =>  'Catégorie créée avec succès.',
-  'CATEGORY_ERROR'            =>  'La catégorie n&apos;a pu être enregistrée&nbsp;!',
+  'CATEGORY_ERROR'            =>  'La catégorie n&apos;a pu être enregistrée!',
   'MANAGE_CATEGORIES'         =>  'Gérer les catégories',
   'ADD_CATEGORY'              =>  'Ajouter une catégorie',
   'SETTINGS_CATEGORY_DESC'    =>  'Ajouter ou modifier des catégories pour organiser vos articles. Ceci permet de trier vos articles et de n&apos;afficher que ceux appartenant à une catégorie donnée.',
   'CATEGORY_NAME'             =>  'Nom de la catégorie',
   'CATEGORY_RSS_FEED'         =>  'Flux RSS de la catégorie',
+  // New in version 3.5.0 - Please translate
+  'CATEGORY_UPDATED'          =>  'Mis à jour avec succès le nom de la catégorie!',
+  'CATEGORY_UPDATE_ERROR'     =>  'Le nom de la catégorie n&apos;a pas pu être mis à jour!',
+  'CATEGORY_DELETED'          =>  'Suppression réussie de la catégorie! Cela n&apos;a pas supprimé les messages de cette catégorie.',
+  'CATEGORY_DELETE_ERROR'     =>  'La catégorie n&apos;a pas pu être supprimée!',
   
   # 'RSS Auto-Importer' Strings
   'FEED_ADDED'                =>  'Flux RSS ajouté avec succès.',

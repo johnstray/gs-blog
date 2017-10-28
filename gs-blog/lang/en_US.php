@@ -97,6 +97,11 @@ $i18n = array(
   'SETTINGS_CATEGORY_DESC'    =>  'Add or Edit categories to assign your posts to. This will enable you to sort your posts by displaying only those in a given category.',
   'CATEGORY_NAME'             =>  'Category Name',
   'CATEGORY_RSS_FEED'         =>  'Category RSS Feed',
+  // New in version 3.5.0 - Please translate
+  'CATEGORY_UPDATED'          =>  'Successfully updated the Category name!',
+  'CATEGORY_UPDATE_ERROR'     =>  'Category Name could not be updated!',
+  'CATEGORY_DELETED'          =>  'Successfully removed the Category! This has not deleted the posts in this category.',
+  'CATEGORY_DELETE_ERROR'     =>  'Category could not be removed!',
   
   # 'RSS Auto-Importer' Strings
   'FEED_ADDED'                =>  'Successfully added RSS Feed!',

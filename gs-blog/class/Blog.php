@@ -202,6 +202,18 @@ class Blog
 		return $post;
 	}
 
+    public function getPostDataArray($post_id) {
+        $post = getXML($post_id);
+        $post = json_decode(json_encode($post), true);
+        foreach ($post as $key => $value) {
+            if(empty($value)) {
+                $post[$key] = (string) '';
+            }
+        }
+        $post['current_slug'] = $post['slug']; # Adding this line prevents php warnings if this data is used with savePost().
+        return $post;
+    }
+
 	/** 
 	* Saves a post submitted from the admin panel
 	* 
@@ -405,33 +417,41 @@ class Blog
 		}
 	}
 
-    /**
-    * Update category
+   /**
+    * Updates the category name for each post contained in the modified category
     *
-    * @param $before Category's current name
-    * @param $after Category's new name
+    * @param $old_category The old category name to search for
+    * @param $new_category The new category name to replace without
     * @return bool
     */
-    public function updateCategory( $before, $after )
+    public function updateCategory($old_category, $new_category)
     {
-        if ( $this->deleteCategory( $before ) ) {
-            if ( $this->saveCategory( $after ) ) {
-                
-                $all_posts = $this->listPosts();
-                $error = false;
-                
-                foreach ( $all_posts as $post )
-                {
-                    $postdata = $this->getPostData( $post );
-                    $postdata['category'] = $after;
-                    if ( !$this->savePost( $postdata ) ) { $error = true; break; }
+        if(!$this->deleteCategory($old_category)) {return false;}
+        if(!$this->saveCategory($new_category)) {return false;}
+   
+        $all_posts = $this->listPosts(true);
+        $filtered_posts = array();
+   
+        if($all_posts !== false) {
+            foreach($all_posts as $post) {
+                if($post['category'] == $old_category) {
+                    $filtered_posts[] = $post['filename'];
                 }
-                
-                if ( $error ) { return false; } else { return true; }
-                
-            } else { return false; }
-        } else { return false; }
-    }
+            }
+        }
+   
+        if(count($filtered_posts) > 0) {
+            foreach($filtered_posts as $post) {
+                $post_data = $this->getPostDataArray($post);
+                $post_data['category'] = $new_category;
+                $post_data['current_slug'] = $post_data['slug'];
+                if($this->savePost($post_data)) {
+                    $updateOk = true;
+                } else {$updateOk = false;}
+            }
+            return $updateOk;
+        } else {return true;}
+     }
 
 	/** 
 	* Saves RSS feed added or edited

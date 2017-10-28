@@ -11,7 +11,7 @@ $i18n = array(
 	# Language Configuration
 	'LANGUAGE_CODE'             =>  array('pl_PL','pl','plk','polish'), // Cross-Platform posibilities for `setlocal()`
 	'DATE_FORMAT'               =>  '%c',
-  'DATE_DISPLAY'              =>  '%B %e, %Y',
+    'DATE_DISPLAY'              =>  '%B %e, %Y',
 	'DATE_ARCHIVE'              =>  'Y.m',
 
 	# Plugin Information
@@ -71,16 +71,16 @@ $i18n = array(
 	'NEW_POST_BUTTON'           =>  'Utwórz wpis',
 	'MANAGE_POSTS_DESC'         =>  'Twórz nowe wpisy lub edytuj istniejące. Tabela poniżej przedstawia istniejące obecnie wpisy.',
 	'NO_POSTS'                  =>  'Nie ma jeszcze żadnych wpisów.',
-  'NO_POSTS_MATCH_SEARCH'     =>  'Nie ma postów do wyświetlenia, które pasują do kryteriów wyszukiwania! Może spróbować czegoś innego?',
+    'NO_POSTS_MATCH_SEARCH'     =>  'Nie ma postów do wyświetlenia, które pasują do kryteriów wyszukiwania! Może spróbować czegoś innego?',
 	'CLICK_TO_CREATE'           =>  'Kliknij tu, by utworzyć pierwszy',
 	'PAGE_TITLE'                =>  'Tytuł strony',
     // New in version 3.5.0 - Please translate
-  'CLICK_TO_SELECT_IMAGE'     =>  'Kliknij tutaj, aby wybrać obraz',
-  'SELECTED_IMAGE_FILE'       =>  'Wybrany plik obrazu',
-  'SELECTED_IMAGE_FILE_HINT'  =>  'Nazwa pliku jest w stosunku do &apos;data/uploads/&apos;',
-  'SELECT_FILE_BUTTON'        =>  'Wybierz',
-  'UPLOAD_FILE_BUTTON'        =>  'Przekazać',
-  'IMAGE_ALTERNATE_TEXT'      =>  'Obraz tekst alternatywny',
+    'CLICK_TO_SELECT_IMAGE'     =>  'Kliknij tutaj, aby wybrać obraz',
+    'SELECTED_IMAGE_FILE'       =>  'Wybrany plik obrazu',
+    'SELECTED_IMAGE_FILE_HINT'  =>  'Nazwa pliku jest w stosunku do &apos;data/uploads/&apos;',
+    'SELECT_FILE_BUTTON'        =>  'Wybierz',
+    'UPLOAD_FILE_BUTTON'        =>  'Przekazać',
+    'IMAGE_ALTERNATE_TEXT'      =>  'Obraz tekst alternatywny',
 
 	# 'Category Management' Strings
 	'CATEGORY_ADDED'            =>  'Kategoria dodana',
@@ -90,6 +90,11 @@ $i18n = array(
 	'SETTINGS_CATEGORY_DESC'    =>  'Dodawaj lub edytuj kategorie do których można będzie dołączać wpisy. Dzięki temu możliwe będzie sortowanie wpisów na podstawie kategorii i wyświetlanie wpisów należących tylko do określonej kategorii.',
 	'CATEGORY_NAME'             =>  'Nazwa kategorii',
 	'CATEGORY_RSS_FEED'         =>  'Kanał RSS kategorii',
+	// New in version 3.5.0 - Please translate
+    'CATEGORY_UPDATED'          =>  'Vellykket oppdatert kategorinavnet!',
+    'CATEGORY_UPDATE_ERROR'     =>  'Nie udało się zaktualizować nazwy kategorii!',
+    'CATEGORY_DELETED'          =>  'Pomyślnie usunięto kategorię! To nie skasowało wpisów w tej kategorii.',
+    'CATEGORY_DELETE_ERROR'     =>  'Nie można usunąć kategorii!',
 
 	# 'RSS Auto-Importer' Strings
 	'FEED_ADDED'                =>  'Dodano kanał RSS',
@@ -112,8 +117,8 @@ $i18n = array(
 	'SETTINGS_RSS_DESC'         =>  'Dostosuj ustawienia autoimportera RSS. Autoimporter może importować pełną treść kanałów lub podsumowanie z linkami do oryginalnych artykułów.', // Modified string in v3.4.1 ('Summary' changed to 'Excerpt') [not yet re-translated]
 	'RSS_IMPORTER'              =>  'Włącz autoimporter RSS',
 	'RSS_CONTENT_DESCRIPTION'   =>  'Dołączaj treść RSS lub podsumowanie', // Modified string in v3.4.1 ('Summary' changed to 'Excerpt') [not yet re-translated]
-  'RSS_INCLUDE_CONTENT'       =>  'Full Content', // New String in 3.4.1
-  'RSS_INCLUDE_EXCERPT'       =>  'Create Excerpt', // New String in v3.4.1
+    'RSS_INCLUDE_CONTENT'       =>  'Pełna treść', // New String in 3.4.1
+    'RSS_INCLUDE_EXCERPT'       =>  'Utwórz fragment', // New String in v3.4.1
 	'RSS_TITLE'                 =>  'Tytuł kanału RSS',
 	'RSS_DESCRIPTION'           =>  'Opis kanału RSS',
 	'RSS_IMPORTER_PASS'         =>  'Hasło autoimportera (cokolwiek)',
@@ -143,8 +148,8 @@ $i18n = array(
 	'SAVE_SETTINGS'             =>  'Zapisz ustawienia',
 	'MAIN_SETTINGS_BUTTON'      =>  'Główne ustawienia',
     // New in version 3.5.0 - Please translate
-  'UPLOADER_PATH'             =>  'Image Uploader domyślną ścieżkę',
-  'UPLOADER_PATH_HINT'        =>  'Ścieżka domyślna uploader obrazu, w stosunku do&apos;data/uploads/&apos;',
+    'UPLOADER_PATH'             =>  'Image Uploader domyślną ścieżkę',
+    'UPLOADER_PATH_HINT'        =>  'Ścieżka domyślna uploader obrazu, w stosunku do&apos;data/uploads/&apos;',
 
 	# 'Help' Strings
 	'HELP'                      =>  'Pomoc',
@@ -194,7 +199,7 @@ $i18n = array(
 	'PREV_PAGE'                 =>  'poprzednia strona &rarr;',
 	'ARCHIVE_PRETITLE'          =>  'Archiwum bloga: ',
 	'CATEGORY_PRETITLE'         =>  'Kategoria bloga: ',
-  'READ_MORE'                 =>  'Czytaj więcej', // <-- New in 3.4.2
+    'READ_MORE'                 =>  'Czytaj więcej', // <-- New in 3.4.2
 
 	# Custom Fields Manager
 	'CUSTOM_FIELDS'             =>  'Dodatkowe pola',

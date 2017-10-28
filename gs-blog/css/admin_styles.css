@@ -1,6 +1,103 @@
-img.rss_feed {
-	margin-left:14px;
+.cat_name span {
+  font-size:10px !important;
+  vertical-align:top;
+  padding-left:5px;
 }
+.cat_name span a {
+  text-decoration:none !important;
+}
+.cat_name form .submit {
+  width:auto;
+  height:26px;
+  padding:3px 7px;
+  margin-left:-2px;
+  cursor:pointer;
+}
+.sortbutton {
+  padding: 2px 4px;
+  border:1px solid #333;
+  border-radius: 3px;
+  margin-left:5px;
+  font-size: 14px !important;
+}
+.sortbutton:hover {
+  background:#182227;
+  color:#AFC5CF;
+  cursor:pointer;
+}
+.wrapper table th {text-align:center;}
+.wrapper table th:first-child {text-align:left;}
+
+table td.rss, table td.edit {
+    width: 20px;
+    text-align: center;
+}
+
+table td.rss a, table td.edit a {
+    line-height: 16px;
+}
+.rss a:link,
+.rss a:visited {
+    color: #999 !important;
+    text-decoration: none !important;
+    padding: 1px;
+    display: block;
+    line-height: 16px;
+    font-size: 12px;
+    font-weight: normal;
+    -webkit-transition: all .02s ease-in-out;
+    -moz-transition: all .02s ease-in-out;
+    -o-transition: all .02s ease-in-out;
+    transition: all .02s ease-in-out;
+    font-style:normal;
+  border-radius:3px;
+}
+.rss a:hover {
+    background: #D9A236 !important;
+    color: #fff !important;
+    text-decoration: none !important;
+    padding: 1px;
+    line-height: 16px;
+    display: block;
+    font-size: 12px;
+    font-weight: normal;
+}
+.edit a:link,
+.edit a:visited {
+    color: #999 !important;
+    text-decoration: none !important;
+    padding: 1px;
+    display: block;
+    line-height: 16px;
+    font-size: 12px;
+    font-weight: normal;
+    -webkit-transition: all .02s ease-in-out;
+    -moz-transition: all .02s ease-in-out;
+    -o-transition: all .02s ease-in-out;
+    transition: all .02s ease-in-out;
+    font-style:normal;
+  border-radius:3px;
+}
+.edit a:hover {
+    background: #366CD9 !important;
+    color: #fff !important;
+    text-decoration: none !important;
+    padding: 1px;
+    line-height: 16px;
+    display: block;
+    font-size: 12px;
+    font-weight: normal;
+}
+
+.delete a:link, .delete a:visited,
+.rss a:link, .rss a:visited,
+.edit a:link, .edit a:visited {
+  font-size: 14px !important;
+}
+
+td.cat_edit{display:none;}
+
+
 .odd_meta {
 	float: left;
 	width: 48%;

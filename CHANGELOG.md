@@ -10,6 +10,13 @@
   - Action icon changed to now use the FontAwesome library of icons.
 
 **Back End (Admin) Changes:**
+- [#111] Enhancements to the Category Management Page
+  - Category names are now editable. Click the new edit button will reveal a text field for updating the name.
+  - Number of posts in category now shown next to category name
+  - Post quantity links back to post management page with a filter applied to only show posts from the click category.
+  - Filtering or sorting of Categories by name or popularity (# of posts) is now possible
+  - New category action icons using FontAwesome library.
+  - Page layout cleaned up to look much better and inline with the new styles.
 - [#128] Created a more uniform method of displaying success/error messages that prevents displaying on the frontend.
 - [#134] Added 'Save Post' button to Post Editor page.
 
@@ -28,7 +35,7 @@
 - [#133] CKEditor trigered twice on Post Editor page. Removed `include()` of ckeditor.php in adminFunctions.php.
 
 **Core Code Changes**
-- [#110] Significant improovements to the search class method to also include filtering.
+- [#110] Significant improvements to the search class method to also include filtering.
   - Allows searching for keyword in specific node, combining search and filter functions
   - Removed the now redundant filtering class method, but mapped it to search to allow backwards compatibility
 

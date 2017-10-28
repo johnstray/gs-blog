@@ -90,6 +90,11 @@ $i18n = array(
   'SETTINGS_CATEGORY_DESC'    =>  'Legg til eller Rediger kategorier for å legge innleggene dine i. Dette vil gjøre deg i stand til å sortere innleggene dine ved å vise bare de i en gitt kategori.',
   'CATEGORY_NAME'             =>  'Kategorinavn',
   'CATEGORY_RSS_FEED'         =>  'Kategori RSS Feed',
+  // New in version 3.5.0 - Please translate
+  'CATEGORY_UPDATED'          =>  'Vellykket oppdatert kategorinavnet!',
+  'CATEGORY_UPDATE_ERROR'     =>  'Kategori Navn kunne ikke oppdateres!',
+  'CATEGORY_DELETED'          =>  'Vellykket fjernet kategorien! Dette har ikke slettet innleggene i denne kategorien.',
+  'CATEGORY_DELETE_ERROR'     =>  'Kategori kunne ikke fjernes!',
 
   # 'RSS Auto-Importer' Strings
   'FEED_ADDED'                =>  'La til RSS Feed!',
