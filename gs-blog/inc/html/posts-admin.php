@@ -38,7 +38,7 @@
 		<table class="edittable highlight paginate" id="datatable">
 			<?php
             foreach($all_posts as $post_name) {
-                $post = $Blog->getPostData($post_name['filename']);
+                $post = $Blog->getPostData($post_name);
 			?>
 				<tr>
 					<td>
