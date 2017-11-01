@@ -1,5 +1,5 @@
 ## Language Files
-Language files are initally generated automatically using the `trtanslator.php` script on the command line, using the Google Translate API. They can then be edited by contributor to correct any translation inaccuracies. 
+Language files are initally generated automatically using the `translator.php` script on the command line, using the Google Translate API. They can then be edited by contributor to correct any translation inaccuracies. 
 
 When new strings are added with features, they are added only to the en\_US.php file, then the translator script is run again. The script will only append new strings to the existing files, and by doing so reserves the string already present and corrected, preventing the need to re-correct the strings each time.
 
