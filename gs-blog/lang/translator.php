@@ -38,7 +38,7 @@ foreach ($files as $file) {
             }
         }
         
-        $fp = fopen("new-".$file, 'w');
+        $fp = fopen($file, 'w');
         fwrite($fp,'<?php # '.substr($file,0,-4).' Language File for GetSimple Blog - Automatically generated with the Google Translate API'."\n\n");
         fwrite($fp,'if ( !defined( \'IN_GS\' ) ) { die( \'You cannot load this file directly!\' ); } // Security Check'."\n\n".'$i18n = array('."\n");
         foreach ($i18n as $key => $value) {

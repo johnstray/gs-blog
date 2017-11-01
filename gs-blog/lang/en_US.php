@@ -86,6 +86,8 @@ $i18n = array(
   'CLEAR_FILTERS'             =>  'Clear Filters',
   'POST_TITLE'                =>  'Post Title',
   'POST_AUTHOR'               =>  'Author&apos;s Name',
+  'POST_CONTENT'              =>  'Post Content',
+  'ALL_FIELDS'                =>  'All Fields',
   'PUBLISHED_DATE'            =>  'Published Date',
   'TAG'                       =>  'Tag',
   
