@@ -120,6 +120,7 @@ else
 	</div>
 
 		<?php displayCustomFields('main'); ?>
+  <div class="saveButtonZone">
 			<input name="post" type="submit" class="submit" value="<?php i18n(BLOGFILE.'/SAVE_POST'); ?>" />
 			&nbsp;&nbsp;<?php i18n(BLOGFILE.'/OR'); ?>&nbsp;&nbsp;
 			<a href="load.php?id=<?php echo BLOGFILE; ?>&cancel" class="cancel"><?php i18n(BLOGFILE.'/CANCEL'); ?></a>
@@ -134,6 +135,7 @@ else
 				<?php
 			}
     ?>
+    </div>
 	</form>
     <script>
         $(document).ready(function(){

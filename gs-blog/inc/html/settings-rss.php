@@ -15,7 +15,7 @@
   <div class="clear"></div>
 </div>
 <p class="text 2"><?php i18n(BLOGFILE.'/SETTINGS_RSS_DESC'); ?></p>
-<form class="largeform" action="load.php?id=<?php echo BLOGFILE; ?>&settings" method="post" accept-charset="utf-8">
+<form class="largeform" action="load.php?id=<?php echo BLOGFILE; ?>&settings=rss" method="post" accept-charset="utf-8">
   <div class="leftsec">
     <p>
       <label for="auto_importer"><?php i18n(BLOGFILE.'/RSS_IMPORTER'); ?>:</label>
@@ -51,8 +51,8 @@
   </div>
   <div class="clear"></div>
   <p><?php i18n(BLOGFILE.'/AUTO_IMPORTER_DESC'); ?></p>
-  <code><strong>lynx -dump <?php echo $SITEURL; ?>index.php?id=<?php echo $Blog->getSettingsData("blogurl"); ?>&import=<?php echo $Blog->getSettingsData("autoimporterpass"); ?> > /dev/null</strong></code>
-  <div style="margin-top:20px;">
+  <p><code><strong>lynx -dump <?php echo $SITEURL; ?>index.php?id=<?php echo $Blog->getSettingsData("blogurl"); ?>&import=<?php echo $Blog->getSettingsData("autoimporterpass"); ?> > /dev/null</strong></code></p>
+  <div class="saveButtonZone">
     <span><input class="submit" type="submit" name="blog_settings" value="<?php i18n(BLOGFILE.'/SAVE_SETTINGS'); ?>" /></span>
     &nbsp;&nbsp;<?php i18n(BLOGFILE.'/OR'); ?>&nbsp;&nbsp;
     <a href="load.php?id=<?php echo BLOGFILE; ?>&cancel" class="cancel"><?php i18n(BLOGFILE.'/CANCEL'); ?></a>

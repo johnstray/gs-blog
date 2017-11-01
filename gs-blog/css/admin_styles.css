@@ -1,8 +1,11 @@
+.saveButtonZone {
+    border-top: 1px solid #efefef;
+    padding-top: 20px;
+}
 .largeform.settings textarea {
     width:100%;
     height:55px;
 }
-
 .cat_name span {
   font-size:10px !important;
   vertical-align:top;

@@ -152,7 +152,7 @@ RewriteRule /?([A-Za-z0-9_-]+)/?$ index.php?id=$1 [QSA,L]
   echo '<p>'.i18n_r(BLOGFILE.'/BLOG_PRETTY_NOTICE').'.</p>';
  }
  ?>
-  <div style="margin-top:20px;">
+  <div class="saveButtonZone">
     <span><input class="submit" type="submit" name="blog_settings" value="<?php i18n(BLOGFILE.'/SAVE_SETTINGS'); ?>" /></span>
     &nbsp;&nbsp;<?php i18n(BLOGFILE.'/OR'); ?>&nbsp;&nbsp;
     <a href="load.php?id=<?php echo BLOGFILE; ?>&cancel" class="cancel"><?php i18n(BLOGFILE.'/CANCEL'); ?></a>
