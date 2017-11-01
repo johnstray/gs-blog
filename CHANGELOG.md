@@ -19,6 +19,12 @@
   - Page layout cleaned up to look much better and inline with the new styles.
 - [#128] Created a more uniform method of displaying success/error messages that prevents displaying on the frontend.
 - [#134] Added 'Save Post' button to Post Editor page.
+- [#104] Better metadata management for search engine optimisation
+  - Added the ability to include a description for each of the core pages; categories, archives, tags, search results
+  - Descriptions are used in the html "description" meta tag.
+  - New settings page added specifically for SEO based settings such as the page descriptions.
+  - Option to enable showing the descriptions on the respective page's list-layoutBefore template.
+  - Placeholders available to description texts: {archive}, {category}, {tag}, {search}, {results}.
 
 **Frontend UI Improvements:**
 - [#085] Added read more link to layout-list.php file.

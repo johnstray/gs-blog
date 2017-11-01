@@ -19,3 +19,8 @@
 <!-- You can use the following space to write an introduction paragraph to
      your blog, or place any static content at the top of the Blog Post List Page.
 -->
+
+<p style="font-style:italic;margin-top:-30px;">
+    <?php show_page_introduction(); ?>
+</p>
+

@@ -10,6 +10,7 @@
 <div class="edit-nav">
   <p class="text 1">
     <a href="load.php?id=<?php echo BLOGFILE; ?>&settings=rss"><?php i18n(BLOGFILE.'/AUTOIMPORTER_BUTTON'); ?></a>
+    <a href="load.php?id=<?php echo BLOGFILE; ?>&settings=seo"><?php i18n(BLOGFILE.'/SEO_SETTINGS_BUTTON'); ?></a>
   </p>
   <div class="clear"></div>
 </div>

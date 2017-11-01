@@ -147,6 +147,8 @@ function show_settings_admin() {
   # Include the HTML for the settings page we are trying to display.
   if ($_GET['settings'] == 'rss') { // RSS Auto-Importer settings
     require_once('html/settings-rss.php');
+  } elseif ($_GET['settings'] == 'seo') {
+    require_once('html/settings-seo.php');
   } else { // The default main settings page
     require_once('html/settings-main.php');
   }

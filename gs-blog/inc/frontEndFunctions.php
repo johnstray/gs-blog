@@ -646,6 +646,24 @@ function show_blog_navigation($index, $total, $count, $lastPostOfPage) {
 }
 
 /**-------------------------------------------------------------------------------------------------
+ * is_blogpage()
+ * Determines if we are currently on a blog related page.
+ *
+ * @return bool (true/false)
+ */
+function is_blogpage($page=null) {
+    
+    GLOBAL $blogSettings;
+    if ( $page === null ) {
+        if ( isset($_GET['id']) ) { $page = $_GET['id']; }
+        else { $page = 'index'; }
+    }
+    
+    if ( $page == $blogSettings['blogurl'] ) { return true; }
+    else { return false; }
+}
+
+/**-------------------------------------------------------------------------------------------------
  * set_post_description()
  * Sets the pages meta description to an excerpt of the post
  * 
@@ -655,21 +673,26 @@ function set_post_description() {
 
 	GLOBAL $metad, $post, $blogSettings; // Declare GLOBAL variables
 	$Blog = new Blog; // Create a new instance of the Blog class
-  
-	if((isset($_GET['id'])) && ($_GET['id'] == $blogSettings['blogurl']) && (isset($_GET['post']))) {
-    if(isset($_GET['post'])) {
-      $excerpt_length = ($blogSettings["excerptlength"] == '') ? 150 : $blogSettings["excerptlength"];
-      $metad = $Blog->create_excerpt(html_entity_decode($post->content), 0, $excerpt_length);
-    } elseif(isset($_GET['category'])) {
-      // Get Category meta description
-    } elseif(isset($_GET['archive'])) {
-      // Get Archive meta description
-    } elseif(isset($_GET['tag'])) {
-      // Get Tag meta description
-    } elseif(isset($_POST['search_blog'])) {
-      // Get Search meta description
+	
+	if ( is_blogpage() ) {
+        if ( isset( $_GET['post'] ) ) {
+            $excerptLength = ( empty( $blogSettings["excerptlength"] ) ? 150 : $blogSettings["excerptlength"] );
+            $metad = $Blog->create_excerpt( html_entity_decode( $post->content ), 0, $excerpt_length );
+        } elseif ( isset( $_GET['category'] ) ) {
+            $metad = str_replace( "{category}", $_GET['category'], $blogSettings["categoriesdesc"] );
+        } elseif ( isset( $_GET['archive'] ) ) {
+            $archive_date = date( 'F Y', strtotime( $_GET['archive'] ) );
+            $metad = str_replace( "{archive}", $archive_date, $blogSettings["archivesdesc"] );
+        } elseif ( isset( $_GET['tag'] ) ) {
+            $metad = str_replace( "{tag}", $_GET['tag'], $blogSettings["tagsdesc"] );
+        } elseif ( isset( $_GET['search'] ) ) {
+            $metad = $blogSettings["searchdesc"];
+            $metad = str_replace( "{search}", $_GET['search'], $metad ); // {search} = The search term
+            $metad = str_replace( "{filter}", $_GET['filter'], $metad ); // {filter} = The filtering mechanisim used
+            # $metad = str_replace( "{results}", $results, $metad ); // @TODO: {results} = The number of search results returned
+        }
     }
-	}
+	
 }
 
 /**-------------------------------------------------------------------------------------------------
@@ -696,6 +719,35 @@ function get_blog_title () {
 		}
 	}
 	$title = strip_tags(strip_decode($title)); // Clean the title variable
+}
+
+/**-------------------------------------------------------------------------------------------------
+ * show_page_introduction()
+ * Function for showing the meta description of the page. Useful for showing the description as an
+ * introduction text for the page.
+ *
+ * @return void (void)
+ */
+function show_page_introduction() {
+    
+    $Blog = new Blog;
+    $intro = "";
+    
+    if ( isset( $_GET['category'] ) && $Blog->getSettingsData("categoriesdescshow") == 'true' ) {
+        $intro = str_replace( "{category}", $_GET['category'], $Blog->getSettingsData("categoriesdesc") );
+    } elseif ( isset( $_GET['archive'] ) && $Blog->getSettingsData("archivesdescshow") == 'true' ) {
+        $archive_date = date( 'F Y', strtotime( $_GET['archive'] ) );
+        $intro = str_replace( "{archive}", $archive_date, $Blog->getSettingsData("archivesdesc") );
+    } elseif ( isset( $_GET['tag'] ) && $Blog->getSettingsData("tagsdescshow") == 'true' ) {
+        $intro = str_replace( "{tag}", $_GET['tag'], $Blog->getSettingsData("tagsdesc") );
+    } elseif ( isset( $_GET['search'] ) && $Blog->getSettingsData("searchdescshow") == 'true' ) {
+        $intro = $Blog->getSettingsData("searchdesc");
+        $intro = str_replace( "{search}", $_GET['search'], $intro ); // {search} = The search term
+        $intro = str_replace( "{filter}", $_GET['filter'], $intro ); // {filter} = The filtering mechanisim used
+        # $intro = str_replace( "{results}", $results, $intro ); // @TODO: {results} = The number of search results returned
+    }
+
+    if ( !empty( $intro ) ) { echo $intro; }
 }
 
 /**-------------------------------------------------------------------------------------------------

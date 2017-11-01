@@ -157,6 +157,20 @@ $i18n = array(
   // New in version 3.5.0 - Please translate
   'UPLOADER_PATH'             =>  'Image Uploader Default Path',
   'UPLOADER_PATH_HINT'        =>  'Default path of the image uploader, relative to &apos;data/uploads/&apos;',
+  'SEO_SETTINGS_BUTTON'       =>  'SEO Settings',
+  'SEO_SETTINGS_INTRO'        =>  'This page allows you to add a description to each of the function '.
+                                  'pages that will then be used in the description hmtl meta tag. '.
+                                  'You can also optionally enable the display of each description on their '.
+                                  'respective pages, so that they can be used as the page&apos;s introduction.',
+  'SEO_CATEGORIES_DESC'       =>  'Categories Description',
+  'SEO_CATEGORIES_HINT'       =>  '{category} = Name of the displayed Category',
+  'SEO_ARCHIVES_DESC'         =>  'Archives Description',
+  'SEO_ARCHIVES_HINT'         =>  '{archive} = The month and year of the Archive',
+  'SEO_TAGS_DESC'             =>  'Tags Description',
+  'SEO_TAGS_HINT'             =>  '{tag} = The Tag that is displayed',
+  'SEO_SEARCH_DESC'           =>  'Search Results Description',
+  'SEO_SEARCH_HINT'           =>  '{search} = The search term, {filter} = The filter used',
+  'SEO_SHOW_ON_PAGE'          =>  'Show on page?',
   
   # 'Help' Strings
   'HELP'                      =>  'Help',
