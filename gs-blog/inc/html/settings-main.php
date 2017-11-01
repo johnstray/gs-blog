@@ -18,8 +18,8 @@
 <form class="largeform" action="load.php?id=<?php echo BLOGFILE; ?>&settings" method="post" accept-charset="utf-8">
   <div class="leftsec">
     <p>
-      <label for="blog-url"><?php i18n(BLOGFILE.'/PAGE_URL'); ?>:</label>
-      <select class="text" name="blog_url">
+      <label for="blogurl"><?php i18n(BLOGFILE.'/PAGE_URL'); ?>:</label>
+      <select class="text" name="blogurl">
         <?php
         $pages = get_available_pages();
         foreach ($pages as $page) {

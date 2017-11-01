@@ -39,6 +39,7 @@
 - [#119] Fixed php parse error: missing '$' on lines 417 and 418 in Blog.php
 - [#119] Fixed php parse error: missing ',' on line 716 in Blog.php
 - [#133] CKEditor trigered twice on Post Editor page. Removed `include()` of ckeditor.php in adminFunctions.php.
+- [#135] Incorrect values used in html input/label tag attributes, causing the `blogurl` setting not to save.
 
 **Core Code Changes**
 - [#110] Significant improvements to the search class method to also include filtering.
