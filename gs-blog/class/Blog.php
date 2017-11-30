@@ -332,6 +332,11 @@ class Blog
 			if (function_exists('i18n_search_index_item')) {
 				i18n_search_index_item($slug, 'en', $post_data['date'], $post_data['date'], $post_data['tags'], $post_data['title'], $post_data['content']);
 			}
+   
+            # Add entry to site map
+            $SiteMap = new GSBlog_SiteMapManager();
+            $SiteMap->addItem($slug, $date);
+            
 			return true;
 		}
 
@@ -350,7 +355,11 @@ class Blog
 			$delete_post = unlink(BLOGPOSTSFOLDER.$post_id.'.xml');
 			if($delete_post)
 			{
-				return true;
+                # Remove entry from site map
+                $SiteMap = new GSBlog_SiteMapManager();
+                $SiteMap->removeItem($post_id);
+                
+                return true;
 			}
 			else
 			{
@@ -567,7 +576,12 @@ class Blog
 		$blog_settings = XMLsave($xml, BLOGSETTINGS);
 		if($blog_settings)
 		{
-			return true;
+			
+            # Update URLs in Site Map
+            $SiteMap = new GSBlog_SiteMapManager();
+            $SiteMap->updateURLs();
+            
+            return true;
 		}
 		else
 		{
