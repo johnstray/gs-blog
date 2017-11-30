@@ -2,13 +2,13 @@
 
 class GSBlog_SiteMapManager {
     
-    var SiteMap = null;
-    var filePath = GSROOTPATH . '/sitemap.xml';
+    public $SiteMap = null;
+    private $filePath = GSROOTPATH . '/sitemap.xml';
     
-    var changefreq = "weekly";
-    var priority = "1.0";
+    private $changefreq = "weekly";
+    private $priority = "1.0";
     
-    var seourls = false;
+    private $seourls = false;
     
     function __construct($changefreq = "weekly", $priority = "1.0") {
         
@@ -40,16 +40,16 @@ class GSBlog_SiteMapManager {
         
     }
     
-    public function addItem($slug, $moddate = time() ) {
+    public function addItem($slug, $moddate = "time()" ) {
         
         # Generate post URL
         $GSBlog = new Blog;
         $locURL = $GSBlog->get_blog_url('post') . $slug;
         
         # Add the new item to the SiteMap Object
-        $newItem = $this-SiteMap->addChild( 'url', '' );
-        $newItem->addAttribute( 'slug', $slug )
-        $newItem->addChild( 'loc', $locURL );
+        $newItem = $this->SiteMap->addChild( 'url', '' );
+        $newItem->addAttribute( 'slug', $slug );
+        $newItem->addChild( 'loc', htmlspecialchars($locURL) );
         $newItem->addChild( 'lastmod', date(DATE_ISO8601, strtotime($moddate)) ); // @TODO: Add timezone support
         $newItem->addChild( 'changefreq', $this->changefreq );
         $newItem->addChild( 'priority', $this->priority );
