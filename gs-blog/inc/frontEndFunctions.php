@@ -676,7 +676,7 @@ function set_post_description() {
 	
 	if ( is_blogpage() ) {
         if ( isset( $_GET['post'] ) ) {
-            $excerptLength = ( empty( $blogSettings["excerptlength"] ) ? 150 : $blogSettings["excerptlength"] );
+            $excerpt_length = ( empty( $blogSettings["excerptlength"] ) ? 150 : $blogSettings["excerptlength"] );
             $metad = $Blog->create_excerpt( html_entity_decode( $post->content ), 0, $excerpt_length );
         } elseif ( isset( $_GET['category'] ) ) {
             $metad = str_replace( "{category}", $_GET['category'], $blogSettings["categoriesdesc"] );
