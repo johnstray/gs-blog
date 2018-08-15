@@ -14,7 +14,7 @@ class customFields extends Blog
   public function getCustomFields()
   {
     $cfData = getXML(BLOGCUSTOMFIELDS);
-    $cf = array('options' => '', 'main' => '');
+    $cf = array('options' => array(), 'main' => array());
     $count_options = 0;
     $count_main = 0;
     $count_opt = 0;
