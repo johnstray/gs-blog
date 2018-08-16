@@ -3,10 +3,10 @@
 class GSBlog_SiteMapManager {
     
     public $SiteMap = null;
-    private $filePath = GSROOTPATH . '/sitemap.xml';
+    private $filePath = GSROOTPATH . 'sitemap.xml';
     
     private $changefreq = "weekly";
-    private $priority = "1.0";
+    private $priority = "0.2";
     
     private $seourls = false;
     
@@ -17,6 +17,9 @@ class GSBlog_SiteMapManager {
             $this->SiteMap = simplexml_load_file ( $this->filePath );
         } else {
             # Site map is non-existant. Create a new SimpleXMLObject with an empty sitemap.
+            $this->SiteMap = new SimpleXMLObject('<?xml version="1.0" encoding="utf-8"?><urlset/>');
+            $this->SiteMap->addAttribute('xsi:schemaLocation', 'http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd', 'http://www.w3.org/2001/XMLSchema-instance');
+            $this->SiteMap->addAttribute('xmlns', 'http://www.sitemaps.org/schemas/sitemap/0.9');
         }
         
         # Get and define some settings.
@@ -30,14 +33,44 @@ class GSBlog_SiteMapManager {
     }
     
     function __destruct() {
-    
-        # Write the SiteMap data back to the XML file
-        if ( XMLSave( $this->SiteMap, $this->filePath ) ) {
-            return true;
-        } else {
-            return false;
-        }
         
+        # Has the site map been disabled in gsconfig.php?
+        if ( getDef('GSNOSITEMAP',true) ) { return; }
+        
+        # Let plugins filter the xml, then check that they have returned valid xml
+        $this->SiteMap = exec_filter('sitemap', $this->SiteMap);
+        if ( !is_object($this->SiteMap) ) {
+            # SiteMap is no longer valid, a plugin stuffed it up, make a note in the debugLog
+            debugLog("[GSBlog: SiteMap.class - __destruct()] Error saving sitemap.xml: A plugin has caused malformation of the XML structure.");
+            return false;
+        } else {
+        
+            # Format the XML file as human readable if setting is enabled
+            if ( getDef('GSFORMATXML',true) ) { $this->formatXmlString($this->SiteMap); }
+            
+            # Write the SiteMap data back to the XML file
+            if ( XMLSave( $this->SiteMap, $this->filePath ) ) {
+                exec_action('sitemap-aftersave'); # Plugin Action Hook
+                
+                # Ping search engines upon sitemap generation?
+                if ( getDef('GSDONOTPING',true) == false ) {
+                    if ( 200 === ($status=pingGoogleSitemaps($SITEURL.'sitemap.xml')) ) {
+                        # Sitemap successfully created and pinged
+                        return true;
+                    } else {
+                        # Sitemap created but Pinging failed. Return true, but make a note in the debuglog
+                        debugLog("[GSBlog: SiteMap.class - __destruct()] Warning: Failed to ping sitemap to search engines. Sitemap was saved though.");
+                        return true;
+                    }
+                } else {
+                    # Sitemap successfully created, but did not ping search engines.
+                    return true;
+                }
+            } else {
+                debugLog("[GSBlog: SiteMap.class - __destruct()] Error saving sitemap.xml: Could not write XML structure to file.");
+                return false;
+            }
+        }
     }
     
     public function addItem($slug, $moddate = "time()" ) {
