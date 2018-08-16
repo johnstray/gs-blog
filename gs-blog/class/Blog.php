@@ -335,7 +335,7 @@ class Blog
    
             # Add entry to site map
             $SiteMap = new GSBlog_SiteMapManager();
-            $SiteMap->addItem($slug, $date);
+            $SiteMap->addPost($slug, $date);
             
 			return true;
 		}
@@ -357,7 +357,7 @@ class Blog
 			{
                 # Remove entry from site map
                 $SiteMap = new GSBlog_SiteMapManager();
-                $SiteMap->removeItem($post_id);
+                $SiteMap->removePost($post_id);
                 
                 return true;
 			}

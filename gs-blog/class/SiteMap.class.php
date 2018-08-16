@@ -73,7 +73,7 @@ class GSBlog_SiteMapManager {
         }
     }
     
-    public function addItem($slug, $moddate = "time()" ) {
+    public function addPost($slug, $moddate = "time()" ) {
         
         # Generate post URL
         $GSBlog = new Blog;
@@ -91,7 +91,7 @@ class GSBlog_SiteMapManager {
         
     }
     
-    public function removeItem($slug) {
+    public function removePost($slug) {
         
         foreach ( $this->SiteMap as $SitemapItem ) {
             if ( $SitemapItem['slug'] == $slug ) {
