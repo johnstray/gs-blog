@@ -81,9 +81,11 @@ class GSBlog_SiteMapManager {
         
         # Add the new item to the SiteMap Object
         $newItem = $this->SiteMap->addChild( 'url', '' );
+        $newItem->addAttribute( 'type', 'blog-post' );
         $newItem->addAttribute( 'slug', $slug );
         $newItem->addChild( 'loc', htmlspecialchars($locURL) );
-        $newItem->addChild( 'lastmod', date(DATE_ISO8601, strtotime($moddate)) ); // @TODO: Add timezone support
+        $tmpDate = date("Y-m-d H:i:s", strtotime($moddate))
+        $newItem->addChild( 'lastmod', makeIso8601TimeStamp($tmpDate) );
         $newItem->addChild( 'changefreq', $this->changefreq );
         $newItem->addChild( 'priority', $this->priority );
         
@@ -91,8 +93,8 @@ class GSBlog_SiteMapManager {
     
     public function removeItem($slug) {
         
-        foreach ( $this->SiteMap as $urlItem ) {
-            if ( $urlItem['slug'] == $slug ) {
+        foreach ( $this->SiteMap as $SitemapItem ) {
+            if ( $SitemapItem['slug'] == $slug ) {
                 $oNode = dom_import_simplexml($urlItem);
                 $oNode->parentNode->removeChild($oNnode);
             }
@@ -104,10 +106,11 @@ class GSBlog_SiteMapManager {
         
         $GSBlog = new Blog;
         
-        foreach ( $xml as $urlItem ) {
-            if ( isset($urlItem['slug']) ) {
-                $locURL = $GSBlog->get_blog_url('post') . $urlItem['slug'];
-                $urlItem->loc = $locURL;
+        foreach ( $this->SiteMap as $SitemapItem ) {
+            $slug = (string) $SitemapItem['slug'];
+            if ( !empty($slug) ) {
+                $locURL = $GSBlog->get_blog_url('post') . $slug;
+                $SitemapItem->loc = $locURL;
             }
         }
         
