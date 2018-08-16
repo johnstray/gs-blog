@@ -73,7 +73,10 @@ class GSBlog_SiteMapManager {
         }
     }
     
-    public function addPost($slug, $moddate = "time()" ) {
+    public function addPost($slug, $moddate = '' ) {
+        
+        # Set modification time to now if $moddate is empty
+        if ( is_empty($moddate) ) { $moddate = time(); }
         
         # Generate post URL
         $GSBlog = new Blog;
@@ -89,6 +92,14 @@ class GSBlog_SiteMapManager {
         $newItem->addChild( 'changefreq', $this->changefreq );
         $newItem->addChild( 'priority', $this->priority );
         
+        # Add Archive entry using $moddate as Archive date
+        $archiveDate = date("Ym", strtotime($moddate));
+        $this->addArchive($archiveDate);
+        
+        # Add Category and Tag entry
+        $this->addCategory($slug, true);
+        $this->addTags($slug, true);
+        
     }
     
     public function removePost($slug) {
@@ -99,6 +110,10 @@ class GSBlog_SiteMapManager {
                 $oNode->parentNode->removeChild($oNnode);
             }
         }
+        
+        $this->removeCategory();
+        $this->removeArchive();
+        $this->removeTags();
         
     }
     
@@ -113,6 +128,75 @@ class GSBlog_SiteMapManager {
                 $SitemapItem->loc = $locURL;
             }
         }
+        
+    }
+
+    public function addCategory($item, $isSlug = false) {
+        
+        if ( $isSlug ) {
+            # Identify the category that slug belongs to
+            $item = '' // Set this to the slug's category - $item is now a category
+        }
+        
+        # Add the category to the SiteMap
+        
+    }
+
+    public function removeCategory($category = '') {
+        
+        # if empty $category
+            # loop over all type=blog-category items to see which ones we have
+            # loop over all posts, building an array of used categories
+            # Compare the 2 arrays generated above, removing categories we don't use
+        # else
+            # find and remove the requested category item
+        
+    }
+
+    public function addArchive($archive $isSlug = false) {
+        
+        if ( $isSlug ) {
+            # Identify the archive that slug belongs to
+            $item = '' // Set this to the slug's archive - $item is now an archive
+        }
+        
+        # Add the archive to the SiteMap
+        
+    }
+
+    public function removeArchive($archive = '') {
+        
+        # if empty $archive
+            # loop over all type=blog-archive items to see which ones we have
+            # loop over all posts, building an array of used archives
+            # Compare the 2 arrays generated above, removing archives we don't use
+        # else
+            # find and remove the requested archive item
+        
+    }
+
+    public function addTags($tags, $isSlug = false) {
+        
+        # Make sure $tags becomes array if only one tag was passed as a string
+        if ( !is_array($tags) ) { $tags = array($tags) }
+        
+        if ( $isSlug ) {
+            # Identify the tags that slug belongs to
+            $item = '' // Set this to the slug's tags - $item is now an array of tags
+        }
+        
+        # Add the tags to the SiteMap
+        
+    }
+
+    public function removeTags($tag = '') {
+        
+        # if empty $tag
+            # loop over all type=blog-tag items to see which ones we have
+            # loop over all posts, building an array of used tags
+            # Compare the 2 arrays generated above, removing tags we don't use
+        # else
+            # find and remove the requested tag item
         
     }
     
