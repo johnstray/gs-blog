@@ -84,7 +84,9 @@ else
                         onError: function(code) {
                             $('.uploaderStatusBar div').css('background-color', 'red');
                             $('.uploaderStatusBar div').css('width', '100%');
-                            alert('Uploader Error: ' + res.code); },
+                            console.error('Image Uploader: ' + code);
+                            alert('Uploader Error: ' + code);
+                        },
                         onSuccess: function(url, data) {
                             if (url.indexOf('/') === 0) {url = url.substring(1);}
                             $('input[name="post-thumbnail"]').prop('value', url);
@@ -96,7 +98,7 @@ else
                                 var percent = Math.round( 100 * (event.loaded / event.total) );
                                 $('.uploaderStatusBar div').css('width', percent+'%');
                             } else {
-                                console.warn('File size is not computable. Upload progress bar will be disabled.');
+                                console.warn('Image Uploader: File size is not computable. Upload progress bar will be disabled.');
                             }
                         } // <!-- Implement this at a later stage
                     });});
@@ -108,7 +110,10 @@ else
                         $(this).val($(this).val().replace('<?php echo tsl($SITEURL); ?>data/uploads/', ''));
                     });
                     function triggerUploaderChange(id) {$('#'+id).trigger('change');}
-                    $('#uploaderPreviewImage').error(function(){$(this).attr('src', '<?php echo $SITEURL; ?>plugins/<?php echo BLOGFILE; ?>/images/missing.png');});
+                    $('#uploaderPreviewImage').on('error', function(){
+                        $(this).attr('src', '<?php echo $SITEURL; ?>plugins/<?php echo BLOGFILE; ?>/images/missing.png');
+                        console.warn('Image Uploader: Selected image not found on server. Using placeholder image.');
+                    });
                 </script>
 
             </div>

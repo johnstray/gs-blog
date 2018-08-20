@@ -32,7 +32,13 @@
 
             var xhr = new XMLHttpRequest();
             xhr.addEventListener("load", function(ev) {
-                var res = eval("(" + ev.target.responseText + ")");
+                try {
+                    var res = eval("(" + ev.target.responseText + ")");
+                } catch (exception) {
+                    console.error('Image Uploader: The server did not return a valid JSON response to process.');
+                    settings.onError('Something went wrong on the server side');
+                    return;
+                }
 
                 if(res.code != 0) {
                     settings.onError(res.code);
