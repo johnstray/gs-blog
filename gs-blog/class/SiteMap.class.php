@@ -87,7 +87,7 @@ class GSBlog_SiteMapManager {
         $newItem->addAttribute( 'type', 'blog-post' );
         $newItem->addAttribute( 'slug', $slug );
         $newItem->addChild( 'loc', htmlspecialchars($locURL) );
-        $tmpDate = date("Y-m-d H:i:s", strtotime($moddate))
+        $tmpDate = date("Y-m-d H:i:s", strtotime($moddate));
         $newItem->addChild( 'lastmod', makeIso8601TimeStamp($tmpDate) );
         $newItem->addChild( 'changefreq', $this->changefreq );
         $newItem->addChild( 'priority', $this->priority );
@@ -135,10 +135,23 @@ class GSBlog_SiteMapManager {
         
         if ( $isSlug ) {
             # Identify the category that slug belongs to
-            $item = '' // Set this to the slug's category - $item is now a category
+            $GSBlog = new Blog;
+            $post = $GSBlog->getPostData($item);
+            $item = (string) $post->category;
         }
         
+        # Generate Category URL
+        $locURL = $GSBlog->get_blog_url('category') . $slug;
+        
         # Add the category to the SiteMap
+        $newItem = $this->SiteMap->addChild( 'url', '' );
+        $newItem->addAttribute( 'type', 'blog-category' );
+        $newItem->addAttribute( 'category', $item );
+        $newItem->addChild( 'loc', htmlspecialchars($locURL) );
+        $tmpDate = date("Y-m-d H:i:s", time());
+        $newItem->addChild( 'lastmod', makeIso8601TimeStamp($tmpDate) );
+        $newItem->addChild( 'changefreq', $this->changefreq );
+        $newItem->addChild( 'priority', $this->priority );
         
     }
 
@@ -153,14 +166,28 @@ class GSBlog_SiteMapManager {
         
     }
 
-    public function addArchive($archive $isSlug = false) {
+    public function addArchive($item, $isSlug = false) {
         
         if ( $isSlug ) {
             # Identify the archive that slug belongs to
-            $item = '' // Set this to the slug's archive - $item is now an archive
+            $GSBlog = new Blog;
+            $post = $GSBlog->getPostData($item);
+            $postDate = $post->date;
+            $item = date("Ym", strtotime($postDate));
         }
         
+        # Generate Archive URL
+        $locURL = $GSBlog->get_blog_url('archive') . $slug;
+        
         # Add the archive to the SiteMap
+        $newItem = $this->SiteMap->addChild( 'url', '' );
+        $newItem->addAttribute( 'type', 'blog-archive' );
+        $newItem->addAttribute( 'archive', $item );
+        $newItem->addChild( 'loc', htmlspecialchars($locURL) );
+        $tmpDate = date("Y-m-d H:i:s", time());
+        $newItem->addChild( 'lastmod', makeIso8601TimeStamp($tmpDate) );
+        $newItem->addChild( 'changefreq', $this->changefreq );
+        $newItem->addChild( 'priority', $this->priority );
         
     }
 
@@ -175,17 +202,31 @@ class GSBlog_SiteMapManager {
         
     }
 
-    public function addTags($tags, $isSlug = false) {
+    public function addTags($item, $isSlug = false) {
         
         # Make sure $tags becomes array if only one tag was passed as a string
         if ( !is_array($tags) ) { $tags = array($tags) }
         
         if ( $isSlug ) {
             # Identify the tags that slug belongs to
-            $item = '' // Set this to the slug's tags - $item is now an array of tags
+            $GSBlog = new Blog;
+            $post = $GSBlog->getPostData($item);
+            $postTags = $post->tags;
+            $item = explode(',', $postTags);
         }
         
+        # Generate Tag URL
+        $locURL = $GSBlog->get_blog_url('tag') . $slug;
+        
         # Add the tags to the SiteMap
+        $newItem = $this->SiteMap->addChild( 'url', '' );
+        $newItem->addAttribute( 'type', 'blog-tag' );
+        $newItem->addAttribute( 'tag', $item );
+        $newItem->addChild( 'loc', htmlspecialchars($locURL) );
+        $tmpDate = date("Y-m-d H:i:s", time());
+        $newItem->addChild( 'lastmod', makeIso8601TimeStamp($tmpDate) );
+        $newItem->addChild( 'changefreq', $this->changefreq );
+        $newItem->addChild( 'priority', $this->priority );
         
     }
 
