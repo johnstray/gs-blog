@@ -133,15 +133,16 @@ class GSBlog_SiteMapManager {
 
     public function addCategory($item, $isSlug = false) {
         
+        $GSBlog = new Blog;
+        
         if ( $isSlug ) {
             # Identify the category that slug belongs to
-            $GSBlog = new Blog;
-            $post = $GSBlog->getPostData($item);
+            $post = $GSBlog->getPostData(BLOGPOSTSFOLDER . $item . ".xml");
             $item = (string) $post->category;
         }
         
         # Generate Category URL
-        $locURL = $GSBlog->get_blog_url('category') . $slug;
+        $locURL = $GSBlog->get_blog_url('category') . $item;
         
         # Add the category to the SiteMap
         $newItem = $this->SiteMap->addChild( 'url', '' );
@@ -168,16 +169,17 @@ class GSBlog_SiteMapManager {
 
     public function addArchive($item, $isSlug = false) {
         
+        $GSBlog = new Blog;
+        
         if ( $isSlug ) {
             # Identify the archive that slug belongs to
-            $GSBlog = new Blog;
-            $post = $GSBlog->getPostData($item);
+            $post = $GSBlog->getPostData(BLOGPOSTSFOLDER . $item . ".xml");
             $postDate = $post->date;
             $item = date("Ym", strtotime($postDate));
         }
         
         # Generate Archive URL
-        $locURL = $GSBlog->get_blog_url('archive') . $slug;
+        $locURL = $GSBlog->get_blog_url('archive') . $item;
         
         # Add the archive to the SiteMap
         $newItem = $this->SiteMap->addChild( 'url', '' );
@@ -207,26 +209,29 @@ class GSBlog_SiteMapManager {
         # Make sure $tags becomes array if only one tag was passed as a string
         if ( !is_array($tags) ) { $tags = array($tags); }
         
+        $GSBlog = new Blog;
+        
         if ( $isSlug ) {
             # Identify the tags that slug belongs to
-            $GSBlog = new Blog;
             $post = $GSBlog->getPostData($item);
             $postTags = $post->tags;
             $item = explode(',', $postTags);
         }
         
-        # Generate Tag URL
-        $locURL = $GSBlog->get_blog_url('tag') . $slug;
-        
-        # Add the tags to the SiteMap
-        $newItem = $this->SiteMap->addChild( 'url', '' );
-        $newItem->addAttribute( 'type', 'blog-tag' );
-        $newItem->addAttribute( 'tag', $item );
-        $newItem->addChild( 'loc', htmlspecialchars($locURL) );
-        $tmpDate = date("Y-m-d H:i:s", time());
-        $newItem->addChild( 'lastmod', makeIso8601TimeStamp($tmpDate) );
-        $newItem->addChild( 'changefreq', $this->changefreq );
-        $newItem->addChild( 'priority', $this->priority );
+        foreach ($item as $tag) {
+            # Generate Tag URL
+            $locURL = $GSBlog->get_blog_url('tag') . $tag;
+            
+            # Add the tags to the SiteMap
+            $newItem = $this->SiteMap->addChild( 'url', '' );
+            $newItem->addAttribute( 'type', 'blog-tag' );
+            $newItem->addAttribute( 'tag', $tag );
+            $newItem->addChild( 'loc', htmlspecialchars($locURL) );
+            $tmpDate = date("Y-m-d H:i:s", time());
+            $newItem->addChild( 'lastmod', makeIso8601TimeStamp($tmpDate) );
+            $newItem->addChild( 'changefreq', $this->changefreq );
+            $newItem->addChild( 'priority', $this->priority );
+        }
         
     }
 
