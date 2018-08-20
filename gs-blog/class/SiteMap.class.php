@@ -205,7 +205,7 @@ class GSBlog_SiteMapManager {
     public function addTags($item, $isSlug = false) {
         
         # Make sure $tags becomes array if only one tag was passed as a string
-        if ( !is_array($tags) ) { $tags = array($tags) }
+        if ( !is_array($tags) ) { $tags = array($tags); }
         
         if ( $isSlug ) {
             # Identify the tags that slug belongs to
