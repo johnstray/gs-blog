@@ -1,7 +1,6 @@
 ## Version 3.5.0 ~ Beta
 **Feature Enhancements:**
 - [#006] Created a new Post Image uploader/selector
-- [#116] Dump Support for the old UserManagement plugin / Implement support for new GS-Users plugin
 - [#120] Added support for layout templates in the active theme's directory
 - [#110] More enhancements to the Posts Admin Page
   - Created post filtering mechanisim to compliment the search function
@@ -17,7 +16,6 @@
   - Filtering or sorting of Categories by name or popularity (# of posts) is now possible
   - New category action icons using FontAwesome library.
   - Page layout cleaned up to look much better and inline with the new styles.
-- [#128] Created a more uniform method of displaying success/error messages that prevents displaying on the frontend.
 - [#134] Added 'Save Post' button to Post Editor page.
 - [#104] Better metadata management for search engine optimisation
   - Added the ability to include a description for each of the core pages; categories, archives, tags, search results
@@ -30,23 +28,33 @@
 - [#085] Added read more link to layout-list.php file.
 
 **Bug Fixes:**
-- [#109] Another minor bugfix to the Missing Settings Checek
-- [#117] The list of tags below a post will now be hidden when no tags are attached to a post.
-- [#122] `listPosts` class method returned filenames with a double slash
-- [#125] Unpublished posts (dated in the future) could not be viewed when accessed directly for previewing.
-- [#131] Prevent trailing comma from showing at the end of the list of tags.
-- [#132] Fix PHP parse errors for improper method of accessing array element.
 - [#119] Fixed php parse error: missing '$' on lines 417 and 418 in Blog.php
 - [#119] Fixed php parse error: missing ',' on line 716 in Blog.php
-- [#133] CKEditor trigered twice on Post Editor page. Removed `include()` of ckeditor.php in adminFunctions.php.
-- [#135] Incorrect values used in html input/label tag attributes, causing the `blogurl` setting not to save.
 
 **Core Code Changes**
 - [#110] Significant improvements to the search class method to also include filtering.
   - Allows searching for keyword in specific node, combining search and filter functions
   - Removed the now redundant filtering class method, but mapped it to search to allow backwards compatibility
 
-## Version 3.4.3 ~ Latest Stable
+## Version 3.4.4 ~ Latest Stable
+**Back End (Admin) Changes:**
+- [#128] Created a more uniform method of displaying success/error messages that prevents displaying on the frontend.
+- [#116] Dropped support for old UserManagement plugin
+
+**Bug Fixes:**
+- [#109] Fixed class constructor after previous rewrite. Fixes the message 'Blog Settings Successfully Saved!' Message always being displayed.
+- [#115] Fixed alignment of input field boxes in the metadata section of the post editor.
+- [#117] Hide tags when there are no tags attached to a post.
+- [#119] Removed some unused variable declarations.
+- [#122] Fixed incorrect double slash in GSBlog->listPosts function.
+- [#125] Unpublished posts (dated in the future) could not be viewed when accessed directly for previewing.
+- [#131] Fixed trailing comma showing at the end of the list of tags.
+- [#132] Fixed PHP parse errors for improper method of accessing array element.
+- [#133] Fixed CKEditor triggered twice on Post Editor page.
+- [#135] Fixed Incorrect values used in html input/label tag attributes, causing the `blogurl` setting not to save.
+- [#138] Fixed PHP fatal error: Using string offset as an array in customFields.php
+
+## Version 3.4.3
 **Feature Enhancements:**
 - [#095] A few minor imrovements to the RSS generator:
   - `<description>` now respects the excerpt length setting.
