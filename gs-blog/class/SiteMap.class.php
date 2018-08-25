@@ -106,14 +106,15 @@ class GSBlog_SiteMapManager {
         
         foreach ( $this->SiteMap as $SitemapItem ) {
             if ( $SitemapItem['slug'] == $slug ) {
-                $oNode = dom_import_simplexml($urlItem);
+                $oNode = dom_import_simplexml($SitemapItem);
                 $oNode->parentNode->removeChild($oNnode);
             }
         }
         
-        $this->removeCategory();
-        $this->removeArchive();
-        $this->removeTags();
+        $post = $GSBlog->getPostData(BLOGPOSTSFOLDER . $item . ".xml");
+        $this->removeCategory($post->category);
+        $this->removeArchive(date('Ym', strtotime($post->date)));
+        $this->removeTags($post->tags);
         
     }
     
@@ -141,29 +142,45 @@ class GSBlog_SiteMapManager {
             $item = (string) $post->category;
         }
         
-        # Generate Category URL
-        $locURL = $GSBlog->get_blog_url('category') . $item;
+        # Find if category exists
+        $exists = false;
+        foreach ( $this->SiteMap as $SitemapItem ) {
+            $attributes = $SitemapItem->attributes();
+            if ( isset($attributes['type']) && $attributes['type'] == 'category' ) {
+                if ( $attributes['category'] == $item ) {
+                    $exists = true; break;
+                }
+            }
+        }
         
-        # Add the category to the SiteMap
-        $newItem = $this->SiteMap->addChild( 'url', '' );
-        $newItem->addAttribute( 'type', 'blog-category' );
-        $newItem->addAttribute( 'category', $item );
-        $newItem->addChild( 'loc', htmlspecialchars($locURL) );
-        $tmpDate = date("Y-m-d H:i:s", time());
-        $newItem->addChild( 'lastmod', makeIso8601TimeStamp($tmpDate) );
-        $newItem->addChild( 'changefreq', $this->changefreq );
-        $newItem->addChild( 'priority', $this->priority );
+        if ( !$exists ) {
+            # Generate Category URL
+            $locURL = $GSBlog->get_blog_url('category') . $item;
+            
+            # Add the category to the SiteMap
+            $newItem = $this->SiteMap->addChild( 'url', '' );
+            $newItem->addAttribute( 'type', 'blog-category' );
+            $newItem->addAttribute( 'category', $item );
+            $newItem->addChild( 'loc', htmlspecialchars($locURL) );
+            $tmpDate = date("Y-m-d H:i:s", time());
+            $newItem->addChild( 'lastmod', makeIso8601TimeStamp($tmpDate) );
+            $newItem->addChild( 'changefreq', $this->changefreq );
+            $newItem->addChild( 'priority', $this->priority );
+        }
         
     }
 
-    public function removeCategory($category = '') {
+    public function removeCategory($category) {
         
-        # if empty $category
-            # loop over all type=blog-category items to see which ones we have
-            # loop over all posts, building an array of used categories
-            # Compare the 2 arrays generated above, removing categories we don't use
-        # else
-            # find and remove the requested category item
+        foreach ( $this->SiteMap as $SitemapItem ) {
+            $attributes = $SitemapItem->attributes();
+            if ( isset($attributes['type']) && $attributes['type'] == "category") {
+                if ( $attributes['category'] == $category ) {
+                    $oNode = dom_import_simplexml($SitemapItem);
+                    $oNode->parentNode->removeChild($oNnode);
+                }
+            }
+        }
         
     }
 
@@ -178,29 +195,45 @@ class GSBlog_SiteMapManager {
             $item = date("Ym", strtotime($postDate));
         }
         
-        # Generate Archive URL
-        $locURL = $GSBlog->get_blog_url('archive') . $item;
+        # Find if archive exists
+        $exists = false;
+        foreach ( $this->SiteMap as $SitemapItem ) {
+            $attributes = $SitemapItem->attributes();
+            if ( isset($attributes['type']) && $attributes['type'] == 'archive' ) {
+                if ( $attributes['archive'] == $item ) {
+                    $exists = true; break;
+                }
+            }
+        }
         
-        # Add the archive to the SiteMap
-        $newItem = $this->SiteMap->addChild( 'url', '' );
-        $newItem->addAttribute( 'type', 'blog-archive' );
-        $newItem->addAttribute( 'archive', $item );
-        $newItem->addChild( 'loc', htmlspecialchars($locURL) );
-        $tmpDate = date("Y-m-d H:i:s", time());
-        $newItem->addChild( 'lastmod', makeIso8601TimeStamp($tmpDate) );
-        $newItem->addChild( 'changefreq', $this->changefreq );
-        $newItem->addChild( 'priority', $this->priority );
+        if ( !$exists ) {
+            # Generate Archive URL
+            $locURL = $GSBlog->get_blog_url('archive') . $item;
+            
+            # Add the archive to the SiteMap
+            $newItem = $this->SiteMap->addChild( 'url', '' );
+            $newItem->addAttribute( 'type', 'blog-archive' );
+            $newItem->addAttribute( 'archive', $item );
+            $newItem->addChild( 'loc', htmlspecialchars($locURL) );
+            $tmpDate = date("Y-m-d H:i:s", time());
+            $newItem->addChild( 'lastmod', makeIso8601TimeStamp($tmpDate) );
+            $newItem->addChild( 'changefreq', $this->changefreq );
+            $newItem->addChild( 'priority', $this->priority );
+        }
         
     }
 
-    public function removeArchive($archive = '') {
+    public function removeArchive($archive) {
         
-        # if empty $archive
-            # loop over all type=blog-archive items to see which ones we have
-            # loop over all posts, building an array of used archives
-            # Compare the 2 arrays generated above, removing archives we don't use
-        # else
-            # find and remove the requested archive item
+        foreach ( $this->SiteMap as $SitemapItem ) {
+            $attributes = $SitemapItem->attributes();
+            if ( isset($attributes['type']) && $attributes['type'] == "archive") {
+                if ( $attributes['archive'] == $archive ) {
+                    $oNode = dom_import_simplexml($SitemapItem);
+                    $oNode->parentNode->removeChild($oNnode);
+                }
+            }
+        }
         
     }
 
@@ -219,30 +252,50 @@ class GSBlog_SiteMapManager {
         }
         
         foreach ($item as $tag) {
-            # Generate Tag URL
-            $locURL = $GSBlog->get_blog_url('tag') . $tag;
             
-            # Add the tags to the SiteMap
-            $newItem = $this->SiteMap->addChild( 'url', '' );
-            $newItem->addAttribute( 'type', 'blog-tag' );
-            $newItem->addAttribute( 'tag', $tag );
-            $newItem->addChild( 'loc', htmlspecialchars($locURL) );
-            $tmpDate = date("Y-m-d H:i:s", time());
-            $newItem->addChild( 'lastmod', makeIso8601TimeStamp($tmpDate) );
-            $newItem->addChild( 'changefreq', $this->changefreq );
-            $newItem->addChild( 'priority', $this->priority );
+            # Find if tag exists
+            $exists = false;
+            foreach ( $this->SiteMap as $SitemapItem ) {
+                $attributes = $SitemapItem->attributes();
+                if ( isset($attributes['type']) && $attributes['type'] == 'tag' ) {
+                    if ( $attributes['tag'] == $tag ) {
+                        $exists = true; break;
+                    }
+                }
+            }
+            
+            if ( !$exists ) {
+                # Generate Tag URL
+                $locURL = $GSBlog->get_blog_url('tag') . $tag;
+                
+                # Add the tags to the SiteMap
+                $newItem = $this->SiteMap->addChild( 'url', '' );
+                $newItem->addAttribute( 'type', 'blog-tag' );
+                $newItem->addAttribute( 'tag', $tag );
+                $newItem->addChild( 'loc', htmlspecialchars($locURL) );
+                $tmpDate = date("Y-m-d H:i:s", time());
+                $newItem->addChild( 'lastmod', makeIso8601TimeStamp($tmpDate) );
+                $newItem->addChild( 'changefreq', $this->changefreq );
+                $newItem->addChild( 'priority', $this->priority );
+            }
         }
         
     }
 
-    public function removeTags($tag = '') {
+    public function removeTags($tag) {
         
-        # if empty $tag
-            # loop over all type=blog-tag items to see which ones we have
-            # loop over all posts, building an array of used tags
-            # Compare the 2 arrays generated above, removing tags we don't use
-        # else
-            # find and remove the requested tag item
+        $tags = explode(',', $tag);
+        foreach ( $tags as $rtag ) {
+            foreach ( $this->SiteMap as $SitemapItem ) {
+                $attributes = $SitemapItem->attributes();
+                if ( isset($attributes['type']) && $attributes['type'] == "tag") {
+                    if ( $attributes['tag'] == $rtag ) {
+                        $oNode = dom_import_simplexml($SitemapItem);
+                        $oNode->parentNode->removeChild($oNnode);
+                    }
+                }
+            }
+        }
         
     }
     
