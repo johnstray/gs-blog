@@ -231,7 +231,9 @@ class Blog
 	*/  
 	public function savePost($post_data, $auto_import=false)
 	{
-		if ($post_data['slug'] != '')
+		$SiteMap = new GSBlog_SiteMapManager();
+        
+        if ($post_data['slug'] != '')
 		{
 			$slug = $this->blog_create_slug($post_data['slug']);
 		}
@@ -246,6 +248,8 @@ class Blog
 			if ($post_data['current_slug'] != '')
 			{
 				unlink(BLOGPOSTSFOLDER . $post_data['current_slug'] . '.xml');
+                # Remove entry from site map
+                $SiteMap->removePost($this->getPostData($post_data['current_slug']));
 			}
 			# do not overwrite existing files
 			if (file_exists($file) && $auto_import == false) 
@@ -334,7 +338,6 @@ class Blog
 			}
    
             # Add entry to site map
-            $SiteMap = new GSBlog_SiteMapManager();
             $SiteMap->addPost($slug, $date);
             
 			return true;
@@ -350,14 +353,18 @@ class Blog
 	*/  
 	public function deletePost($post_id)
 	{
-		if(file_exists(BLOGPOSTSFOLDER.$post_id.'.xml'))
+		
+        # Get post data before delete - we need this for sitemap to process
+        $post = $this->getPostData(BLOGPOSTSFOLDER.$post_id.'.xml');
+        
+        if(file_exists(BLOGPOSTSFOLDER.$post_id.'.xml'))
 		{
 			$delete_post = unlink(BLOGPOSTSFOLDER.$post_id.'.xml');
 			if($delete_post)
 			{
                 # Remove entry from site map
                 $SiteMap = new GSBlog_SiteMapManager();
-                $SiteMap->removePost($post_id);
+                $SiteMap->removePost($post);
                 
                 return true;
 			}
@@ -394,7 +401,11 @@ class Blog
 		$add_category = XMLsave($xml, BLOGCATEGORYFILE);
 		if($add_category)
 		{
-			return true;
+            # Add entry to site map
+            $SiteMap = new GSBlog_SiteMapManager();
+            $SiteMap->addCategory($category);
+            
+            return true;
 		}
 		else
 		{
@@ -426,7 +437,11 @@ class Blog
 		$delete_category = XMLsave($xml, BLOGCATEGORYFILE);
 		if($delete_category)
 		{
-			return true;
+            # Remove entry from site map
+            $SiteMap = new GSBlog_SiteMapManager();
+            $SiteMap->removeCategory($category);
+            
+            return true;
 		}
 		else
 		{
@@ -443,8 +458,15 @@ class Blog
     */
     public function updateCategory($old_category, $new_category)
     {
+        $SiteMap = new GSBlog_SiteMapManager();
+        
+        # Out with the old
         if(!$this->deleteCategory($old_category)) {return false;}
+        $SiteMap->removeCategory($old_category);
+        
+        # In with the new
         if(!$this->saveCategory($new_category)) {return false;}
+        $SiteMap->addCategory($new_category);
    
         $all_posts = $this->listPosts(true);
         $filtered_posts = array();
