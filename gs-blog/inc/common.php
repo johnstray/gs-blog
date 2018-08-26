@@ -106,7 +106,8 @@ function display_message($message = '???', $type = 'info', $close = false) {
         if($close == false) {
             $message = $message . ' <a href="#" onclick="clearNotify();" style="float:right;">'.i18n_r(BLOGFILE.'/CLOSE').'</a>';
         }
-        echo "<script>notify".$type."('".$message."').popit()".$removeit.";</script>";
+        echo "<script id=\"blogMsg".$type."\">notify".$type."('".$message."').popit()".$removeit.";</script>";
+        echo "<div class=\"blogMsg".$type."\" style=\"display:none;\">".$message."</div>";
     }
 }
     

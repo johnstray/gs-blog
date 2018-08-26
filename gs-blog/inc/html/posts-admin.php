@@ -36,7 +36,7 @@
 		echo '<h5 style="text-align:center;">'.i18n_r(BLOGFILE.'/NO_POSTS').' <a href="load.php?id='.BLOGFILE.'&create_post">'.i18n_r(BLOGFILE.'/CLICK_TO_CREATE').'</a>.</h5>';
 	} else {
   ?>
-		<table class="edittable highlight paginate" id="datatable">
+		<div id="tableContainer"><table class="edittable highlight paginate" id="datatable">
 			<?php
             foreach($all_posts as $post_name) {
                 $post = $Blog->getPostData($post_name);
@@ -52,16 +52,15 @@
                             <div class="clear"></div>
                         </div>
                     </td>
-                    <td class="delete"><a class="delconfirm" href="load.php?id=<?php echo BLOGFILE; ?>&delete_post=<?php echo $post->slug; ?>" title="<?php i18n(BLOGFILE.'/DELETE'); ?>: <?php echo $post->title; ?>" ><i class="fa fa-trash-o"></i></a></td>
+                    <td class="delete"><a class="delpost" href="load.php?id=<?php echo BLOGFILE; ?>&delete_post=<?php echo $post->slug; ?>" title="<?php i18n(BLOGFILE.'/DELETE'); ?>: <?php echo $post->title; ?>" ><i class="fa fa-trash-o"></i></a></td>
 				</tr>
 			<?php
 		}
-		echo '</tbody></table>';
+		echo '</tbody></table></div>';
 	} 
   
-  if(count($all_posts) >= (int) $Blog->getSettingsData("postperpage")) {
-  
-  ?>
+  if(count($all_posts) >= (int) $Blog->getSettingsData("postperpage")) { ?>
+
   <div id="metadata_window" style="margin:0;padding:5px;">
     <div style="text-align:center;line-height:23px;">
       <div id="pageNavPosition"></div>
@@ -70,12 +69,11 @@
   </div>
   
   <script type="text/javascript"><!--
-    var pager;
-    document.addEventListener("DOMContentLoaded", function(event) { 
-      pager = new Pager('datatable', <?php echo $Blog->getSettingsData("postperpage"); ?>); 
-      pager.init(); 
-      pager.showPageNav('pager', 'pageNavPosition'); 
-      pager.showPage(1);
+    jQuery(function($) {
+       var pageParts = $("#datatable tr"); var numPages = pageParts.length; var perPage = <?php echo $Blog->getSettingsData("postperpage"); ?>;
+       sliceTableRows(1, perPage); calcTableHeight(perPage);
+       $("#pageNavPosition").pagination({items:numPages, itemsOnPage: perPage, onPageClick: function(pageNum) {sliceTableRows(pageNum,perPage);}});
+       $(".delpost").on("click", function ($e) {$e.preventDefault();deletePostAjax($(this),perPage);});
     });
   //--></script>
   <?php } ?>

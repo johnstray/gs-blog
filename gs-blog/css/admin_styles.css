@@ -174,7 +174,14 @@ td.cat_edit{display:none;}
 }
 
 /* Pager - Pagination system for table elements */
-.pg-normal {
+#pageNavPosition ul {
+    list-style: none;
+    margin:0 !important;
+    padding:0;
+    text-align:center;
+}
+#pageNavPosition li {
+    display: inline-block;
   color: black;
   font-weight: normal;
   text-decoration: none;
@@ -182,12 +189,14 @@ td.cat_edit{display:none;}
   padding: 2px 5px;
   border: 1px solid #ccc;
   border-radius: 2px;
+  min-width: 15px;
+  margin: 0 2px;
 }
-.pg-normal:hover {
+#pageNavPosition li:hover {
   cursor: pointer;
   background-color: #ffffd5;
 }
-.pg-selected {
+#pageNavPosition li.active {
   color: black;
   font-weight: bold; 
   text-decoration: none; 
@@ -196,6 +205,9 @@ td.cat_edit{display:none;}
   border-radius:2px;
   cursor: pointer;
   padding: 2px 5px;
+}
+#pageNavPosition li a {
+    text-decoration:none;
 }
 td {
   vertical-align:middle !important;
