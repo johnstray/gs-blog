@@ -226,6 +226,7 @@ class GSBlog_SiteMapManager {
         $all_posts = $GSBlog->listPosts();
         $in_use = false;
         foreach ( $all_posts as $post ) {
+            $post = $GSBlog->getPostData($post);
             if ( $post->category == $category ) {
                 $in_use = true;
                 break;
@@ -306,7 +307,9 @@ class GSBlog_SiteMapManager {
         $all_posts = $GSBlog->listPosts();
         $in_use = false;
         foreach ( $all_posts as $post ) {
-            $post_arch = date('Ym', strftime($post->date));
+            $post = $GSBlog->getPostData($post);
+            $post_date = (string) $post->date;
+            $post_arch = date('Ym', strtotime($post_date));
             if ( $post_arch == $archive ) {
                 $in_use = true;
                 break;
@@ -393,6 +396,7 @@ class GSBlog_SiteMapManager {
         $used_tags = array();
         
         foreach ( $all_posts as $post ) {
+            $post = $GSBlog->getPostData($post);
             $post_tags = explode(',', $post->tags);
             foreach ( $post_tags as $ptag ) {
                 $used_tags[] = $ptag;

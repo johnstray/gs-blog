@@ -106,7 +106,7 @@ function blog_admin_controller() {
             }
         }
         #show_posts_admin
-        $all_posts = $Blog->listPosts(false, true); // Get a list of all the posts in the blog
+        $all_posts = $Blog->listPosts(true, true); // Get a list of all the posts in the blog
         require_once('html/posts-admin.php'); // Bring in the HTML to show this section
     }
     
