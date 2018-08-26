@@ -387,31 +387,29 @@ class Blog
 	* @todo  use $existing param to edit a category instead of deleting it. This would also need to go through and change the category for any posts using the edited category
 	* @return bool
 	*/  
-	public function saveCategory($category, $existing=false)
-	{
-		$category_file = getXML(BLOGCATEGORYFILE);
-		$xml = new SimpleXMLExtended('<?xml version="1.0"?><item></item>');
-		foreach($category_file->category as $ind_category)
-		{
-			$parent_nodes_node = $xml->addChild('category');
-				$parent_nodes_node->addCData($ind_category);
-		}
-		$parent_nodes_node = $xml->addChild('category');
-			$parent_nodes_node->addCData($category);
-		$add_category = XMLsave($xml, BLOGCATEGORYFILE);
-		if($add_category)
-		{
-            # Add entry to site map
-            $SiteMap = new GSBlog_SiteMapManager();
-            $SiteMap->addCategory($category);
-            
-            return true;
-		}
-		else
-		{
-			return false;
-		}
-	}
+    public function saveCategory($category) {
+        $categoryFile = getXML(BLOGCATEGORYFILE);
+        $xml = new SimpleXMLExtended('<?xml version="1.0"?><item />');
+        $exists = false;
+        foreach ( $categoryFile->category as $indCategory ) {
+            $parentNode = $xml->addChild('category');
+            $parentNode->addCData($indCategory);
+            if ( (string) $indCategory == $category && $exists === false ) {
+                $exists = true;
+            }
+        }
+        if ( !$exists ) {
+            $parentNode = $xml->addChild('category');
+            $parentNode->addCData($category);
+            $addCategory = XMLsave($xml, BLOGCATEGORYFILE);
+            if ( $addCategory ) {
+                # Add entry to site map
+                $SiteMap = new GSBlog_SiteMapManager();
+                $SiteMap->addCategory($category);
+                return true;
+            } else { return false; }
+        } else { return false; }
+    }
 
 	/** 
 	* Deletes a category
