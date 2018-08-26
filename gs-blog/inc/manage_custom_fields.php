@@ -240,6 +240,7 @@ function displayCustomFields($area='options')
 	if (defined('GSEDITORLANG')) { $EDLANG = GSEDITORLANG; } else {	$EDLANG = 'en'; }
 	if (defined('GSEDITORTOOL')) { $EDTOOL = GSEDITORTOOL; } else {	$EDTOOL = 'basic'; }
 	if (defined('GSEDITOROPTIONS') && trim(GSEDITOROPTIONS)!="") { $EDOPTIONS = GSEDITOROPTIONS.", "; } else {	$EDOPTIONS = ''; }
+    if (defined('GSEDITORHEIGHT')) { $EDHEIGHT = GSEDITORHEIGHT; } else { $EDHEIGHT = '500'; }
 	if ($EDTOOL == 'advanced') 
 	{
 		$toolbar = "
@@ -327,7 +328,7 @@ function displayCustomFields($area='options')
 						defaultLanguage : '<?php echo $EDLANG; ?>',
 						entities : false,
 						uiColor : '#FFFFFF',
-						height: '200px',
+						height: '<?php echo $EDHEIGHT; ?>px',
 						baseHref : '<?php echo $SITEURL; ?>',
 						toolbar : [ <?php echo $toolbar; ?> ],
 						<?php echo $EDOPTIONS; ?>
