@@ -110,5 +110,3 @@ function display_message($message = '???', $type = 'info', $close = false) {
         echo "<div class=\"blogMsg".$type."\" style=\"display:none;\">".$message."</div>";
     }
 }
-    
-
