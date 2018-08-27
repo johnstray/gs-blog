@@ -41,7 +41,7 @@
                 }
 
                 if(res.code != 0) {
-                    settings.onError(res.code);
+                    settings.onError(res.error);
                     return;
                 }
                 settings.onSuccess(res.url, res.data);

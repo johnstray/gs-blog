@@ -178,6 +178,41 @@ function editPost($post_id=null) {
 	# include(BLOGPLUGINFOLDER.'ckeditor.php');
 }
 
+/**
+ * Generates a list of templates that can be applied to a blog post
+ *
+ * @param $current (string) - Name of the current template. Marks it as selected
+ * @return (array) - A list of template files available
+ */
+function generateTemplateList( $current = null, $echo = true ) {
+    GLOBAL $TEMPLATE;
+    $templates = array();
+    $templatePath = GSTHEMESPATH . $TEMPLATE;
+    $templateFiles = @scandir($templatePath);
+    if ( $templateFiles !== false ) {
+        foreach ( $templateFiles as $templateFile ) {
+            if ( isFile($templateFile, $templatePath, 'php') && stripos($templateFile, 'blog.') === 0 ) {
+                $templates[] = $templateFile;
+            }
+        }
+        
+        if ( $echo && !empty($templates) ) {
+            echo '<option value="default"';
+            if ( $current == null || $current == 'default') { echo ' selected="selected"'; }
+            echo '>Default Template</option>';
+            foreach ( $templates as $template ) {
+                echo '<option value="' . $template .'"';
+                if ( $current !== null && $template == $current) { echo ' selected="selected"'; }
+                echo '>' . $template . '</option>';
+            }
+        }
+        
+    } else {
+        debugLog("Unable to generate a list of available templates. Theme directory no accessible");
+        return false;
+    }
+}
+
 /**-------------------------------------------------------------------------------------------------
  * category_dropdown($current_category)
  * Echos all categories to place into a select menu

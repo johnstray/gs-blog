@@ -85,7 +85,7 @@ else
                             $('.uploaderStatusBar div').css('background-color', 'red');
                             $('.uploaderStatusBar div').css('width', '100%');
                             console.error('Image Uploader: ' + code);
-                            alert('Uploader Error: ' + code);
+                            alert(code);
                         },
                         onSuccess: function(url, data) {
                             if (url.indexOf('/') === 0) {url = url.substring(1);}

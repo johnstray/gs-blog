@@ -95,6 +95,7 @@ function show_blog_post($slug, $excerpt=false, $echo=true) {
   $p['archiveurl'] = $Blog->get_blog_url('archive'); // Archive base URL
   $p['archivetitle'] = date(i18n_r(BLOGFILE.'/DATE_ARCHIVE'),$post_date); // Archive the post is in
   $p['archivedate'] = date('Ym', $post_date);
+  $p['template'] = (string) $post->template;
   
   if(!empty($post->tags)) { // Tags applied to the post
     $p['tags'] = explode(',', $post->tags);
@@ -111,9 +112,11 @@ function show_blog_post($slug, $excerpt=false, $echo=true) {
   } else {echo 'Uh oh! Something went wrong!';}
   
     if($echo) { # Lets load the template now and let it put all this together.
-        $theme_dir = GSTHEMESPATH . $TEMPLATE . "/";
+        $theme_dir = GSTHEMESPATH . $TEMPLATE . "/blog/";
         if ( isset( $_GET['post'] ) ) {
-            if ( file_exists ( $theme_dir . "layout.post.php" ) ) {
+            if ( !empty($p['template']) && $p['template'] != 'default' && file_exists(GSTHEMESPATH . $TEMPLATE . '/' . $p['template']) ) {
+                include(GSTHEMESPATH . $TEMPLATE . '/' . $p['template']);
+            } elseif ( file_exists ( $theme_dir . "layout.post.php" ) ) {
                 include( $theme_dir . "layout.post.php" );
             } else {
                 include( BLOGPLUGINFOLDER . "layout-post.php" );
@@ -200,8 +203,8 @@ function show_blog_category($category, $echo=true) {
   if($echo) {
     ob_start(); // Create a buffer to build this page in
     // Get the listBefore layout (stuff before list of posts)
-    if ( file_exists ( GSTHEMESPATH . $TEMPLATE . "/layout.list-before.php" ) ) {
-        include( GSTHEMESPATH . $TEMPLATE . "/layout.list-before.php" );
+    if ( file_exists ( GSTHEMESPATH . $TEMPLATE . "/blog/layout.list-before.php" ) ) {
+        include( GSTHEMESPATH . $TEMPLATE . "/blog/layout.list-before.php" );
     } else {
         include( BLOGPLUGINFOLDER . "layout-listBefore.php" );
     }
@@ -216,8 +219,8 @@ function show_blog_category($category, $echo=true) {
       echo '<p class="blog_category_noposts">'.i18n_r(BLOGFILE.'/NO_POSTS').'</p>';
     }
     // Get the listAfter layout (stuff after list of posts)
-    if ( file_exists ( GSTHEMESPATH . $TEMPLATE . "/layout.list-after.php" ) ) {
-        include( GSTHEMESPATH . $TEMPLATE . "/layout.list-after.php" );
+    if ( file_exists ( GSTHEMESPATH . $TEMPLATE . "/blog/layout.list-after.php" ) ) {
+        include( GSTHEMESPATH . $TEMPLATE . "/blog/layout.list-after.php" );
     } else {
         include( BLOGPLUGINFOLDER . "layout-listAfter.php" );
     }
@@ -309,8 +312,8 @@ function show_blog_archive($archive, $echo=true) {
   if ($echo) {
     ob_start(); // Create a buffer to build this page in
     // Get the listBefore layout (stuff before list of posts)
-    if ( file_exists ( GSTHEMESPATH . $TEMPLATE . "/layout.list-before.php" ) ) {
-        include( GSTHEMESPATH . $TEMPLATE . "/layout.list-before.php" );
+    if ( file_exists ( GSTHEMESPATH . $TEMPLATE . "/blog/layout.list-before.php" ) ) {
+        include( GSTHEMESPATH . $TEMPLATE . "/blog/layout.list-before.php" );
     } else {
         include( BLOGPLUGINFOLDER . "layout-listBefore.php" );
     }
@@ -326,8 +329,8 @@ function show_blog_archive($archive, $echo=true) {
       echo i18n(BLOGFILE.'/NO_POSTS'); // Let the user know
     }
     // Get the listAfter layout (stuff after list of posts)
-    if ( file_exists ( GSTHEMESPATH . $TEMPLATE . "/layout.list-after.php" ) ) {
-        include( GSTHEMESPATH . $TEMPLATE . "/layout.list-after.php" );
+    if ( file_exists ( GSTHEMESPATH . $TEMPLATE . "/blog/layout.list-after.php" ) ) {
+        include( GSTHEMESPATH . $TEMPLATE . "/blog/layout.list-after.php" );
     } else {
         include( BLOGPLUGINFOLDER . "layout-listAfter.php" );
     }
@@ -445,8 +448,8 @@ function show_blog_tag($tag, $echo=true) {
   if ($echo) {
     ob_start(); // Create a buffer to build this page in
     // Get the listBefore layout (stuff before list of posts)
-    if ( file_exists ( GSTHEMESPATH . $TEMPLATE . "/layout.list-before.php" ) ) {
-        include( GSTHEMESPATH . $TEMPLATE . "/layout.list-before.php" );
+    if ( file_exists ( GSTHEMESPATH . $TEMPLATE . "/blog/layout.list-before.php" ) ) {
+        include( GSTHEMESPATH . $TEMPLATE . "/blog/layout.list-before.php" );
     } else {
         include( BLOGPLUGINFOLDER . "layout-listBefore.php" );
     }
@@ -461,8 +464,8 @@ function show_blog_tag($tag, $echo=true) {
       }
     }
     // Get the listAfter layout (stuff after list of posts)
-    if ( file_exists ( GSTHEMESPATH . $TEMPLATE . "/layout.list-after.php" ) ) {
-        include( GSTHEMESPATH . $TEMPLATE . "/layout.list-after.php" );
+    if ( file_exists ( GSTHEMESPATH . $TEMPLATE . "/blog/layout.list-after.php" ) ) {
+        include( GSTHEMESPATH . $TEMPLATE . "/blog/layout.list-after.php" );
     } else {
         include( BLOGPLUGINFOLDER . "layout-listAfter.php" );
     }
@@ -517,8 +520,8 @@ function search_posts($keyphrase, $echo=true) {
   if($echo) {
     ob_start(); // Create a buffer to build this page in
     // Get the listBefore layout (stuff before list of posts)
-    if ( file_exists ( GSTHEMESPATH . $TEMPLATE . "/layout.list-before.php" ) ) {
-        include( GSTHEMESPATH . $TEMPLATE . "/layout.list-before.php" );
+    if ( file_exists ( GSTHEMESPATH . $TEMPLATE . "/blog/layout.list-before.php" ) ) {
+        include( GSTHEMESPATH . $TEMPLATE . "/blog/layout.list-before.php" );
     } else {
         include( BLOGPLUGINFOLDER . "layout-listBefore.php" );
     }
@@ -531,8 +534,8 @@ function search_posts($keyphrase, $echo=true) {
       echo '<p class="blog_search_header">'.i18n(BLOGFILE.'/NOT_FOUND').'</p>';
     }
     // Get the listAfter layout (stuff after list of posts)
-    if ( file_exists ( GSTHEMESPATH . $TEMPLATE . "/layout.list-after.php" ) ) {
-        include( GSTHEMESPATH . $TEMPLATE . "/layout.list-after.php" );
+    if ( file_exists ( GSTHEMESPATH . $TEMPLATE . "/blog/layout.list-after.php" ) ) {
+        include( GSTHEMESPATH . $TEMPLATE . "/blog/layout.list-after.php" );
     } else {
         include( BLOGPLUGINFOLDER . "layout-listAfter.php" );
     }
@@ -564,8 +567,8 @@ function show_posts_page($index=0) {
 	if(!empty($posts)) { // If we have posts to display...
     ob_start(); // Create a buffer to build this page in
     // Get the listBefore layout (stuff before list of posts)
-    if ( file_exists ( GSTHEMESPATH . $TEMPLATE . "/layout.list-before.php" ) ) {
-        include( GSTHEMESPATH . $TEMPLATE . "/layout.list-before.php" );
+    if ( file_exists ( GSTHEMESPATH . $TEMPLATE . "/blog/layout.list-before.php" ) ) {
+        include( GSTHEMESPATH . $TEMPLATE . "/blog/layout.list-before.php" );
     } else {
         include( BLOGPLUGINFOLDER . "layout-listBefore.php" );
     }
@@ -592,8 +595,8 @@ function show_posts_page($index=0) {
 			}
 		}
     // Get the listAfter layout (stuff after list of posts)
-    if ( file_exists ( GSTHEMESPATH . $TEMPLATE . "/layout.list-after.php" ) ) {
-        include( GSTHEMESPATH . $TEMPLATE . "/layout.list-after.php" );
+    if ( file_exists ( GSTHEMESPATH . $TEMPLATE . "/blog/layout.list-after.php" ) ) {
+        include( GSTHEMESPATH . $TEMPLATE . "/blog/layout.list-after.php" );
     } else {
         include( BLOGPLUGINFOLDER . "layout-listAfter.php" );
     }
