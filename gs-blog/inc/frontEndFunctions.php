@@ -95,6 +95,7 @@ function show_blog_post($slug, $excerpt=false, $echo=true) {
   $p['archiveurl'] = $Blog->get_blog_url('archive'); // Archive base URL
   $p['archivetitle'] = date(i18n_r(BLOGFILE.'/DATE_ARCHIVE'),$post_date); // Archive the post is in
   $p['archivedate'] = date('Ym', $post_date);
+  $p['template'] = (string) $post->template;
   
   if(!empty($post->tags)) { // Tags applied to the post
     $p['tags'] = explode(',', $post->tags);
@@ -113,7 +114,9 @@ function show_blog_post($slug, $excerpt=false, $echo=true) {
     if($echo) { # Lets load the template now and let it put all this together.
         $theme_dir = GSTHEMESPATH . $TEMPLATE . "/blog/";
         if ( isset( $_GET['post'] ) ) {
-            if ( file_exists ( $theme_dir . "layout.post.php" ) ) {
+            if ( !empty($p['template']) && $p['template'] != 'default' && file_exists(GSTHEMESPATH . $TEMPLATE . '/' . $p['template']) ) {
+                include(GSTHEMESPATH . $TEMPLATE . '/' . $p['template']);
+            } elseif ( file_exists ( $theme_dir . "layout.post.php" ) ) {
                 include( $theme_dir . "layout.post.php" );
             } else {
                 include( BLOGPLUGINFOLDER . "layout-post.php" );

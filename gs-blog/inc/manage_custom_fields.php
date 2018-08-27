@@ -285,6 +285,10 @@ function displayCustomFields($area='options')
 				{
 					category_dropdown($value);
 				}
+                elseif ($key == 'template')
+                {
+                    generateTemplateList($value);
+                }
 				else
 				{
 					foreach ($the['options'] as $option) 

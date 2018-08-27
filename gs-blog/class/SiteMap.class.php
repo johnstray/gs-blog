@@ -102,7 +102,7 @@ class GSBlog_SiteMapManager {
     public function addPost($slug, $moddate = '' ) {
         
         # Set modification time to now if $moddate is empty
-        if ( is_empty($moddate) ) { $moddate = time(); }
+        if ( empty($moddate) ) { $moddate = time(); }
         
         # Generate post URL
         $GSBlog = new Blog;
@@ -346,7 +346,7 @@ class GSBlog_SiteMapManager {
         
         if ( $isSlug ) {
             # Identify the tags that slug belongs to
-            $post = $GSBlog->getPostData($item);
+            $post = $GSBlog->getPostData(BLOGPOSTSFOLDER . $item . ".xml");
             $postTags = $post->tags;
             $item = explode(',', $postTags);
         }
