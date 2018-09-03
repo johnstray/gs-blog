@@ -1,35 +1,43 @@
 ## Version 3.5.0 ~ Beta
-**Feature Enhancements:**
-- [#006] Created a new Post Image uploader/selector
-- [#120] Added support for layout templates in the active theme's directory
-- [#110] More enhancements to the Posts Admin Page
-  - Created post filtering mechanisim to compliment the search function
-  - Modified the layout of the posts list to now include a bit more information about a post
-  - New layout now includes a mini version of the image thats attached to the post
-  - Action icon changed to now use the FontAwesome library of icons.
-
-**Back End (Admin) Changes:**
-- [#111] Enhancements to the Category Management Page
-  - Category names are now editable. Click the new edit button will reveal a text field for updating the name.
-  - Number of posts in category now shown next to category name
-  - Post quantity links back to post management page with a filter applied to only show posts from the click category.
-  - Filtering or sorting of Categories by name or popularity (# of posts) is now possible
-  - New category action icons using FontAwesome library.
-  - Page layout cleaned up to look much better and inline with the new styles.
-- [#134] Added 'Save Post' button to Post Editor page.
+**New Features and Enhancements:**
+- [#006] An entirely new thumbnail system and uploader has been built from scratch, with support for uploading new images or selecting one from the Files manager.
+- [#048] New class developed to integrate the blog with the sitemap.xml file.
+- [#085] Added read more link to layout-list.php file.
 - [#104] Better metadata management for search engine optimisation
   - Added the ability to include a description for each of the core pages; categories, archives, tags, search results
   - Descriptions are used in the html "description" meta tag.
   - New settings page added specifically for SEO based settings such as the page descriptions.
   - Option to enable showing the descriptions on the respective page's list-layoutBefore template.
   - Placeholders available to description texts: {archive}, {category}, {tag}, {search}, {results}.
-
-**Frontend UI Improvements:**
-- [#085] Added read more link to layout-list.php file.
+- [#120] Added support for layout templates in the active theme's directory
+  - This adds support for overall templates in a subdirectory of the the called 'blog'
+  - Supports per-post custom layouts with files begining with blog.*.php
+- [#110] More enhancements to the Posts Admin Page
+  - Created post filtering mechanisim to compliment the search function
+  - Modified the layout of the posts list to now include a bit more information about a post
+  - New layout now includes a mini version of the image thats attached to the post
+  - Action icon changed to now use the FontAwesome library of icons.
+- [#111] Enhancements to the Category Management Page
+  - [#009] Category names are now editable. Click the new edit button will reveal a text field for updating the name.
+  - Number of posts in category now shown next to category name
+  - Post quantity links back to post management page with a filter applied to only show posts from the click category.
+  - [#010] Filtering or sorting of Categories by name or popularity (# of posts) is now possible
+  - New category action icons using FontAwesome library.
+  - Page layout cleaned up to look much better and inline with the new styles.
+- [#134] Added 'Save Post' button to Post Editor page.
 
 **Bug Fixes:**
-- [#119] Fixed php parse error: missing '$' on lines 417 and 418 in Blog.php
-- [#119] Fixed php parse error: missing ',' on line 716 in Blog.php
+- [#096] New paginations scripts have been implemented that fix the issue of page numbering extending indefinitely when there were hundreds of posts.
+- [#119] Fixed php parse error: missing '$' on lines 417 and 418 in Blog.php.
+- [#119] Fixed php parse error: missing ',' on line 716 in Blog.php.
+- [#124] Fixed view post button in editor not correctly linking to the post on the front end in some cases.
+- [#126] Fixed settings file always updating, with some reporting always to default.
+- [#140] Fixed a variable naming mismatch which caused a PHP error.
+- [#141] Fixed thumbnails not updating correctly in the new thumbnail uploader.
+- [#144] Fixed first post in the admin list showing on every page.
+- [#145] CKEditor in the post editor will now respect the value of GSEDITORHEIGHT.
+- [#146] Post in the post admin are now correctly sorted by date with newest first. Previously they were sorted by filename/slug.
+- [#149] Saving a category will now check if the category name already exists, preventing duplicate categories and incorrect post attribution.
 
 **Core Code Changes**
 - [#110] Significant improvements to the search class method to also include filtering.
