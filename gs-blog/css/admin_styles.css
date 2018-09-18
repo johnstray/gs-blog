@@ -7,31 +7,31 @@
     height:55px;
 }
 .cat_name span {
-  font-size:10px !important;
-  vertical-align:top;
-  padding-left:5px;
+    font-size:10px !important;
+    vertical-align:top;
+    padding-left:5px;
 }
 .cat_name span a {
-  text-decoration:none !important;
+    text-decoration:none !important;
 }
 .cat_name form .submit {
-  width:auto;
-  height:26px;
-  padding:3px 7px;
-  margin-left:-2px;
-  cursor:pointer;
+    width:auto;
+    height:26px;
+    padding:3px 7px;
+    margin-left:-2px;
+    cursor:pointer;
 }
 .sortbutton {
-  padding: 2px 4px;
-  border:1px solid #333;
-  border-radius: 3px;
-  margin-left:5px;
-  font-size: 14px !important;
+    padding: 2px 4px;
+    border:1px solid #333;
+    border-radius: 3px;
+    margin-left:5px;
+    font-size: 14px !important;
 }
 .sortbutton:hover {
-  background:#182227;
-  color:#AFC5CF;
-  cursor:pointer;
+    background:#182227;
+    color:#AFC5CF;
+    cursor:pointer;
 }
 .wrapper table th {text-align:center;}
 .wrapper table th:first-child {text-align:left;}
@@ -58,7 +58,7 @@ table td.rss a, table td.edit a {
     -o-transition: all .02s ease-in-out;
     transition: all .02s ease-in-out;
     font-style:normal;
-  border-radius:3px;
+    border-radius:3px;
 }
 .rss a:hover {
     background: #D9A236 !important;
@@ -84,7 +84,7 @@ table td.rss a, table td.edit a {
     -o-transition: all .02s ease-in-out;
     transition: all .02s ease-in-out;
     font-style:normal;
-  border-radius:3px;
+    border-radius:3px;
 }
 .edit a:hover {
     background: #366CD9 !important;
@@ -100,48 +100,53 @@ table td.rss a, table td.edit a {
 .delete a:link, .delete a:visited,
 .rss a:link, .rss a:visited,
 .edit a:link, .edit a:visited {
-  font-size: 14px !important;
+    font-size: 14px !important;
 }
 
 td.cat_edit{display:none;}
 
 
-.odd_meta {
-	float: left;
-	width: 48%;
-    height: 40px;
+.leftopt, .rightopt {
+    height: 50px;
+    margin-bottom: 10px;
 }
-.even_meta {
-	float: right;
-	width: 48%;
-    height: 40px;
-}
-
-.odd_meta select.text, .odd_meta input.text,
-.even_meta select.text, .even_meta input.text {
+#metadata_window input, #metadata_window select {
+    box-sizing: border-box;
+    height: 20px;
     width: 100%;
 }
-
-@media only screen and (max-width: 768px) and (min-width: 320px) {
-  li#nav_gs-blog a {
-    visibility: hidden;
-  }
-  li#nav_gs-blog a:before {
-    font-family: FontAwesome;
-    content: "\f044";
-    padding: 0;
-    visibility: visible;
-    font-size: 24px;
-    color:rgba(255,255,255,.75);
-  }
-}
-
-.leftsec .hint, .rightsec .hint, .widesec .hint {
+.leftopt .hint, .rightopt .hint, .wideopt .hint,
+.leftsec .hint, .rightsec .hint, .widesec .hint{
     display: block;
     margin-bottom: 5px;
     font-size: 10px;
     line-height: 10px;
     text-align: justify;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#posteditor {margin-bottom: 20px;}
+#otheroptions .leftopt {float: left; width: 48%;}
+#otheroptions .rightopt {float: right; width: 48%;}
+#otheroptions input, #otheroptions select {box-sizing:border-box;height:20px; width: 100%;}
+#submit_line {margin-bottom: 0;}
+#sidebar #edit #submit_line { margin-left : 13px; text-align: center }
+#pagechangednotify { text-align: center; }
+
+@media only screen and (max-width: 768px) and (min-width: 320px) {
+    li#nav_gs-blog a {
+        visibility: hidden;
+    }
+    li#nav_gs-blog a:before {
+        font-family: FontAwesome;
+        content: "\f044";
+        padding: 0;
+        visibility: visible;
+        font-size: 24px;
+        color:rgba(255,255,255,.75);
+    }
 }
 
 /* Post Management */
@@ -187,35 +192,35 @@ td.cat_edit{display:none;}
 }
 #pageNavPosition li {
     display: inline-block;
-  color: black;
-  font-weight: normal;
-  text-decoration: none;
-  background: #fefefe;
-  padding: 2px 5px;
-  border: 1px solid #ccc;
-  border-radius: 2px;
-  min-width: 15px;
-  margin: 0 2px;
+    color: black;
+    font-weight: normal;
+    text-decoration: none;
+    background: #fefefe;
+    padding: 2px 5px;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+    min-width: 15px;
+    margin: 0 2px;
 }
 #pageNavPosition li:hover {
-  cursor: pointer;
-  background-color: #ffffd5;
+    cursor: pointer;
+    background-color: #ffffd5;
 }
 #pageNavPosition li.active {
-  color: black;
-  font-weight: bold; 
-  text-decoration: none; 
-  background: #ffffec;
-  border: 1px solid #ccc;
-  border-radius:2px;
-  cursor: pointer;
-  padding: 2px 5px;
+    color: black;
+    font-weight: bold;
+    text-decoration: none;
+    background: #ffffec;
+    border: 1px solid #ccc;
+    border-radius:2px;
+    cursor: pointer;
+    padding: 2px 5px;
 }
 #pageNavPosition li a {
     text-decoration:none;
 }
 td {
-  vertical-align:middle !important;
+    vertical-align:middle !important;
 }
 
 /* Uploader - Post Image upload system */
@@ -225,15 +230,15 @@ td {
     border: 1px solid #e8e8e8;
     padding: 10px;
     -webkit-border-radius: 3px;
-       -moz-border-radius: 3px;
-            border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
 }
 .uploaderImageBox {
     background: #ffffff;
     border: 1px solid #efefef;
     -webkit-border-radius: 3px;
-       -moz-border-radius: 3px;
-            border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
     position: relative;
     width: 175px;
     height: 92px;
@@ -251,9 +256,9 @@ td {
     margin-left: -46px;
     z-index: 102;
     -webket-transition: all 0.218s;
-       -moz-transition: all 0.218s;
-         -o-transition: all 0.218s;
-            transition: all 0.218s;
+    -moz-transition: all 0.218s;
+    -o-transition: all 0.218s;
+    transition: all 0.218s;
     text-align: center;
     color: transparent;
 }
@@ -283,8 +288,8 @@ td {
     top: 0; left: 0;
     z-index: 101;
     -webkit-border-radius: 3px;
-       -moz-border-radius: 3px;
-            border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
 }
 .uploaderFileInfo {
     height: 92px;
@@ -325,17 +330,17 @@ td {
 }
 
 .copyright-text {
-  text-shadow: 1px 1px 0 rgba(255,255,255,.4);
-  margin: -30px 0 0 0;
-  padding: 10px 0 0;
-  font-size: 11px;
-  color: #999;
-  text-align: center;
+    text-shadow: 1px 1px 0 rgba(255,255,255,.4);
+    margin: -30px 0 0 0;
+    padding: 10px 0 0;
+    font-size: 11px;
+    color: #999;
+    text-align: center;
 }
 .copyright-text div {
-  font-size:10px;
+    font-size:10px;
 }
 .copyright-text a {
-  color:#888 !important;
-  text-decoration:none !important;
+    color:#888 !important;
+    text-decoration:none !important;
 }

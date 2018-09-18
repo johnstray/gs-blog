@@ -52,7 +52,7 @@
                             <div class="clear"></div>
                         </div>
                     </td>
-                    <td class="delete"><a class="delpost" href="load.php?id=<?php echo BLOGFILE; ?>&delete_post=<?php echo $post->slug; ?>" title="<?php i18n(BLOGFILE.'/DELETE'); ?>: <?php echo $post->title; ?>" ><i class="fa fa-trash-o"></i></a></td>
+                    <td class="delete"><a class="delpost" href="load.php?id=<?php echo BLOGFILE; ?>&delete_post=<?php echo $post->slug; ?>" title="<?php i18n(BLOGFILE.'/DELETE'); ?>: <?php echo $post->title; ?>" ><b class="fa fa-stack fa-1x"><i class="fa fa-trash-o"></i><b class="fa fa-stack-1x">&times;</b></b></a></td>
 				</tr>
 			<?php
 		}
