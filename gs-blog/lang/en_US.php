@@ -41,6 +41,7 @@ $i18n = array(
   'MANAGE'                    =>  'Manage',
   'LANGUAGE'                  =>  'Language',
   'DATE'                      =>  'Date',
+  'NONE'                      =>  'None',
   
   # Class Constructor
   'DATA_BLOG_DIR'             =>  '<em>data/blog</em> directory successfully created.',

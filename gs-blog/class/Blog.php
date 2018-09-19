@@ -109,14 +109,6 @@ class Blog
       }
     }
     
-    # Reserved Custom Fields
-    if(!file_exists(BLOGCUSTOMFIELDS)) {
-      $custom_fields_file = BLOGPLUGINFOLDER.'inc/reserved_blog_custom_fields.xml';
-      if(!copy($custom_fields_file, BLOGCUSTOMFIELDS)) {
-        display_message('<strong>Catastrophic ERROR!!!</strong> - You are going to need to copy the contents of the below file, save it as a new document named "blog_custom_fields.xml" and then move it to the "'.GSDATAOTHERPATH.'" folder!<br/><strong>XML File To Copy:</strong> '.BLOGCUSTOMFIELDS, 'error');
-      }
-    }
-    
   }
 
 	/** 
@@ -614,29 +606,20 @@ class Blog
 	* Gets fields for blog post xml files
 	* 
 	* @param $array bool if the xml nodes should be returned as an array (true) or a object (null or false)
-	* @todo this function will be very usefull once custom fields are implemented. For now it is here for preparation for the inevitable!
 	* @return array xml nodes if $array param is true
 	* @return object xml nodes if $array param is false
-	*/  
-	public function getXMLnodes($array=false)
-	{
-		$cfData = getXML(BLOGCUSTOMFIELDS);
-		$blog_data = array('current_slug' => '', 'thumbnail' => '', 'thumbalt' => '');
-		foreach($cfData->item as $custom_field)
-		{
-			$value = (string) $custom_field->desc;
-			$blog_data[$value] = '';
-		}
-
-		if($array == false)
-		{
-			return $blog_data = (object) $blog_data;
-		}
-		else
-		{
-			return $blog_data;
-		}
-  	}
+	*/
+    public function getXMLnodes ( $array = false ) {
+        $cfData = getXML(BLOGCUSTOMFIELDS);
+        $blog_data = array( 'current_slug' => '', 'title' => '', 'slug' => '', 'date' => '', 'tags' => '', 'author' => '',
+            'category' => '', 'thumbnail' => '', 'thumbalt' => '', 'content' => '', 'visibility' => '', 'template' => '' );
+        foreach( $cfData->item as $custom_field ) {
+            $value = (string) $custom_field->desc;
+            $blog_data[$value] = '';
+        }
+        if( $array == false ) { return $blog_data = (object) $blog_data; }
+        else { return $blog_data; }
+    }
 
 	/** 
 	* Generates link to blog or blog area

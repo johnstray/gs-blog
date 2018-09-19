@@ -219,25 +219,28 @@ function generateTemplateList( $current = null, $echo = true ) {
  * 
  * @param  $current_category (string) Name of the current category. Marks it as selected.
  * @return void              (void)
- */  
+ */
 function category_dropdown($current_category=null) {
 
-	$category_file = getXML(BLOGCATEGORYFILE);	
-  
-	foreach($category_file->category as $category_item)	{		
-		$category_item = (string) $category_item;
-		if($category_item == $current_category) {
-			echo '<option value="'.$current_category.'" selected>'.$current_category.'</option>';	
-		} else {
-			echo '<option value="'.$category_item.'">'.$category_item.'</option>';	
-		}	
-	}	
-  
-	if($current_category == null) {
-		echo '<option value="" selected></option>';	
-	} else {
-		echo '<option value=""></option>';	
-	}
+    $category_file = getXML(BLOGCATEGORYFILE);
+
+    if($current_category == null) {
+        echo '<option value="none" selected>----- ' .i18n_r( BLOGFILE . '/NONE' ) . '-----</option>';
+    } else {
+        echo '<option value="none">----- ' .i18n_r( BLOGFILE . '/NONE' ) . '-----</option>';
+    }
+
+    foreach($category_file->category as $category_item)	{
+        $category_item = (string) $category_item;
+        if (!empty($category_item)) {
+            if ( $category_item == $current_category ) {
+                echo '<option value="' . $current_category . '" selected>' . $current_category . '</option>';
+            } else {
+                echo '<option value="' . $category_item . '">' . $category_item . '</option>';
+            }
+        }
+    }
+
 }
 
 /**-------------------------------------------------------------------------------------------------

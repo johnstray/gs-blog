@@ -8,7 +8,7 @@ class customFields extends Blog
 
   public function getReservedFields()
   {
-    return array('slug', 'tags', 'date', 'private', 'category', 'title', 'content');
+    return array('slug', 'tags', 'date', 'visibility', 'category', 'title', 'content', 'author', 'template', 'thumbnail', 'thumbalt');
   }
 
   public function getCustomFields()

@@ -63,7 +63,6 @@ if ( isset( $_GET['edit_post'] )
             <label for="post-category"><?php i18n( BLOGFILE . '/ASSIGNED_CATEGORY' ); ?>:</label>
             <span class="hint"><?php i18n( BLOGFILE . '/ASSIGNED_CATEGORY_HINT' ); ?></span>
             <select class="text" id="post-category" name="post-category">
-                <option value="none">----- <?php i18n( BLOGFILE . '/NONE' ); ?> -----</option>
                 <?php category_dropdown( $blog_data->category ); ?>
             </select>
         </div>
@@ -139,6 +138,7 @@ if ( isset( $_GET['edit_post'] )
                 </script>
             </div>
         </div>
+        <?php displayCustomFields('options'); ?>
         <div class="clear"></div>
         <?php exec_action( 'edit-extras' ); ?>
     </div>
@@ -226,6 +226,7 @@ if ( isset( $_GET['edit_post'] )
                 <?php generateTemplateList( $blog_data->template ); ?>
             </select>
         </div>
+        <?php displayCustomFields('main'); ?>
         <div class="clear"></div>
     </div>
 
