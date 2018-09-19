@@ -90,6 +90,24 @@ $i18n = array(
   'ALL_FIELDS'                =>  'All Fields',
   'PUBLISHED_DATE'            =>  'Published Date',
   'TAG'                       =>  'Tag',
+
+    # 'Post Editor' Strings
+    // New in version 3.5.0 - Please translate
+    'SLUG_URL'                  =>  'Slug/URL',
+    'SLUG_URL_HINT'             =>  'A slug will be generated automatically if you leave this blank',
+    'PUBLICATION_DATE'          =>  'Publication Date',
+    'PUBLICATION_DATE_HINT'     =>  'Any date format supported, inc. &apos;now&apos;, &apos;today&apos;, etc.',
+    'POST_TAGS'                 =>  'Tags',
+    'POST_TAGS_HINT'            =>  'Separate each tag with a comma. Single words only.',
+    'AUTHOR_NAME_HINT'          =>  'If empty, automatically set from current users name',
+    'ASSIGNED_CATEGORY'         =>  'Assigned Category',
+    'ASSIGNED_CATEGORY_HINT'    =>  'Choose a category from the list to assign this post to',
+    'POST_VISIBILITY'           =>  'Post Visibility',
+    'POST_VISIBILITY_HINT'      =>  'Should the post be visible to the public?',
+    'NORMAL'                    =>  'Normal',
+    'PRIVATE'                   =>  'Private',
+    'POST_TEMPLATE'             =>  'Template',
+    'POST_TEMPLATE_HINT'        =>  'Select a template to use when rendering the post',
   
   # 'Category Management' Strings
   'CATEGORY_ADDED'            =>  'Successfully added Category!',

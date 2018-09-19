@@ -32,38 +32,38 @@ if ( isset( $_GET['edit_post'] )
     <?php if ( $post_id != null ) { echo '<input type="hidden" name="post-current_slug" value="' . $blog_data->slug . '" />'; } ?>
 
     <div id="titlezone" style="margin-bottom: 20px;">
-        <label for="post-title" style="display: none;">Post Title:</label>
-        <input type="text" class="text title" name="post-title" id="post-title" value="<?php echo $blog_data->title; ?>" placeholder="Post Title" />
+        <label for="post-title" style="display: none;"><?php i18n( BLOGFILE . '/POST_TITLE' ); ?>:</label>
+        <input type="text" class="text title" name="post-title" id="post-title" value="<?php echo $blog_data->title; ?>" placeholder="<?php i18n( BLOGFILE . '/POST_TITLE' ); ?>" />
     </div>
 
     <noscript><style>#metadata_window { display: block !important; }</style></noscript>
     <div id="metadata_window" style="display: none;">
         <div class="leftopt">
-            <label for="post-slug">Slug/URL:</label>
-            <span class="hint">What is a slug for...</span>
+            <label for="post-slug"><?php i18n( BLOGFILE . '/SLUG_URL' ); ?>:</label>
+            <span class="hint"><?php i18n( BLOGFILE . '/SLUG_URL_HINT' ); ?></span>
             <input type="text" class="text" id="post-slug" name="post-slug" value="<?php echo $blog_data->slug; ?>" />
         </div>
         <div class="rightopt"><!-- Blank space --></div>
         <div class="leftopt">
-            <label for="post-date">Publication Date:</label>
-            <span class="hint">Any date format supported, inc. 'now', 'today', etc.</span>
+            <label for="post-date"><?php i18n( BLOGFILE . '/PUBLICATION_DATE' ); ?>:</label>
+            <span class="hint"><?php i18n( BLOGFILE . '/PUBLICATION_DATE_HINT' ); ?></span>
             <input type="text" class="text" id="post-date" name="post-date" value="<?php echo $blog_data->date; ?>" />
         </div>
         <div class="rightopt">
-            <label for="post-tags">Tags:</label>
-            <span class="hint">Separate each tag with a comma or space</span>
+            <label for="post-tags"><?php i18n( BLOGFILE . '/POST_TAGS' ); ?>:</label>
+            <span class="hint"><?php i18n( BLOGFILE . '/POST_TAGS_HINT' ); ?></span>
             <input type="text" class="text" id="post-tags" name="post-tags" value="<?php echo $blog_data->tags; ?>" />
         </div>
         <div class="leftopt">
-            <label for="post-author">Author's Name:</label>
-            <span class="hint">If GSUsers installed, current user displayed</span>
+            <label for="post-author"><?php i18n( BLOGFILE . '/POST_AUTHOR' ); ?>:</label>
+            <span class="hint"><?php i18n( BLOGFILE . '/AUTHOR_NAME_HINT' ); ?></span>
             <input type="text" class="text" id="post-author" name="post-author" value="<?php echo $blog_data->author; ?>" />
         </div>
         <div class="rightopt">
-            <label for="post-category">Assigned Category:</label>
-            <span class="hint">Choose a category from the list to assign this post to</span>
+            <label for="post-category"><?php i18n( BLOGFILE . '/ASSIGNED_CATEGORY' ); ?>:</label>
+            <span class="hint"><?php i18n( BLOGFILE . '/ASSIGNED_CATEGORY_HINT' ); ?></span>
             <select class="text" id="post-category" name="post-category">
-                <option value="none">----- NONE -----</option>
+                <option value="none">----- <?php i18n( BLOGFILE . '/NONE' ); ?> -----</option>
                 <?php category_dropdown( $blog_data->category ); ?>
             </select>
         </div>
@@ -144,7 +144,7 @@ if ( isset( $_GET['edit_post'] )
     </div>
 
     <div id="posteditor">
-        <label for="post-content" style="display: none;">Post Content:</label>
+        <label for="post-content" style="display: none;"><?php i18n( BLOGFILE . '/POST_CONTENT' ); ?>:</label>
         <textarea id="post-content" name="post-content"><?php echo $blog_data->content; ?></textarea>
         <?php if ( $HTMLEDITOR == "TRUE" ) {
             if(isset($EDTOOL)) $EDTOOL = returnJsArray($EDTOOL);
@@ -212,16 +212,16 @@ if ( isset( $_GET['edit_post'] )
 
     <div id="otheroptions">
         <div class="leftopt">
-            <label for="post-visibilitiy">Post Visibility:</label>
-            <span class="hint">Should this post be visible to the public?</span>
+            <label for="post-visibilitiy"><?php i18n( BLOGFILE . '/POST_VISIBILITY' ); ?>:</label>
+            <span class="hint"><?php i18n( BLOGFILE . '/POST_VISIBILITY_HINT' ); ?></span>
             <select class="text" id="post-visibilitiy" name="post-visibility">
-                <option value="normal">Normal</option>
-                <option value="private">Private</option>
+                <option value="normal"><?php i18n( BLOGFILE . '/NORMAL' ); ?></option>
+                <option value="private"><?php i18n( BLOGFILE . '/PRIVATE' ); ?></option>
             </select>
         </div>
         <div class="rightopt">
-            <label for="post-template">Template:</label>
-            <span class="hint">Select a template to display this post with</span>
+            <label for="post-template"><?php i18n( BLOGFILE . '/POST_TEMPLATE' ); ?>:</label>
+            <span class="hint"><?php i18n( BLOGFILE . '/POST_TEMPLATE_HINT' ); ?></span>
             <select class="text" id="post-template" name="post-template">
                 <?php generateTemplateList( $blog_data->template ); ?>
             </select>
@@ -233,11 +233,14 @@ if ( isset( $_GET['edit_post'] )
         <div id="submit_line" class="saveButtonZone">
             <input type="submit" class="submit" id="page_submit" value="<?php i18n(BLOGFILE . '/SAVE_POST' ); ?>" />
             <div id="dropdown">
-                <h6 class="dropdownaction">Other Actions</h6>
+                <h6 class="dropdownaction"><?php i18n( 'ADDITIONAL_ACTIONS' ); ?></h6>
                 <ul class="dropdownmenu">
                     <li id="cancel-updates" class="alertme">
-                        <a href="load.php?id=<?php echo BLOGFILE; ?>&manage">Cancel</a>
+                        <a href="load.php?id=<?php echo BLOGFILE; ?>&manage"><?php i18n( 'CANCEL' ); ?></a>
                     </li>
+                    <?php if ( $post_id !== null ) { ?><li class="alertme">
+                        <a href="load.php?id=<?php echo BLOGFILE; ?>$delete_post=<?php echo $blog_data->slug; ?>"><?php echo strip_tags(i18n_r( 'ASK_DELETE' )); ?></a>
+                    </li><?php } ?>
                 </ul>
             </div>
         </div>
