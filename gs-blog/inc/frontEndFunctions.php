@@ -108,7 +108,7 @@ function show_blog_post($slug, $excerpt=false, $echo=true) {
     $p['content'] = html_entity_decode($post->content); // Get the full contents of the post
   } elseif(($excerpt == true) && ($blogSettings['postformat'] == 'N')) { // It's an excerpt...
     $el = (empty($blogSettings['excerptlength']) ? 250 : $blogSettings['excerptlength']); // Length?
-    $p['content'] = $Blog->create_excerpt(html_entity_decode($post->content),0,$el); // Create excerpt
+    $p['content'] = $Blog->create_excerpt($post->content,0,$el); // Create excerpt
   } else {echo 'Uh oh! Something went wrong!';}
   
     if($echo) { # Lets load the template now and let it put all this together.
@@ -387,7 +387,7 @@ function show_blog_recent_posts($excerpt=false, $excerpt_length=null, $thumbnail
         $url = $Blog->get_blog_url('post') . $dataA['slug']; // Create the URL for the post
         $title = strip_tags(strip_decode($dataA['title'])); // Sanitize the posts title.
         if($excerpt) { // If we are showing the excerpt...
-          $excerpt_string = $Blog->create_excerpt(html_entity_decode($dataA['content']), 0, $excerpt_length); // Create the excerpt
+          $excerpt_string = $Blog->create_excerpt($dataA['content'], 0, $excerpt_length); // Create the excerpt
           if($thumbnail) { // If we are showing a thumbnail with it...
             if(!empty($dataA['thumbnail'])) { // Does a thumbnail exist with the post?
               // Output the HTML for the image
@@ -421,7 +421,7 @@ function show_blog_recent_posts($excerpt=false, $excerpt_length=null, $thumbnail
         $recent_posts[$slug]['title'] = strip_tags(strip_decode($data->title));
         $recent_posts[$slug]['url'] = $Blog->get_blog_url('post').$data->slug;
         if($excerpt) {
-          $recent_posts[$slug]['excerpt'] = $Blog->create_excerpt( html_entity_decode($data->content), 0, $excerpt_length );
+          $recent_posts[$slug]['excerpt'] = $Blog->create_excerpt( $data->content, 0, $excerpt_length );
         }
         if($thumbnail && !empty($thumbfile)) {
           $recent_posts[$slug]['thumbnail'] = $SITEURL.'data/uploads/'.$thumbfile;
@@ -680,7 +680,7 @@ function set_post_description() {
 	if ( is_blogpage() ) {
         if ( isset( $_GET['post'] ) ) {
             $excerpt_length = ( empty( $blogSettings["excerptlength"] ) ? 150 : $blogSettings["excerptlength"] );
-            $metad = $Blog->create_excerpt( html_entity_decode( $post->content ), 0, $excerpt_length );
+            $metad = $Blog->create_excerpt( $post->content, 0, $excerpt_length );
         } elseif ( isset( $_GET['category'] ) ) {
             $metad = str_replace( "{category}", $_GET['category'], $blogSettings["categoriesdesc"] );
         } elseif ( isset( $_GET['archive'] ) ) {

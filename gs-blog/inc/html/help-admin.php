@@ -72,7 +72,7 @@
 		</li>
 		<li>
 			<strong><?php i18n(BLOGFILE.'/BLOG_PAGE_CREATE_EXCERPT'); ?>: </strong><br/>
-			<span style="font-size:10px;"><?php highlight_string('<?php echo $Blog->create_excerpt(html_entity_decode($post->content), 0, $excerpt_length); ?>'); ?></span><br/>
+			<span style="font-size:10px;"><?php highlight_string('<?php echo $Blog->create_excerpt($post->content, 0, $excerpt_length); ?>'); ?></span><br/>
 			<?php i18n(BLOGFILE.'/BLOG_PAGE_EXCERPT_DESC'); ?>
 			<br/><br/>
 		</li>

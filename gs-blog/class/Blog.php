@@ -698,19 +698,20 @@ class Blog
 	* @param $content string the content to be excerpted
 	* @param $start int the starting character to create excerpt from
 	* @param $maxchars int the amount of characters excerpt should be
+    * @param $boundary bool True: Boundary is sentence, False: Boundary is word - Since 3.5.0
 	* @return string The created excerpt
 	*/  
-	public function create_excerpt($content, $start, $maxchars)
+	public function create_excerpt($content, $start = 0, $maxchars = 0, $boundary = false)
 	{
-		$maxchars = (int) $maxchars;
-		$content = htmlspecialchars_decode(strip_tags(strip_decode($content)));
+		$maxchars = (int) $maxchars; $content = (string) $content; // Make sure everything is cast correctly
+        if ( $maxchars == 0 ) { $maxchars = $this->getSettingsData('excerptlength'); }
+		$content = strip_tags(strip_decode(html_entity_decode($content)));
+        $content = str_replace("\n", " ", $content); // Remove newline characters
+        $content = str_replace("  ", " ", $content); // Convert double space to single
 		$content = substr($content, $start, $maxchars);
-		$pos = strrpos($content, " ");
-		if ($pos>0) 
-		{
-			$content = substr($content, $start, $pos);
-		}
-		$content = str_replace(i18n_r(BLOGFILE.'/READ_FULL_ARTICLE'), "", $content);
+		if ( $boundary ) { $pos = strrpos( $content, "." ); }
+        else { $pos = strrpos( $content, " "); }
+		if ( $pos>0 ) { $content = substr($content, $start, $pos); }
 		return $content;
 	}
 
