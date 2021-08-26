@@ -266,7 +266,7 @@ function displayCustomFields($area='options')
 		$key = strtolower($the['key']);
 		$label = $the['label'];
 		$type = $the['type'];
-		$value = (isset($_GET['edit_post']) && $_GET['edit_post'] != "") ? $data_edit->$key : $the['value'];
+		$value = (isset($_GET['edit_post']) && $_GET['edit_post'] != "") ? stripslashes($data_edit->$key) : $the['value'];
 		$meta_class = ($col % 2) ? 'even_meta' : 'odd_meta' ;
 		switch($type)
 		{
