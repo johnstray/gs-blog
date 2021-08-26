@@ -121,9 +121,9 @@ class Blog
 	public function listPosts($array=false, $sort_dates=false)
 	{
 		$all_posts = glob(BLOGPOSTSFOLDER . "*.xml");
-		if(($all_posts===false) | (count($all_posts) < 1))
+		if(($all_posts===false) || (count($all_posts) < 1))
 		{
-			return false;
+			return array();
 		}
 		else
 		{
