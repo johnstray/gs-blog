@@ -116,6 +116,7 @@ AddDefaultCharset UTF-8
 Options -Indexes
 
 # <?php i18n(BLOGFILE.'/HTACCESS_1'); ?>
+
 &lt;Files ~ "\.xml$"&gt;
 Order allow,deny
 Deny from all
