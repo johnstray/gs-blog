@@ -30,6 +30,7 @@ if ( isset( $_GET['edit_post'] )
 
 <form class="largeform" action="load.php?id=<?php echo BLOGFILE; ?>&save_post" method="post" id="post-editor-form">
     <?php if ( $post_id != null ) { echo '<input type="hidden" name="post-current_slug" value="' . $blog_data->slug . '" />'; } ?>
+    <div id="post-id" style="display:none"><?php print_r($post_id); ?></div><!-- Compatibility fix for 'i18n Navigation' -->
 
     <div id="titlezone" style="margin-bottom: 20px;">
         <label for="post-title" style="display: none;"><?php i18n( BLOGFILE . '/POST_TITLE' ); ?>:</label>
@@ -146,7 +147,7 @@ if ( isset( $_GET['edit_post'] )
     <div id="posteditor">
         <label for="post-content" style="display: none;"><?php i18n( BLOGFILE . '/POST_CONTENT' ); ?>:</label>
         <textarea id="post-content" name="post-content"><?php echo $blog_data->content; ?></textarea>
-        <?php if ( $HTMLEDITOR == "TRUE" ) {
+        <?php if ( $HTMLEDITOR ) {
             if(isset($EDTOOL)) $EDTOOL = returnJsArray($EDTOOL);
             if(isset($toolbar)) $toolbar = returnJsArray($toolbar); // handle plugins that corrupt this
             else if(strpos(trim($EDTOOL),'[[')!==0 && strpos(trim($EDTOOL),'[')===0){ $EDTOOL = "[$EDTOOL]"; }
@@ -187,7 +188,6 @@ if ( isset( $_GET['edit_post'] )
                         editor.resetDirty();
                     }
                 }
-                <?php exec_action('html-editor-init'); ?>
                 var warnme = false; var pageisdirty = false;
                 $("#pagechangednotify").hide();
                 window.onbeforeunload = function () {
@@ -207,6 +207,7 @@ if ( isset( $_GET['edit_post'] )
                     $("input[type=submit]").css('border-color', '#CC0000');
                 }
             </script>
+            <?php exec_action('html-editor-init'); ?>
         <?php } ?>
     </div>
 
